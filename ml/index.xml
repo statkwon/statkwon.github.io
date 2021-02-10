@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ML on statkwon&#39;s blog</title>
-    <link>/ml/</link>
+    <link>/blog/ml/</link>
     <description>Recent content in ML on statkwon&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 10 Feb 2021 15:25:32 +0900</lastBuildDate>
     
-	<atom:link href="/ml/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/blog/ml/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>What is ML?</title>
-      <link>/ml/1/</link>
+      <link>/blog/ml/1/</link>
       <pubDate>Wed, 10 Feb 2021 15:29:24 +0900</pubDate>
       
-      <guid>/ml/1/</guid>
+      <guid>/blog/ml/1/</guid>
       <description>2.1. What Is Statistical Learning? $$Y=f(X)+\epsilon$$
 세상 속에서 우리가 알고자 하는 것들($Y$)은 여러가지 요인들($X_1, X_2, &amp;hellip;, X_p$)에 의해 설명될 수 있는 부분과, 그렇지 못하는 부분($\epsilon$, 이때 $\epsilon$은 $X$와 독립이며 평균이 $0$인 확률변수)의 합이라고 볼 수 있다. 따라서 우리는 모든 현상을 어느정도 설명할 수 있지만, 완벽히 설명하지는 못한다. 우리 주변의 현상들이 설명 가능할 때 우리는 많은 가치를 창출할 수 있다. 그리고 Statistical Learning은 설명 가능한 부분인 $f$를 추정하기 위한 접근법이다.
 2.1.1. Why Estimate $f$?</description>
@@ -24,10 +24,10 @@
     
     <item>
       <title>Linear Regression</title>
-      <link>/ml/2/</link>
+      <link>/blog/ml/2/</link>
       <pubDate>Wed, 10 Feb 2021 16:15:20 +0900</pubDate>
       
-      <guid>/ml/2/</guid>
+      <guid>/blog/ml/2/</guid>
       <description>머신러닝 모형 중 많은 것들은 Linear Regression을 기반으로 일반화하거나 확장한 형태이다. 따라서 Linear Regression에 대해 명확하게 이해하는 것이 중요하다.
 3.1. Simple Linear Regression Simple Linear Regression은 변수 간의 선형 관계를 잘 나타내는 최적의 직선 $\beta_0+\beta_1X$를 찾는 작업이다. 직선의 식을 아는 경우, 새로운 데이터에 대한 예측을 할 수 있다. 따라서 우리는 Training Data를 사용하여 회귀계수 $\beta_0$, $\beta_1$을 추정할 것이다.
 3.1.1. Estimating the Coefficients 가장 일반적인 방법은 Method of Least Squares이다. ISLR에 나와있는 LSE의 정의는 잘못되었다.</description>
@@ -35,20 +35,20 @@
     
     <item>
       <title>Classification</title>
-      <link>/ml/3/</link>
+      <link>/blog/ml/3/</link>
       <pubDate>Wed, 10 Feb 2021 16:17:17 +0900</pubDate>
       
-      <guid>/ml/3/</guid>
+      <guid>/blog/ml/3/</guid>
       <description>4장에서는 반응변수가 범주형인 경우, 즉, Classification의 문제를 다룬다.
 4.2. Why Not Linear Regression? 선형 회귀 모형은 반응변수가 범주형인 경우 사용이 적합하지 않다. 일반적으로 범주의 갯수가 세 개 이상인 경우 범주형 반응변수를 선형회귀분석에 적합한 형태의 수치형 변수로 변환하는 방법이 존재하지 않는다. 설령 범주의 갯수가 두 개라고 하더라도 선형 회귀 모형의 결과를 해석하는데 있어 문제가 발생한다. 두 가지 범주를 0과 1로 코딩하여 선형 회귀 모형을 적합한 경우, 몇몇 예측값은 0과 1의 범위를 벗어나는 값을 가질 수 있다.</description>
     </item>
     
     <item>
       <title>Resampling Methods</title>
-      <link>/ml/4/</link>
+      <link>/blog/ml/4/</link>
       <pubDate>Wed, 10 Feb 2021 16:18:21 +0900</pubDate>
       
-      <guid>/ml/4/</guid>
+      <guid>/blog/ml/4/</guid>
       <description>Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻기 위해 사용하는 방법이다. 5장에서는 가장 흔히 사용되는 방식인 Cross-Validation과 Bootstrap에 대한 내용을 다룬다.
 5.1. Cross-Validation 가지고 있는 Training Data의 크기가 작아 Test Error Rate를 직접적으로 추정하기 어려운 경우, Training Data의 일부를 홀드아웃하여 Test $\text{MSE}$를 추정하는 방법에 대해 알아보도록 하자.
 5.1.1. The Validation Set Approach Validation Set Approach는 데이터를 Trainint Set과 Validation Set, 동일한 크기의 두 부분으로 나누어 활용하는 방식이다.</description>
@@ -56,10 +56,10 @@
     
     <item>
       <title>Linear Model Selection and Regularization</title>
-      <link>/ml/5/</link>
+      <link>/blog/ml/5/</link>
       <pubDate>Wed, 10 Feb 2021 16:19:21 +0900</pubDate>
       
-      <guid>/ml/5/</guid>
+      <guid>/blog/ml/5/</guid>
       <description>선형 모형은 많은 전제조건을 필요로 하지만, 추론 영역에서 갖는 강점으로 인해 실생활의 문제들을 푸는데 있어 비선형 모형에 대해 경쟁력을 가지고 있다. 6장에서는 Method of Least Squares를 변형하여 선형 모형의 성능을 조금 더 개선할 수 있는 방법들에 대해 다루고 있다. 이러한 방법들은 예측 정확도와 모형의 설명력을 높이는데 기여할 수 있다.
 6.1. Subset Selection Subset Selection은 곧 Variable Selection을 위한 방법론이다.
 6.1.1. Best Subset Selection Best Subset Selection은 다음과 같은 단계를 거쳐 수행된다.</description>
@@ -67,10 +67,10 @@
     
     <item>
       <title>Moving Beyond Linearity</title>
-      <link>/ml/6/</link>
+      <link>/blog/ml/6/</link>
       <pubDate>Wed, 10 Feb 2021 16:20:35 +0900</pubDate>
       
-      <guid>/ml/6/</guid>
+      <guid>/blog/ml/6/</guid>
       <description>지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다. 선형 모형의 경우 해석이 용이하다는 장점을 가지고 있지만, 모형의 선형성에 대한 가정이 전제되기 때문에 예측 정확도는 다소 떨어지는 것이 사실이다. 이러한 단점을 보완하기 위해 7장에서는 선형성 가정을 완화하면서도 해석력을 유지할 수 있는 방법들에 대해서 다루고 있다.
 7.3. Basis Functions $$y_i=\beta_0+\beta_1b_1(x_i)+\beta_2b_2(x_i)+\beta_3b_3(x_i)+&amp;hellip;+\beta_Kb_K(x_i)+\epsilon_i$$
 Basis Functions를 먼저 다루는 것은 아래 나오는 Polynomial Regression과 Step Functions가 Basis Function Approach의 특수한 경우에 해당하기 때문이다.</description>
@@ -78,10 +78,10 @@ Basis Functions를 먼저 다루는 것은 아래 나오는 Polynomial Regressio
     
     <item>
       <title>Tree-Based Methods</title>
-      <link>/ml/7/</link>
+      <link>/blog/ml/7/</link>
       <pubDate>Wed, 10 Feb 2021 16:21:20 +0900</pubDate>
       
-      <guid>/ml/7/</guid>
+      <guid>/blog/ml/7/</guid>
       <description>8장에서는 Tree를 기반으로 하는 방법들에 대해 다루고 있다. 각각의 방법들은 Regression과 Classification의 문제에 모두 적용 가능하다.
 8.1. The Basics of Decision Trees 가장 기본적인 형태의 Tree-Method는 독립변수 공간을 여러 개의 영역으로 구분하고, 각 영역에 속한 데이터에 대해서 해당 영역의 평균이나 중앙값 등을 사용하여 반응변수를 예측하는 방식이다. 나무 형태로 결과를 나타내기 때문에 Decision Tree라고 부른다.
 8.1.1. Regression Trees Regression Tree는 다음과 같은 두 가지 단계의 과정을 거쳐 만들어진다.
