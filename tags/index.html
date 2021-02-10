@@ -41,8 +41,35 @@
 <div class="content-container">
 <main><h1>Tags</h1><div class="edit-meta">
 
-<br></div><nav class="pagination"><a class="nav nav-next" href="/ml/" title="ML">Next - ML <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+<br></div><nav class="pagination"><a class="nav nav-next" href="/statistics/" title="Statistics">Next - Statistics <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
 </footer>
 </main>
 <div class="sidebar">
@@ -51,10 +78,25 @@
 <ul>
 <li class=""><a href="">Home</a></li>
 
+<li class=""><a href="/statistics/">Statistics</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="/statistics/1/">Introduction and Examples</a></li>
+<li class=""><a href="/statistics/2/">One-parameter models</a></li>
+</ul>
+  
+</li>
+
 <li class=""><a href="/ml/">ML</a>
   
 <ul class="sub-menu">
 <li class=""><a href="/ml/1/">What is ML?</a></li>
+<li class=""><a href="/ml/2/">Linear Regression</a></li>
+<li class=""><a href="/ml/3/">Classification</a></li>
+<li class=""><a href="/ml/4/">Resampling Methods</a></li>
+<li class=""><a href="/ml/5/">Linear Model Selection and Regularization</a></li>
+<li class=""><a href="/ml/6/">Moving Beyond Linearity</a></li>
+<li class=""><a href="/ml/7/">Tree-Based Methods</a></li>
 </ul>
   
 </li>
