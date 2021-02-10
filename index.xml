@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hi on statkwon&#39;s blog</title>
-    <link>https://statkwon.github.io/</link>
+    <link>/</link>
     <description>Recent content in Hi on statkwon&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 10 Feb 2021 15:16:51 +0900</lastBuildDate>
     
-	<atom:link href="https://statkwon.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>What is ML?</title>
-      <link>https://statkwon.github.io/ml/1/</link>
+      <link>/ml/1/</link>
       <pubDate>Wed, 10 Feb 2021 15:29:24 +0900</pubDate>
       
-      <guid>https://statkwon.github.io/ml/1/</guid>
+      <guid>/ml/1/</guid>
       <description>What is ML? 공사중입니다.</description>
     </item>
     
     <item>
       <title>About</title>
-      <link>https://statkwon.github.io/about/</link>
+      <link>/about/</link>
       <pubDate>Wed, 10 Feb 2021 15:32:15 +0900</pubDate>
       
-      <guid>https://statkwon.github.io/about/</guid>
+      <guid>/about/</guid>
       <description>Hi, my name is Kwon.</description>
     </item>
     
