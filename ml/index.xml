@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ML on statkwon&#39;s blog</title>
-    <link>/ml/</link>
+    <link>https:statkwon.github.io/ml/</link>
     <description>Recent content in ML on statkwon&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 10 Feb 2021 15:25:32 +0900</lastBuildDate>
     
-	<atom:link href="/ml/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https:statkwon.github.io/ml/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>What is ML?</title>
-      <link>/ml/1/</link>
+      <link>https:statkwon.github.io/ml/1/</link>
       <pubDate>Wed, 10 Feb 2021 15:29:24 +0900</pubDate>
       
-      <guid>/ml/1/</guid>
+      <guid>https:statkwon.github.io/ml/1/</guid>
       <description>What is ML? 공사중입니다.</description>
     </item>
     
