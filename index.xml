@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>Matplotlib</title>
+      <link>https://statkwon.github.io/visualization/1/</link>
+      <pubDate>Thu, 11 Feb 2021 17:27:37 +0900</pubDate>
+      
+      <guid>https://statkwon.github.io/visualization/1/</guid>
+      <description>1. Several Options import matplotlib as mpl ; mpl.rcParams[&amp;#39;axes.unicode_minus&amp;#39;] = False import matplotlib.pyplot as plt ; plt.rcParams[&amp;#39;font.family&amp;#39;] = &amp;#39;AppleGothic&amp;#39; 윈도우 유저라면 첫 번째 줄은 입력할 필요가 없다. 맥의 경우 &amp;lsquo;-&amp;rsquo; 기호가 깨져서 나타나는 경우를 해결하기 위해 첫 번째 줄의 코드를 사용할 수 있다. matplotlib에서 한글을 사용해야 할 경우, 두 번째 줄의 font.family를 지정하는 코드를 반드시 입력해야한다.
+fig, ax = plt.subplots() ax.plot() plt.show() 빈 도화지를 만드는 방법이다. 이 상태를 기본으로 여러가지 변형을 시도해볼 것이다.</description>
+    </item>
+    
+    <item>
       <title>Introduction and Examples</title>
       <link>https://statkwon.github.io/statistics/1/</link>
       <pubDate>Wed, 10 Feb 2021 16:22:53 +0900</pubDate>
@@ -33,6 +43,16 @@ Prior Distribution $p(\theta)$: $\theta$($\theta\in\Theta$)가 참값(모집단�
       <description>2.1. What Is Statistical Learning? $$Y=f(X)+\epsilon$$
 세상 속에서 우리가 알고자 하는 것들($Y$)은 여러가지 요인들($X_1, X_2, &amp;hellip;, X_p$)에 의해 설명될 수 있는 부분과, 그렇지 못하는 부분($\epsilon$, 이때 $\epsilon$은 $X$와 독립이며 평균이 $0$인 확률변수)의 합이라고 볼 수 있다. 따라서 우리는 모든 현상을 어느정도 설명할 수 있지만, 완벽히 설명하지는 못한다. 우리 주변의 현상들이 설명 가능할 때 우리는 많은 가치를 창출할 수 있다. 그리고 Statistical Learning은 설명 가능한 부분인 $f$를 추정하기 위한 접근법이다.
 2.1.1. Why Estimate $f$?</description>
+    </item>
+    
+    <item>
+      <title>Seaborn</title>
+      <link>https://statkwon.github.io/visualization/2/</link>
+      <pubDate>Thu, 11 Feb 2021 17:29:09 +0900</pubDate>
+      
+      <guid>https://statkwon.github.io/visualization/2/</guid>
+      <description>0. Import Seaborn and Datasets import pandas as pd import matplotlib.pyplot as plt ; plt.rcParams[&amp;#39;font.family&amp;#39;]=&amp;#39;AppleGothic&amp;#39; ; plt.rc(&amp;#39;axes&amp;#39;, unicode_minus=False) import seaborn as sns Seaborn을 사용하기 위해서는 matplotlib을 먼저 import해야 한다. 두 번째 줄의 옵션들은 [1. Matplotlib]에서 설명했던 것과 같이 &amp;lsquo;-&amp;rsquo; 기호나 한글의 깨짐 현상을 방지하기 위함이다.
+epl = pd.read_csv(&amp;#39;epl.csv&amp;#39;) epl.head()    name club age position position_cat &amp;hellip; new_foreign age_cat club_id big_club new_signing     Alexis Sanchez Arsenal 28 LW 1 &amp;hellip; 0 4 1 1 0   Mesut Ozil Arsenal 28 AM 1 &amp;hellip; 0 4 1 1 0   Petr Cech Arsenal 35 GK 4 &amp;hellip; 0 6 1 1 0   Theo Walcott Arsenal 28 RW 1 &amp;hellip; 0 4 1 1 0   Laurent Koscielny Arsenal 31 CB 3 &amp;hellip; 0 4 1 1 0    epl2 = pd.</description>
     </item>
     
     <item>
@@ -61,6 +81,17 @@ $ \begin{align} \dfrac{p(\theta_a | y_1, \ldots, y_n)}{p(\theta_b | y_1, \ldots,
     </item>
     
     <item>
+      <title>Bokeh</title>
+      <link>https://statkwon.github.io/visualization/3/</link>
+      <pubDate>Thu, 11 Feb 2021 17:29:52 +0900</pubDate>
+      
+      <guid>https://statkwon.github.io/visualization/3/</guid>
+      <description>1. Introduction to Bokeh from bokeh.io import output_notebook, show from bokeh.plotting import figure 우선 위의 명령어를 사용하여 Bokeh를 import한다.
+output_notebook() 기본적으로 Bokeh는 html 형식의 결과물을 산출하지만, output_notebook() 명령어를 입력함으로써 결과물을 Jupyter Notebook에서 확인할 수 있다. html 형식의 결과물을 저장하고 싶다면 bokeh.io에서 output_file을 호출한 후 output_file(&amp;lsquo;~.html&amp;rsquo;) 명령어를 입력하면 된다.
+plot = figure() show(plot)  Bokeh Plot  Bokeh.set_log_level(&#34;info&#34;);     {&#34;fe42d58e-d033-462f-a1dd-4a5acdd43710&#34;:{&#34;roots&#34;:{&#34;references&#34;:[{&#34;attributes&#34;:{&#34;below&#34;:[{&#34;id&#34;:&#34;2444&#34;}],&#34;center&#34;:[{&#34;id&#34;:&#34;2447&#34;},{&#34;id&#34;:&#34;2451&#34;}],&#34;left&#34;:[{&#34;id&#34;:&#34;2448&#34;}],&#34;title&#34;:{&#34;id&#34;:&#34;2530&#34;},&#34;toolbar&#34;:{&#34;id&#34;:&#34;2459&#34;},&#34;x_range&#34;:{&#34;id&#34;:&#34;2436&#34;},&#34;x_scale&#34;:{&#34;id&#34;:&#34;2440&#34;},&#34;y_range&#34;:{&#34;id&#34;:&#34;2438&#34;},&#34;y_scale&#34;:{&#34;id&#34;:&#34;2442&#34;}},&#34;id&#34;:&#34;2435&#34;,&#34;subtype&#34;:&#34;Figure&#34;,&#34;type&#34;:&#34;Plot&#34;},{&#34;attributes&#34;:{},&#34;id&#34;:&#34;2440&#34;,&#34;type&#34;:&#34;LinearScale&#34;},{&#34;attributes&#34;:{&#34;text&#34;:&#34;&#34;},&#34;id&#34;:&#34;2530&#34;,&#34;type&#34;:&#34;Title&#34;},{&#34;attributes&#34;:{&#34;formatter&#34;:{&#34;id&#34;:&#34;2532&#34;},&#34;ticker&#34;:{&#34;id&#34;:&#34;2445&#34;}},&#34;id&#34;:&#34;2444&#34;,&#34;type&#34;:&#34;LinearAxis&#34;},{&#34;attributes&#34;:{},&#34;id&#34;:&#34;2449&#34;,&#34;type&#34;:&#34;BasicTicker&#34;},{&#34;attributes&#34;:{},&#34;id&#34;:&#34;2457&#34;,&#34;type&#34;:&#34;HelpTool&#34;},{&#34;attributes&#34;:{},&#34;id&#34;:&#34;2438&#34;,&#34;type&#34;:&#34;DataRange1d&#34;},{&#34;attributes&#34;:{&#34;bottom_units&#34;:&#34;screen&#34;,&#34;fill_alpha&#34;:0.5,&#34;fill_color&#34;:&#34;lightgrey&#34;,&#34;left_units&#34;:&#34;screen&#34;,&#34;level&#34;:&#34;overlay&#34;,&#34;line_alpha&#34;:1.0,&#34;line_color&#34;:&#34;black&#34;,&#34;line_dash&#34;:[4,4],&#34;line_width&#34;:2,&#34;right_units&#34;:&#34;screen&#34;,&#34;top_units&#34;:&#34;screen&#34;},&#34;id&#34;:&#34;2458&#34;,&#34;type&#34;:&#34;BoxAnnotation&#34;},{&#34;attributes&#34;:{},&#34;id&#34;:&#34;2534&#34;,&#34;type&#34;:&#34;BasicTickFormatter&#34;},{&#34;attributes&#34;:{},&#34;id&#34;:&#34;2445&#34;,&#34;type&#34;:&#34;BasicTicker&#34;},{&#34;attributes&#34;:{},&#34;id&#34;:&#34;2452&#34;,&#34;type&#34;:&#34;PanTool&#34;},{&#34;attributes&#34;:{&#34;formatter&#34;:{&#34;id&#34;:&#34;2534&#34;},&#34;ticker&#34;:{&#34;id&#34;:&#34;2449&#34;}},&#34;id&#34;:&#34;2448&#34;,&#34;type&#34;:&#34;LinearAxis&#34;},{&#34;attributes&#34;:{&#34;overlay&#34;:{&#34;id&#34;:&#34;2458&#34;}},&#34;id&#34;:&#34;2454&#34;,&#34;type&#34;:&#34;BoxZoomTool&#34;},{&#34;attributes&#34;:{&#34;active_drag&#34;:&#34;auto&#34;,&#34;active_inspect&#34;:&#34;auto&#34;,&#34;active_multi&#34;:null,&#34;active_scroll&#34;:&#34;auto&#34;,&#34;active_tap&#34;:&#34;auto&#34;,&#34;tools&#34;:[{&#34;id&#34;:&#34;2452&#34;},{&#34;id&#34;:&#34;2453&#34;},{&#34;id&#34;:&#34;2454&#34;},{&#34;id&#34;:&#34;2455&#34;},{&#34;id&#34;:&#34;2456&#34;},{&#34;id&#34;:&#34;2457&#34;}]},&#34;id&#34;:&#34;2459&#34;,&#34;type&#34;:&#34;Toolbar&#34;},{&#34;attributes&#34;:{&#34;axis&#34;:{&#34;id&#34;:&#34;2444&#34;},&#34;ticker&#34;:null},&#34;id&#34;:&#34;2447&#34;,&#34;type&#34;:&#34;Grid&#34;},{&#34;attributes&#34;:{},&#34;id&#34;:&#34;2436&#34;,&#34;type&#34;:&#34;DataRange1d&#34;},{&#34;attributes&#34;:{},&#34;id&#34;:&#34;2532&#34;,&#34;type&#34;:&#34;BasicTickFormatter&#34;},{&#34;attributes&#34;:{},&#34;id&#34;:&#34;2453&#34;,&#34;type&#34;:&#34;WheelZoomTool&#34;},{&#34;attributes&#34;:{&#34;axis&#34;:{&#34;id&#34;:&#34;2448&#34;},&#34;dimension&#34;:1,&#34;ticker&#34;:null},&#34;id&#34;:&#34;2451&#34;,&#34;type&#34;:&#34;Grid&#34;},{&#34;attributes&#34;:{},&#34;id&#34;:&#34;2442&#34;,&#34;type&#34;:&#34;LinearScale&#34;},{&#34;attributes&#34;:{},&#34;id&#34;:&#34;2455&#34;,&#34;type&#34;:&#34;SaveTool&#34;},{&#34;attributes&#34;:{},&#34;id&#34;:&#34;2456&#34;,&#34;type&#34;:&#34;ResetTool&#34;}],&#34;root_ids&#34;:[&#34;2435&#34;]},&#34;title&#34;:&#34;Bokeh Application&#34;,&#34;version&#34;:&#34;2.1.1&#34;}}  (function() { var fn = function() { Bokeh.</description>
+    </item>
+    
+    <item>
       <title>Classification</title>
       <link>https://statkwon.github.io/ml/3/</link>
       <pubDate>Wed, 10 Feb 2021 16:17:17 +0900</pubDate>
@@ -68,6 +99,15 @@ $ \begin{align} \dfrac{p(\theta_a | y_1, \ldots, y_n)}{p(\theta_b | y_1, \ldots,
       <guid>https://statkwon.github.io/ml/3/</guid>
       <description>4장에서는 반응변수가 범주형인 경우, 즉, Classification의 문제를 다룬다.
 4.2. Why Not Linear Regression? 선형 회귀 모형은 반응변수가 범주형인 경우 사용이 적합하지 않다. 일반적으로 범주의 갯수가 세 개 이상인 경우 범주형 반응변수를 선형회귀분석에 적합한 형태의 수치형 변수로 변환하는 방법이 존재하지 않는다. 설령 범주의 갯수가 두 개라고 하더라도 선형 회귀 모형의 결과를 해석하는데 있어 문제가 발생한다. 두 가지 범주를 0과 1로 코딩하여 선형 회귀 모형을 적합한 경우, 몇몇 예측값은 0과 1의 범위를 벗어나는 값을 가질 수 있다.</description>
+    </item>
+    
+    <item>
+      <title>Folium</title>
+      <link>https://statkwon.github.io/visualization/4/</link>
+      <pubDate>Thu, 11 Feb 2021 17:30:49 +0900</pubDate>
+      
+      <guid>https://statkwon.github.io/visualization/4/</guid>
+      <description>1. Introduction to Folium import folium folium.Map() folium.Map(location=[37.566064, 126.938308], zoom_start=14) folium.Map(location=[37.566064, 126.938308], tiles=&amp;#39;cartodbpositron&amp;#39;, zoom_start=14) folium.Map(location=[37.566064, 126.938308], zoom_start=14, min_zoom=13, max_zoom=15, control_scale=True) 2. Several Useful Features 1. Add Markers m = folium.Map(location=[37.566064, 126.938308], zoom_start=14) folium.Marker(location=[37.566064, 126.938308], popup=&amp;#39;&amp;lt;b&amp;gt;Yonsei Univ.&amp;lt;/b&amp;gt;&amp;#39;, tooltip=&amp;#39;Click!&amp;#39;).add_to(m) m m = folium.Map(location=[37.566064,126.938308], zoom_start=14) html = &amp;#39;&amp;lt;b&amp;gt;&amp;lt;center&amp;gt;연세대학교&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;연세로 50&amp;lt;/center&amp;gt;&amp;#39; iframe = folium.IFrame(html, width=150, height=50) folium.Marker([37.566064, 126.938308], popup=folium.Popup(iframe), tooltip=&amp;#39;Click!&amp;#39;).add_to(m) m import pandas as pd park = pd.read_csv(&amp;#39;park.csv&amp;#39;) park.head()    공원명 경도 위도 면적     남산도시자연공원 126.</description>
     </item>
     
     <item>
@@ -116,12 +156,12 @@ Basis Functions를 먼저 다루는 것은 아래 나오는 Polynomial Regressio
     </item>
     
     <item>
-      <title>About</title>
+      <title>About Me</title>
       <link>https://statkwon.github.io/about/</link>
       <pubDate>Wed, 10 Feb 2021 15:32:15 +0900</pubDate>
       
       <guid>https://statkwon.github.io/about/</guid>
-      <description>작성중입니다.</description>
+      <description>Profile  연세대학교에서 응용통계학을 전공하였습니다. (2019.08 ~ 2021.02) 연세대학교 응용통계학과 공식 인증 통계 및 데이터사이언스 학회 ESC에서 활동하였습니다. (2019.09 ~ 2020.08) || Github Repo, Github Repo 2, Github Repo 3  Projects  서울시 수소차 충전소 입지 선정 (2020.03 ~ 2020.06) || Github Repo, RHINO Project [2020 빅콘테스트] KBO 정규시즌 팀별 승률, 타율 및 방어율(평균자책점) 예측 (2020.07 ~ 2020.11, 본선 진출) || Github Repo [데이콘] NH투자증권 Y&amp;amp;Z세대 투자자 프로파일링 (2020.11 ~ 2021.</description>
     </item>
     
   </channel>

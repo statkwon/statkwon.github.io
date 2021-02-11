@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://statkwon.github.io/visualization/1/</loc>
+    <lastmod>2021-02-11T17:27:37+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://statkwon.github.io/statistics/1/</loc>
     <lastmod>2021-02-10T16:22:53+09:00</lastmod>
   </url>
@@ -15,6 +20,11 @@
   <url>
     <loc>https://statkwon.github.io/ml/1/</loc>
     <lastmod>2021-02-10T15:29:24+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/visualization/2/</loc>
+    <lastmod>2021-02-11T17:29:09+09:00</lastmod>
   </url>
   
   <url>
@@ -33,8 +43,23 @@
   </url>
   
   <url>
+    <loc>https://statkwon.github.io/visualization/3/</loc>
+    <lastmod>2021-02-11T17:29:52+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/visualization/</loc>
+    <lastmod>2021-02-11T17:26:49+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://statkwon.github.io/ml/3/</loc>
     <lastmod>2021-02-10T16:17:17+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/visualization/4/</loc>
+    <lastmod>2021-02-11T17:30:49+09:00</lastmod>
   </url>
   
   <url>
