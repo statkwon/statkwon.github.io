@@ -17,9 +17,9 @@
       <pubDate>Wed, 10 Feb 2021 15:29:24 +0900</pubDate>
       
       <guid>https://statkwon.github.io/ml/1/</guid>
-      <description>2.1. What Is Statistical Learning? $$Y=f(X)+\epsilon$$
+      <description>1.1. What Is Statistical Learning? $$Y=f(X)+\epsilon$$
 세상 속에서 우리가 알고자 하는 것들($Y$)은 여러가지 요인들($X_1, X_2, &amp;hellip;, X_p$)에 의해 설명될 수 있는 부분과, 그렇지 못하는 부분($\epsilon$, 이때 $\epsilon$은 $X$와 독립이며 평균이 $0$인 확률변수)의 합이라고 볼 수 있다. 따라서 우리는 모든 현상을 어느정도 설명할 수 있지만, 완벽히 설명하지는 못한다. 우리 주변의 현상들이 설명 가능할 때 우리는 많은 가치를 창출할 수 있다. 그리고 Statistical Learning은 설명 가능한 부분인 $f$를 추정하기 위한 접근법이다.
-2.1.1. Why Estimate $f$?</description>
+1.1.1. Why Estimate $f$?</description>
     </item>
     
     <item>

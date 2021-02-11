@@ -18,7 +18,7 @@
 :root {}
 </style>
 <meta property="og:title" content="2. One-parameter models" />
-<meta property="og:description" content="3.1. The Binomial Model 3.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution
+<meta property="og:description" content="2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution
 $Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다.
 이때 임의의 $\theta_a$와 $\theta_b$에 대한 Relative Probability를 계산하면
 $ \begin{align} \dfrac{p(\theta_a | y_1, \ldots, y_n)}{p(\theta_b | y_1, \ldots, y_n)}&amp;=\dfrac{\theta_a^{\sum y_i}(1-\theta_a)^{n-\sum y_i} \times p(\theta_a)/p(y_1, \ldots, y_n)}{\theta_b^{\sum y_i}(1-\theta_b)^{n-\sum y_i} \times p(\theta_b)/p(y_1, \ldots, y_n)} \\
@@ -30,14 +30,14 @@ $ \begin{align} \dfrac{p(\theta_a | y_1, \ldots, y_n)}{p(\theta_b | y_1, \ldots,
 <meta property="article:modified_time" content="2021-02-10T16:25:47+09:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="2. One-parameter models"/>
-<meta name="twitter:description" content="3.1. The Binomial Model 3.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution
+<meta name="twitter:description" content="2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution
 $Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다.
 이때 임의의 $\theta_a$와 $\theta_b$에 대한 Relative Probability를 계산하면
 $ \begin{align} \dfrac{p(\theta_a | y_1, \ldots, y_n)}{p(\theta_b | y_1, \ldots, y_n)}&amp;=\dfrac{\theta_a^{\sum y_i}(1-\theta_a)^{n-\sum y_i} \times p(\theta_a)/p(y_1, \ldots, y_n)}{\theta_b^{\sum y_i}(1-\theta_b)^{n-\sum y_i} \times p(\theta_b)/p(y_1, \ldots, y_n)} \\
 &amp;=\left(\dfrac{\theta_a}{\theta_b}\right)^{\sum y_i}\left(\dfrac{1-\theta_a}{1-\theta_b}\right)^{n-\sum y_i}\dfrac{p(\theta_a)}{p(\theta_b)} \end{align}$
 가 된다. 여기서 $\theta_b$에 대한 $\theta_a$의 확률이 $\sum_{i=1}^n y_i$에 의해 $y_1, \ldots, y_n$에만 의존한다는 것을 알 수 있다."/>
 <meta itemprop="name" content="2. One-parameter models">
-<meta itemprop="description" content="3.1. The Binomial Model 3.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution
+<meta itemprop="description" content="2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution
 $Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다.
 이때 임의의 $\theta_a$와 $\theta_b$에 대한 Relative Probability를 계산하면
 $ \begin{align} \dfrac{p(\theta_a | y_1, \ldots, y_n)}{p(\theta_b | y_1, \ldots, y_n)}&amp;=\dfrac{\theta_a^{\sum y_i}(1-\theta_a)^{n-\sum y_i} \times p(\theta_a)/p(y_1, \ldots, y_n)}{\theta_b^{\sum y_i}(1-\theta_b)^{n-\sum y_i} \times p(\theta_b)/p(y_1, \ldots, y_n)} \\
@@ -74,23 +74,23 @@ $ \begin{align} \dfrac{p(\theta_a | y_1, \ldots, y_n)}{p(\theta_b | y_1, \ldots,
 <aside class="table_of_contents">
 <h5>Table of Contents</h5><nav id="TableOfContents">
   <ul>
-    <li><a href="#31-the-binomial-model">3.1. The Binomial Model</a>
+    <li><a href="#21-the-binomial-model">2.1. The Binomial Model</a>
       <ul>
-        <li><a href="#311-inference-for-exchangable-binary-data">3.1.1. Inference for Exchangable Binary Data</a></li>
-        <li><a href="#312-confidence-regions">3.1.2. Confidence Regions</a></li>
+        <li><a href="#211-inference-for-exchangable-binary-data">2.1.1. Inference for Exchangable Binary Data</a></li>
+        <li><a href="#212-confidence-regions">2.1.2. Confidence Regions</a></li>
       </ul>
     </li>
-    <li><a href="#32-the-poisson-model">3.2. The Poisson Model</a>
+    <li><a href="#22-the-poisson-model">2.2. The Poisson Model</a>
       <ul>
-        <li><a href="#321-posterior-inference">3.2.1. Posterior Inference</a></li>
+        <li><a href="#221-posterior-inference">2.2.1. Posterior Inference</a></li>
       </ul>
     </li>
-    <li><a href="#33-exponential-families-and-conjugate-priors">3.3. Exponential Families and Conjugate Priors</a></li>
+    <li><a href="#23-exponential-families-and-conjugate-priors">2.3. Exponential Families and Conjugate Priors</a></li>
   </ul>
 </nav></aside>
 
-<h2 id="31-the-binomial-model">3.1. The Binomial Model</h2>
-<h3 id="311-inference-for-exchangable-binary-data">3.1.1. Inference for Exchangable Binary Data</h3>
+<h2 id="21-the-binomial-model">2.1. The Binomial Model</h2>
+<h3 id="211-inference-for-exchangable-binary-data">2.1.1. Inference for Exchangable Binary Data</h3>
 <p><strong>Posterior Inference Under a Unifrom Prior Distribution</strong></p>
 <p>$Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다.</p>
 <p>이때 임의의 $\theta_a$와 $\theta_b$에 대한 Relative Probability를 계산하면</p>
@@ -169,7 +169,7 @@ E[\theta|y]&amp;=\dfrac{a+y}{a+b+n}
 \text{Pr}(\tilde{Y}=0|y_1, \ldots, y_n)&amp;=1-E[\theta|y_1, \ldots, y_n]=\dfrac{b+\sum_{i=1}^n (1-y_i)}{a+b+n}
 \end{align}$</p>
 <p>위 식을 통해 Predictive Distribution은 Unknown Quantities의 영향을 받지 않고, Observed Data의 영향을 받는다는 사실을 확인 수 있다.</p>
-<h3 id="312-confidence-regions">3.1.2. Confidence Regions</h3>
+<h3 id="212-confidence-regions">2.1.2. Confidence Regions</h3>
 <p>빈도론적 관점에서 모수에 대한 신뢰 구간을 구하는 것처럼, Bayesian Methods에도 Bayesian Coverage라는 것이 존재한다.</p>
 <p>Confidence Interval: $\text{Pr}(l(Y)&lt;\theta&lt;u(Y)|\theta)=0.95$</p>
 <p>Bayesian Coverage: $\text{Pr}(l(y)&lt;\theta&lt;u(y)|Y=y)=0.95$</p>
@@ -188,8 +188,8 @@ E[\theta|y]&amp;=\dfrac{a+y}{a+b+n}
 </blockquote>
 <p>HPD의 정의는 위와 같다. 하지만 이러한 정의보다 아래의 그래프를 통해 보다 직관적인 이해가 가능하다.</p>
 <p><img src="/Statistics/Fig_3.6.png" alt="Fig 3.6"></p>
-<h2 id="32-the-poisson-model">3.2. The Poisson Model</h2>
-<h3 id="321-posterior-inference">3.2.1. Posterior Inference</h3>
+<h2 id="22-the-poisson-model">2.2. The Poisson Model</h2>
+<h3 id="221-posterior-inference">2.2.1. Posterior Inference</h3>
 <p>이번에는 $Y_1, \ldots, Y_n$이 평균이 $\theta$인 Poisson Distribution을 따르는 i.i.d. Random Variable이라고 하자. 이러한 경우 Sampling Model은 다음과 같다.</p>
 <p>$\begin{align}
 \text{Pr}(Y_1=y_1, \ldots, Y_n=y_n|\theta)&amp;=\prod_{i=1}^n p(y_i|\theta)
@@ -249,7 +249,7 @@ $\displaystyle \int_0^\infty \theta^{a-1}e^{-b\theta}d\theta=\dfrac{\Gamma(a)}{b
 $\displaystyle \int_0^\infty \theta^{a+\sum y_i+\tilde{y}}e^{-(b+n+1)\theta}d\theta=\dfrac{\Gamma(a+\sum y_i+\tilde{y})}{(b+n+1)^{a+\sum y_i+\tilde{y}}}$
 </details>
 
-<h2 id="33-exponential-families-and-conjugate-priors">3.3. Exponential Families and Conjugate Priors</h2>
+<h2 id="23-exponential-families-and-conjugate-priors">2.3. Exponential Families and Conjugate Priors</h2>
 <p>Binomial Distribution과 Poisson Distribution은 모두 One-Parameter Exponential Family에 속한다. One-Parameter Exponential Family란 분포 함수가 $p(y|\phi)=h(y)c(\phi)e^{\phi t(y)}$의 형태로 표현될 수 있는 분포를 의미한다. 이때 $\phi$는 Unknown Parameter이고 $t(y)$는 Sufficient Statistic이다.</p>
 <div class="edit-meta">
 Last updated on 10 Feb 2021
