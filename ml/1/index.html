@@ -3,7 +3,7 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>What is ML? - statkwon&#39;s blog</title>
+<title>1. What is ML? - statkwon&#39;s blog</title>
 <meta name="generator" content="Hugo 0.74.3" />
 <link href="https://statkwon.github.io/index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://statkwon.github.io/ml/1/">
@@ -16,7 +16,7 @@
 <script src="https://statkwon.github.io/js/bundle.js"></script><style>
 :root {}
 </style>
-<meta property="og:title" content="What is ML?" />
+<meta property="og:title" content="1. What is ML?" />
 <meta property="og:description" content="2.1. What Is Statistical Learning? $$Y=f(X)&#43;\epsilon$$
 세상 속에서 우리가 알고자 하는 것들($Y$)은 여러가지 요인들($X_1, X_2, &hellip;, X_p$)에 의해 설명될 수 있는 부분과, 그렇지 못하는 부분($\epsilon$, 이때 $\epsilon$은 $X$와 독립이며 평균이 $0$인 확률변수)의 합이라고 볼 수 있다. 따라서 우리는 모든 현상을 어느정도 설명할 수 있지만, 완벽히 설명하지는 못한다. 우리 주변의 현상들이 설명 가능할 때 우리는 많은 가치를 창출할 수 있다. 그리고 Statistical Learning은 설명 가능한 부분인 $f$를 추정하기 위한 접근법이다.
 2.1.1. Why Estimate $f$?" />
@@ -25,11 +25,11 @@
 <meta property="article:published_time" content="2021-02-10T15:29:24+09:00" />
 <meta property="article:modified_time" content="2021-02-10T15:29:24+09:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="What is ML?"/>
+<meta name="twitter:title" content="1. What is ML?"/>
 <meta name="twitter:description" content="2.1. What Is Statistical Learning? $$Y=f(X)&#43;\epsilon$$
 세상 속에서 우리가 알고자 하는 것들($Y$)은 여러가지 요인들($X_1, X_2, &hellip;, X_p$)에 의해 설명될 수 있는 부분과, 그렇지 못하는 부분($\epsilon$, 이때 $\epsilon$은 $X$와 독립이며 평균이 $0$인 확률변수)의 합이라고 볼 수 있다. 따라서 우리는 모든 현상을 어느정도 설명할 수 있지만, 완벽히 설명하지는 못한다. 우리 주변의 현상들이 설명 가능할 때 우리는 많은 가치를 창출할 수 있다. 그리고 Statistical Learning은 설명 가능한 부분인 $f$를 추정하기 위한 접근법이다.
 2.1.1. Why Estimate $f$?"/>
-<meta itemprop="name" content="What is ML?">
+<meta itemprop="name" content="1. What is ML?">
 <meta itemprop="description" content="2.1. What Is Statistical Learning? $$Y=f(X)&#43;\epsilon$$
 세상 속에서 우리가 알고자 하는 것들($Y$)은 여러가지 요인들($X_1, X_2, &hellip;, X_p$)에 의해 설명될 수 있는 부분과, 그렇지 못하는 부분($\epsilon$, 이때 $\epsilon$은 $X$와 독립이며 평균이 $0$인 확률변수)의 합이라고 볼 수 있다. 따라서 우리는 모든 현상을 어느정도 설명할 수 있지만, 완벽히 설명하지는 못한다. 우리 주변의 현상들이 설명 가능할 때 우리는 많은 가치를 창출할 수 있다. 그리고 Statistical Learning은 설명 가능한 부분인 $f$를 추정하기 위한 접근법이다.
 2.1.1. Why Estimate $f$?">
@@ -53,7 +53,30 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>What is ML?</h1>
+<main><h1>1. What is ML?</h1>
+<aside class="table_of_contents">
+<h5>Table of Contents</h5><nav id="TableOfContents">
+  <ul>
+    <li><a href="#21-what-is-statistical-learning">2.1. What Is Statistical Learning?</a>
+      <ul>
+        <li><a href="#211-why-estimate-f">2.1.1. Why Estimate $f$?</a></li>
+        <li><a href="#212-how-do-we-estimate-f">2.1.2. How Do We Estimate $f$?</a></li>
+        <li><a href="#213-the-trade-off-between-prediction-accuracy-and-model-interpretability">2.1.3. The Trade-Off Between Prediction Accuracy and Model Interpretability</a></li>
+        <li><a href="#214-supervised-versus-unsupervised-learning">2.1.4. Supervised Versus Unsupervised Learning</a></li>
+        <li><a href="#215-regression-versus-classification-problems">2.1.5. Regression Versus Classification Problems</a></li>
+      </ul>
+    </li>
+    <li><a href="#22-assessing-model-accuracy">2.2. Assessing Model Accuracy</a>
+      <ul>
+        <li><a href="#221-measuring-the-quality-of-fit">2.2.1. Measuring the Quality of Fit</a></li>
+        <li><a href="#222-the-bias-variance-trade-off">2.2.2. The Bias-Variance Trade-Off</a></li>
+        <li><a href="#223-the-classification-setting">2.2.3. The Classification Setting</a></li>
+      </ul>
+    </li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav></aside>
+
 <h2 id="21-what-is-statistical-learning">2.1. What Is Statistical Learning?</h2>
 <p>$$Y=f(X)+\epsilon$$</p>
 <p>세상 속에서 우리가 알고자 하는 것들($Y$)은 여러가지 요인들($X_1, X_2, &hellip;, X_p$)에 의해 설명될 수 있는 부분과, 그렇지 못하는 부분($\epsilon$, 이때 $\epsilon$은 $X$와 독립이며 평균이 $0$인 확률변수)의 합이라고 볼 수 있다. 따라서 우리는 모든 현상을 어느정도 설명할 수 있지만, 완벽히 설명하지는 못한다. 우리 주변의 현상들이 설명 가능할 때 우리는 많은 가치를 창출할 수 있다. 그리고 Statistical Learning은 설명 가능한 부분인 $f$를 추정하기 위한 접근법이다.</p>
@@ -207,8 +230,16 @@ Published on 10 Feb 2021
 <li class=""><a href="https://statkwon.github.io/statistics/">Statistics</a>
   
 <ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/statistics/1/">Introduction and Examples</a></li>
-<li class=""><a href="https://statkwon.github.io/statistics/2/">One-parameter models</a></li>
+
+<li class=""><a href="https://statkwon.github.io/statistics/bayesian_statistics/">Bayesian Statistics</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/statistics/bayesian_statistics/1/">1. Introduction</a></li>
+<li class=""><a href="https://statkwon.github.io/statistics/bayesian_statistics/2/">2. One-parameter models</a></li>
+<li class=""><a href="https://statkwon.github.io/statistics/bayesian_statistics/3/">3. Normal Model</a></li>
+</ul>
+  
+</li>
 </ul>
   
 </li>
@@ -216,7 +247,7 @@ Published on 10 Feb 2021
 <li class="parent"><a href="https://statkwon.github.io/ml/">ML</a>
   
 <ul class="sub-menu">
-<li class="active"><a href="https://statkwon.github.io/ml/1/">What is ML?</a></li>
+<li class="active"><a href="https://statkwon.github.io/ml/1/">1. What is ML?</a></li>
 <li class=""><a href="https://statkwon.github.io/ml/2/">Linear Regression</a></li>
 <li class=""><a href="https://statkwon.github.io/ml/3/">Classification</a></li>
 <li class=""><a href="https://statkwon.github.io/ml/4/">Resampling Methods</a></li>
@@ -230,10 +261,21 @@ Published on 10 Feb 2021
 <li class=""><a href="https://statkwon.github.io/visualization/">Visualization</a>
   
 <ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/visualization/1/">Matplotlib</a></li>
-<li class=""><a href="https://statkwon.github.io/visualization/2/">Seaborn</a></li>
-<li class=""><a href="https://statkwon.github.io/visualization/3/">Bokeh</a></li>
-<li class=""><a href="https://statkwon.github.io/visualization/4/">Folium</a></li>
+
+<li class=""><a href="https://statkwon.github.io/visualization/r/">R</a>
+  
+</li>
+
+<li class=""><a href="https://statkwon.github.io/visualization/python/">Python</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/visualization/python/1/">1. Matplotlib</a></li>
+<li class=""><a href="https://statkwon.github.io/visualization/python/2/">2. Seaborn</a></li>
+<li class=""><a href="https://statkwon.github.io/visualization/python/3/">3. Bokeh</a></li>
+<li class=""><a href="https://statkwon.github.io/visualization/python/4/">4. Folium</a></li>
+</ul>
+  
+</li>
 </ul>
   
 </li>
