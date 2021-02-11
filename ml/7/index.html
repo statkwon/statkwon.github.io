@@ -3,7 +3,7 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Tree-Based Methods - ML Lab</title>
+<title>7. Moving Beyond Linearity - ML Lab</title>
 <meta name="description" content="STATKWON">
 <meta name="generator" content="Hugo 0.74.3" />
 <link href="https://statkwon.github.io/index.xml" rel="alternate" type="application/rss+xml">
@@ -17,29 +17,26 @@
 <script src="https://statkwon.github.io/js/bundle.js"></script><style>
 :root {}
 </style>
-<meta property="og:title" content="Tree-Based Methods" />
-<meta property="og:description" content="8장에서는 Tree를 기반으로 하는 방법들에 대해 다루고 있다. 각각의 방법들은 Regression과 Classification의 문제에 모두 적용 가능하다.
-8.1. The Basics of Decision Trees 가장 기본적인 형태의 Tree-Method는 독립변수 공간을 여러 개의 영역으로 구분하고, 각 영역에 속한 데이터에 대해서 해당 영역의 평균이나 중앙값 등을 사용하여 반응변수를 예측하는 방식이다. 나무 형태로 결과를 나타내기 때문에 Decision Tree라고 부른다.
-8.1.1. Regression Trees Regression Tree는 다음과 같은 두 가지 단계의 과정을 거쳐 만들어진다.
- 독립변수 $X_1, X_2, \ldots, X_p$에 대해, Predictor Space를 서로 겹치지 않는 $J$개의 영역, $R_1, R_2, \ldots, R_J$로 구분한다." />
+<meta property="og:title" content="7. Moving Beyond Linearity" />
+<meta property="og:description" content="지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다. 선형 모형의 경우 해석이 용이하다는 장점을 가지고 있지만, 모형의 선형성에 대한 가정이 전제되기 때문에 예측 정확도는 다소 떨어지는 것이 사실이다. 이러한 단점을 보완하기 위해 7장에서는 선형성 가정을 완화하면서도 해석력을 유지할 수 있는 방법들에 대해서 다루고 있다.
+7.3. Basis Functions $$y_i=\beta_0&#43;\beta_1b_1(x_i)&#43;\beta_2b_2(x_i)&#43;\beta_3b_3(x_i)&#43;&hellip;&#43;\beta_Kb_K(x_i)&#43;\epsilon_i$$
+Basis Functions를 먼저 다루는 것은 아래 나오는 Polynomial Regression과 Step Functions가 Basis Function Approach의 특수한 경우에 해당하기 때문이다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://statkwon.github.io/ml/7/" />
-<meta property="article:published_time" content="2021-02-10T16:21:20+09:00" />
-<meta property="article:modified_time" content="2021-02-10T16:21:20+09:00" />
+<meta property="article:published_time" content="2021-02-10T16:20:35+09:00" />
+<meta property="article:modified_time" content="2021-02-10T16:20:35+09:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Tree-Based Methods"/>
-<meta name="twitter:description" content="8장에서는 Tree를 기반으로 하는 방법들에 대해 다루고 있다. 각각의 방법들은 Regression과 Classification의 문제에 모두 적용 가능하다.
-8.1. The Basics of Decision Trees 가장 기본적인 형태의 Tree-Method는 독립변수 공간을 여러 개의 영역으로 구분하고, 각 영역에 속한 데이터에 대해서 해당 영역의 평균이나 중앙값 등을 사용하여 반응변수를 예측하는 방식이다. 나무 형태로 결과를 나타내기 때문에 Decision Tree라고 부른다.
-8.1.1. Regression Trees Regression Tree는 다음과 같은 두 가지 단계의 과정을 거쳐 만들어진다.
- 독립변수 $X_1, X_2, \ldots, X_p$에 대해, Predictor Space를 서로 겹치지 않는 $J$개의 영역, $R_1, R_2, \ldots, R_J$로 구분한다."/>
-<meta itemprop="name" content="Tree-Based Methods">
-<meta itemprop="description" content="8장에서는 Tree를 기반으로 하는 방법들에 대해 다루고 있다. 각각의 방법들은 Regression과 Classification의 문제에 모두 적용 가능하다.
-8.1. The Basics of Decision Trees 가장 기본적인 형태의 Tree-Method는 독립변수 공간을 여러 개의 영역으로 구분하고, 각 영역에 속한 데이터에 대해서 해당 영역의 평균이나 중앙값 등을 사용하여 반응변수를 예측하는 방식이다. 나무 형태로 결과를 나타내기 때문에 Decision Tree라고 부른다.
-8.1.1. Regression Trees Regression Tree는 다음과 같은 두 가지 단계의 과정을 거쳐 만들어진다.
- 독립변수 $X_1, X_2, \ldots, X_p$에 대해, Predictor Space를 서로 겹치지 않는 $J$개의 영역, $R_1, R_2, \ldots, R_J$로 구분한다.">
-<meta itemprop="datePublished" content="2021-02-10T16:21:20+09:00" />
-<meta itemprop="dateModified" content="2021-02-10T16:21:20+09:00" />
-<meta itemprop="wordCount" content="379">
+<meta name="twitter:title" content="7. Moving Beyond Linearity"/>
+<meta name="twitter:description" content="지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다. 선형 모형의 경우 해석이 용이하다는 장점을 가지고 있지만, 모형의 선형성에 대한 가정이 전제되기 때문에 예측 정확도는 다소 떨어지는 것이 사실이다. 이러한 단점을 보완하기 위해 7장에서는 선형성 가정을 완화하면서도 해석력을 유지할 수 있는 방법들에 대해서 다루고 있다.
+7.3. Basis Functions $$y_i=\beta_0&#43;\beta_1b_1(x_i)&#43;\beta_2b_2(x_i)&#43;\beta_3b_3(x_i)&#43;&hellip;&#43;\beta_Kb_K(x_i)&#43;\epsilon_i$$
+Basis Functions를 먼저 다루는 것은 아래 나오는 Polynomial Regression과 Step Functions가 Basis Function Approach의 특수한 경우에 해당하기 때문이다."/>
+<meta itemprop="name" content="7. Moving Beyond Linearity">
+<meta itemprop="description" content="지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다. 선형 모형의 경우 해석이 용이하다는 장점을 가지고 있지만, 모형의 선형성에 대한 가정이 전제되기 때문에 예측 정확도는 다소 떨어지는 것이 사실이다. 이러한 단점을 보완하기 위해 7장에서는 선형성 가정을 완화하면서도 해석력을 유지할 수 있는 방법들에 대해서 다루고 있다.
+7.3. Basis Functions $$y_i=\beta_0&#43;\beta_1b_1(x_i)&#43;\beta_2b_2(x_i)&#43;\beta_3b_3(x_i)&#43;&hellip;&#43;\beta_Kb_K(x_i)&#43;\epsilon_i$$
+Basis Functions를 먼저 다루는 것은 아래 나오는 Polynomial Regression과 Step Functions가 Basis Function Approach의 특수한 경우에 해당하기 때문이다.">
+<meta itemprop="datePublished" content="2021-02-10T16:20:35+09:00" />
+<meta itemprop="dateModified" content="2021-02-10T16:20:35+09:00" />
+<meta itemprop="wordCount" content="734">
 
 
 
@@ -59,25 +56,80 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>Tree-Based Methods</h1>
-<p>8장에서는 Tree를 기반으로 하는 방법들에 대해 다루고 있다. 각각의 방법들은 Regression과 Classification의 문제에 모두 적용 가능하다.</p>
-<h2 id="81-the-basics-of-decision-trees">8.1. The Basics of Decision Trees</h2>
-<p>가장 기본적인 형태의 Tree-Method는 독립변수 공간을 여러 개의 영역으로 구분하고, 각 영역에 속한 데이터에 대해서 해당 영역의 평균이나 중앙값 등을 사용하여 반응변수를 예측하는 방식이다. 나무 형태로 결과를 나타내기 때문에 Decision Tree라고 부른다.</p>
-<h3 id="811-regression-trees">8.1.1. Regression Trees</h3>
-<p>Regression Tree는 다음과 같은 두 가지 단계의 과정을 거쳐 만들어진다.</p>
-<ol>
-<li>독립변수 $X_1, X_2, \ldots, X_p$에 대해, Predictor Space를 서로 겹치지 않는 $J$개의 영역, $R_1, R_2, \ldots, R_J$로 구분한다.</li>
-<li>$R_j$에 속한 모든 데이터에 대해서는 동일한 방식으로 반응변수를 예측한다. 일반적으로 $R_j$에 속한 데이터들의 평균을 사용한다.</li>
-</ol>
-<p><img src="/ISLR/FIGURE_8.2.png" alt="FIGURE 8.2"></p>
-<p>Predictor Space를 $R_1, R_2, \ldots, R_J$로 나누기 위해서는 Recursive Binary Splitting이라는 Top-Down 방식을 사용한다. 모든 데이터가 한 영역에 들어있는 상태를 시작으로 해당 영역을 $\{X|X_j&lt;s\}$와 $\{X|X_j≥s\}$로 나누었을 때 아래와 같은 식의 $\text{RSS}$를 최소화하는 $X_j$와 $s$를 결정한다. 예를 들어, 위 그림에서는 Years라는 변수와 $4.5$라는 기준값을 가지고 전체 영역을 $R_1$과 $R_2+R_3$로 구분한 것이다.</p>
-<p>$$\sum_{j=1}^J\sum_{i \in R_j}{(y_i-\hat{y}_{R_j})^2}$$</p>
-<p>이후 나누어진 각 영역들에 대해서 동일한 과정을 반복 시행하며 특정한 정지 기준에 도달할 때까지 분할한다. 위 그림에서는 Years와 $4.5$를 기준으로 첫 번째 분할을 한 후, Hits와 $117.5$를 기준으로 $R_2+R_3$를 $R_2$와 $R_3$로 나누었다.</p>
-<p>하지만 Tree를 계속해서 분할하기만 하는 것은 예측 모형을 만드는데 있어 결코 도움이 되지 않는다. 계속된 분할로 만들어진 복잡한 Tree는 Overfittting 될 확률이 높기 때문에 Test 데이터에 적용이 어렵다. 이러한 문제에 대한 대안으로 Predictor Space를 분할할 때 발생하는 $\text{RSS}$의 감소량이 일정한 Threshold를 넘기는 경우에만 분할이 이루어지도록 하는 방법을 생각해볼 수 있다. 이러한 방법을 사용하면 Tree의 크기를 확실히 줄일 수 있다. 하지만 동시에 지나치게 근시안적인 방법이라는 단점을 가지고 있다. 현 단계에서는 의미없어 보이는 분할이 이후 단계에서는 유효할 수도 있는데, 앞선 방법으로는 이를 반영할 수가 없다. 따라서 우리는 Tree Pruning이라는 방법을 해결책으로 사용한다.</p>
-<p>Tree Pruning은 우선 Tree를 최대한으로 성장시킨 후, 가지를 치며 가장 작은 Test Error를 갖는 Subtree를 얻어내는 방식이다. 이때 각 Subtree의 Test Error를 계산하기 위해 Cross-Validation이나 Validation Set Approach를 사용할 수 있다. 하지만 가능한 모든 경우의 Subtree에 대해 Cross-Validation Error를 계산하는 것은 상당히 오랜 시간을 필요로 하기 때문에, 일반적으로 Cost Complexity Pruning이라는 방식을 사용한다. Cost Complexity Pruning은 가능한 모든 경우의 Subtree가 아닌, 아래와 같은 식을 작게 하는 Subtree만을 고려하는 방식이다. 이때 $|T|$는 Tree $T$의 Terminal Node의 갯수를 의미한다.</p>
-<p>$$\sum_{m=1}^{|T|}\sum_{x_i \in R_m}{(y_i-\hat{y}_{R_m})^2}+\alpha|T|$$</p>
-<p>Tuning Parameter라고 할 수 있는 $\alpha$는 Subtree의 복잡도와 Training 데이터에 대한 Fit 사이의 Trade-Off를 조절한다.</p>
-<h2 id="reference">Reference</h2>
+<main><h1>7. Moving Beyond Linearity</h1>
+<aside class="table_of_contents">
+<h5>Table of Contents</h5><nav id="TableOfContents">
+  <ul>
+    <li><a href="#73-basis-functions">7.3. Basis Functions</a></li>
+    <li><a href="#71-polynomial-regression">7.1. Polynomial Regression</a></li>
+    <li><a href="#72-step-functionspiecewise-constant-regression">7.2. Step Functions(Piecewise Constant Regression)</a></li>
+    <li><a href="#74-regression-splines">7.4. Regression Splines</a>
+      <ul>
+        <li><a href="#741-piecewise-polynomials">7.4.1. Piecewise Polynomials</a></li>
+        <li><a href="#742-constraints-and-splines">7.4.2. Constraints and Splines</a></li>
+        <li><a href="#743-the-spline-basis-representation">7.4.3. The Spline Basis Representation</a></li>
+        <li><a href="#744-choosing-the-number-and-locations-of-the-knots">7.4.4. Choosing the Number and Locations of the Knots</a></li>
+        <li><a href="#745-comparison-to-polynomial-regression">7.4.5. Comparison to Polynomial Regression</a></li>
+      </ul>
+    </li>
+    <li><a href="#75-smoothing-splines">7.5. Smoothing Splines</a></li>
+    <li><a href="#76-local-regression">7.6. Local Regression</a></li>
+    <li><a href="#77-generalized-additive-models">7.7. Generalized Additive Models</a>
+      <ul>
+        <li><a href="#771-gams-for-regression-problems">7.7.1. GAMs for Regression Problems</a></li>
+        <li><a href="#772-gams-for-classification-problems">7.7.2. GAMs for Classification Problems</a></li>
+      </ul>
+    </li>
+    <li><a href="#referecne">Referecne</a></li>
+  </ul>
+</nav></aside>
+
+<p>지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다. 선형 모형의 경우 해석이 용이하다는 장점을 가지고 있지만, 모형의 선형성에 대한 가정이 전제되기 때문에 예측 정확도는 다소 떨어지는 것이 사실이다. 이러한 단점을 보완하기 위해 7장에서는 선형성 가정을 완화하면서도 해석력을 유지할 수 있는 방법들에 대해서 다루고 있다.</p>
+<h2 id="73-basis-functions">7.3. Basis Functions</h2>
+<p>$$y_i=\beta_0+\beta_1b_1(x_i)+\beta_2b_2(x_i)+\beta_3b_3(x_i)+&hellip;+\beta_Kb_K(x_i)+\epsilon_i$$</p>
+<p>Basis Functions를 먼저 다루는 것은 아래 나오는 Polynomial Regression과 Step Functions가 Basis Function Approach의 특수한 경우에 해당하기 때문이다. Basis Function Approach는 독립변수 대신 독립변수의 함수 또는 변형에 대해 Least Square Estimate을 사용하여 선형 모형을 적합하는 방식이다. 아래에서 다루는 두 가지 방법(Polynomial Regression, Step Functions) 이외에도 Wavelets이나 Fourier Series 등을 Basis Function으로 사용한다.</p>
+<h2 id="71-polynomial-regression">7.1. Polynomial Regression</h2>
+<p>$$y_i=\beta_0+\beta_1x_i+\beta_2x_i^2+\beta_3x_i^3+&hellip;+\beta_dx_i^d+\epsilon_i$$</p>
+<p>Polynomial Regression은 $b_j(x_i)=x_i^j$를 Basis Function으로 사용하는 모형이다. 일반 선형 회귀 모형과 마찬가지로 Least Square Estimate를 사용하여 회귀계수를 추정하기 때문에 그저 독립변수가 $x_i, x_i^2, x_i^3, &hellip;, x_i^d$인 선형 회귀 모형이라고 생각해도 무방하다. 일반적으로 독립변수의 최고 차수는 3차 또는 4차 이하를 사용한다. 모형을 해석할 때, 2차 이상 독립변수들의 회귀계수의 해석이 어렵기 때문에 회귀계수보다 Polynomial Curve의 형태에 집중하는 것이 바람직하다.</p>
+<p>$$P(y_i|x_i)=\frac{\text{exp}(\beta_0+\beta_1x_i+\beta_2x_i^2+&hellip;+\beta_dx_i^d)}{1+\text{exp}(\beta_0+\beta_1x_i+\beta_2x_i^2+&hellip;+\beta_dx_i^d)}$$</p>
+<p>위와 같이 로지스틱 회귀 모형에 다항식 구조를 적용하는 것도 가능하다.</p>
+<h2 id="72-step-functionspiecewise-constant-regression">7.2. Step Functions(Piecewise Constant Regression)</h2>
+<p>$$y_i=\beta_0+\beta_1C_1(x_i)+\beta_2C_2(x_i)+&hellip;+\beta_KC_K(x_i)+\epsilon_i$$</p>
+<p>$$C_0(X)+C+1(X)+&hellip;+C_K(X)=1$$</p>
+<p>Piecewise Constant Regression은 $C_j(x_i)=I(c_j≤x_i&lt;c_{j+1})$를 Basis Function으로 사용하는 모형이다. 독립변수의 범위에 따라 구간을 나누고 각 구간마다 특정 상수값으로 모형을 적합한다. 연속형 독립변수를 범주형으로 변환하는 것이라고 할 수 있다. 위 모형식에서 $\beta_0$ 대신 $C_0(x_i)$를 사용해도 상관없다. Piecewise Polynomial Regression의 경우 데이터가 적은 구간의 예측 정확도가 상대적으로 낮기 때문에 각 구간에서 다항식 대신 상수를 사용하여 모형을 적합하는 것이 Piecewise Constant Regression이다. 하지만 독립변수에 Natural Breakpoints가 없는 경우 각 구간의 특성을 반영하지 못할 수 있다는 단점을 가지고 있다.</p>
+<p><img src="/ISLR/FIGURE_7.2.png" alt="FIGURE 7.2"></p>
+<h2 id="74-regression-splines">7.4. Regression Splines</h2>
+<h3 id="741-piecewise-polynomials">7.4.1. Piecewise Polynomials</h3>
+<p>$$y_i=\begin{cases} \beta_{01}+\beta_{11}x_i+\beta_{21}x_i^2+\beta_{31}x_i^3+\epsilon_i &amp; \text{if } x_i&lt;c \ \beta_{02}+\beta_{12}x_i+\beta_{22}x_i^2+\beta_{32}x_i^3+\epsilon_i &amp; \text{if } x_i≥c \end{cases}$$</p>
+<p>Piecewise Polynomial Regression은 독립변수의 범위에 따라 구간을 나누고 각 구간마다 저차원의 다항식으로 모형을 적합하는 방식이다(Least Square Estimate 사용). 이때 각 구간이 나뉘는 점들을 Knots라고 부른다. 따라서 $K$개의 Knots를 사용하는 경우, $K+1$개의 다항식을 적합하게 된다. 다항식의 차수가 0인 경우 Piecewise Constant Regression과 동일한 결과를 갖는다. 위 모형식은 Knot가 한 개인 경우의 Cubic Spline에 해당한다.</p>
+<h3 id="742-constraints-and-splines">7.4.2. Constraints and Splines</h3>
+<p><img src="/ISLR/FIGURE_7.3.png" alt="FIGURE 7.3"></p>
+<p>아무런 제약 없이 Piecewise Polynomial Regression을 적합하는 경우 위 그림과 같이 불연속한 점이 발생할 수 있다. 이러한 경우 도함수와 이계도함수에 제약을 가함으로써 Curve가 연속임과 동시에 smooth하게 만들어줄 수 있다.</p>
+<h3 id="743-the-spline-basis-representation">7.4.3. The Spline Basis Representation</h3>
+<p>$$y_i=\beta_0+\beta_1b_1(x_i)+\beta_2b_2(x_i)+&hellip;+\beta_{K+3}b_{k+3}(x_i)+\epsilon_i$$</p>
+<p>$$h(x, \xi)=(x-\xi)_+^3=\begin{cases} (x-\xi)^3 &amp; \text{if } x&gt;\xi \ 0 &amp; \text{otherwise} \end{cases}$$</p>
+<p>???</p>
+<h3 id="744-choosing-the-number-and-locations-of-the-knots">7.4.4. Choosing the Number and Locations of the Knots</h3>
+<p>Spline을 적합할 경우 우리는 Knots의 위치와 개수를 결정해야 한다. Knots의 위치를 결정하는 방법에는 두 가지가 있다. 첫번째는 Curve가 급격하게 변화하는 곳에 많은 Knots를, 상대적으로 안정적인 곳에 적은 Knots를 배치하는 방법이다. 하지만 실제로는 이러한 방식보다는 균등한 방식을 사용하여 knots를 배치하는 것이 일반적이다. 컴퓨터 소프트웨어를 사용하여 원하는 자유도에 상응하는 수의 Knots를 일정한 간격으로 배치하는 것이 가능하다. Knots의 개수를 결정하는 방법도 두 가지가 있다. 첫번째는 다양한 개수의 Knots를 배치해보며 최적의 Curve를 형성하는 값을 사용하는 것이다. 다른 방법으로는 CV를 사용하여 결정하는 방법이 있다.</p>
+<h3 id="745-comparison-to-polynomial-regression">7.4.5. Comparison to Polynomial Regression</h3>
+<p>Polynomial Regression의 경우 유연한 모형을 적합하기 위해서는 높은 차수의 다항식을 사용해야 한다. 반면 Regression Spline은 자유도를 고정한 채로 Knots의 개수를 늘려가며 유연성을 조절하기 때문에 더욱 안정적인 추정이 가능하다.</p>
+<h2 id="75-smoothing-splines">7.5. Smoothing Splines</h2>
+<p>???</p>
+<h2 id="76-local-regression">7.6. Local Regression</h2>
+<p>$$\sum_{i=1}^nK_{i0}(y_i-\beta_0-\beta_1x_i)^2$$</p>
+<p>Local Regression은 각각의 Data Point에 대하여 그 근처에 있는 데이터만 가지고 모형을 적합하는 방식이다. 우선 몇 개의 (근처에 있는) 데이터를 사용할 것인지 정해야 한다. 다음으로 사용하고자 하는 데이터들에 대해서 거리에 따라 Weight($K_{i0}=K(x_i, x_0)$)를 부과하고, 위의 식을 최소화하는 계수를 구한다. 매우 간략하게 설명하였지만, 이러한 과정 중에는 Weighitng Function $K$로 어떤 함수를 사용할 것인지, 어떤 종류의 회귀 모형을 적합할 것인지 등 많은 것들을 결정해야 한다. 그 중 가장 중요한 것은 앞서 언급했던 &lsquo;몇 개의 근처 데이터를 사용할 것인지&rsquo;이다. 이것은 Smoothing Splines의 Tuning Parameter $\lambda$와 같이 모형의 유연성을 조절하는 기능을 한다. 이론적으로 2차원 이상에도 적용 가능하지만, 3 또는 4차원이 넘어가게 되면 Training Data인 $x_0$에 가까운 데이터가 많이 없기 때문에 모형의 성능이 급격히 떨어진다.</p>
+<h2 id="77-generalized-additive-models">7.7. Generalized Additive Models</h2>
+<p>Generalized Additive Models (GAMs)는 각 변수에 비선형 함수를 적용함으로써 일반 선형 모형을 확장한 형태의 모형이다. 일반 선형 모형과 마찬가지로 반응변수의 형태(수치형, 범주형)에 상관없이 사용이 가능하다.</p>
+<h3 id="771-gams-for-regression-problems">7.7.1. GAMs for Regression Problems</h3>
+<p>일반적인 Multiple Linear Regression은 다음과 같은 형태이다.</p>
+<p>$$y_i=\beta_0+\beta_1x_{i1}+\beta_2x_{i2}+&hellip;+\beta_px_{ip}+\epsilon_i$$</p>
+<p>이때 독립변수와 반응변수 사이에 비선형 관계를 적용하고 싶은 경우, 위 식의 $\beta_jx_{ij}$를 $f_j(x_{ij})$로 바꾸어주면 된다.</p>
+<p>$$y_i=\beta_0+\sum_{j=1}^pf_j(x_{ij})+\epsilon_i=\beta_0+f_1(x_{i1})+f_2(x_{i2})+&hellip;+f_p(x_{ip})+\epsilon_i$$</p>
+<p>이는 각 독립변수마다 서로 다른 모형을 적용한 후 합한 형태가 된다.</p>
+<h3 id="772-gams-for-classification-problems">7.7.2. GAMs for Classification Problems</h3>
+<p>$$\text{log}(\frac{\text{P}(X)}{1-\text{P}(X)})=\beta_0+f_1(X_1)+f_2(X_2)+&hellip;+f_p(X_p)$$</p>
+<p>GAMs는 반응변수가 범주형인 경우에도 사용할 수 있다. 위 식과 같이 Logistic Regression Model에서 $\beta_jX_j$를 $f_j(X_j)$로 바꾸어주면 된다.</p>
+<h2 id="referecne">Referecne</h2>
 <p><strong>Introduction to Statistical Learning with Applications in R</strong></p>
 <p><img src="/ISLR.jpg" alt="Cover"></p>
 <div class="edit-meta">
@@ -86,8 +138,8 @@ Last updated on 10 Feb 2021
 
 <br>
 Published on 10 Feb 2021
-<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/7.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/6/" title="Moving Beyond Linearity"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Moving Beyond Linearity</a>
-<a class="nav nav-next" href="https://statkwon.github.io/visualization/" title="Visualization">Next - Visualization <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/7.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/6/" title="6. Linear Model Selection and Regularization"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 6. Linear Model Selection and Regularization</a>
+<a class="nav nav-next" href="https://statkwon.github.io/ml/8/" title="8. Tree-Based Methods">Next - 8. Tree-Based Methods <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -145,12 +197,13 @@ Published on 10 Feb 2021
   
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/ml/1/">1. What is ML?</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/2/">Linear Regression</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/3/">Classification</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/4/">Resampling Methods</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/5/">Linear Model Selection and Regularization</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/6/">Moving Beyond Linearity</a></li>
-<li class="active"><a href="https://statkwon.github.io/ml/7/">Tree-Based Methods</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/2/">2. Statistical Decision Theory</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/3/">3. Linear Regression</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/4/">4. Classification</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/5/">5. Resampling Methods</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/6/">6. Linear Model Selection and Regularization</a></li>
+<li class="active"><a href="https://statkwon.github.io/ml/7/">7. Moving Beyond Linearity</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/8/">8. Tree-Based Methods</a></li>
 </ul>
   
 </li>
