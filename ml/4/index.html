@@ -33,7 +33,7 @@
 4.2. Why Not Linear Regression? 선형 회귀 모형은 반응변수가 범주형인 경우 사용이 적합하지 않다. 일반적으로 범주의 갯수가 세 개 이상인 경우 범주형 반응변수를 선형회귀분석에 적합한 형태의 수치형 변수로 변환하는 방법이 존재하지 않는다. 설령 범주의 갯수가 두 개라고 하더라도 선형 회귀 모형의 결과를 해석하는데 있어 문제가 발생한다. 두 가지 범주를 0과 1로 코딩하여 선형 회귀 모형을 적합한 경우, 몇몇 예측값은 0과 1의 범위를 벗어나는 값을 가질 수 있다.">
 <meta itemprop="datePublished" content="2021-02-10T16:17:17+09:00" />
 <meta itemprop="dateModified" content="2021-02-10T16:17:17+09:00" />
-<meta itemprop="wordCount" content="1105">
+<meta itemprop="wordCount" content="1096">
 
 
 
@@ -80,7 +80,6 @@
         <li><a href="#444-quadratic-discriminant-analysis">4.4.4. Quadratic Discriminant Analysis</a></li>
       </ul>
     </li>
-    <li><a href="#reference">Reference</a></li>
   </ul>
 </nav></aside>
 
@@ -153,9 +152,6 @@
 <p>위 식을 최대화하는 $k$값으로 범주를 분류한다. 앞선 경우와 마찬가지로, $\delta_k(x)$가 $x$에 대한 Quadratic Function이기 때문에 Quadratic Discriminant Analysis라고 부른다.</p>
 <p><img src="/ISLR/FIGURE_4.9.png" alt="FIGURE 4.9"></p>
 <p>만약 Training Data의 갯수가 부족한 경우라면 일반적으로 분산을 줄일 수 있는 LDA의 성능이 QDA보다 좋다고 할 수 있다. 하지만 Training Data가 충분하여 모형의 분산에 대해 크게 신경을 쓰지 않아도 되는 경우나, Covariance Matrix가 모든 범주에 대해 동일하다는 가정이 적합하지 않은 경우에는 QDA를 사용하는 것이 좋다.</p>
-<h2 id="reference">Reference</h2>
-<p><strong>Introduction to Statistical Learning with Applications in R</strong></p>
-<p><img src="/ISLR.jpg" alt="Cover"></p>
 <div class="edit-meta">
 Last updated on 10 Feb 2021
 

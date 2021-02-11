@@ -36,7 +36,7 @@
 2.1.1. Why Estimate $f$?">
 <meta itemprop="datePublished" content="2021-02-10T15:29:24+09:00" />
 <meta itemprop="dateModified" content="2021-02-10T15:29:24+09:00" />
-<meta itemprop="wordCount" content="1142">
+<meta itemprop="wordCount" content="1133">
 
 
 
@@ -81,7 +81,6 @@
         <li><a href="#223-the-classification-setting">2.2.3. The Classification Setting</a></li>
       </ul>
     </li>
-    <li><a href="#reference">Reference</a></li>
   </ul>
 </nav></aside>
 
@@ -188,9 +187,6 @@ $$\text{P}(Y=j|X=x_0)$$</p>
 <p><img src="/ISLR/FIGURE_2.14.png" alt="FIGURE 2.14"></p>
 <p>$$\text{P}(Y=j|X=x_0)=\frac{1}{K}\sum_{i\in\mathcal{N}_0}I(y_i=j)$$</p>
 <p>KNN은 위와 같은 방식으로 조건부 확률을 추정한다. Training Data 중에서 $x_0$와 가까운 $K$개의 점을 찾고, 그 $K$개의 점들 가운데 $j$로 분류된 점들의 비율을 조건부 확률의 추정치로 사용한다. 이때 적절한 $K$의 값을 선택하는 것이 중요하다. $K$가 커질 수록 모형의 유연성이 감소하게 된다. 이러한 방식은 매우 단순해보이지만 종종 Bayes Classifier에 근접한 결과를 얻어내기도 한다.</p>
-<h2 id="reference">Reference</h2>
-<p><strong>Introduction to Statistical Learning with Applications in R</strong></p>
-<p><img src="/ISLR.jpg" alt="Cover"></p>
 <div class="edit-meta">
 Last updated on 10 Feb 2021
 

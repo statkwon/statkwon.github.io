@@ -36,7 +36,7 @@
 3.1.1. Estimating the Coefficients 가장 일반적인 방법은 Method of Least Squares이다. ISLR에 나와있는 LSE의 정의는 잘못되었다.">
 <meta itemprop="datePublished" content="2021-02-10T16:15:20+09:00" />
 <meta itemprop="dateModified" content="2021-02-10T16:15:20+09:00" />
-<meta itemprop="wordCount" content="1301">
+<meta itemprop="wordCount" content="1292">
 
 
 
@@ -85,7 +85,6 @@
         <li><a href="#333-potential-problems">3.3.3. Potential Problems</a></li>
       </ul>
     </li>
-    <li><a href="#reference">Reference</a></li>
   </ul>
 </nav></aside>
 
@@ -187,9 +186,6 @@ $$x_{i2}=\begin{cases} 1 &amp; \mbox{if } i \mbox{th person is Caucasian} \\ 0 &
 <p>Collinearity는 두 개 이상의 변수들이 서로 연관되어있는 경우를 의미한다. Collinearity를 확인하기 가장 쉬운 방법은 Correlation Matrix를 그려보는 것이지만, 이러한 방법으로는 세 개 이상의 변수 사이의 Collinearity는 확인하지 못한다. 따라서 다음과 같은 식의 $\text{VIF}$를 계산하여 다중공선성 여부를 확인해야 한다.</p>
 <p>$$\text{VIF}(\hat{\beta}_j)=\frac{1}{1-R^2_{X_j|X_{-j}}}$$</p>
 <p>이때 $R^2_{X_j|X_{-j}}$는 $X_j$에 대해 나머지 변수들을 사용하여 적합한 회귀 모형의 $R^2$이다.</p>
-<h2 id="reference">Reference</h2>
-<p><strong>Introduction to Statistical Learning with Applications in R</strong></p>
-<p><img src="/ISLR.jpg" alt="Cover"></p>
 <div class="edit-meta">
 Last updated on 10 Feb 2021
 
