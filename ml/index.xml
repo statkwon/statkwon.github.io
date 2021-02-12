@@ -28,7 +28,12 @@
       <pubDate>Thu, 11 Feb 2021 21:19:30 +0900</pubDate>
       
       <guid>https://statkwon.github.io/ml/2/</guid>
-      <description>$X \in \mathbb{R}^n$, $Y \in \mathbf{R}$
+      <description>Decision Function: $f(X)$
+Loss Function: $L(Y, f(X))$
+Risk Function: $R(Y, f(X))=E[L(Y, f(X))]$
+We want to find a Decision Function which minimizes our Risk Function.
+Squaerd Error Loss: $L(Y, f(X))=(Y-f(X))^2$
+$X \in \mathbb{R}^n$, $Y \in \mathbf{R}$
 $L(Y, f(X))=(Y-f(X))^2$
 $\begin{aligned} \text{EPE}(f)&amp;amp;=\text{E}[(Y-f(X))^2] \\
 &amp;amp;=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(y-f(x))^2f_{X, Y}(x, y)dxdy \\
@@ -38,8 +43,7 @@ $\begin{aligned} \text{EPE}(f)&amp;amp;=\text{E}[(Y-f(X))^2] \\
 $\begin{aligned} f(x)&amp;amp;=\text{argmin}_c\text{E}_{Y|X}([Y-c]^2|X=x) \\
 &amp;amp;=\text{E}(Y|X=x) \end{aligned}$
 $\hat{Y}(x)=\dfrac{1}{k}\displaystyle\sum_{x_i \in N_k(x)}y_i$
-At each point $x$, we might ask for the average of all those $y_i$s with input $x_i=x$.
-Since there is typically at most one observation at any point $x$, we settle for $\hat{f}(x)=\text{Ave}(y_i|x_i \in N_k(x))$</description>
+At each point $x$, we might ask for the average of all those $y_i$s with input $x_i=x$.</description>
     </item>
     
     <item>

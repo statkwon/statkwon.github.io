@@ -18,52 +18,49 @@
 :root {}
 </style>
 <meta property="og:title" content="3. Normal Model" />
-<meta property="og:description" content="3-1. Inference for the Mean, Conditional on the Variance $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\
+<meta property="og:description" content="3.1. Inference for the Mean, Conditional on the Variance 3.1.1. Posterior Inference Sampling Model: $Y_1, \ldots, Y_n|\theta, \sigma^2 \sim N(\theta, \sigma^2)$
+Prior Distribution: $\theta|\sigma^2 \sim N(\mu_0, \tau_0^2)$
+$\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\
 &amp;\propto \exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}}\times\exp{\left\{-\dfrac{(\theta-\mu_0)^2}{2\tau_0^2}\right\}} \\
 &amp;\propto \exp{\left[-\dfrac{1}{2}\left\{\left(\dfrac{1}{\tau_0^2}&#43;\dfrac{n}{\sigma^2}\right)\theta^2&#43;2\left(\dfrac{\mu_0}{\tau_0^2}&#43;\dfrac{\sum y_i}{\sigma^2}\right)\theta\right\}\right]} \\
 &amp;\propto \exp{\left\{-\dfrac{1}{2}(a\theta^2&#43;2b\theta)\right\}} \\
 &amp;=\exp{\left\{-\dfrac{1}{2}a\left(\theta^2-\dfrac{2b}{a}\theta&#43;\dfrac{b^2}{a^2}\right)&#43;\dfrac{b^2}{2a}\right\}} \\
 &amp;\propto \exp{\left\{-\dfrac{1}{2}a\left(\theta-\dfrac{b}{a}\right)^2\right\}} \\
 &amp;=\exp{\left\{-\dfrac{1}{2}\left(\dfrac{\theta-b/a}{1/\sqrt{a}}\right)^2\right\}} \sim N\left(\dfrac{b}{a}, \dfrac{1}{a}\right)=N(\mu_n, \tau_n^2) \end{aligned}$
-Parameter Update: $\mu_0\rightarrow\mu_n$, $\tau_0\rightarrow\tau_n$
-$\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0&#43;\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}&#43;\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_0&#43;n}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_n}$
-$\tau_n^2=\dfrac{1}{\frac{1}{\tau_0^2}&#43;\frac{n}{\sigma^2}}=\dfrac{\sigma^2}{\kappa_0&#43;n}=\dfrac{\sigma^2}{\kappa_n}$
-3-2. Inference for the Variance, Conditional on the Mean $\begin{aligned} p(\sigma^2|y_1, \ldots, y_n) &amp;\propto p(y_1, \ldots, y_n|\sigma^2) \times p(\sigma^2) \\
-&amp;\propto \left(\dfrac{1}{\sigma^2}\right)^{\frac{n}{2}}\exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}} \times \left(\dfrac{1}{\sigma^2}\right)^{\frac{\nu_0}{2}&#43;1}\exp{\left\{-\dfrac{\nu_0\sigma_0^2}{2\sigma^2}\right\}} \\" />
+3.1.2. Parameter Update $\mu_0\rightarrow\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0&#43;\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}&#43;\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_0&#43;n}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_n}$
+Posterior Mean $\mu_n$은 Prior Mean과 Sample Mean의 가중 평균이다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://statkwon.github.io/statistics/bayesian_statistics/3/" />
 <meta property="article:published_time" content="2021-02-11T23:47:49+09:00" />
 <meta property="article:modified_time" content="2021-02-11T23:47:49+09:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="3. Normal Model"/>
-<meta name="twitter:description" content="3-1. Inference for the Mean, Conditional on the Variance $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\
+<meta name="twitter:description" content="3.1. Inference for the Mean, Conditional on the Variance 3.1.1. Posterior Inference Sampling Model: $Y_1, \ldots, Y_n|\theta, \sigma^2 \sim N(\theta, \sigma^2)$
+Prior Distribution: $\theta|\sigma^2 \sim N(\mu_0, \tau_0^2)$
+$\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\
 &amp;\propto \exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}}\times\exp{\left\{-\dfrac{(\theta-\mu_0)^2}{2\tau_0^2}\right\}} \\
 &amp;\propto \exp{\left[-\dfrac{1}{2}\left\{\left(\dfrac{1}{\tau_0^2}&#43;\dfrac{n}{\sigma^2}\right)\theta^2&#43;2\left(\dfrac{\mu_0}{\tau_0^2}&#43;\dfrac{\sum y_i}{\sigma^2}\right)\theta\right\}\right]} \\
 &amp;\propto \exp{\left\{-\dfrac{1}{2}(a\theta^2&#43;2b\theta)\right\}} \\
 &amp;=\exp{\left\{-\dfrac{1}{2}a\left(\theta^2-\dfrac{2b}{a}\theta&#43;\dfrac{b^2}{a^2}\right)&#43;\dfrac{b^2}{2a}\right\}} \\
 &amp;\propto \exp{\left\{-\dfrac{1}{2}a\left(\theta-\dfrac{b}{a}\right)^2\right\}} \\
 &amp;=\exp{\left\{-\dfrac{1}{2}\left(\dfrac{\theta-b/a}{1/\sqrt{a}}\right)^2\right\}} \sim N\left(\dfrac{b}{a}, \dfrac{1}{a}\right)=N(\mu_n, \tau_n^2) \end{aligned}$
-Parameter Update: $\mu_0\rightarrow\mu_n$, $\tau_0\rightarrow\tau_n$
-$\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0&#43;\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}&#43;\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_0&#43;n}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_n}$
-$\tau_n^2=\dfrac{1}{\frac{1}{\tau_0^2}&#43;\frac{n}{\sigma^2}}=\dfrac{\sigma^2}{\kappa_0&#43;n}=\dfrac{\sigma^2}{\kappa_n}$
-3-2. Inference for the Variance, Conditional on the Mean $\begin{aligned} p(\sigma^2|y_1, \ldots, y_n) &amp;\propto p(y_1, \ldots, y_n|\sigma^2) \times p(\sigma^2) \\
-&amp;\propto \left(\dfrac{1}{\sigma^2}\right)^{\frac{n}{2}}\exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}} \times \left(\dfrac{1}{\sigma^2}\right)^{\frac{\nu_0}{2}&#43;1}\exp{\left\{-\dfrac{\nu_0\sigma_0^2}{2\sigma^2}\right\}} \\"/>
+3.1.2. Parameter Update $\mu_0\rightarrow\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0&#43;\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}&#43;\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_0&#43;n}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_n}$
+Posterior Mean $\mu_n$은 Prior Mean과 Sample Mean의 가중 평균이다."/>
 <meta itemprop="name" content="3. Normal Model">
-<meta itemprop="description" content="3-1. Inference for the Mean, Conditional on the Variance $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\
+<meta itemprop="description" content="3.1. Inference for the Mean, Conditional on the Variance 3.1.1. Posterior Inference Sampling Model: $Y_1, \ldots, Y_n|\theta, \sigma^2 \sim N(\theta, \sigma^2)$
+Prior Distribution: $\theta|\sigma^2 \sim N(\mu_0, \tau_0^2)$
+$\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\
 &amp;\propto \exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}}\times\exp{\left\{-\dfrac{(\theta-\mu_0)^2}{2\tau_0^2}\right\}} \\
 &amp;\propto \exp{\left[-\dfrac{1}{2}\left\{\left(\dfrac{1}{\tau_0^2}&#43;\dfrac{n}{\sigma^2}\right)\theta^2&#43;2\left(\dfrac{\mu_0}{\tau_0^2}&#43;\dfrac{\sum y_i}{\sigma^2}\right)\theta\right\}\right]} \\
 &amp;\propto \exp{\left\{-\dfrac{1}{2}(a\theta^2&#43;2b\theta)\right\}} \\
 &amp;=\exp{\left\{-\dfrac{1}{2}a\left(\theta^2-\dfrac{2b}{a}\theta&#43;\dfrac{b^2}{a^2}\right)&#43;\dfrac{b^2}{2a}\right\}} \\
 &amp;\propto \exp{\left\{-\dfrac{1}{2}a\left(\theta-\dfrac{b}{a}\right)^2\right\}} \\
 &amp;=\exp{\left\{-\dfrac{1}{2}\left(\dfrac{\theta-b/a}{1/\sqrt{a}}\right)^2\right\}} \sim N\left(\dfrac{b}{a}, \dfrac{1}{a}\right)=N(\mu_n, \tau_n^2) \end{aligned}$
-Parameter Update: $\mu_0\rightarrow\mu_n$, $\tau_0\rightarrow\tau_n$
-$\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0&#43;\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}&#43;\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_0&#43;n}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_n}$
-$\tau_n^2=\dfrac{1}{\frac{1}{\tau_0^2}&#43;\frac{n}{\sigma^2}}=\dfrac{\sigma^2}{\kappa_0&#43;n}=\dfrac{\sigma^2}{\kappa_n}$
-3-2. Inference for the Variance, Conditional on the Mean $\begin{aligned} p(\sigma^2|y_1, \ldots, y_n) &amp;\propto p(y_1, \ldots, y_n|\sigma^2) \times p(\sigma^2) \\
-&amp;\propto \left(\dfrac{1}{\sigma^2}\right)^{\frac{n}{2}}\exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}} \times \left(\dfrac{1}{\sigma^2}\right)^{\frac{\nu_0}{2}&#43;1}\exp{\left\{-\dfrac{\nu_0\sigma_0^2}{2\sigma^2}\right\}} \\">
+3.1.2. Parameter Update $\mu_0\rightarrow\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0&#43;\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}&#43;\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_0&#43;n}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_n}$
+Posterior Mean $\mu_n$은 Prior Mean과 Sample Mean의 가중 평균이다.">
 <meta itemprop="datePublished" content="2021-02-11T23:47:49+09:00" />
 <meta itemprop="dateModified" content="2021-02-11T23:47:49+09:00" />
-<meta itemprop="wordCount" content="136">
+<meta itemprop="wordCount" content="373">
 
 
 
@@ -92,13 +89,34 @@ $\tau_n^2=\dfrac{1}{\frac{1}{\tau_0^2}&#43;\frac{n}{\sigma^2}}=\dfrac{\sigma^2}{
 <aside class="table_of_contents">
 <h5>Table of Contents</h5><nav id="TableOfContents">
   <ul>
-    <li><a href="#3-1-inference-for-the-mean-conditional-on-the-variance">3-1. Inference for the Mean, Conditional on the Variance</a></li>
-    <li><a href="#3-2-inference-for-the-variance-conditional-on-the-mean">3-2. Inference for the Variance, Conditional on the Mean</a></li>
-    <li><a href="#3-3-joint-inference-for-the-mean-and-variance">3-3. Joint Inference for the Mean and Variance</a></li>
+    <li><a href="#31-inference-for-the-mean-conditional-on-the-variance">3.1. Inference for the Mean, Conditional on the Variance</a>
+      <ul>
+        <li><a href="#311-posterior-inference">3.1.1. Posterior Inference</a></li>
+        <li><a href="#312-parameter-update">3.1.2. Parameter Update</a></li>
+        <li><a href="#313-predictive-distribution">3.1.3. Predictive Distribution</a></li>
+      </ul>
+    </li>
+    <li><a href="#32-inference-for-the-variance-conditional-on-the-mean">3.2. Inference for the Variance, Conditional on the Mean</a>
+      <ul>
+        <li><a href="#321-several-distributions">3.2.1. Several Distributions</a></li>
+        <li><a href="#322-posterior-inference">3.2.2. Posterior Inference</a></li>
+        <li><a href="#323-parameter-update">3.2.3. Parameter Update</a></li>
+      </ul>
+    </li>
+    <li><a href="#33-joint-inference-for-the-mean-and-variance">3.3. Joint Inference for the Mean and Variance</a>
+      <ul>
+        <li><a href="#331-posterior-inference">3.3.1. Posterior Inference</a></li>
+        <li><a href="#332-parameter-update">3.3.2. Parameter Update</a></li>
+      </ul>
+    </li>
+    <li><a href="#34-improper-priors">3.4. Improper Priors</a></li>
   </ul>
 </nav></aside>
 
-<h2 id="3-1-inference-for-the-mean-conditional-on-the-variance">3-1. Inference for the Mean, Conditional on the Variance</h2>
+<h2 id="31-inference-for-the-mean-conditional-on-the-variance">3.1. Inference for the Mean, Conditional on the Variance</h2>
+<h3 id="311-posterior-inference">3.1.1. Posterior Inference</h3>
+<p>Sampling Model: $Y_1, \ldots, Y_n|\theta, \sigma^2 \sim N(\theta, \sigma^2)$<br>
+Prior Distribution: $\theta|\sigma^2 \sim N(\mu_0, \tau_0^2)$</p>
 <p>$\begin{aligned}
 p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\<br>
 &amp;\propto \exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}}\times\exp{\left\{-\dfrac{(\theta-\mu_0)^2}{2\tau_0^2}\right\}} \\<br>
@@ -108,28 +126,53 @@ p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto p(y_1, \ldots, y_n|\theta, \si
 &amp;\propto \exp{\left\{-\dfrac{1}{2}a\left(\theta-\dfrac{b}{a}\right)^2\right\}} \\<br>
 &amp;=\exp{\left\{-\dfrac{1}{2}\left(\dfrac{\theta-b/a}{1/\sqrt{a}}\right)^2\right\}} \sim N\left(\dfrac{b}{a}, \dfrac{1}{a}\right)=N(\mu_n, \tau_n^2)
 \end{aligned}$</p>
-<p>Parameter Update: $\mu_0\rightarrow\mu_n$, $\tau_0\rightarrow\tau_n$<br>
-$\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0+\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}+\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0+n\bar{y}}{\kappa_0+n}=\dfrac{\kappa_0\mu_0+n\bar{y}}{\kappa_n}$<br>
-$\tau_n^2=\dfrac{1}{\frac{1}{\tau_0^2}+\frac{n}{\sigma^2}}=\dfrac{\sigma^2}{\kappa_0+n}=\dfrac{\sigma^2}{\kappa_n}$</p>
-<h2 id="3-2-inference-for-the-variance-conditional-on-the-mean">3-2. Inference for the Variance, Conditional on the Mean</h2>
+<h3 id="312-parameter-update">3.1.2. Parameter Update</h3>
+<p>$\mu_0\rightarrow\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0+\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}+\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0+n\bar{y}}{\kappa_0+n}=\dfrac{\kappa_0\mu_0+n\bar{y}}{\kappa_n}$</p>
+<p>Posterior Mean $\mu_n$은 Prior Mean과 Sample Mean의 가중 평균이다. 이때 각각의 가중치는 Prior Precision $\dfrac{1}{\tau_0^2}$과 Sampling Precision $\dfrac{n}{\sigma^2}$이 된다. (Inverse Variance를 Precision이라고 한다.) 여기서 Prior Information이 $\kappa_0$개의 Prior Observations에 기반한다고 생각한다면, $\tau_0^2=\dfrac{\sigma^2}{\kappa_0}$라고 나타낼 수 있다. 이를 이용하여 위 식을 변형해주면, $\mu_n$이 각각의 Sample Size를 가중치로 갖는 Prior Mean과 Sample Mean의 가중 평균이라는 보다 직관적인 표현으로 바꾸어줄 수 있다.</p>
+<p>$\tau_0^2\rightarrow\tau_n^2=\dfrac{1}{\frac{1}{\tau_0^2}+\frac{n}{\sigma^2}}=\dfrac{\sigma^2}{\kappa_0+n}=\dfrac{\sigma^2}{\kappa_n}$</p>
+<p>Posterior Precision은 Prior Precision과 Sampling Precision의 합과 같다.</p>
+<h3 id="313-predictive-distribution">3.1.3. Predictive Distribution</h3>
+<p>$\tilde{Y}|y_1, \ldots, y_n, \sigma^2 \sim N(\mu_n, \tau_n^2+\sigma^2)$</p>
+<h2 id="32-inference-for-the-variance-conditional-on-the-mean">3.2. Inference for the Variance, Conditional on the Mean</h2>
+<h3 id="321-several-distributions">3.2.1. Several Distributions</h3>
+<p><strong>Gamma Distribution</strong></p>
+<p>$X \sim \Gamma(\alpha, \beta) \Rightarrow f_X(x)=\dfrac{\beta^{\alpha}}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}$ ($x&gt;0, \alpha&gt;0, \beta&gt;0$)</p>
+<p><strong>Inverse-Gamma Distribution</strong></p>
+<p>$Y=\dfrac{1}{X} \sim \text{Inv-}\Gamma(\alpha, \beta) \Rightarrow f_Y(y)=\dfrac{\beta^{\alpha}}{\Gamma(\alpha)}\left(\dfrac{1}{y}\right)^{\alpha+1}e^{-\frac{\beta}{y}}$ ($y&gt;0, \alpha&gt;0, \beta&gt;0$)</p>
+<p><strong>Scaled Inverse Chi-Squared Distribution</strong></p>
+<p>$X \sim \text{Inv-}\Gamma\left(\dfrac{\nu}{2}, \dfrac{\nu\tau^2}{2}\right)=\text{scaled Inv-}\chi^2\left(\nu, \tau^2\right)$ ($\nu&gt;0, \tau^2&gt;0$)</p>
+<h3 id="322-posterior-inference">3.2.2. Posterior Inference</h3>
+<p>Sampling Model: $Y_1, \ldots, Y_n|\sigma^2 \sim N(\theta, \sigma^2)$<br>
+Prior Distribution: $\sigma^2 \sim \text{Inv-}\Gamma\left(\dfrac{\nu_0}{2}, \dfrac{\nu_0\sigma_0^2}{2}\right)=\text{scaled Inv-}\chi^2\left(\nu_0, \sigma_0^2\right)$</p>
 <p>$\begin{aligned}
 p(\sigma^2|y_1, \ldots, y_n) &amp;\propto p(y_1, \ldots, y_n|\sigma^2) \times p(\sigma^2) \\<br>
 &amp;\propto \left(\dfrac{1}{\sigma^2}\right)^{\frac{n}{2}}\exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}} \times \left(\dfrac{1}{\sigma^2}\right)^{\frac{\nu_0}{2}+1}\exp{\left\{-\dfrac{\nu_0\sigma_0^2}{2\sigma^2}\right\}} \\<br>
 &amp;=\left(\dfrac{1}{\sigma^2}\right)^{\frac{n+\nu_0}{2}+1}\exp{\left\{-\dfrac{\sum(y_i-\theta)^2+\nu_0\sigma_0^2}{2\sigma^2}\right\}} \\<br>
 &amp;\propto \text{Inv-}\Gamma\left(\dfrac{\nu_0+n}{2}, \dfrac{\sum(y_i-\theta)^2+\nu_0\sigma_0^2}{2}\right) \\<br>
-&amp;=\text{scaled Inv-}\chi^2\left(\nu_0+n, \dfrac{\nu_0\sigma_0^2+\frac{\sum(y_i-\theta)^2}{n}}{\nu_0+n}\right)
+&amp;=\text{scaled Inv-}\chi^2\left(\nu_0+n, \dfrac{\nu_0\sigma_0^2+\sum(y_i-\theta)^2}{\nu_0+n}\right)
 \end{aligned}$</p>
-<p>Parameter Update: $\nu_0\rightarrow\nu_n$, $\sigma_0^2\rightarrow\sigma_n^2$<br>
-$\nu_n=\nu_0+n$<br>
-$\sigma_n^2=$</p>
-<h2 id="3-3-joint-inference-for-the-mean-and-variance">3-3. Joint Inference for the Mean and Variance</h2>
+<h3 id="323-parameter-update">3.2.3. Parameter Update</h3>
+<p>$\nu_0\rightarrow\nu_n=\nu_0+n$</p>
+<p>Posterior Sample Size $\nu_n$은 Prior Sample Size와 Data Sample Size의 합과 같다. Why?</p>
+<p>$\sigma_0^2\rightarrow\sigma_n^2=\dfrac{\nu_0\sigma_0^2+\sum(y_i-\theta)^2}{\nu_0+n}$</p>
+<p>Posterior Variance $\sigma_n^2$는 Prior Sum of Squares와 Data Sum of Squares의 합을 Prior Sample Size와 Data Sample Size의 합으로 나눈 것과 같다.</p>
+<h2 id="33-joint-inference-for-the-mean-and-variance">3.3. Joint Inference for the Mean and Variance</h2>
+<h3 id="331-posterior-inference">3.3.1. Posterior Inference</h3>
 <p>$\begin{aligned}
-p(\theta, \sigma^2|y_1, \ldots, y_n, \sigma^2) &amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta, \sigma^2) \\<br>
+p(\theta, \sigma^2|y_1, \ldots, y_n) &amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta, \sigma^2) \\<br>
 &amp;=p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2)p(\sigma^2)
 \end{aligned}$</p>
-<p>$\begin{aligned}
-p(\theta, \sigma^2|y_1, \ldots, y_n, \sigma^2) &amp;\propto p(\theta|\sigma^2, y_1, \ldots, y_n) \times p(\sigma^2|y_1, \ldots, y_n)
-\end{aligned}$</p>
+<p>Multiplication Rule을 이용하면 Prior Distribution $p(\theta, \sigma^2)$를 $p(\theta|\sigma^2)$와 $p(\sigma^2)$의 곱으로 분해할 수 있다.</p>
+<p>Sampling Model: $Y_1, \ldots, Y_n|\theta, \sigma^2 \sim N(\theta, \sigma^2)$<br>
+Prior Distribution: $\theta|\sigma^2 \sim N(\mu_0, \tau_0^2)$, $\sigma^2 \sim \text{Inv-}\Gamma\left(\dfrac{\nu_0}{2}, \dfrac{\nu_0\sigma_0^2}{2}\right)=\text{scaled Inv-}\chi^2\left(\nu_0, \sigma_0^2\right)$</p>
+<p>마찬가지로 Multiplication Rule에 따라 Posterior Distribution을 다음과 같이 나타낼 수 있다.</p>
+<p>$p(\theta, \sigma^2|y_1, \ldots, y_n, \sigma^2)=p(\theta|\sigma^2, y_1, \ldots, y_n) \times p(\sigma^2|y_1, \ldots, y_n)$</p>
+<h3 id="332-parameter-update">3.3.2. Parameter Update</h3>
+<p>$\sigma_0^2\rightarrow\sigma_n^2=\dfrac{\nu_0\sigma_0^2+\sum(y_i-\theta)^2}{\nu_0+n}$</p>
+<p>$\nu_0\rightarrow\nu_n=\nu_0+n$</p>
+<p>$\mu_0\rightarrow\mu_n=\dfrac{\kappa_0\mu_0+n\bar{y}}{\kappa_n}$</p>
+<p>$\kappa_0\rightarrow\kappa_n=\kappa_0+n$</p>
+<h2 id="34-improper-priors">3.4. Improper Priors</h2>
 <div class="edit-meta">
 Last updated on 11 Feb 2021
 
@@ -170,15 +213,15 @@ Published on 11 Feb 2021
 </main>
 <div class="sidebar">
 
-<nav class="open-menu">
+<nav class="slide-menu">
 <ul>
 <li class=""><a href="https://statkwon.github.io">Home</a></li>
 
-<li class="parent"><a href="https://statkwon.github.io/statistics/">Statistics</a>
+<li class="parent has-sub-menu"><a href="https://statkwon.github.io/statistics/">Statistics<span class="mark opened">-</span></a>
   
 <ul class="sub-menu">
 
-<li class="parent"><a href="https://statkwon.github.io/statistics/bayesian_statistics/">Bayesian Statistics</a>
+<li class="parent has-sub-menu"><a href="https://statkwon.github.io/statistics/bayesian_statistics/">Bayesian Statistics<span class="mark opened">-</span></a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/statistics/bayesian_statistics/1/">1. Introduction</a></li>
@@ -191,7 +234,7 @@ Published on 11 Feb 2021
   
 </li>
 
-<li class=""><a href="https://statkwon.github.io/ml/">ML</a>
+<li class=" has-sub-menu"><a href="https://statkwon.github.io/ml/">ML<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/ml/1/">1. What is ML?</a></li>
@@ -206,7 +249,7 @@ Published on 11 Feb 2021
   
 </li>
 
-<li class=""><a href="https://statkwon.github.io/visualization/">Visualization</a>
+<li class=" has-sub-menu"><a href="https://statkwon.github.io/visualization/">Visualization<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 
@@ -214,7 +257,7 @@ Published on 11 Feb 2021
   
 </li>
 
-<li class=""><a href="https://statkwon.github.io/visualization/python/">Python</a>
+<li class=" has-sub-menu"><a href="https://statkwon.github.io/visualization/python/">Python<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/visualization/python/1/">1. Matplotlib</a></li>

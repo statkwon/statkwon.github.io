@@ -18,7 +18,12 @@
 :root {}
 </style>
 <meta property="og:title" content="2. Statistical Decision Theory" />
-<meta property="og:description" content="$X \in \mathbb{R}^n$, $Y \in \mathbf{R}$
+<meta property="og:description" content="Decision Function: $f(X)$
+Loss Function: $L(Y, f(X))$
+Risk Function: $R(Y, f(X))=E[L(Y, f(X))]$
+We want to find a Decision Function which minimizes our Risk Function.
+Squaerd Error Loss: $L(Y, f(X))=(Y-f(X))^2$
+$X \in \mathbb{R}^n$, $Y \in \mathbf{R}$
 $L(Y, f(X))=(Y-f(X))^2$
 $\begin{aligned} \text{EPE}(f)&amp;=\text{E}[(Y-f(X))^2] \\
 &amp;=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(y-f(x))^2f_{X, Y}(x, y)dxdy \\
@@ -28,15 +33,19 @@ $\begin{aligned} \text{EPE}(f)&amp;=\text{E}[(Y-f(X))^2] \\
 $\begin{aligned} f(x)&amp;=\text{argmin}_c\text{E}_{Y|X}([Y-c]^2|X=x) \\
 &amp;=\text{E}(Y|X=x) \end{aligned}$
 $\hat{Y}(x)=\dfrac{1}{k}\displaystyle\sum_{x_i \in N_k(x)}y_i$
-At each point $x$, we might ask for the average of all those $y_i$s with input $x_i=x$.
-Since there is typically at most one observation at any point $x$, we settle for $\hat{f}(x)=\text{Ave}(y_i|x_i \in N_k(x))$" />
+At each point $x$, we might ask for the average of all those $y_i$s with input $x_i=x$." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://statkwon.github.io/ml/2/" />
 <meta property="article:published_time" content="2021-02-11T21:19:30+09:00" />
 <meta property="article:modified_time" content="2021-02-11T21:19:30+09:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="2. Statistical Decision Theory"/>
-<meta name="twitter:description" content="$X \in \mathbb{R}^n$, $Y \in \mathbf{R}$
+<meta name="twitter:description" content="Decision Function: $f(X)$
+Loss Function: $L(Y, f(X))$
+Risk Function: $R(Y, f(X))=E[L(Y, f(X))]$
+We want to find a Decision Function which minimizes our Risk Function.
+Squaerd Error Loss: $L(Y, f(X))=(Y-f(X))^2$
+$X \in \mathbb{R}^n$, $Y \in \mathbf{R}$
 $L(Y, f(X))=(Y-f(X))^2$
 $\begin{aligned} \text{EPE}(f)&amp;=\text{E}[(Y-f(X))^2] \\
 &amp;=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(y-f(x))^2f_{X, Y}(x, y)dxdy \\
@@ -46,10 +55,14 @@ $\begin{aligned} \text{EPE}(f)&amp;=\text{E}[(Y-f(X))^2] \\
 $\begin{aligned} f(x)&amp;=\text{argmin}_c\text{E}_{Y|X}([Y-c]^2|X=x) \\
 &amp;=\text{E}(Y|X=x) \end{aligned}$
 $\hat{Y}(x)=\dfrac{1}{k}\displaystyle\sum_{x_i \in N_k(x)}y_i$
-At each point $x$, we might ask for the average of all those $y_i$s with input $x_i=x$.
-Since there is typically at most one observation at any point $x$, we settle for $\hat{f}(x)=\text{Ave}(y_i|x_i \in N_k(x))$"/>
+At each point $x$, we might ask for the average of all those $y_i$s with input $x_i=x$."/>
 <meta itemprop="name" content="2. Statistical Decision Theory">
-<meta itemprop="description" content="$X \in \mathbb{R}^n$, $Y \in \mathbf{R}$
+<meta itemprop="description" content="Decision Function: $f(X)$
+Loss Function: $L(Y, f(X))$
+Risk Function: $R(Y, f(X))=E[L(Y, f(X))]$
+We want to find a Decision Function which minimizes our Risk Function.
+Squaerd Error Loss: $L(Y, f(X))=(Y-f(X))^2$
+$X \in \mathbb{R}^n$, $Y \in \mathbf{R}$
 $L(Y, f(X))=(Y-f(X))^2$
 $\begin{aligned} \text{EPE}(f)&amp;=\text{E}[(Y-f(X))^2] \\
 &amp;=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(y-f(x))^2f_{X, Y}(x, y)dxdy \\
@@ -59,11 +72,10 @@ $\begin{aligned} \text{EPE}(f)&amp;=\text{E}[(Y-f(X))^2] \\
 $\begin{aligned} f(x)&amp;=\text{argmin}_c\text{E}_{Y|X}([Y-c]^2|X=x) \\
 &amp;=\text{E}(Y|X=x) \end{aligned}$
 $\hat{Y}(x)=\dfrac{1}{k}\displaystyle\sum_{x_i \in N_k(x)}y_i$
-At each point $x$, we might ask for the average of all those $y_i$s with input $x_i=x$.
-Since there is typically at most one observation at any point $x$, we settle for $\hat{f}(x)=\text{Ave}(y_i|x_i \in N_k(x))$">
+At each point $x$, we might ask for the average of all those $y_i$s with input $x_i=x$.">
 <meta itemprop="datePublished" content="2021-02-11T21:19:30+09:00" />
 <meta itemprop="dateModified" content="2021-02-11T21:19:30+09:00" />
-<meta itemprop="wordCount" content="64">
+<meta itemprop="wordCount" content="93">
 
 
 
@@ -89,9 +101,11 @@ Since there is typically at most one observation at any point $x$, we settle for
 </div>
 <div class="content-container">
 <main><h1>2. Statistical Decision Theory</h1>
-<aside class="table_of_contents">
-<h5>Table of Contents</h5><nav id="TableOfContents"></nav></aside>
-
+<p>Decision Function: $f(X)$</p>
+<p>Loss Function: $L(Y, f(X))$</p>
+<p>Risk Function: $R(Y, f(X))=E[L(Y, f(X))]$</p>
+<p>We want to find a Decision Function which minimizes our Risk Function.</p>
+<p>Squaerd Error Loss: $L(Y, f(X))=(Y-f(X))^2$</p>
 <p>$X \in \mathbb{R}^n$, $Y \in \mathbf{R}$</p>
 <p>$L(Y, f(X))=(Y-f(X))^2$</p>
 <p>$\begin{aligned}
@@ -148,15 +162,15 @@ Published on 11 Feb 2021
 </main>
 <div class="sidebar">
 
-<nav class="open-menu">
+<nav class="slide-menu">
 <ul>
 <li class=""><a href="https://statkwon.github.io">Home</a></li>
 
-<li class=""><a href="https://statkwon.github.io/statistics/">Statistics</a>
+<li class=" has-sub-menu"><a href="https://statkwon.github.io/statistics/">Statistics<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 
-<li class=""><a href="https://statkwon.github.io/statistics/bayesian_statistics/">Bayesian Statistics</a>
+<li class=" has-sub-menu"><a href="https://statkwon.github.io/statistics/bayesian_statistics/">Bayesian Statistics<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/statistics/bayesian_statistics/1/">1. Introduction</a></li>
@@ -169,7 +183,7 @@ Published on 11 Feb 2021
   
 </li>
 
-<li class="parent"><a href="https://statkwon.github.io/ml/">ML</a>
+<li class="parent has-sub-menu"><a href="https://statkwon.github.io/ml/">ML<span class="mark opened">-</span></a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/ml/1/">1. What is ML?</a></li>
@@ -184,7 +198,7 @@ Published on 11 Feb 2021
   
 </li>
 
-<li class=""><a href="https://statkwon.github.io/visualization/">Visualization</a>
+<li class=" has-sub-menu"><a href="https://statkwon.github.io/visualization/">Visualization<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 
@@ -192,7 +206,7 @@ Published on 11 Feb 2021
   
 </li>
 
-<li class=""><a href="https://statkwon.github.io/visualization/python/">Python</a>
+<li class=" has-sub-menu"><a href="https://statkwon.github.io/visualization/python/">Python<span class="mark closed">+</span></a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/visualization/python/1/">1. Matplotlib</a></li>
