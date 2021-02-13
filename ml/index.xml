@@ -28,22 +28,15 @@
       <pubDate>Thu, 11 Feb 2021 21:19:30 +0900</pubDate>
       
       <guid>https://statkwon.github.io/ml/2/</guid>
-      <description>Decision Function: $f(X)$
-Loss Function: $L(Y, f(X))$
-Risk Function: $R(Y, f(X))=E[L(Y, f(X))]$
-We want to find a Decision Function which minimizes our Risk Function.
-Squaerd Error Loss: $L(Y, f(X))=(Y-f(X))^2$
-$X \in \mathbb{R}^n$, $Y \in \mathbf{R}$
-$L(Y, f(X))=(Y-f(X))^2$
-$\begin{aligned} \text{EPE}(f)&amp;amp;=\text{E}[(Y-f(X))^2] \\
-&amp;amp;=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(y-f(x))^2f_{X, Y}(x, y)dxdy \\
-&amp;amp;=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(y-f(x))^2f_{Y|X}(y|x)f_X(x)dxdy \\
-&amp;amp;=\int_{-\infty}^{\infty}\left[\int_{-\infty}^{\infty}(y-f(x))^2f_{Y|X}(y|x)dy\right]f_X(x)dx \\
-&amp;amp;=\text{E}_X\left[\text{E}_{Y|X}[(Y-f(X))^2]|X\right] \end{aligned}$
-$\begin{aligned} f(x)&amp;amp;=\text{argmin}_c\text{E}_{Y|X}([Y-c]^2|X=x) \\
-&amp;amp;=\text{E}(Y|X=x) \end{aligned}$
-$\hat{Y}(x)=\dfrac{1}{k}\displaystyle\sum_{x_i \in N_k(x)}y_i$
-At each point $x$, we might ask for the average of all those $y_i$s with input $x_i=x$.</description>
+      <description>2.1. Loss Functions for Regression $\mathbf{X}=(X_1, X_2, \ldots, X_p)^T$, $Y \in R$
+$\mathbf{X}$의 값이 주어졌을 때 $Y$를 가장 잘 예측하는 함수 $f(\mathbf{X})$를 찾고 싶다.
+$\Rightarrow$ Expected Loss $\text{E}[L(Y, f(\mathbf{X}))]$를 최소화하는 $f(\mathbf{X})$를 찾는다.
+회귀 문제에서 가장 일반적으로 사용되는 Loss Function은 Squared Error Loss이다.
+$\text{E}[(Y-f(\mathbf{X}))^2]=\text{E}[\text{E}[(Y-f(\mathbf{X}))^2|\mathbf{X}=\mathbf{x}]]$
+$f(X)$를 $c$라고 하면, 우리는 결국 $\text{E}[(Y-c)^2|\mathbf{X}=\mathbf{x}]$를 최소화하는 $c$를 찾아야 한다.
+$\begin{aligned} \text{E}[(Y-c)^2|\mathbf{X}=\mathbf{x}]&amp;amp;=\text{E}[Y^2-2cY+c^2|\mathbf{X}=\mathbf{x}] \\
+&amp;amp;=\text{E}[Y^2|\mathbf{X}=\mathbf{x}]+2c\text{E}[Y|\mathbf{X}=\mathbf{x}]+c^2 \end{aligned}$
+위 식은 $c$에 대한 이차식이므로 $c=\text{E}[Y|\mathbf{X}=\mathbf{x}]$일 때 최솟값을 갖는다. 따라서 Squared Error Loss를 최소화하는 Decision Function은 $f(x)=\text{E}[Y|\mathbf{X}=\mathbf{x}]$가 됨을 알 수 있다.</description>
     </item>
     
     <item>

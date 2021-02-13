@@ -18,64 +18,43 @@
 :root {}
 </style>
 <meta property="og:title" content="2. Statistical Decision Theory" />
-<meta property="og:description" content="Decision Function: $f(X)$
-Loss Function: $L(Y, f(X))$
-Risk Function: $R(Y, f(X))=E[L(Y, f(X))]$
-We want to find a Decision Function which minimizes our Risk Function.
-Squaerd Error Loss: $L(Y, f(X))=(Y-f(X))^2$
-$X \in \mathbb{R}^n$, $Y \in \mathbf{R}$
-$L(Y, f(X))=(Y-f(X))^2$
-$\begin{aligned} \text{EPE}(f)&amp;=\text{E}[(Y-f(X))^2] \\
-&amp;=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(y-f(x))^2f_{X, Y}(x, y)dxdy \\
-&amp;=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(y-f(x))^2f_{Y|X}(y|x)f_X(x)dxdy \\
-&amp;=\int_{-\infty}^{\infty}\left[\int_{-\infty}^{\infty}(y-f(x))^2f_{Y|X}(y|x)dy\right]f_X(x)dx \\
-&amp;=\text{E}_X\left[\text{E}_{Y|X}[(Y-f(X))^2]|X\right] \end{aligned}$
-$\begin{aligned} f(x)&amp;=\text{argmin}_c\text{E}_{Y|X}([Y-c]^2|X=x) \\
-&amp;=\text{E}(Y|X=x) \end{aligned}$
-$\hat{Y}(x)=\dfrac{1}{k}\displaystyle\sum_{x_i \in N_k(x)}y_i$
-At each point $x$, we might ask for the average of all those $y_i$s with input $x_i=x$." />
+<meta property="og:description" content="2.1. Loss Functions for Regression $\mathbf{X}=(X_1, X_2, \ldots, X_p)^T$, $Y \in R$
+$\mathbf{X}$의 값이 주어졌을 때 $Y$를 가장 잘 예측하는 함수 $f(\mathbf{X})$를 찾고 싶다.
+$\Rightarrow$ Expected Loss $\text{E}[L(Y, f(\mathbf{X}))]$를 최소화하는 $f(\mathbf{X})$를 찾는다.
+회귀 문제에서 가장 일반적으로 사용되는 Loss Function은 Squared Error Loss이다.
+$\text{E}[(Y-f(\mathbf{X}))^2]=\text{E}[\text{E}[(Y-f(\mathbf{X}))^2|\mathbf{X}=\mathbf{x}]]$
+$f(X)$를 $c$라고 하면, 우리는 결국 $\text{E}[(Y-c)^2|\mathbf{X}=\mathbf{x}]$를 최소화하는 $c$를 찾아야 한다.
+$\begin{aligned} \text{E}[(Y-c)^2|\mathbf{X}=\mathbf{x}]&amp;=\text{E}[Y^2-2cY&#43;c^2|\mathbf{X}=\mathbf{x}] \\
+&amp;=\text{E}[Y^2|\mathbf{X}=\mathbf{x}]&#43;2c\text{E}[Y|\mathbf{X}=\mathbf{x}]&#43;c^2 \end{aligned}$
+위 식은 $c$에 대한 이차식이므로 $c=\text{E}[Y|\mathbf{X}=\mathbf{x}]$일 때 최솟값을 갖는다. 따라서 Squared Error Loss를 최소화하는 Decision Function은 $f(x)=\text{E}[Y|\mathbf{X}=\mathbf{x}]$가 됨을 알 수 있다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://statkwon.github.io/ml/2/" />
 <meta property="article:published_time" content="2021-02-11T21:19:30+09:00" />
-<meta property="article:modified_time" content="2021-02-11T21:19:30+09:00" />
+<meta property="article:modified_time" content="2021-02-12T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="2. Statistical Decision Theory"/>
-<meta name="twitter:description" content="Decision Function: $f(X)$
-Loss Function: $L(Y, f(X))$
-Risk Function: $R(Y, f(X))=E[L(Y, f(X))]$
-We want to find a Decision Function which minimizes our Risk Function.
-Squaerd Error Loss: $L(Y, f(X))=(Y-f(X))^2$
-$X \in \mathbb{R}^n$, $Y \in \mathbf{R}$
-$L(Y, f(X))=(Y-f(X))^2$
-$\begin{aligned} \text{EPE}(f)&amp;=\text{E}[(Y-f(X))^2] \\
-&amp;=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(y-f(x))^2f_{X, Y}(x, y)dxdy \\
-&amp;=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(y-f(x))^2f_{Y|X}(y|x)f_X(x)dxdy \\
-&amp;=\int_{-\infty}^{\infty}\left[\int_{-\infty}^{\infty}(y-f(x))^2f_{Y|X}(y|x)dy\right]f_X(x)dx \\
-&amp;=\text{E}_X\left[\text{E}_{Y|X}[(Y-f(X))^2]|X\right] \end{aligned}$
-$\begin{aligned} f(x)&amp;=\text{argmin}_c\text{E}_{Y|X}([Y-c]^2|X=x) \\
-&amp;=\text{E}(Y|X=x) \end{aligned}$
-$\hat{Y}(x)=\dfrac{1}{k}\displaystyle\sum_{x_i \in N_k(x)}y_i$
-At each point $x$, we might ask for the average of all those $y_i$s with input $x_i=x$."/>
+<meta name="twitter:description" content="2.1. Loss Functions for Regression $\mathbf{X}=(X_1, X_2, \ldots, X_p)^T$, $Y \in R$
+$\mathbf{X}$의 값이 주어졌을 때 $Y$를 가장 잘 예측하는 함수 $f(\mathbf{X})$를 찾고 싶다.
+$\Rightarrow$ Expected Loss $\text{E}[L(Y, f(\mathbf{X}))]$를 최소화하는 $f(\mathbf{X})$를 찾는다.
+회귀 문제에서 가장 일반적으로 사용되는 Loss Function은 Squared Error Loss이다.
+$\text{E}[(Y-f(\mathbf{X}))^2]=\text{E}[\text{E}[(Y-f(\mathbf{X}))^2|\mathbf{X}=\mathbf{x}]]$
+$f(X)$를 $c$라고 하면, 우리는 결국 $\text{E}[(Y-c)^2|\mathbf{X}=\mathbf{x}]$를 최소화하는 $c$를 찾아야 한다.
+$\begin{aligned} \text{E}[(Y-c)^2|\mathbf{X}=\mathbf{x}]&amp;=\text{E}[Y^2-2cY&#43;c^2|\mathbf{X}=\mathbf{x}] \\
+&amp;=\text{E}[Y^2|\mathbf{X}=\mathbf{x}]&#43;2c\text{E}[Y|\mathbf{X}=\mathbf{x}]&#43;c^2 \end{aligned}$
+위 식은 $c$에 대한 이차식이므로 $c=\text{E}[Y|\mathbf{X}=\mathbf{x}]$일 때 최솟값을 갖는다. 따라서 Squared Error Loss를 최소화하는 Decision Function은 $f(x)=\text{E}[Y|\mathbf{X}=\mathbf{x}]$가 됨을 알 수 있다."/>
 <meta itemprop="name" content="2. Statistical Decision Theory">
-<meta itemprop="description" content="Decision Function: $f(X)$
-Loss Function: $L(Y, f(X))$
-Risk Function: $R(Y, f(X))=E[L(Y, f(X))]$
-We want to find a Decision Function which minimizes our Risk Function.
-Squaerd Error Loss: $L(Y, f(X))=(Y-f(X))^2$
-$X \in \mathbb{R}^n$, $Y \in \mathbf{R}$
-$L(Y, f(X))=(Y-f(X))^2$
-$\begin{aligned} \text{EPE}(f)&amp;=\text{E}[(Y-f(X))^2] \\
-&amp;=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(y-f(x))^2f_{X, Y}(x, y)dxdy \\
-&amp;=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(y-f(x))^2f_{Y|X}(y|x)f_X(x)dxdy \\
-&amp;=\int_{-\infty}^{\infty}\left[\int_{-\infty}^{\infty}(y-f(x))^2f_{Y|X}(y|x)dy\right]f_X(x)dx \\
-&amp;=\text{E}_X\left[\text{E}_{Y|X}[(Y-f(X))^2]|X\right] \end{aligned}$
-$\begin{aligned} f(x)&amp;=\text{argmin}_c\text{E}_{Y|X}([Y-c]^2|X=x) \\
-&amp;=\text{E}(Y|X=x) \end{aligned}$
-$\hat{Y}(x)=\dfrac{1}{k}\displaystyle\sum_{x_i \in N_k(x)}y_i$
-At each point $x$, we might ask for the average of all those $y_i$s with input $x_i=x$.">
+<meta itemprop="description" content="2.1. Loss Functions for Regression $\mathbf{X}=(X_1, X_2, \ldots, X_p)^T$, $Y \in R$
+$\mathbf{X}$의 값이 주어졌을 때 $Y$를 가장 잘 예측하는 함수 $f(\mathbf{X})$를 찾고 싶다.
+$\Rightarrow$ Expected Loss $\text{E}[L(Y, f(\mathbf{X}))]$를 최소화하는 $f(\mathbf{X})$를 찾는다.
+회귀 문제에서 가장 일반적으로 사용되는 Loss Function은 Squared Error Loss이다.
+$\text{E}[(Y-f(\mathbf{X}))^2]=\text{E}[\text{E}[(Y-f(\mathbf{X}))^2|\mathbf{X}=\mathbf{x}]]$
+$f(X)$를 $c$라고 하면, 우리는 결국 $\text{E}[(Y-c)^2|\mathbf{X}=\mathbf{x}]$를 최소화하는 $c$를 찾아야 한다.
+$\begin{aligned} \text{E}[(Y-c)^2|\mathbf{X}=\mathbf{x}]&amp;=\text{E}[Y^2-2cY&#43;c^2|\mathbf{X}=\mathbf{x}] \\
+&amp;=\text{E}[Y^2|\mathbf{X}=\mathbf{x}]&#43;2c\text{E}[Y|\mathbf{X}=\mathbf{x}]&#43;c^2 \end{aligned}$
+위 식은 $c$에 대한 이차식이므로 $c=\text{E}[Y|\mathbf{X}=\mathbf{x}]$일 때 최솟값을 갖는다. 따라서 Squared Error Loss를 최소화하는 Decision Function은 $f(x)=\text{E}[Y|\mathbf{X}=\mathbf{x}]$가 됨을 알 수 있다.">
 <meta itemprop="datePublished" content="2021-02-11T21:19:30+09:00" />
-<meta itemprop="dateModified" content="2021-02-11T21:19:30+09:00" />
-<meta itemprop="wordCount" content="93">
+<meta itemprop="dateModified" content="2021-02-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="84">
 
 
 
@@ -101,29 +80,29 @@ At each point $x$, we might ask for the average of all those $y_i$s with input $
 </div>
 <div class="content-container">
 <main><h1>2. Statistical Decision Theory</h1>
-<p>Decision Function: $f(X)$</p>
-<p>Loss Function: $L(Y, f(X))$</p>
-<p>Risk Function: $R(Y, f(X))=E[L(Y, f(X))]$</p>
-<p>We want to find a Decision Function which minimizes our Risk Function.</p>
-<p>Squaerd Error Loss: $L(Y, f(X))=(Y-f(X))^2$</p>
-<p>$X \in \mathbb{R}^n$, $Y \in \mathbf{R}$</p>
-<p>$L(Y, f(X))=(Y-f(X))^2$</p>
+<aside class="table_of_contents">
+<h5>Table of Contents</h5><nav id="TableOfContents">
+  <ul>
+    <li><a href="#21-loss-functions-for-regression">2.1. Loss Functions for Regression</a></li>
+    <li><a href="#22-loss-functions-for-classification">2.2. Loss Functions for Classification</a></li>
+  </ul>
+</nav></aside>
+
+<h2 id="21-loss-functions-for-regression">2.1. Loss Functions for Regression</h2>
+<p>$\mathbf{X}=(X_1, X_2, \ldots, X_p)^T$, $Y \in R$</p>
+<p>$\mathbf{X}$의 값이 주어졌을 때 $Y$를 가장 잘 예측하는 함수 $f(\mathbf{X})$를 찾고 싶다.<br>
+$\Rightarrow$ Expected Loss $\text{E}[L(Y, f(\mathbf{X}))]$를 최소화하는 $f(\mathbf{X})$를 찾는다.</p>
+<p>회귀 문제에서 가장 일반적으로 사용되는 Loss Function은 Squared Error Loss이다.</p>
+<p>$\text{E}[(Y-f(\mathbf{X}))^2]=\text{E}[\text{E}[(Y-f(\mathbf{X}))^2|\mathbf{X}=\mathbf{x}]]$</p>
+<p>$f(X)$를 $c$라고 하면, 우리는 결국 $\text{E}[(Y-c)^2|\mathbf{X}=\mathbf{x}]$를 최소화하는 $c$를 찾아야 한다.</p>
 <p>$\begin{aligned}
-\text{EPE}(f)&amp;=\text{E}[(Y-f(X))^2] \\<br>
-&amp;=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(y-f(x))^2f_{X, Y}(x, y)dxdy \\<br>
-&amp;=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(y-f(x))^2f_{Y|X}(y|x)f_X(x)dxdy \\<br>
-&amp;=\int_{-\infty}^{\infty}\left[\int_{-\infty}^{\infty}(y-f(x))^2f_{Y|X}(y|x)dy\right]f_X(x)dx \\<br>
-&amp;=\text{E}_X\left[\text{E}_{Y|X}[(Y-f(X))^2]|X\right]
+\text{E}[(Y-c)^2|\mathbf{X}=\mathbf{x}]&amp;=\text{E}[Y^2-2cY+c^2|\mathbf{X}=\mathbf{x}] \\<br>
+&amp;=\text{E}[Y^2|\mathbf{X}=\mathbf{x}]+2c\text{E}[Y|\mathbf{X}=\mathbf{x}]+c^2
 \end{aligned}$</p>
-<p>$\begin{aligned}
-f(x)&amp;=\text{argmin}_c\text{E}_{Y|X}([Y-c]^2|X=x) \\<br>
-&amp;=\text{E}(Y|X=x)
-\end{aligned}$</p>
-<p>$\hat{Y}(x)=\dfrac{1}{k}\displaystyle\sum_{x_i \in N_k(x)}y_i$</p>
-<p>At each point $x$, we might ask for the average of all those $y_i$s with input $x_i=x$.</p>
-<p>Since there is typically at most one observation at any point $x$, we settle for $\hat{f}(x)=\text{Ave}(y_i|x_i \in N_k(x))$</p>
+<p>위 식은 $c$에 대한 이차식이므로 $c=\text{E}[Y|\mathbf{X}=\mathbf{x}]$일 때 최솟값을 갖는다. 따라서 Squared Error Loss를 최소화하는 Decision Function은 $f(x)=\text{E}[Y|\mathbf{X}=\mathbf{x}]$가 됨을 알 수 있다.</p>
+<h2 id="22-loss-functions-for-classification">2.2. Loss Functions for Classification</h2>
 <div class="edit-meta">
-Last updated on 11 Feb 2021
+Last updated on 12 Feb 2021
 
 
 <br>
