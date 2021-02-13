@@ -12,34 +12,6 @@
     
     
     <item>
-      <title>1. What is ML?</title>
-      <link>https://statkwon.github.io/ml/1/</link>
-      <pubDate>Wed, 10 Feb 2021 15:29:24 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/1/</guid>
-      <description>1.1. What Is Statistical Learning? $$Y=f(X)+\epsilon$$
-세상 속에서 우리가 알고자 하는 것들($Y$)은 여러가지 요인들($X_1, X_2, &amp;hellip;, X_p$)에 의해 설명될 수 있는 부분과, 그렇지 못하는 부분($\epsilon$, 이때 $\epsilon$은 $X$와 독립이며 평균이 $0$인 확률변수)의 합이라고 볼 수 있다. 따라서 우리는 모든 현상을 어느정도 설명할 수 있지만, 완벽히 설명하지는 못한다. 우리 주변의 현상들이 설명 가능할 때 우리는 많은 가치를 창출할 수 있다. 그리고 Statistical Learning은 설명 가능한 부분인 $f$를 추정하기 위한 접근법이다.
-1.1.1. Why Estimate $f$?</description>
-    </item>
-    
-    <item>
-      <title>2. Statistical Decision Theory</title>
-      <link>https://statkwon.github.io/ml/2/</link>
-      <pubDate>Thu, 11 Feb 2021 21:19:30 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/2/</guid>
-      <description>2.1. Loss Functions for Regression $\mathbf{X}=(X_1, X_2, \ldots, X_p)^T$, $Y \in R$
-$\mathbf{X}$의 값이 주어졌을 때 $Y$를 가장 잘 예측하는 함수 $f(\mathbf{X})$를 찾고 싶다.
-$\Rightarrow$ Expected Loss $\text{E}[L(Y, f(\mathbf{X}))]$를 최소화하는 $f(\mathbf{X})$를 찾는다.
-회귀 문제에서 가장 일반적으로 사용되는 Loss Function은 Squared Error Loss이다.
-$\text{E}[(Y-f(\mathbf{X}))^2]=\text{E}[\text{E}[(Y-f(\mathbf{X}))^2|\mathbf{X}=\mathbf{x}]]$
-$f(X)$를 $c$라고 하면, 우리는 결국 $\text{E}[(Y-c)^2|\mathbf{X}=\mathbf{x}]$를 최소화하는 $c$를 찾아야 한다.
-$\begin{aligned} \text{E}[(Y-c)^2|\mathbf{X}=\mathbf{x}]&amp;amp;=\text{E}[Y^2-2cY+c^2|\mathbf{X}=\mathbf{x}] \\
-&amp;amp;=\text{E}[Y^2|\mathbf{X}=\mathbf{x}]+2c\text{E}[Y|\mathbf{X}=\mathbf{x}]+c^2 \end{aligned}$
-위 식은 $c$에 대한 이차식이므로 $c=\text{E}[Y|\mathbf{X}=\mathbf{x}]$일 때 최솟값을 갖는다. 따라서 Squared Error Loss를 최소화하는 Decision Function은 $f(x)=\text{E}[Y|\mathbf{X}=\mathbf{x}]$가 됨을 알 수 있다.</description>
-    </item>
-    
-    <item>
       <title>3. Linear Regression</title>
       <link>https://statkwon.github.io/ml/3/</link>
       <pubDate>Wed, 10 Feb 2021 16:15:20 +0900</pubDate>
