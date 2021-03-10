@@ -12,57 +12,57 @@
     
     
     <item>
+      <title>2. Statistical Learning</title>
+      <link>https://statkwon.github.io/ml/1/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/1/</guid>
+      <description>2.1. What is Statistical Learning? 2.1.1. Why Estimate $f$? 우리가 $f$를 추정하는 목적은 예측과 해석을 하기 위함이다. $$\hat{Y}=\hat{f}(X)$$ 1. 예측 $f$의 추정치 $\hat{f}$를 안다면, 우리가 가진 $X_1, X_2, &amp;hellip;, X</description>
+    </item>
+    
+    <item>
       <title>3. Linear Regression</title>
-      <link>https://statkwon.github.io/ml/3/</link>
+      <link>https://statkwon.github.io/ml/2/</link>
       <pubDate>Wed, 10 Feb 2021 16:15:20 +0900</pubDate>
       
-      <guid>https://statkwon.github.io/ml/3/</guid>
-      <description>머신러닝 모형 중 많은 것들은 Linear Regression을 기반으로 일반화하거나 확장한 형태이다. 따라서 Linear Regression에 대해 명확하게 이해하는 것이 중</description>
+      <guid>https://statkwon.github.io/ml/2/</guid>
+      <description>3.1. Simple Linear Regression Simple Linear Regression은 변수 간의 선형 관계를 잘 나타내는 최적의 직선 $\beta_0+\beta_1X$를 찾는 작업이다. 직선의 식을 아는 경</description>
     </item>
     
     <item>
       <title>4. Classification</title>
-      <link>https://statkwon.github.io/ml/4/</link>
+      <link>https://statkwon.github.io/ml/3/</link>
       <pubDate>Wed, 10 Feb 2021 16:17:17 +0900</pubDate>
       
-      <guid>https://statkwon.github.io/ml/4/</guid>
+      <guid>https://statkwon.github.io/ml/3/</guid>
       <description>4장에서는 반응변수가 범주형인 경우, 즉, Classification의 문제를 다룬다. 4.2. Why Not Linear Regression? 선형 회귀 모형은 반응변수가 범주형인 경우 사용이 적합하</description>
     </item>
     
     <item>
       <title>5. Resampling Methods</title>
-      <link>https://statkwon.github.io/ml/5/</link>
+      <link>https://statkwon.github.io/ml/4/</link>
       <pubDate>Wed, 10 Feb 2021 16:18:21 +0900</pubDate>
       
-      <guid>https://statkwon.github.io/ml/5/</guid>
+      <guid>https://statkwon.github.io/ml/4/</guid>
       <description>Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻</description>
     </item>
     
     <item>
       <title>6. Linear Model Selection and Regularization</title>
-      <link>https://statkwon.github.io/ml/6/</link>
+      <link>https://statkwon.github.io/ml/5/</link>
       <pubDate>Wed, 10 Feb 2021 16:19:21 +0900</pubDate>
       
-      <guid>https://statkwon.github.io/ml/6/</guid>
+      <guid>https://statkwon.github.io/ml/5/</guid>
       <description>선형 모형은 많은 전제조건을 필요로 하지만, 추론 영역에서 갖는 강점으로 인해 실생활의 문제들을 푸는데 있어 비선형 모형에 대해 경쟁력을 가지고 있다. 6장에서는 Method</description>
     </item>
     
     <item>
       <title>7. Moving Beyond Linearity</title>
-      <link>https://statkwon.github.io/ml/7/</link>
+      <link>https://statkwon.github.io/ml/6/</link>
       <pubDate>Wed, 10 Feb 2021 16:20:35 +0900</pubDate>
       
-      <guid>https://statkwon.github.io/ml/7/</guid>
+      <guid>https://statkwon.github.io/ml/6/</guid>
       <description>지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다.</description>
-    </item>
-    
-    <item>
-      <title>8. Tree-Based Methods</title>
-      <link>https://statkwon.github.io/ml/8/</link>
-      <pubDate>Wed, 10 Feb 2021 16:21:20 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/8/</guid>
-      <description>8장에서는 Tree를 기반으로 하는 방법들에 대해 다루고 있다. 각각의 방법들은 Regression과 Classification의 문제에 모두 적용 가능</description>
     </item>
     
   </channel>

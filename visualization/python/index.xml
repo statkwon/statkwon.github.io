@@ -38,14 +38,5 @@
       <description>1. Introduction to Bokeh from bokeh.io import output_notebook, show from bokeh.plotting import figure 우선 위의 명령어를 사용하여 Bokeh를 import한다. output_notebook() 기본적으로 Bokeh는 html 형식의 결과물을 산출하지만, output_notebook() 명령어</description>
     </item>
     
-    <item>
-      <title>4. Folium</title>
-      <link>https://statkwon.github.io/visualization/python/4/</link>
-      <pubDate>Thu, 11 Feb 2021 17:30:49 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/visualization/python/4/</guid>
-      <description>1. Introduction to Folium import folium folium.Map() folium.Map(location=[37.566064, 126.938308], zoom_start=14) folium.Map(location=[37.566064, 126.938308], tiles=&amp;#39;cartodbpositron&amp;#39;, zoom_start=14) folium.Map(location=[37.566064, 126.938308], zoom_start=14, min_zoom=13, max_zoom=15, control_scale=True) 2. Several Useful Features 1. Add Markers m = folium.Map(location=[37.566064, 126.938308], zoom_start=14) folium.Marker(location=[37.566064, 126.938308], popup=&amp;#39;&amp;lt;b&amp;gt;Yonsei Univ.&amp;lt;/b&amp;gt;&amp;#39;, tooltip=&amp;#39;Click!&amp;#39;).add_to(m) m m = folium.Map(location=[37.566064,126.938308], zoom_start=14) html = &amp;#39;&amp;lt;b&amp;gt;&amp;lt;center&amp;g</description>
-    </item>
-    
   </channel>
 </rss>

@@ -21,12 +21,12 @@
     </item>
     
     <item>
-      <title>1. Introduction</title>
-      <link>https://statkwon.github.io/statistics/bayesian_statistics/1/</link>
-      <pubDate>Wed, 10 Feb 2021 16:22:53 +0900</pubDate>
+      <title>2. Statistical Learning</title>
+      <link>https://statkwon.github.io/ml/1/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://statkwon.github.io/statistics/bayesian_statistics/1/</guid>
-      <description>1.1. Introduction Bayesian Learning 통계적 추론은 모집단의 일부를 통해 모집단의 일반적인 특성을 알아내기 위한 과정이다. 이때 대부분의 경우 모집단의 수치적 특성을 모수 $\theta$로</description>
+      <guid>https://statkwon.github.io/ml/1/</guid>
+      <description>2.1. What is Statistical Learning? 2.1.1. Why Estimate $f$? 우리가 $f$를 추정하는 목적은 예측과 해석을 하기 위함이다. $$\hat{Y}=\hat{f}(X)$$ 1. 예측 $f$의 추정치 $\hat{f}$를 안다면, 우리가 가진 $X_1, X_2, &amp;hellip;, X</description>
     </item>
     
     <item>
@@ -48,12 +48,12 @@
     </item>
     
     <item>
-      <title>2. One-parameter models</title>
-      <link>https://statkwon.github.io/statistics/bayesian_statistics/2/</link>
-      <pubDate>Wed, 10 Feb 2021 16:25:47 +0900</pubDate>
+      <title>3. Linear Regression</title>
+      <link>https://statkwon.github.io/ml/2/</link>
+      <pubDate>Wed, 10 Feb 2021 16:15:20 +0900</pubDate>
       
-      <guid>https://statkwon.github.io/statistics/bayesian_statistics/2/</guid>
-      <description>2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution $Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다. 이때</description>
+      <guid>https://statkwon.github.io/ml/2/</guid>
+      <description>3.1. Simple Linear Regression Simple Linear Regression은 변수 간의 선형 관계를 잘 나타내는 최적의 직선 $\beta_0+\beta_1X$를 찾는 작업이다. 직선의 식을 아는 경</description>
     </item>
     
     <item>
@@ -66,15 +66,6 @@
     </item>
     
     <item>
-      <title>3. Normal Model</title>
-      <link>https://statkwon.github.io/statistics/bayesian_statistics/3/</link>
-      <pubDate>Thu, 11 Feb 2021 23:47:49 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/statistics/bayesian_statistics/3/</guid>
-      <description>3.1. Inference for the Mean, Conditional on the Variance 3.1.1. Posterior Inference Sampling Model: $Y_1, \ldots, Y_n|\theta, \sigma^2 \sim N(\theta, \sigma^2)$ Prior Distribution: $\theta|\sigma^2 \sim N(\mu_0, \tau_0^2)$ $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\ &amp;amp;\propto \exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}}\times\exp{\left\{-\dfrac{(\theta-\mu_0)^2}{2\tau_0^2}\right\}} \\ &amp;amp;\propto \exp{\left[-\dfrac{1}{2}\left\{\left(\dfrac{1}{\tau_0^2}+\dfrac{n}{\sigma^2}\right)\theta^2+2\left(\dfrac{\mu_0}{\tau_0^2}+\dfrac{\sum y_i}{\sigma^2}\right)\theta\right\}\right]} \\ &amp;amp;\propto \exp{\left\{-\dfrac{1}{2}(a\theta^2+2b\theta)\right\}} \\ &amp;amp;=\exp{\left\{-\dfrac{1}{2}a\left(\theta^2-\dfrac{2b}{a}\theta+\dfrac{b^2}{a^2}\right)+\dfrac{b^2}{2a}\right\}} \\ &amp;amp;\propto \exp{\left\{-\dfrac{1}{2}a\left(\theta-\dfrac{b}{a}\right)^2\right\}} \\ &amp;amp;=\exp{\left\{-\dfrac{1}{2}\left(\dfrac{\theta-b/a}{1/\sqrt{a}}\right)^2\right\}} \sim N\left(\dfrac{b}{a}, \dfrac{1}{a}\right)=N(\mu_n, \tau_n^2) \end{aligned}$ 3.1.2. Parameter Update $\mu_0\rightarrow\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0+\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}+\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0+n\bar{y}}{\kappa_0+n}=\dfrac{\kappa_0\mu_0+n\bar{y}}{\kappa_n}$ Posterior Mean $\m</description>
-    </item>
-    
-    <item>
       <title>3. Bokeh</title>
       <link>https://statkwon.github.io/visualization/python/3/</link>
       <pubDate>Thu, 11 Feb 2021 17:29:52 +0900</pubDate>
@@ -84,66 +75,39 @@
     </item>
     
     <item>
-      <title>3. Linear Regression</title>
-      <link>https://statkwon.github.io/ml/3/</link>
-      <pubDate>Wed, 10 Feb 2021 16:15:20 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/3/</guid>
-      <description>머신러닝 모형 중 많은 것들은 Linear Regression을 기반으로 일반화하거나 확장한 형태이다. 따라서 Linear Regression에 대해 명확하게 이해하는 것이 중</description>
-    </item>
-    
-    <item>
-      <title>4. Folium</title>
-      <link>https://statkwon.github.io/visualization/python/4/</link>
-      <pubDate>Thu, 11 Feb 2021 17:30:49 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/visualization/python/4/</guid>
-      <description>1. Introduction to Folium import folium folium.Map() folium.Map(location=[37.566064, 126.938308], zoom_start=14) folium.Map(location=[37.566064, 126.938308], tiles=&amp;#39;cartodbpositron&amp;#39;, zoom_start=14) folium.Map(location=[37.566064, 126.938308], zoom_start=14, min_zoom=13, max_zoom=15, control_scale=True) 2. Several Useful Features 1. Add Markers m = folium.Map(location=[37.566064, 126.938308], zoom_start=14) folium.Marker(location=[37.566064, 126.938308], popup=&amp;#39;&amp;lt;b&amp;gt;Yonsei Univ.&amp;lt;/b&amp;gt;&amp;#39;, tooltip=&amp;#39;Click!&amp;#39;).add_to(m) m m = folium.Map(location=[37.566064,126.938308], zoom_start=14) html = &amp;#39;&amp;lt;b&amp;gt;&amp;lt;center&amp;g</description>
-    </item>
-    
-    <item>
       <title>4. Classification</title>
-      <link>https://statkwon.github.io/ml/4/</link>
+      <link>https://statkwon.github.io/ml/3/</link>
       <pubDate>Wed, 10 Feb 2021 16:17:17 +0900</pubDate>
       
-      <guid>https://statkwon.github.io/ml/4/</guid>
+      <guid>https://statkwon.github.io/ml/3/</guid>
       <description>4장에서는 반응변수가 범주형인 경우, 즉, Classification의 문제를 다룬다. 4.2. Why Not Linear Regression? 선형 회귀 모형은 반응변수가 범주형인 경우 사용이 적합하</description>
     </item>
     
     <item>
       <title>5. Resampling Methods</title>
-      <link>https://statkwon.github.io/ml/5/</link>
+      <link>https://statkwon.github.io/ml/4/</link>
       <pubDate>Wed, 10 Feb 2021 16:18:21 +0900</pubDate>
       
-      <guid>https://statkwon.github.io/ml/5/</guid>
+      <guid>https://statkwon.github.io/ml/4/</guid>
       <description>Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻</description>
     </item>
     
     <item>
       <title>6. Linear Model Selection and Regularization</title>
-      <link>https://statkwon.github.io/ml/6/</link>
+      <link>https://statkwon.github.io/ml/5/</link>
       <pubDate>Wed, 10 Feb 2021 16:19:21 +0900</pubDate>
       
-      <guid>https://statkwon.github.io/ml/6/</guid>
+      <guid>https://statkwon.github.io/ml/5/</guid>
       <description>선형 모형은 많은 전제조건을 필요로 하지만, 추론 영역에서 갖는 강점으로 인해 실생활의 문제들을 푸는데 있어 비선형 모형에 대해 경쟁력을 가지고 있다. 6장에서는 Method</description>
     </item>
     
     <item>
       <title>7. Moving Beyond Linearity</title>
-      <link>https://statkwon.github.io/ml/7/</link>
+      <link>https://statkwon.github.io/ml/6/</link>
       <pubDate>Wed, 10 Feb 2021 16:20:35 +0900</pubDate>
       
-      <guid>https://statkwon.github.io/ml/7/</guid>
+      <guid>https://statkwon.github.io/ml/6/</guid>
       <description>지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다.</description>
-    </item>
-    
-    <item>
-      <title>8. Tree-Based Methods</title>
-      <link>https://statkwon.github.io/ml/8/</link>
-      <pubDate>Wed, 10 Feb 2021 16:21:20 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/8/</guid>
-      <description>8장에서는 Tree를 기반으로 하는 방법들에 대해 다루고 있다. 각각의 방법들은 Regression과 Classification의 문제에 모두 적용 가능</description>
     </item>
     
     <item>

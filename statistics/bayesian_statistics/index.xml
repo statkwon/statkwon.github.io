@@ -11,32 +11,5 @@
 	<atom:link href="https://statkwon.github.io/statistics/bayesian_statistics/index.xml" rel="self" type="application/rss+xml" />
     
     
-    <item>
-      <title>1. Introduction</title>
-      <link>https://statkwon.github.io/statistics/bayesian_statistics/1/</link>
-      <pubDate>Wed, 10 Feb 2021 16:22:53 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/statistics/bayesian_statistics/1/</guid>
-      <description>1.1. Introduction Bayesian Learning 통계적 추론은 모집단의 일부를 통해 모집단의 일반적인 특성을 알아내기 위한 과정이다. 이때 대부분의 경우 모집단의 수치적 특성을 모수 $\theta$로</description>
-    </item>
-    
-    <item>
-      <title>2. One-parameter models</title>
-      <link>https://statkwon.github.io/statistics/bayesian_statistics/2/</link>
-      <pubDate>Wed, 10 Feb 2021 16:25:47 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/statistics/bayesian_statistics/2/</guid>
-      <description>2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution $Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다. 이때</description>
-    </item>
-    
-    <item>
-      <title>3. Normal Model</title>
-      <link>https://statkwon.github.io/statistics/bayesian_statistics/3/</link>
-      <pubDate>Thu, 11 Feb 2021 23:47:49 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/statistics/bayesian_statistics/3/</guid>
-      <description>3.1. Inference for the Mean, Conditional on the Variance 3.1.1. Posterior Inference Sampling Model: $Y_1, \ldots, Y_n|\theta, \sigma^2 \sim N(\theta, \sigma^2)$ Prior Distribution: $\theta|\sigma^2 \sim N(\mu_0, \tau_0^2)$ $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\ &amp;amp;\propto \exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}}\times\exp{\left\{-\dfrac{(\theta-\mu_0)^2}{2\tau_0^2}\right\}} \\ &amp;amp;\propto \exp{\left[-\dfrac{1}{2}\left\{\left(\dfrac{1}{\tau_0^2}+\dfrac{n}{\sigma^2}\right)\theta^2+2\left(\dfrac{\mu_0}{\tau_0^2}+\dfrac{\sum y_i}{\sigma^2}\right)\theta\right\}\right]} \\ &amp;amp;\propto \exp{\left\{-\dfrac{1}{2}(a\theta^2+2b\theta)\right\}} \\ &amp;amp;=\exp{\left\{-\dfrac{1}{2}a\left(\theta^2-\dfrac{2b}{a}\theta+\dfrac{b^2}{a^2}\right)+\dfrac{b^2}{2a}\right\}} \\ &amp;amp;\propto \exp{\left\{-\dfrac{1}{2}a\left(\theta-\dfrac{b}{a}\right)^2\right\}} \\ &amp;amp;=\exp{\left\{-\dfrac{1}{2}\left(\dfrac{\theta-b/a}{1/\sqrt{a}}\right)^2\right\}} \sim N\left(\dfrac{b}{a}, \dfrac{1}{a}\right)=N(\mu_n, \tau_n^2) \end{aligned}$ 3.1.2. Parameter Update $\mu_0\rightarrow\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0+\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}+\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0+n\bar{y}}{\kappa_0+n}=\dfrac{\kappa_0\mu_0+n\bar{y}}{\kappa_n}$ Posterior Mean $\m</description>
-    </item>
-    
   </channel>
 </rss>
