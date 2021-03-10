@@ -276,7 +276,7 @@ epl2<span style="color:#f92672">.</span>head()</code></pre></div>
 sns<span style="color:#f92672">.</span>scatterplot(x<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;page_views&#39;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;market_value&#39;</span>, data<span style="color:#f92672">=</span>epl)
 ax<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;Page Views &amp; Market Value&#39;</span>)
 plt<span style="color:#f92672">.</span>show()</code></pre></div>
-<img src="/Visualization/fig2.1.png" alt="fig 2.1"></p>
+<img src="./Visualization/fig2.1.png" alt="fig 2.1"></p>
 <p>첫 번째는 산점도이다. Seaborn 역시 matplotlib을 기반으로 하기 때문에, 이전 장에서와 같이 fig, ax = plt.subplots()로 코드를 시작한다. 이후 sns.scatterplot이라는 명령어를 사용하여 산점도를 그릴 수 있다. x와 y에 각각의 변수를 입력하고, data에는 출처가 되는 데이터를 입력하면 된다. ax.set_title 등 matplotlib에서 사용하던 옵션들을 전부 적용 가능하다.</p>
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py3" data-lang="py3">fig, ax <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots()
 sns<span style="color:#f92672">.</span>scatterplot(x<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;page_views&#39;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;market_value&#39;</span>, data<span style="color:#f92672">=</span>epl, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;r&#39;</span>, marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;+&#39;</span>)
