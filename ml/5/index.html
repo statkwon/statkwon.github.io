@@ -18,25 +18,19 @@
 :root {}
 </style>
 <meta property="og:title" content="5. Resampling Methods" />
-<meta property="og:description" content="Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻기 위해 사용하는 방법이다. 5장에서는 가장 흔히 사용되는 방식인 Cross-Validation과 Bootstrap에 대한 내용을 다룬다.
-5.1. Cross-Validation 가지고 있는 Training Data의 크기가 작아 Test Error Rate를 직접적으로 추정하기 어려운 경우, Training Data의 일부를 홀드아웃하여 Test $\text{MSE}$를 추정하는 방법에 대해 알아보도록 하자.
-5.1.1. The Validation Set Approach Validation Set Approach는 데이터를 Trainint Set과 Validation Set, 동일한 크기의 두 부분으로 나누어 활용하는 방식이다." />
+<meta property="og:description" content="Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://statkwon.github.io/ml/5/" />
 <meta property="article:published_time" content="2021-02-10T16:18:21+09:00" />
 <meta property="article:modified_time" content="2021-02-10T16:18:21+09:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="5. Resampling Methods"/>
-<meta name="twitter:description" content="Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻기 위해 사용하는 방법이다. 5장에서는 가장 흔히 사용되는 방식인 Cross-Validation과 Bootstrap에 대한 내용을 다룬다.
-5.1. Cross-Validation 가지고 있는 Training Data의 크기가 작아 Test Error Rate를 직접적으로 추정하기 어려운 경우, Training Data의 일부를 홀드아웃하여 Test $\text{MSE}$를 추정하는 방법에 대해 알아보도록 하자.
-5.1.1. The Validation Set Approach Validation Set Approach는 데이터를 Trainint Set과 Validation Set, 동일한 크기의 두 부분으로 나누어 활용하는 방식이다."/>
+<meta name="twitter:description" content="Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻"/>
 <meta itemprop="name" content="5. Resampling Methods">
-<meta itemprop="description" content="Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻기 위해 사용하는 방법이다. 5장에서는 가장 흔히 사용되는 방식인 Cross-Validation과 Bootstrap에 대한 내용을 다룬다.
-5.1. Cross-Validation 가지고 있는 Training Data의 크기가 작아 Test Error Rate를 직접적으로 추정하기 어려운 경우, Training Data의 일부를 홀드아웃하여 Test $\text{MSE}$를 추정하는 방법에 대해 알아보도록 하자.
-5.1.1. The Validation Set Approach Validation Set Approach는 데이터를 Trainint Set과 Validation Set, 동일한 크기의 두 부분으로 나누어 활용하는 방식이다.">
+<meta itemprop="description" content="Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻">
 <meta itemprop="datePublished" content="2021-02-10T16:18:21+09:00" />
 <meta itemprop="dateModified" content="2021-02-10T16:18:21+09:00" />
-<meta itemprop="wordCount" content="542">
+<meta itemprop="wordCount" content="1911">
 
 
 

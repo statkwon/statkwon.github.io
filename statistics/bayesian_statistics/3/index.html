@@ -18,49 +18,19 @@
 :root {}
 </style>
 <meta property="og:title" content="3. Normal Model" />
-<meta property="og:description" content="3.1. Inference for the Mean, Conditional on the Variance 3.1.1. Posterior Inference Sampling Model: $Y_1, \ldots, Y_n|\theta, \sigma^2 \sim N(\theta, \sigma^2)$
-Prior Distribution: $\theta|\sigma^2 \sim N(\mu_0, \tau_0^2)$
-$\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\
-&amp;\propto \exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}}\times\exp{\left\{-\dfrac{(\theta-\mu_0)^2}{2\tau_0^2}\right\}} \\
-&amp;\propto \exp{\left[-\dfrac{1}{2}\left\{\left(\dfrac{1}{\tau_0^2}&#43;\dfrac{n}{\sigma^2}\right)\theta^2&#43;2\left(\dfrac{\mu_0}{\tau_0^2}&#43;\dfrac{\sum y_i}{\sigma^2}\right)\theta\right\}\right]} \\
-&amp;\propto \exp{\left\{-\dfrac{1}{2}(a\theta^2&#43;2b\theta)\right\}} \\
-&amp;=\exp{\left\{-\dfrac{1}{2}a\left(\theta^2-\dfrac{2b}{a}\theta&#43;\dfrac{b^2}{a^2}\right)&#43;\dfrac{b^2}{2a}\right\}} \\
-&amp;\propto \exp{\left\{-\dfrac{1}{2}a\left(\theta-\dfrac{b}{a}\right)^2\right\}} \\
-&amp;=\exp{\left\{-\dfrac{1}{2}\left(\dfrac{\theta-b/a}{1/\sqrt{a}}\right)^2\right\}} \sim N\left(\dfrac{b}{a}, \dfrac{1}{a}\right)=N(\mu_n, \tau_n^2) \end{aligned}$
-3.1.2. Parameter Update $\mu_0\rightarrow\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0&#43;\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}&#43;\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_0&#43;n}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_n}$
-Posterior Mean $\mu_n$은 Prior Mean과 Sample Mean의 가중 평균이다." />
+<meta property="og:description" content="3.1. Inference for the Mean, Conditional on the Variance 3.1.1. Posterior Inference Sampling Model: $Y_1, \ldots, Y_n|\theta, \sigma^2 \sim N(\theta, \sigma^2)$ Prior Distribution: $\theta|\sigma^2 \sim N(\mu_0, \tau_0^2)$ $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\ &amp;\propto \exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}}\times\exp{\left\{-\dfrac{(\theta-\mu_0)^2}{2\tau_0^2}\right\}} \\ &amp;\propto \exp{\left[-\dfrac{1}{2}\left\{\left(\dfrac{1}{\tau_0^2}&#43;\dfrac{n}{\sigma^2}\right)\theta^2&#43;2\left(\dfrac{\mu_0}{\tau_0^2}&#43;\dfrac{\sum y_i}{\sigma^2}\right)\theta\right\}\right]} \\ &amp;\propto \exp{\left\{-\dfrac{1}{2}(a\theta^2&#43;2b\theta)\right\}} \\ &amp;=\exp{\left\{-\dfrac{1}{2}a\left(\theta^2-\dfrac{2b}{a}\theta&#43;\dfrac{b^2}{a^2}\right)&#43;\dfrac{b^2}{2a}\right\}} \\ &amp;\propto \exp{\left\{-\dfrac{1}{2}a\left(\theta-\dfrac{b}{a}\right)^2\right\}} \\ &amp;=\exp{\left\{-\dfrac{1}{2}\left(\dfrac{\theta-b/a}{1/\sqrt{a}}\right)^2\right\}} \sim N\left(\dfrac{b}{a}, \dfrac{1}{a}\right)=N(\mu_n, \tau_n^2) \end{aligned}$ 3.1.2. Parameter Update $\mu_0\rightarrow\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0&#43;\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}&#43;\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_0&#43;n}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_n}$ Posterior Mean $\m" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://statkwon.github.io/statistics/bayesian_statistics/3/" />
 <meta property="article:published_time" content="2021-02-11T23:47:49+09:00" />
 <meta property="article:modified_time" content="2021-02-11T23:47:49+09:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="3. Normal Model"/>
-<meta name="twitter:description" content="3.1. Inference for the Mean, Conditional on the Variance 3.1.1. Posterior Inference Sampling Model: $Y_1, \ldots, Y_n|\theta, \sigma^2 \sim N(\theta, \sigma^2)$
-Prior Distribution: $\theta|\sigma^2 \sim N(\mu_0, \tau_0^2)$
-$\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\
-&amp;\propto \exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}}\times\exp{\left\{-\dfrac{(\theta-\mu_0)^2}{2\tau_0^2}\right\}} \\
-&amp;\propto \exp{\left[-\dfrac{1}{2}\left\{\left(\dfrac{1}{\tau_0^2}&#43;\dfrac{n}{\sigma^2}\right)\theta^2&#43;2\left(\dfrac{\mu_0}{\tau_0^2}&#43;\dfrac{\sum y_i}{\sigma^2}\right)\theta\right\}\right]} \\
-&amp;\propto \exp{\left\{-\dfrac{1}{2}(a\theta^2&#43;2b\theta)\right\}} \\
-&amp;=\exp{\left\{-\dfrac{1}{2}a\left(\theta^2-\dfrac{2b}{a}\theta&#43;\dfrac{b^2}{a^2}\right)&#43;\dfrac{b^2}{2a}\right\}} \\
-&amp;\propto \exp{\left\{-\dfrac{1}{2}a\left(\theta-\dfrac{b}{a}\right)^2\right\}} \\
-&amp;=\exp{\left\{-\dfrac{1}{2}\left(\dfrac{\theta-b/a}{1/\sqrt{a}}\right)^2\right\}} \sim N\left(\dfrac{b}{a}, \dfrac{1}{a}\right)=N(\mu_n, \tau_n^2) \end{aligned}$
-3.1.2. Parameter Update $\mu_0\rightarrow\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0&#43;\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}&#43;\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_0&#43;n}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_n}$
-Posterior Mean $\mu_n$은 Prior Mean과 Sample Mean의 가중 평균이다."/>
+<meta name="twitter:description" content="3.1. Inference for the Mean, Conditional on the Variance 3.1.1. Posterior Inference Sampling Model: $Y_1, \ldots, Y_n|\theta, \sigma^2 \sim N(\theta, \sigma^2)$ Prior Distribution: $\theta|\sigma^2 \sim N(\mu_0, \tau_0^2)$ $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\ &amp;\propto \exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}}\times\exp{\left\{-\dfrac{(\theta-\mu_0)^2}{2\tau_0^2}\right\}} \\ &amp;\propto \exp{\left[-\dfrac{1}{2}\left\{\left(\dfrac{1}{\tau_0^2}&#43;\dfrac{n}{\sigma^2}\right)\theta^2&#43;2\left(\dfrac{\mu_0}{\tau_0^2}&#43;\dfrac{\sum y_i}{\sigma^2}\right)\theta\right\}\right]} \\ &amp;\propto \exp{\left\{-\dfrac{1}{2}(a\theta^2&#43;2b\theta)\right\}} \\ &amp;=\exp{\left\{-\dfrac{1}{2}a\left(\theta^2-\dfrac{2b}{a}\theta&#43;\dfrac{b^2}{a^2}\right)&#43;\dfrac{b^2}{2a}\right\}} \\ &amp;\propto \exp{\left\{-\dfrac{1}{2}a\left(\theta-\dfrac{b}{a}\right)^2\right\}} \\ &amp;=\exp{\left\{-\dfrac{1}{2}\left(\dfrac{\theta-b/a}{1/\sqrt{a}}\right)^2\right\}} \sim N\left(\dfrac{b}{a}, \dfrac{1}{a}\right)=N(\mu_n, \tau_n^2) \end{aligned}$ 3.1.2. Parameter Update $\mu_0\rightarrow\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0&#43;\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}&#43;\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_0&#43;n}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_n}$ Posterior Mean $\m"/>
 <meta itemprop="name" content="3. Normal Model">
-<meta itemprop="description" content="3.1. Inference for the Mean, Conditional on the Variance 3.1.1. Posterior Inference Sampling Model: $Y_1, \ldots, Y_n|\theta, \sigma^2 \sim N(\theta, \sigma^2)$
-Prior Distribution: $\theta|\sigma^2 \sim N(\mu_0, \tau_0^2)$
-$\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\
-&amp;\propto \exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}}\times\exp{\left\{-\dfrac{(\theta-\mu_0)^2}{2\tau_0^2}\right\}} \\
-&amp;\propto \exp{\left[-\dfrac{1}{2}\left\{\left(\dfrac{1}{\tau_0^2}&#43;\dfrac{n}{\sigma^2}\right)\theta^2&#43;2\left(\dfrac{\mu_0}{\tau_0^2}&#43;\dfrac{\sum y_i}{\sigma^2}\right)\theta\right\}\right]} \\
-&amp;\propto \exp{\left\{-\dfrac{1}{2}(a\theta^2&#43;2b\theta)\right\}} \\
-&amp;=\exp{\left\{-\dfrac{1}{2}a\left(\theta^2-\dfrac{2b}{a}\theta&#43;\dfrac{b^2}{a^2}\right)&#43;\dfrac{b^2}{2a}\right\}} \\
-&amp;\propto \exp{\left\{-\dfrac{1}{2}a\left(\theta-\dfrac{b}{a}\right)^2\right\}} \\
-&amp;=\exp{\left\{-\dfrac{1}{2}\left(\dfrac{\theta-b/a}{1/\sqrt{a}}\right)^2\right\}} \sim N\left(\dfrac{b}{a}, \dfrac{1}{a}\right)=N(\mu_n, \tau_n^2) \end{aligned}$
-3.1.2. Parameter Update $\mu_0\rightarrow\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0&#43;\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}&#43;\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_0&#43;n}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_n}$
-Posterior Mean $\mu_n$은 Prior Mean과 Sample Mean의 가중 평균이다.">
+<meta itemprop="description" content="3.1. Inference for the Mean, Conditional on the Variance 3.1.1. Posterior Inference Sampling Model: $Y_1, \ldots, Y_n|\theta, \sigma^2 \sim N(\theta, \sigma^2)$ Prior Distribution: $\theta|\sigma^2 \sim N(\mu_0, \tau_0^2)$ $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\ &amp;\propto \exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}}\times\exp{\left\{-\dfrac{(\theta-\mu_0)^2}{2\tau_0^2}\right\}} \\ &amp;\propto \exp{\left[-\dfrac{1}{2}\left\{\left(\dfrac{1}{\tau_0^2}&#43;\dfrac{n}{\sigma^2}\right)\theta^2&#43;2\left(\dfrac{\mu_0}{\tau_0^2}&#43;\dfrac{\sum y_i}{\sigma^2}\right)\theta\right\}\right]} \\ &amp;\propto \exp{\left\{-\dfrac{1}{2}(a\theta^2&#43;2b\theta)\right\}} \\ &amp;=\exp{\left\{-\dfrac{1}{2}a\left(\theta^2-\dfrac{2b}{a}\theta&#43;\dfrac{b^2}{a^2}\right)&#43;\dfrac{b^2}{2a}\right\}} \\ &amp;\propto \exp{\left\{-\dfrac{1}{2}a\left(\theta-\dfrac{b}{a}\right)^2\right\}} \\ &amp;=\exp{\left\{-\dfrac{1}{2}\left(\dfrac{\theta-b/a}{1/\sqrt{a}}\right)^2\right\}} \sim N\left(\dfrac{b}{a}, \dfrac{1}{a}\right)=N(\mu_n, \tau_n^2) \end{aligned}$ 3.1.2. Parameter Update $\mu_0\rightarrow\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0&#43;\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}&#43;\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_0&#43;n}=\dfrac{\kappa_0\mu_0&#43;n\bar{y}}{\kappa_n}$ Posterior Mean $\m">
 <meta itemprop="datePublished" content="2021-02-11T23:47:49+09:00" />
 <meta itemprop="dateModified" content="2021-02-11T23:47:49+09:00" />
-<meta itemprop="wordCount" content="373">
+<meta itemprop="wordCount" content="777">
 
 
 

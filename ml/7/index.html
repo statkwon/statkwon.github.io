@@ -18,25 +18,19 @@
 :root {}
 </style>
 <meta property="og:title" content="7. Moving Beyond Linearity" />
-<meta property="og:description" content="지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다. 선형 모형의 경우 해석이 용이하다는 장점을 가지고 있지만, 모형의 선형성에 대한 가정이 전제되기 때문에 예측 정확도는 다소 떨어지는 것이 사실이다. 이러한 단점을 보완하기 위해 7장에서는 선형성 가정을 완화하면서도 해석력을 유지할 수 있는 방법들에 대해서 다루고 있다.
-7.3. Basis Functions $$y_i=\beta_0&#43;\beta_1b_1(x_i)&#43;\beta_2b_2(x_i)&#43;\beta_3b_3(x_i)&#43;&hellip;&#43;\beta_Kb_K(x_i)&#43;\epsilon_i$$
-Basis Functions를 먼저 다루는 것은 아래 나오는 Polynomial Regression과 Step Functions가 Basis Function Approach의 특수한 경우에 해당하기 때문이다." />
+<meta property="og:description" content="지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://statkwon.github.io/ml/7/" />
 <meta property="article:published_time" content="2021-02-10T16:20:35+09:00" />
 <meta property="article:modified_time" content="2021-02-10T16:20:35+09:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="7. Moving Beyond Linearity"/>
-<meta name="twitter:description" content="지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다. 선형 모형의 경우 해석이 용이하다는 장점을 가지고 있지만, 모형의 선형성에 대한 가정이 전제되기 때문에 예측 정확도는 다소 떨어지는 것이 사실이다. 이러한 단점을 보완하기 위해 7장에서는 선형성 가정을 완화하면서도 해석력을 유지할 수 있는 방법들에 대해서 다루고 있다.
-7.3. Basis Functions $$y_i=\beta_0&#43;\beta_1b_1(x_i)&#43;\beta_2b_2(x_i)&#43;\beta_3b_3(x_i)&#43;&hellip;&#43;\beta_Kb_K(x_i)&#43;\epsilon_i$$
-Basis Functions를 먼저 다루는 것은 아래 나오는 Polynomial Regression과 Step Functions가 Basis Function Approach의 특수한 경우에 해당하기 때문이다."/>
+<meta name="twitter:description" content="지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다."/>
 <meta itemprop="name" content="7. Moving Beyond Linearity">
-<meta itemprop="description" content="지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다. 선형 모형의 경우 해석이 용이하다는 장점을 가지고 있지만, 모형의 선형성에 대한 가정이 전제되기 때문에 예측 정확도는 다소 떨어지는 것이 사실이다. 이러한 단점을 보완하기 위해 7장에서는 선형성 가정을 완화하면서도 해석력을 유지할 수 있는 방법들에 대해서 다루고 있다.
-7.3. Basis Functions $$y_i=\beta_0&#43;\beta_1b_1(x_i)&#43;\beta_2b_2(x_i)&#43;\beta_3b_3(x_i)&#43;&hellip;&#43;\beta_Kb_K(x_i)&#43;\epsilon_i$$
-Basis Functions를 먼저 다루는 것은 아래 나오는 Polynomial Regression과 Step Functions가 Basis Function Approach의 특수한 경우에 해당하기 때문이다.">
+<meta itemprop="description" content="지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다.">
 <meta itemprop="datePublished" content="2021-02-10T16:20:35+09:00" />
 <meta itemprop="dateModified" content="2021-02-10T16:20:35+09:00" />
-<meta itemprop="wordCount" content="725">
+<meta itemprop="wordCount" content="2343">
 
 
 

@@ -18,34 +18,19 @@
 :root {}
 </style>
 <meta property="og:title" content="2. One-parameter models" />
-<meta property="og:description" content="2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution
-$Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다.
-이때 임의의 $\theta_a$와 $\theta_b$에 대한 Relative Probability를 계산하면
-$ \begin{align} \dfrac{p(\theta_a | y_1, \ldots, y_n)}{p(\theta_b | y_1, \ldots, y_n)}&amp;=\dfrac{\theta_a^{\sum y_i}(1-\theta_a)^{n-\sum y_i} \times p(\theta_a)/p(y_1, \ldots, y_n)}{\theta_b^{\sum y_i}(1-\theta_b)^{n-\sum y_i} \times p(\theta_b)/p(y_1, \ldots, y_n)} \\
-&amp;=\left(\dfrac{\theta_a}{\theta_b}\right)^{\sum y_i}\left(\dfrac{1-\theta_a}{1-\theta_b}\right)^{n-\sum y_i}\dfrac{p(\theta_a)}{p(\theta_b)} \end{align}$
-가 된다. 여기서 $\theta_b$에 대한 $\theta_a$의 확률이 $\sum_{i=1}^n y_i$에 의해 $y_1, \ldots, y_n$에만 의존한다는 것을 알 수 있다." />
+<meta property="og:description" content="2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution $Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다. 이때" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://statkwon.github.io/statistics/bayesian_statistics/2/" />
 <meta property="article:published_time" content="2021-02-10T16:25:47+09:00" />
 <meta property="article:modified_time" content="2021-02-10T16:25:47+09:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="2. One-parameter models"/>
-<meta name="twitter:description" content="2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution
-$Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다.
-이때 임의의 $\theta_a$와 $\theta_b$에 대한 Relative Probability를 계산하면
-$ \begin{align} \dfrac{p(\theta_a | y_1, \ldots, y_n)}{p(\theta_b | y_1, \ldots, y_n)}&amp;=\dfrac{\theta_a^{\sum y_i}(1-\theta_a)^{n-\sum y_i} \times p(\theta_a)/p(y_1, \ldots, y_n)}{\theta_b^{\sum y_i}(1-\theta_b)^{n-\sum y_i} \times p(\theta_b)/p(y_1, \ldots, y_n)} \\
-&amp;=\left(\dfrac{\theta_a}{\theta_b}\right)^{\sum y_i}\left(\dfrac{1-\theta_a}{1-\theta_b}\right)^{n-\sum y_i}\dfrac{p(\theta_a)}{p(\theta_b)} \end{align}$
-가 된다. 여기서 $\theta_b$에 대한 $\theta_a$의 확률이 $\sum_{i=1}^n y_i$에 의해 $y_1, \ldots, y_n$에만 의존한다는 것을 알 수 있다."/>
+<meta name="twitter:description" content="2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution $Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다. 이때"/>
 <meta itemprop="name" content="2. One-parameter models">
-<meta itemprop="description" content="2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution
-$Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다.
-이때 임의의 $\theta_a$와 $\theta_b$에 대한 Relative Probability를 계산하면
-$ \begin{align} \dfrac{p(\theta_a | y_1, \ldots, y_n)}{p(\theta_b | y_1, \ldots, y_n)}&amp;=\dfrac{\theta_a^{\sum y_i}(1-\theta_a)^{n-\sum y_i} \times p(\theta_a)/p(y_1, \ldots, y_n)}{\theta_b^{\sum y_i}(1-\theta_b)^{n-\sum y_i} \times p(\theta_b)/p(y_1, \ldots, y_n)} \\
-&amp;=\left(\dfrac{\theta_a}{\theta_b}\right)^{\sum y_i}\left(\dfrac{1-\theta_a}{1-\theta_b}\right)^{n-\sum y_i}\dfrac{p(\theta_a)}{p(\theta_b)} \end{align}$
-가 된다. 여기서 $\theta_b$에 대한 $\theta_a$의 확률이 $\sum_{i=1}^n y_i$에 의해 $y_1, \ldots, y_n$에만 의존한다는 것을 알 수 있다.">
+<meta itemprop="description" content="2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution $Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다. 이때">
 <meta itemprop="datePublished" content="2021-02-10T16:25:47+09:00" />
 <meta itemprop="dateModified" content="2021-02-10T16:25:47+09:00" />
-<meta itemprop="wordCount" content="1049">
+<meta itemprop="wordCount" content="2961">
 
 
 
