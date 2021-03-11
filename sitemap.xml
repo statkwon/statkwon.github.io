@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://statkwon.github.io/ml/linear-regression/</loc>
+    <lastmod>2021-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://statkwon.github.io/visualization/r/</loc>
     <lastmod>2021-02-12T00:00:14+09:00</lastmod>
   </url>
