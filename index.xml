@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Gauss-Markov Theorem</title>
+      <link>https://statkwon.github.io/ml/linear-regression/gauss-markov-theorem/</link>
+      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/linear-regression/gauss-markov-theorem/</guid>
+      <description>Gauss-Markov Theorem은 Least Square Estimation이 가장 좋은 추정량임을 증명하는 이론이다. 이를 BLUE(Best Linear Unbiased Estimator)라고 표현하기도 한다. 우선 우리는</description>
+    </item>
+    
+    <item>
       <title>1. Matplotlib</title>
       <link>https://statkwon.github.io/visualization/python/1/</link>
       <pubDate>Thu, 11 Feb 2021 17:27:37 +0900</pubDate>
