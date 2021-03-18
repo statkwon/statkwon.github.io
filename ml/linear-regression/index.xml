@@ -20,5 +20,14 @@
       <description>Gauss-Markov Theorem은 Least Square Estimation이 가장 좋은 추정량임을 증명하는 이론이다. 이를 BLUE(Best Linear Unbiased Estimator)라고 표현하기도 한다. 우선 우리는</description>
     </item>
     
+    <item>
+      <title>QR-Decomposition</title>
+      <link>https://statkwon.github.io/ml/linear-regression/qr-decomposition/</link>
+      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/linear-regression/qr-decomposition/</guid>
+      <description>1. Gram-Schmidt Process 모든 $n$차원 공간의 영공간이 아닌 Subspace는 Orthonormal Basis를 갖는다. Gram-Schmidt Process는 $n$차원 공간의 영공간이 아닌 Subspace</description>
+    </item>
+    
   </channel>
 </rss>

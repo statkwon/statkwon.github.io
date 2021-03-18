@@ -32,7 +32,7 @@
     <item>
       <title>4. Classification</title>
       <link>https://statkwon.github.io/ml/3/</link>
-      <pubDate>Wed, 10 Feb 2021 16:17:17 +0900</pubDate>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>https://statkwon.github.io/ml/3/</guid>
       <description>4장에서는 반응변수가 범주형인 경우, 즉, Classification의 문제를 다룬다. 4.2. Why Not Linear Regression? 선형 회귀 모형은 반응변수가 범주형인 경우 사용이 적합하</description>

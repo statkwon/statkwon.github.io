@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Gauss-Markov Theorem은 Least Square Estimation이 가장 좋은 추정량임을 증명하는 이론이다. 이를 BLUE(Best Linear Unbiased Estimator)라고 표현하기도 한다. 우선 우리는">
 <meta itemprop="datePublished" content="2021-03-10T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-03-10T00:00:00+00:00" />
-<meta itemprop="wordCount" content="494">
+<meta itemprop="wordCount" content="786">
 
 
 
@@ -85,6 +85,16 @@
 &amp;=\text{Var}(\hat{\beta})+\sigma^2DD^T
 \end{aligned}$</p>
 <p>$DX=0$이기 때문에 위와 같은 식이 성립하고, $\text{Var}(\hat{\beta})≤\text{Var}(\tilde{\beta})$임을 확인할 수 있다. 즉, $\hat{\beta}$은 $\beta$의 모든 Linear Unbiased Estimator 중 분산이 가장 작은 추정량이다.</p>
+<hr>
+<p>그렇지만 우리는 LSE가 사실은 최적의 추정량이 아닐 수도 있다는 점에 대해 생각해볼 필요가 있다. Gauss-Markov Theorem에서는 좋은 추정량의 조건으로 Unbiased Estimator를 전제로 하고 있다. 즉 Bias가 $0$인 후보들만 고려한 것이다.</p>
+<p>어떤 추정량 $\tilde{\theta}$의 $\text{MSE}$를 아래와 같이 분해할 수 있다.</p>
+<p>$\begin{aligned}
+\text{MSE}&amp;=\text{E}[\tilde{\theta}-\theta]^2 \\<br>
+&amp;=\text{E}\left[\tilde{\theta}-\text{E}[\tilde{\theta}]+\text{E}[\tilde{\theta}]-\theta\right]^2 \\<br>
+&amp;=\text{E}\left[\tilde{\theta}-\text{E}[\tilde{\theta}]\right]^2+\text{E}\left[\text{E}[\tilde{\theta}]-\theta\right]^2 \\<br>
+&amp;=\text{Var}(\tilde{\theta})^2+\left\{\text{E}[\tilde{\theta}]-\theta\right\}^2
+\end{aligned}$</p>
+<p>$\text{MSE}$가 Variance와 Bias의 결합으로 이루어져 있는 것을 확인할 수 있다. 따라서 Bias가 $0$이 된다고 무조건 좋은 추정량이라고 하기는 어렵다. Bias가 어느 정도 발생하더라도 Variance를 큰 폭으로 감소시킬 수 있다면 그러한 추정량이 더 좋은 추정량일 수 있다.</p>
 <div class="edit-meta">
 Last updated on 10 Mar 2021
 
@@ -92,7 +102,7 @@ Last updated on 10 Mar 2021
 <br>
 Published on 10 Mar 2021
 <br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Linear%20Regression/Gauss-Markov%20Theorem.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/linear-regression/" title="Linear Regression"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Linear Regression</a>
-<a class="nav nav-next" href="https://statkwon.github.io/ml/1/" title="2. Statistical Learning">Next - 2. Statistical Learning <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="nav nav-next" href="https://statkwon.github.io/ml/linear-regression/qr-decomposition/" title="QR-Decomposition">Next - QR-Decomposition <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -129,14 +139,7 @@ Published on 10 Mar 2021
 <ul>
 <li class=""><a href="https://statkwon.github.io/">Home</a></li>
 
-<li class=" has-sub-menu"><a href="https://statkwon.github.io/statistics/">Statistics<span class="mark closed">+</span></a>
-  
-<ul class="sub-menu">
-
-<li class=""><a href="https://statkwon.github.io/statistics/bayesian_statistics/">Bayesian Statistics</a>
-  
-</li>
-</ul>
+<li class=""><a href="https://statkwon.github.io/statistics/">Statistics</a>
   
 </li>
 
@@ -148,6 +151,7 @@ Published on 10 Mar 2021
   
 <ul class="sub-menu">
 <li class="active"><a href="https://statkwon.github.io/ml/linear-regression/gauss-markov-theorem/">Gauss-Markov Theorem</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/qr-decomposition/">QR-Decomposition</a></li>
 </ul>
   
 </li>

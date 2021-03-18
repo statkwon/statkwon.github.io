@@ -48,11 +48,11 @@
 </div>
 <div class="content-container">
 <main><h1>Linear Regression</h1><p>Linear Regression은 Input과 Output 사이의 Linear Relationship을 가정한다.</p>
-<p>$$y=X\beta+\epsilon, \quad \epsilon_i \sim (0, \sigma^2)$$</p>
+<p>$$y=X\beta+\epsilon, \quad \epsilon \sim (0, \sigma^2I)$$</p>
 <p>$$Y=\begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix} \qquad X=\begin{bmatrix} 1 &amp; x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1p} \\ 1 &amp; x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2p} \\ \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 1 &amp; x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{np} \end{bmatrix} \qquad \beta=\begin{bmatrix} \beta_0 \\ \beta_1 \\ \vdots \\ \beta_p \end{bmatrix} \qquad \epsilon=\begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_n \end{bmatrix}$$</p>
 <p>회귀 모델의 Parameter를 추정하는 방법 중 가장 보편적인 것은 Least Square Estimation이다. LSE는 Residual Sum of Squares인 $(y-X\beta)^T(y-X\beta)$를 최소화하는 값을 $\beta$의 추정치로 사용하는 방식이다.</p>
 <p>$\begin{aligned}
-\dfrac{\partial\text{RSS}}{\partial\beta}&amp;=\dfrac{\partial (y-X\beta)^T(Y-X\beta)}{\partial\beta} \\<br>
+\dfrac{\partial\text{SSE}}{\partial\beta}&amp;=\dfrac{\partial (y-X\beta)^T(Y-X\beta)}{\partial\beta} \\<br>
 &amp;=\dfrac{\partial (y^T-\beta^TX^T)(y-X\beta)}{\partial\beta} \\<br>
 &amp;=\dfrac{\partial (y^Ty-\beta^TX^Ty-y^TX\beta+\beta^TX^TX\beta)}{\partial\beta} \\<br>
 &amp;=-2X^Ty+2X^TX\beta
@@ -107,20 +107,28 @@ Published on 10 Mar 2021
 <ul>
 <li class=""><a href="https://statkwon.github.io/">Home</a></li>
 
-<li class=" has-sub-menu"><a href="https://statkwon.github.io/statistics/">Statistics<span class="mark closed">+</span></a>
-  
-<ul class="sub-menu">
-
-<li class=""><a href="https://statkwon.github.io/statistics/bayesian_statistics/">Bayesian Statistics</a>
-  
-</li>
-</ul>
+<li class=""><a href="https://statkwon.github.io/statistics/">Statistics</a>
   
 </li>
 
 <li class="parent has-sub-menu"><a href="https://statkwon.github.io/ml/">ML<span class="mark opened">-</span></a>
   
 <ul class="sub-menu">
+
+<li class="parent active has-sub-menu"><a href="https://statkwon.github.io/ml/linear-regression/">Linear Regression<span class="mark opened">-</span></a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/gauss-markov-theorem/">Gauss-Markov Theorem</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/qr-decomposition/">QR-Decomposition</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="https://statkwon.github.io/ml/1/">2. Statistical Learning</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/2/">3. Linear Regression</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/3/">4. Classification</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/4/">5. Resampling Methods</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/5/">6. Linear Model Selection and Regularization</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/6/">7. Moving Beyond Linearity</a></li>
 </ul>
   
 </li>

@@ -12,15 +12,6 @@
     
     
     <item>
-      <title>Gauss-Markov Theorem</title>
-      <link>https://statkwon.github.io/ml/linear-regression/gauss-markov-theorem/</link>
-      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/linear-regression/gauss-markov-theorem/</guid>
-      <description>Gauss-Markov Theorem은 Least Square Estimation이 가장 좋은 추정량임을 증명하는 이론이다. 이를 BLUE(Best Linear Unbiased Estimator)라고 표현하기도 한다. 우선 우리는</description>
-    </item>
-    
-    <item>
       <title>1. Matplotlib</title>
       <link>https://statkwon.github.io/visualization/python/1/</link>
       <pubDate>Thu, 11 Feb 2021 17:27:37 +0900</pubDate>
@@ -45,6 +36,15 @@
       
       <guid>https://statkwon.github.io/projects/bigcon/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Gauss-Markov Theorem</title>
+      <link>https://statkwon.github.io/ml/linear-regression/gauss-markov-theorem/</link>
+      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/linear-regression/gauss-markov-theorem/</guid>
+      <description>Gauss-Markov Theorem은 Least Square Estimation이 가장 좋은 추정량임을 증명하는 이론이다. 이를 BLUE(Best Linear Unbiased Estimator)라고 표현하기도 한다. 우선 우리는</description>
     </item>
     
     <item>
@@ -75,6 +75,15 @@
     </item>
     
     <item>
+      <title>QR-Decomposition</title>
+      <link>https://statkwon.github.io/ml/linear-regression/qr-decomposition/</link>
+      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/linear-regression/qr-decomposition/</guid>
+      <description>1. Gram-Schmidt Process 모든 $n$차원 공간의 영공간이 아닌 Subspace는 Orthonormal Basis를 갖는다. Gram-Schmidt Process는 $n$차원 공간의 영공간이 아닌 Subspace</description>
+    </item>
+    
+    <item>
       <title>3. Bokeh</title>
       <link>https://statkwon.github.io/visualization/python/3/</link>
       <pubDate>Thu, 11 Feb 2021 17:29:52 +0900</pubDate>
@@ -86,7 +95,7 @@
     <item>
       <title>4. Classification</title>
       <link>https://statkwon.github.io/ml/3/</link>
-      <pubDate>Wed, 10 Feb 2021 16:17:17 +0900</pubDate>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>https://statkwon.github.io/ml/3/</guid>
       <description>4장에서는 반응변수가 범주형인 경우, 즉, Classification의 문제를 다룬다. 4.2. Why Not Linear Regression? 선형 회귀 모형은 반응변수가 범주형인 경우 사용이 적합하</description>
