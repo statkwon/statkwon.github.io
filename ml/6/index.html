@@ -95,13 +95,13 @@
 <p>$$y_i=\beta_0+\beta_1C_1(x_i)+\beta_2C_2(x_i)+&hellip;+\beta_KC_K(x_i)+\epsilon_i$$</p>
 <p>$$C_0(X)+C+1(X)+&hellip;+C_K(X)=1$$</p>
 <p>Piecewise Constant Regression은 $C_j(x_i)=I(c_j≤x_i&lt;c_{j+1})$를 Basis Function으로 사용하는 모형이다. 독립변수의 범위에 따라 구간을 나누고 각 구간마다 특정 상수값으로 모형을 적합한다. 연속형 독립변수를 범주형으로 변환하는 것이라고 할 수 있다. 위 모형식에서 $\beta_0$ 대신 $C_0(x_i)$를 사용해도 상관없다. Piecewise Polynomial Regression의 경우 데이터가 적은 구간의 예측 정확도가 상대적으로 낮기 때문에 각 구간에서 다항식 대신 상수를 사용하여 모형을 적합하는 것이 Piecewise Constant Regression이다. 하지만 독립변수에 Natural Breakpoints가 없는 경우 각 구간의 특성을 반영하지 못할 수 있다는 단점을 가지고 있다.</p>
-<p><img src="/ISLR/FIGURE_7.2.png" alt="FIGURE 7.2"></p>
+<p><img src="/ml/islr_fig7.2.png" alt="ISLR fig 7.2"></p>
 <h2 id="74-regression-splines">7.4. Regression Splines</h2>
 <h3 id="741-piecewise-polynomials">7.4.1. Piecewise Polynomials</h3>
 <p>$$y_i=\begin{cases} \beta_{01}+\beta_{11}x_i+\beta_{21}x_i^2+\beta_{31}x_i^3+\epsilon_i &amp; \text{if } x_i&lt;c \ \beta_{02}+\beta_{12}x_i+\beta_{22}x_i^2+\beta_{32}x_i^3+\epsilon_i &amp; \text{if } x_i≥c \end{cases}$$</p>
 <p>Piecewise Polynomial Regression은 독립변수의 범위에 따라 구간을 나누고 각 구간마다 저차원의 다항식으로 모형을 적합하는 방식이다(Least Square Estimate 사용). 이때 각 구간이 나뉘는 점들을 Knots라고 부른다. 따라서 $K$개의 Knots를 사용하는 경우, $K+1$개의 다항식을 적합하게 된다. 다항식의 차수가 0인 경우 Piecewise Constant Regression과 동일한 결과를 갖는다. 위 모형식은 Knot가 한 개인 경우의 Cubic Spline에 해당한다.</p>
 <h3 id="742-constraints-and-splines">7.4.2. Constraints and Splines</h3>
-<p><img src="/ISLR/FIGURE_7.3.png" alt="FIGURE 7.3"></p>
+<p><img src="/ml/islr_fig7.3.png" alt="ISLR fig 7.3"></p>
 <p>아무런 제약 없이 Piecewise Polynomial Regression을 적합하는 경우 위 그림과 같이 불연속한 점이 발생할 수 있다. 이러한 경우 도함수와 이계도함수에 제약을 가함으로써 Curve가 연속임과 동시에 smooth하게 만들어줄 수 있다.</p>
 <h3 id="743-the-spline-basis-representation">7.4.3. The Spline Basis Representation</h3>
 <p>$$y_i=\beta_0+\beta_1b_1(x_i)+\beta_2b_2(x_i)+&hellip;+\beta_{K+3}b_{k+3}(x_i)+\epsilon_i$$</p>
@@ -133,8 +133,8 @@ Last updated on 10 Feb 2021
 
 <br>
 Published on 10 Feb 2021
-<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/6.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/5/" title="6. Linear Model Selection and Regularization"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 6. Linear Model Selection and Regularization</a>
-<a class="nav nav-next" href="https://statkwon.github.io/visualization/" title="Visualization">Next - Visualization <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/6.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/qr-decomposition/" title="QR-Decomposition"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - QR-Decomposition</a>
+<a class="nav nav-next" href="https://statkwon.github.io/ml/5/" title="6. Linear Model Selection and Regularization">Next - 6. Linear Model Selection and Regularization <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -178,21 +178,17 @@ Published on 10 Feb 2021
 <li class="parent has-sub-menu"><a href="https://statkwon.github.io/ml/">ML<span class="mark opened">-</span></a>
   
 <ul class="sub-menu">
-
-<li class=" has-sub-menu"><a href="https://statkwon.github.io/ml/linear-regression/">Linear Regression<span class="mark closed">+</span></a>
-  
-<ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/linear-regression/gauss-markov-theorem/">Gauss-Markov Theorem</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/linear-regression/qr-decomposition/">QR-Decomposition</a></li>
-</ul>
-  
-</li>
-<li class=""><a href="https://statkwon.github.io/ml/1/">2. Statistical Learning</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/spline/">Splines</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/statistical-decision-theory/">Statistical Decision Theory</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/gauss-markov-theorem/">Gauss-Markov Theorem</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/">Linear Regression</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/qr-decomposition/">QR-Decomposition</a></li>
+<li class="active"><a href="https://statkwon.github.io/ml/6/">7. Moving Beyond Linearity</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/5/">6. Linear Model Selection and Regularization</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/4/">5. Resampling Methods</a></li>
 <li class=""><a href="https://statkwon.github.io/ml/2/">3. Linear Regression</a></li>
 <li class=""><a href="https://statkwon.github.io/ml/3/">4. Classification</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/4/">5. Resampling Methods</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/5/">6. Linear Model Selection and Regularization</a></li>
-<li class="active"><a href="https://statkwon.github.io/ml/6/">7. Moving Beyond Linearity</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/1/">2. Statistical Learning</a></li>
 </ul>
   
 </li>

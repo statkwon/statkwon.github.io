@@ -21,30 +21,12 @@
     </item>
     
     <item>
-      <title>2. Statistical Learning</title>
-      <link>https://statkwon.github.io/ml/1/</link>
-      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/1/</guid>
-      <description>2.1. What is Statistical Learning? 2.1.1. Why Estimate $f$? 우리가 $f$를 추정하는 목적은 예측과 해석을 하기 위함이다. $$\hat{Y}=\hat{f}(X)$$ 1. 예측 $f$의 추정치 $\hat{f}$를 안다면, 우리가 가진 $X_1, X_2, &amp;hellip;, X</description>
-    </item>
-    
-    <item>
       <title>KBO 정규시즌 팀별 승률, 타율 및 방어율(평균자책점) 예측</title>
       <link>https://statkwon.github.io/projects/bigcon/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://statkwon.github.io/projects/bigcon/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>Gauss-Markov Theorem</title>
-      <link>https://statkwon.github.io/ml/linear-regression/gauss-markov-theorem/</link>
-      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/linear-regression/gauss-markov-theorem/</guid>
-      <description>Gauss-Markov Theorem은 Least Square Estimation이 가장 좋은 추정량임을 증명하는 이론이다. 이를 BLUE(Best Linear Unbiased Estimator)라고 표현하기도 한다. 우선 우리는</description>
     </item>
     
     <item>
@@ -57,30 +39,12 @@
     </item>
     
     <item>
-      <title>3. Linear Regression</title>
-      <link>https://statkwon.github.io/ml/2/</link>
-      <pubDate>Wed, 10 Feb 2021 16:15:20 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/2/</guid>
-      <description>3.1. Simple Linear Regression Simple Linear Regression은 변수 간의 선형 관계를 잘 나타내는 최적의 직선 $\beta_0+\beta_1X$를 찾는 작업이다. 직선의 식을 아는 경</description>
-    </item>
-    
-    <item>
       <title>NH투자증권 Y&amp;Z세대 투자자 프로파일링</title>
       <link>https://statkwon.github.io/projects/dacon/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://statkwon.github.io/projects/dacon/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>QR-Decomposition</title>
-      <link>https://statkwon.github.io/ml/linear-regression/qr-decomposition/</link>
-      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/linear-regression/qr-decomposition/</guid>
-      <description>1. Gram-Schmidt Process 모든 $n$차원 공간의 영공간이 아닌 Subspace는 Orthonormal Basis를 갖는다. Gram-Schmidt Process는 $n$차원 공간의 영공간이 아닌 Subspace</description>
     </item>
     
     <item>
@@ -93,30 +57,57 @@
     </item>
     
     <item>
-      <title>4. Classification</title>
-      <link>https://statkwon.github.io/ml/3/</link>
-      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      <title>Splines</title>
+      <link>https://statkwon.github.io/ml/spline/</link>
+      <pubDate>Sat, 10 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://statkwon.github.io/ml/3/</guid>
-      <description>4장에서는 반응변수가 범주형인 경우, 즉, Classification의 문제를 다룬다. 4.2. Why Not Linear Regression? 선형 회귀 모형은 반응변수가 범주형인 경우 사용이 적합하</description>
+      <guid>https://statkwon.github.io/ml/spline/</guid>
+      <description>To move beyond linearity, we will transform $X$ and use linear models in this new space of derived input features.
+$$f(X)=\sum_{m=1}^M\beta_mh_m(X)$$
+1. Piecewise Polynomials Divide the domain of $X$ into contiguous intervals and fit polynomial regression models in each interval.
+Piecewise Constant
+Piecewise Linear
+Piecewise Cubic
+The number of paramters to fit piecewise polynomial is $(M+1)\times(K+1)$, where $M$ is the order and $K$ is the number of knots.
+Piecewise polynomials are erratic at each knots.</description>
     </item>
     
     <item>
-      <title>5. Resampling Methods</title>
-      <link>https://statkwon.github.io/ml/4/</link>
-      <pubDate>Wed, 10 Feb 2021 16:18:21 +0900</pubDate>
+      <title>Statistical Decision Theory</title>
+      <link>https://statkwon.github.io/ml/statistical-decision-theory/</link>
+      <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://statkwon.github.io/ml/4/</guid>
-      <description>Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻</description>
+      <guid>https://statkwon.github.io/ml/statistical-decision-theory/</guid>
+      <description>In our data, there exist both pattern and noise. Thus, to find this pattern from our data, we assume a statistical model as below.
+$$Y=f(X)+\epsilon, \quad \epsilon_i\overset{\text{iid}}{\sim}(0, \sigma^2)$$
+We want to know the probability of $Y$ when $X$ is given. It does not mean to tell the exact value of $Y$ for corresponding $X$. We should not as there exists the error term. However, knowing the true distribution of $Y$ given $X$ is impossible unless we have the total data.</description>
     </item>
     
     <item>
-      <title>6. Linear Model Selection and Regularization</title>
-      <link>https://statkwon.github.io/ml/5/</link>
-      <pubDate>Wed, 10 Feb 2021 16:19:21 +0900</pubDate>
+      <title>Gauss-Markov Theorem</title>
+      <link>https://statkwon.github.io/ml/gauss-markov-theorem/</link>
+      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://statkwon.github.io/ml/5/</guid>
-      <description>선형 모형은 많은 전제조건을 필요로 하지만, 추론 영역에서 갖는 강점으로 인해 실생활의 문제들을 푸는데 있어 비선형 모형에 대해 경쟁력을 가지고 있다. 6장에서는 Method</description>
+      <guid>https://statkwon.github.io/ml/gauss-markov-theorem/</guid>
+      <description>Gauss-Markov Theorem은 Least Square Estimation이 가장 좋은 추정량임을 증명하는 이론이다. 이를 BLUE(Best Linear Unbiased Estimator)라고 표현하기도 한다. 우선 우리는</description>
+    </item>
+    
+    <item>
+      <title>Linear Regression</title>
+      <link>https://statkwon.github.io/ml/linear-regression/</link>
+      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/linear-regression/</guid>
+      <description>Linear Regression은 Input과 Output 사이의 Linear Relationship을 가정한다. $$y=X\beta+\epsilon, \quad \epsilon \sim (0, \sigma^2I)$$ $$Y=\begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix} \qquad X=\begin{bmatrix} 1 &amp;amp; x_{11} &amp;amp; x_{12} &amp;amp; \cdots &amp;amp; x_{1p} \\ 1 &amp;amp;</description>
+    </item>
+    
+    <item>
+      <title>QR-Decomposition</title>
+      <link>https://statkwon.github.io/ml/qr-decomposition/</link>
+      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/qr-decomposition/</guid>
+      <description>1. Gram-Schmidt Process 모든 $n$차원 공간의 영공간이 아닌 Subspace는 Orthonormal Basis를 갖는다. Gram-Schmidt Process는 $n$차원 공간의 영공간이 아닌 Subspace</description>
     </item>
     
     <item>
@@ -129,12 +120,57 @@
     </item>
     
     <item>
+      <title>6. Linear Model Selection and Regularization</title>
+      <link>https://statkwon.github.io/ml/5/</link>
+      <pubDate>Wed, 10 Feb 2021 16:19:21 +0900</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/5/</guid>
+      <description>선형 모형은 많은 전제조건을 필요로 하지만, 추론 영역에서 갖는 강점으로 인해 실생활의 문제들을 푸는데 있어 비선형 모형에 대해 경쟁력을 가지고 있다. 6장에서는 Method</description>
+    </item>
+    
+    <item>
+      <title>5. Resampling Methods</title>
+      <link>https://statkwon.github.io/ml/4/</link>
+      <pubDate>Wed, 10 Feb 2021 16:18:21 +0900</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/4/</guid>
+      <description>Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻</description>
+    </item>
+    
+    <item>
+      <title>3. Linear Regression</title>
+      <link>https://statkwon.github.io/ml/2/</link>
+      <pubDate>Wed, 10 Feb 2021 16:15:20 +0900</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/2/</guid>
+      <description>3.1. Simple Linear Regression Simple Linear Regression은 변수 간의 선형 관계를 잘 나타내는 최적의 직선 $\beta_0+\beta_1X$를 찾는 작업이다. 직선의 식을 아는 경</description>
+    </item>
+    
+    <item>
       <title>About Me</title>
       <link>https://statkwon.github.io/about/</link>
       <pubDate>Wed, 10 Feb 2021 15:32:15 +0900</pubDate>
       
       <guid>https://statkwon.github.io/about/</guid>
       <description>Profile 연세대학교에서 응용통계학을 전공하였습니다. (2019.08 ~ 2021.02) 연세대학교 응용통계학과 공식 인증 통계 및 데이터사이언스 학회 ESC에서 활동하였습니다. (2019.09 ~ 2020.08) || Github</description>
+    </item>
+    
+    <item>
+      <title>4. Classification</title>
+      <link>https://statkwon.github.io/ml/3/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/3/</guid>
+      <description>4장에서는 반응변수가 범주형인 경우, 즉, Classification의 문제를 다룬다. 4.2. Why Not Linear Regression? 선형 회귀 모형은 반응변수가 범주형인 경우 사용이 적합하</description>
+    </item>
+    
+    <item>
+      <title>2. Statistical Learning</title>
+      <link>https://statkwon.github.io/ml/1/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/1/</guid>
+      <description>2.1. What is Statistical Learning? 2.1.1. Why Estimate $f$? 우리가 $f$를 추정하는 목적은 예측과 해석을 하기 위함이다. $$\hat{Y}=\hat{f}(X)$$ 1. 예측 $f$의 추정치 $\hat{f}$를 안다면, 우리가 가진 $X_1, X_2, &amp;hellip;, X</description>
     </item>
     
   </channel>
