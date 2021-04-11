@@ -28,17 +28,6 @@ Piecewise polynomials are erratic at each knots.</description>
     </item>
     
     <item>
-      <title>Statistical Decision Theory</title>
-      <link>https://statkwon.github.io/ml/statistical-decision-theory/</link>
-      <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/statistical-decision-theory/</guid>
-      <description>In our data, there exist both pattern and noise. Thus, to find this pattern from our data, we assume a statistical model as below.
-$$Y=f(X)+\epsilon, \quad \epsilon_i\overset{\text{iid}}{\sim}(0, \sigma^2)$$
-We want to know the probability of $Y$ when $X$ is given. It does not mean to tell the exact value of $Y$ for corresponding $X$. We should not as there exists the error term. However, knowing the true distribution of $Y$ given $X$ is impossible unless we have the total data.</description>
-    </item>
-    
-    <item>
       <title>Gauss-Markov Theorem</title>
       <link>https://statkwon.github.io/ml/gauss-markov-theorem/</link>
       <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
