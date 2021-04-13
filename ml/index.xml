@@ -6,7 +6,7 @@
     <description>Recent content in ML on ML Lab</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Feb 2021 15:25:32 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://statkwon.github.io/ml/index.xml" rel="self" type="application/rss+xml" />
     
@@ -55,16 +55,34 @@ Piecewise polynomials are erratic at each knots.</description>
     </item>
     
     <item>
-      <title>7. Moving Beyond Linearity</title>
-      <link>https://statkwon.github.io/ml/6/</link>
+      <title>One-parameter models</title>
+      <link>https://statkwon.github.io/ml/one-parameter-models/</link>
+      <pubDate>Wed, 10 Feb 2021 16:25:47 +0900</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/one-parameter-models/</guid>
+      <description>2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution $Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다. 이때</description>
+    </item>
+    
+    <item>
+      <title>Bayesian Statistics</title>
+      <link>https://statkwon.github.io/ml/bayesian-statistics/</link>
+      <pubDate>Wed, 10 Feb 2021 16:22:53 +0900</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/bayesian-statistics/</guid>
+      <description>1.1. Introduction Bayesian Learning 통계적 추론은 모집단의 일부를 통해 모집단의 일반적인 특성을 알아내기 위한 과정이다. 이때 대부분의 경우 모집단의 수치적 특성을 모수 $\theta$로</description>
+    </item>
+    
+    <item>
+      <title>Moving Beyond Linearity</title>
+      <link>https://statkwon.github.io/ml/moving-beyond-linearity/</link>
       <pubDate>Wed, 10 Feb 2021 16:20:35 +0900</pubDate>
       
-      <guid>https://statkwon.github.io/ml/6/</guid>
+      <guid>https://statkwon.github.io/ml/moving-beyond-linearity/</guid>
       <description>지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다.</description>
     </item>
     
     <item>
-      <title>6. Linear Model Selection and Regularization</title>
+      <title>Linear Model Selection and Regularization</title>
       <link>https://statkwon.github.io/ml/5/</link>
       <pubDate>Wed, 10 Feb 2021 16:19:21 +0900</pubDate>
       
@@ -73,16 +91,16 @@ Piecewise polynomials are erratic at each knots.</description>
     </item>
     
     <item>
-      <title>5. Resampling Methods</title>
-      <link>https://statkwon.github.io/ml/4/</link>
+      <title>Resampling Methods</title>
+      <link>https://statkwon.github.io/ml/resampling-methods/</link>
       <pubDate>Wed, 10 Feb 2021 16:18:21 +0900</pubDate>
       
-      <guid>https://statkwon.github.io/ml/4/</guid>
+      <guid>https://statkwon.github.io/ml/resampling-methods/</guid>
       <description>Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻</description>
     </item>
     
     <item>
-      <title>3. Linear Regression</title>
+      <title>Linear Regression</title>
       <link>https://statkwon.github.io/ml/2/</link>
       <pubDate>Wed, 10 Feb 2021 16:15:20 +0900</pubDate>
       
@@ -91,20 +109,20 @@ Piecewise polynomials are erratic at each knots.</description>
     </item>
     
     <item>
-      <title>4. Classification</title>
-      <link>https://statkwon.github.io/ml/3/</link>
+      <title>Classification</title>
+      <link>https://statkwon.github.io/ml/classification/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://statkwon.github.io/ml/3/</guid>
+      <guid>https://statkwon.github.io/ml/classification/</guid>
       <description>4장에서는 반응변수가 범주형인 경우, 즉, Classification의 문제를 다룬다. 4.2. Why Not Linear Regression? 선형 회귀 모형은 반응변수가 범주형인 경우 사용이 적합하</description>
     </item>
     
     <item>
-      <title>2. Statistical Learning</title>
-      <link>https://statkwon.github.io/ml/1/</link>
+      <title>Statistical Learning</title>
+      <link>https://statkwon.github.io/ml/statistical-learning/</link>
       <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://statkwon.github.io/ml/1/</guid>
+      <guid>https://statkwon.github.io/ml/statistical-learning/</guid>
       <description>2.1. What is Statistical Learning? 2.1.1. Why Estimate $f$? 우리가 $f$를 추정하는 목적은 예측과 해석을 하기 위함이다. $$\hat{Y}=\hat{f}(X)$$ 1. 예측 $f$의 추정치 $\hat{f}$를 안다면, 우리가 가진 $X_1, X_2, &amp;hellip;, X</description>
     </item>
     
