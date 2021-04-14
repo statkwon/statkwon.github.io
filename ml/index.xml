@@ -126,5 +126,18 @@ Piecewise polynomials are erratic at each knots.</description>
       <description>2.1. What is Statistical Learning? 2.1.1. Why Estimate $f$? 우리가 $f$를 추정하는 목적은 예측과 해석을 하기 위함이다. $$\hat{Y}=\hat{f}(X)$$ 1. 예측 $f$의 추정치 $\hat{f}$를 안다면, 우리가 가진 $X_1, X_2, &amp;hellip;, X</description>
     </item>
     
+    <item>
+      <title>Ridge Regression</title>
+      <link>https://statkwon.github.io/ml/ridge-regression/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/ridge-regression/</guid>
+      <description>Subset selection methods can sometimes cause high variance due to its discrete characteristic. As an alternative, shrinkage methods such as ridge regression can be used.
+Ridge regression shrinks the regression coefficients by imposing a penalty on their size. The ridge solutions are not equivariant under scaling of the inputs, and so one normally standardizes the inputs.
+$\begin{aligned} \hat{\beta}^{\text{ridge}}&amp;amp;=\underset{\beta}{\text{argmin}}\left\{\sum_{i=1}^N(y_i-\beta_0-\sum_{j=1}^px_{ij}\beta_j)^2+\lambda\sum_{j=1}^p\beta_j^2\right\} \\
+&amp;amp;=\underset{\beta}{\text{argmin}}\sum_{i=1}^N\left(y_i-\beta_0-\sum_{j=1}^px_{ij}\beta_j\right)^2 \; \text{subject to} \; \sum_{j=1}^p\beta_j^2≤t \end{aligned}$
+We can solve this problem with a matrix notation and get the ridge coefficient as $\hat{\beta}^{\text{ridge}}=(X^TX+\lambda I)^{-1}X^Ty$.</description>
+    </item>
+    
   </channel>
 </rss>
