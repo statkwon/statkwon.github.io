@@ -100,6 +100,15 @@ Piecewise polynomials are erratic at each knots.</description>
     </item>
     
     <item>
+      <title>Normal Model</title>
+      <link>https://statkwon.github.io/ml/normal-model/</link>
+      <pubDate>Thu, 11 Feb 2021 23:47:49 +0900</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/normal-model/</guid>
+      <description>3.1. Inference for the Mean, Conditional on the Variance 3.1.1. Posterior Inference Sampling Model: $Y_1, \ldots, Y_n|\theta, \sigma^2 \sim N(\theta, \sigma^2)$ Prior Distribution: $\theta|\sigma^2 \sim N(\mu_0, \tau_0^2)$ $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\ &amp;amp;\propto \exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}}\times\exp{\left\{-\dfrac{(\theta-\mu_0)^2}{2\tau_0^2}\right\}} \\ &amp;amp;\propto \exp{\left[-\dfrac{1}{2}\left\{\left(\dfrac{1}{\tau_0^2}+\dfrac{n}{\sigma^2}\right)\theta^2+2\left(\dfrac{\mu_0}{\tau_0^2}+\dfrac{\sum y_i}{\sigma^2}\right)\theta\right\}\right]} \\ &amp;amp;\propto \exp{\left\{-\dfrac{1}{2}(a\theta^2+2b\theta)\right\}} \\ &amp;amp;=\exp{\left\{-\dfrac{1}{2}a\left(\theta^2-\dfrac{2b}{a}\theta+\dfrac{b^2}{a^2}\right)+\dfrac{b^2}{2a}\right\}} \\ &amp;amp;\propto \exp{\left\{-\dfrac{1}{2}a\left(\theta-\dfrac{b}{a}\right)^2\right\}} \\ &amp;amp;=\exp{\left\{-\dfrac{1}{2}\left(\dfrac{\theta-b/a}{1/\sqrt{a}}\right)^2\right\}} \sim N\left(\dfrac{b}{a}, \dfrac{1}{a}\right)=N(\mu_n, \tau_n^2) \end{aligned}$ 3.1.2. Parameter Update $\mu_0\rightarrow\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0+\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}+\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0+n\bar{y}}{\kappa_0+n}=\dfrac{\kappa_0\mu_0+n\bar{y}}{\kappa_n}$ Posterior Mean $\m</description>
+    </item>
+    
+    <item>
       <title>One-parameter models</title>
       <link>https://statkwon.github.io/ml/one-parameter-models/</link>
       <pubDate>Wed, 10 Feb 2021 16:25:47 +0900</pubDate>
@@ -178,6 +187,36 @@ Piecewise polynomials are erratic at each knots.</description>
       
       <guid>https://statkwon.github.io/ml/statistical-learning/</guid>
       <description>2.1. What is Statistical Learning? 2.1.1. Why Estimate $f$? 우리가 $f$를 추정하는 목적은 예측과 해석을 하기 위함이다. $$\hat{Y}=\hat{f}(X)$$ 1. 예측 $f$의 추정치 $\hat{f}$를 안다면, 우리가 가진 $X_1, X_2, &amp;hellip;, X</description>
+    </item>
+    
+    <item>
+      <title>MyLDA.py</title>
+      <link>https://statkwon.github.io/ml/mylda/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/mylda/</guid>
+      <description>Github Link: MyLDA.ipynb
+import numpy as np class MyLDA: def fit(self, X_train, y_train): X_train = np.array(X_train) y_train = np.array(y_train) self.pi = [len(X_train[y_train==i])/len(X_train) for i in np.unique(y_train)] self.mu = [np.sum(X_train[y_train==i], axis=0)/len(X_train[y_train==i]) for i in np.unique(y_train)] self.sigma = np.sum([(np.transpose(X_train[y_train==i]-self.mu[i])).dot(X_train[y_train==i]-self.mu[i]) for i in np.unique(y_train)], axis=0)/(len(X_train)-len(np.unique(y_train))) def predict(self, X_test): delta = [X_test.dot(np.linalg.inv(self.sigma)).dot(self.mu[i])-0.5*self.mu[i].dot(np.linalg.inv(self.sigma)).dot(self.mu[i])+np.log(self.pi[i]) for i in np.unique(y)] yhat = np.argmax(delta, axis=0) return yhat </description>
+    </item>
+    
+    <item>
+      <title>MyLogisticRegression.py</title>
+      <link>https://statkwon.github.io/ml/mylogisticregression/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/mylogisticregression/</guid>
+      <description>Github Link: MyLogisticRegression.ipynb
+import numpy as np class MyLogisticRegression: def __init__(self, max_iter=10): self.max_iter = max_iter def fit(self, X_train, y_train): ones = np.transpose(np.array([[1]*len(X_train)])) X_train = np.concatenate((ones, np.array(X_train)), axis=1) y_train = np.array(y_train) beta = np.array([0]*X_train.shape[1]) for i in range(self.max_iter): p1 = np.exp(X_train.dot(beta))/(1+np.exp(X_train.dot(beta))) p0 = 1-p1 W = np.diag(p0*p1) beta = beta + np.linalg.inv(np.transpose(X_train).dot(W).dot(X_train)).dot(np.transpose(X_train)).dot(y_train-p1) self.beta_new = beta def predict(self, X_test): ones = np.transpose(np.array([[1]*len(X_test)])) X_test = np.concatenate((ones, np.array(X_test)), axis=1) return (np.exp(X_test.dot(self.beta_new))/(1+np.exp(X_test.dot(self.beta_new))) &amp;gt; 0.5).astype(&amp;#39;int&amp;#39;) </description>
+    </item>
+    
+    <item>
+      <title>MyRegressionSpline.py</title>
+      <link>https://statkwon.github.io/ml/myregressionspline/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/myregressionspline/</guid>
+      <description>Github Link: MyRegressionSpline.ipynb
+import numpy as np class MyRegressionSpline: def fit(self, X_train, y_train, m, k): X_train = np.array(X_train) y_train = np.array(y_train) self.m = m self.k = np.array(k) X_train_new = np.power(X_train, 0) for i in range(1, m+1): X_train_new = np.column_stack((X_train_new, np.power(X_train, i))) for i in range(len(k)): X_train_new = np.column_stack((X_train_new, np.where(np.power(X_train-k[i], m) &amp;lt; 0, 0, np.power(X_train-k[i], m)))) self.beta = np.linalg.inv(np.transpose(X_train_new).dot(X_train_new)).dot(np.transpose(X_train_new)).dot(y_train) def predict(self, X_test): X_test = np.array(X_test) X_test_new = np.power(X_test, 0) for i in range(1, self.</description>
     </item>
     
     <item>

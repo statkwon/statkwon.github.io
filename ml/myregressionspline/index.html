@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>MyRegressionSpline.py - ML Lab</title>
+<meta name="description" content="STATKWON">
+<meta name="generator" content="Hugo 0.74.3" />
+<link href="https://statkwon.github.io//index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://statkwon.github.io/ml/myregressionspline/">
+<link rel="stylesheet" href="https://statkwon.github.io/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://statkwon.github.io/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script src="https://statkwon.github.io/js/bundle.js"></script><style>
+:root {}
+</style>
+<meta property="og:title" content="MyRegressionSpline.py" />
+<meta property="og:description" content="Github Link: MyRegressionSpline.ipynb
+import numpy as np class MyRegressionSpline: def fit(self, X_train, y_train, m, k): X_train = np.array(X_train) y_train = np.array(y_train) self.m = m self.k = np.array(k) X_train_new = np.power(X_train, 0) for i in range(1, m&#43;1): X_train_new = np.column_stack((X_train_new, np.power(X_train, i))) for i in range(len(k)): X_train_new = np.column_stack((X_train_new, np.where(np.power(X_train-k[i], m) &lt; 0, 0, np.power(X_train-k[i], m)))) self.beta = np.linalg.inv(np.transpose(X_train_new).dot(X_train_new)).dot(np.transpose(X_train_new)).dot(y_train) def predict(self, X_test): X_test = np.array(X_test) X_test_new = np.power(X_test, 0) for i in range(1, self." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://statkwon.github.io/ml/myregressionspline/" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MyRegressionSpline.py"/>
+<meta name="twitter:description" content="Github Link: MyRegressionSpline.ipynb
+import numpy as np class MyRegressionSpline: def fit(self, X_train, y_train, m, k): X_train = np.array(X_train) y_train = np.array(y_train) self.m = m self.k = np.array(k) X_train_new = np.power(X_train, 0) for i in range(1, m&#43;1): X_train_new = np.column_stack((X_train_new, np.power(X_train, i))) for i in range(len(k)): X_train_new = np.column_stack((X_train_new, np.where(np.power(X_train-k[i], m) &lt; 0, 0, np.power(X_train-k[i], m)))) self.beta = np.linalg.inv(np.transpose(X_train_new).dot(X_train_new)).dot(np.transpose(X_train_new)).dot(y_train) def predict(self, X_test): X_test = np.array(X_test) X_test_new = np.power(X_test, 0) for i in range(1, self."/>
+<meta itemprop="name" content="MyRegressionSpline.py">
+<meta itemprop="description" content="Github Link: MyRegressionSpline.ipynb
+import numpy as np class MyRegressionSpline: def fit(self, X_train, y_train, m, k): X_train = np.array(X_train) y_train = np.array(y_train) self.m = m self.k = np.array(k) X_train_new = np.power(X_train, 0) for i in range(1, m&#43;1): X_train_new = np.column_stack((X_train_new, np.power(X_train, i))) for i in range(len(k)): X_train_new = np.column_stack((X_train_new, np.where(np.power(X_train-k[i], m) &lt; 0, 0, np.power(X_train-k[i], m)))) self.beta = np.linalg.inv(np.transpose(X_train_new).dot(X_train_new)).dot(np.transpose(X_train_new)).dot(y_train) def predict(self, X_test): X_test = np.array(X_test) X_test_new = np.power(X_test, 0) for i in range(1, self.">
+
+<meta itemprop="wordCount" content="94">
+
+
+
+<meta itemprop="keywords" content="" />
+</head>
+<body><div class="container"><header>
+<h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
+<p class="description">STATKWON</p>
+
+</header>
+<div class="global-menu">
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="https://www.instagram.com/kwon_leben/">Instagram</a></li>
+<li><a href="/about/">About Me</a></li><li class="parent"><a href="">Projects<i class="fas fa-angle-right"></i></a>
+<ul class="sub-menu">
+<li class="child"><a href="/projects/bigcon/">2020 빅콘테스트</a></li>
+<li class="child"><a href="/projects/dacon/">데이콘</a></li>
+</ul>
+</li></ul>
+</nav>
+</div>
+<div class="content-container">
+<main><h1>MyRegressionSpline.py</h1>
+<p>Github Link: <a href="https://github.com/statkwon/ML_Study/blob/master/MyRegressionSpline.ipynb">MyRegressionSpline.ipynb</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyRegressionSpline</span>:
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fit</span>(self, X_train, y_train, m, k):
+    X_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(X_train)
+    y_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(y_train)
+    self<span style="color:#f92672">.</span>m <span style="color:#f92672">=</span> m
+    self<span style="color:#f92672">.</span>k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(k)
+    X_train_new <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>power(X_train, <span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>):
+      X_train_new <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>column_stack((X_train_new, np<span style="color:#f92672">.</span>power(X_train, i)))
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(k)):
+      X_train_new <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>column_stack((X_train_new, np<span style="color:#f92672">.</span>where(np<span style="color:#f92672">.</span>power(X_train<span style="color:#f92672">-</span>k[i], m) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, np<span style="color:#f92672">.</span>power(X_train<span style="color:#f92672">-</span>k[i], m))))
+    self<span style="color:#f92672">.</span>beta <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>inv(np<span style="color:#f92672">.</span>transpose(X_train_new)<span style="color:#f92672">.</span>dot(X_train_new))<span style="color:#f92672">.</span>dot(np<span style="color:#f92672">.</span>transpose(X_train_new))<span style="color:#f92672">.</span>dot(y_train)
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict</span>(self, X_test):
+    X_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(X_test)
+    X_test_new <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>power(X_test, <span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, self<span style="color:#f92672">.</span>m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>):
+      X_test_new <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>column_stack((X_test_new, np<span style="color:#f92672">.</span>power(X_test, i)))
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(self<span style="color:#f92672">.</span>k)):
+      X_test_new <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>column_stack((X_test_new, np<span style="color:#f92672">.</span>where(np<span style="color:#f92672">.</span>power(X_test<span style="color:#f92672">-</span>self<span style="color:#f92672">.</span>k[i], self<span style="color:#f92672">.</span>m) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, np<span style="color:#f92672">.</span>power(X_test<span style="color:#f92672">-</span>self<span style="color:#f92672">.</span>k[i], self<span style="color:#f92672">.</span>m))))
+    <span style="color:#66d9ef">return</span> X_test_new<span style="color:#f92672">.</span>dot(self<span style="color:#f92672">.</span>beta)
+</code></pre></div><div class="edit-meta">
+
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/MyRegressionSpline.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/mylogisticregression/" title="MyLogisticRegression.py"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - MyLogisticRegression.py</a>
+<a class="nav nav-next" href="https://statkwon.github.io/ml/ridge-regression/" title="Ridge Regression">Next - Ridge Regression <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+</footer>
+</main>
+<div class="sidebar">
+
+<nav class="open-menu">
+<ul>
+<li class=""><a href="https://statkwon.github.io/">Home</a></li>
+
+<li class="parent"><a href="https://statkwon.github.io/ml/">ML</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/spline/">Splines</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/gauss-markov-theorem/">Gauss-Markov Theorem</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/">Linear Regression</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/qr-decomposition/">QR-Decomposition</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/normal-model/">Normal Model</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/one-parameter-models/">One-parameter models</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/bayesian-statistics/">Bayesian Statistics</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/moving-beyond-linearity/">Moving Beyond Linearity</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/5/">Linear Model Selection and Regularization</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/resampling-methods/">Resampling Methods</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/2/">Linear Regression</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/classification/">Classification</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/statistical-learning/">Statistical Learning</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/mylda/">MyLDA.py</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/mylogisticregression/">MyLogisticRegression.py</a></li>
+<li class="active"><a href="https://statkwon.github.io/ml/myregressionspline/">MyRegressionSpline.py</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/ridge-regression/">Ridge Regression</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://statkwon.github.io/visualization/">Visualization</a>
+  
+<ul class="sub-menu">
+
+<li class=""><a href="https://statkwon.github.io/visualization/python/">Python</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/visualization/python/1/">1. Matplotlib</a></li>
+<li class=""><a href="https://statkwon.github.io/visualization/python/2/">2. Seaborn</a></li>
+<li class=""><a href="https://statkwon.github.io/visualization/python/3/">3. Bokeh</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+
+
+</ul>
+</nav>
+
+
+
+<div class="sidebar-footer"></div>
+</div>
+
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>
