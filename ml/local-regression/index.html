@@ -3,11 +3,11 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Smoothing Spline - ML Lab</title>
+<title>Local Regression - ML Lab</title>
 <meta name="description" content="STATKWON">
 <meta name="generator" content="Hugo 0.74.3" />
 <link href="https://statkwon.github.io//index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://statkwon.github.io/ml/smoothing-spline/">
+<link rel="canonical" href="https://statkwon.github.io/ml/local-regression/">
 <link rel="stylesheet" href="https://statkwon.github.io/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://statkwon.github.io/css/chroma.min.css">
@@ -17,15 +17,15 @@
 <script src="https://statkwon.github.io/js/bundle.js"></script><style>
 :root {}
 </style>
-<meta property="og:title" content="Smoothing Spline" />
+<meta property="og:title" content="Local Regression" />
 <meta property="og:description" content="STATKWON" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://statkwon.github.io/ml/smoothing-spline/" />
+<meta property="og:url" content="https://statkwon.github.io/ml/local-regression/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Smoothing Spline"/>
+<meta name="twitter:title" content="Local Regression"/>
 <meta name="twitter:description" content="STATKWON"/>
-<meta itemprop="name" content="Smoothing Spline">
+<meta itemprop="name" content="Local Regression">
 <meta itemprop="description" content="STATKWON">
 </head>
 <body><div class="container"><header>
@@ -47,38 +47,51 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>Smoothing Spline</h1><p>Without any constraint on the form of $f(X)$, we can make the $\text{RSS}$ to be $0$ by choosing any function that interpolates all data points. However, this will be connected to an overfitting problem. To prevent this, we will use the regularization term.</p>
-<p>$$\underset{f}{\text{argmin}}\sum_{i=1}^n\left\{y_i-f(x_i)\right\}^2+\lambda\int\left\{f^{\left(\frac{M+1}{2}\right)}(x)\right\}^2dx$$</p>
-<p>Here $\lambda$ is called a smoothing parameter. If $\lambda=0$, $f$ can be any function that interpolates the data. If $\lambda=\infty$, $f$ will be a simple line. Now we will show that the unique minimizer of this criterion is a natural cubic spline with knots at each of the $x_i$. We will consider the case with $M=3$. Other cases can be proved similarly.</p>
-<p>Suppose that $n≥2$ and $g$ is the natural cubic spline interpolant to the pairs $(x_i, y_i)$, with $a&lt;x_1&lt;\cdots&lt;x_n&lt;b$. Let $\tilde{g}$ be any other differentiable function on $[a, b]$ that interpolates the $n$ pairs and be the unique solution of $\displaystyle\underset{f}{\text{argmin}}\sum_{i=1}^n\left\{y_i-f(x_i)\right\}^2+\lambda\int\left\{f&rsquo;'(x)\right\}^2dx$. Also let $h(x)=\tilde{g}(x)-g(x)$.</p>
-<p>1) $\displaystyle\int_a^bg&rsquo;'(x)h&rsquo;'(x)dx=0$</p>
+<main><h1>Local Regression</h1><p>Nadaraya-Watson kernel regression usually suffers from a boundary issue and local regression can be the alternative.</p>
+<p><strong>Local Linear Regression</strong></p>
+<p>$\hat{f}(x_0)=\hat{\alpha}(x_0)+\hat{\beta}(x_0)x_0$</p>
+<p>We can get this local linear estimate by solving the problem below.</p>
+<p>$\displaystyle\underset{\alpha(x_0), \beta(x_0)}{\text{argmin}}\sum_{i=1}^nK_\lambda(x_0, x_i)\left\{y_i-\alpha(x_0)-\beta(x_0)x_i\right\}^2$</p>
+<p>This model uses the weighted observations in the neighborhood of $x_0$ and fit a regression line with them. This can be regraded as solving a weighted least square problem. Thus we can write $\hat{f}(x_0)$ as</p>
 <p>$\begin{aligned}
-\int_a^bg&rsquo;'(x)h&rsquo;'(x)dx&amp;=g&rsquo;'(x)h&rsquo;(x)\Big\vert_a^b-\int_a^bg&rsquo;''(x)h&rsquo;(x)dx \\<br>
-&amp;=-\int_a^bg&rsquo;''(x)h&rsquo;(x)dx \quad (\because g&rsquo;'(a)=g&rsquo;'(b)=0) \\<br>
-&amp;=-g&rsquo;''(x)h(x)\Big\vert_a^b+\int_a^bg&rsquo;'''(x)h&rsquo;(x)dx \\<br>
-&amp;=-g&rsquo;''(x)h(x)\Big\vert_{x_1}^{x_n} \quad (\because g&rsquo;'''(x)=0) \\<br>
-&amp;=0 \quad (\because h(x_1)=h(x_n)=0)
+\hat{f}(x_0)&amp;=\mathbf{b}(x_0)^T(B^TW(x_0)B)^{-1}B^TW(x_0)y \\<br>
+&amp;=\mathbf{l}(x_0)^Ty \\<br>
+&amp;=\sum_{i=1}^nl_i(x_0)y_i
 \end{aligned}$</p>
-<p>$\displaystyle\therefore\int_a^bg&rsquo;'(x)h&rsquo;'(x)dx=0$</p>
-<p>2) $\displaystyle\int_a^b\left\{\tilde{g}''(x)\right\}^2dx≥\int_a^b\left\{g&rsquo;'(x)\right\}^2dx$</p>
+<p>where $\mathbf{b}(x)=\begin{bmatrix} 1 \\ x \end{bmatrix}$, $B=\begin{bmatrix} 1 &amp; x_1 \\ 1 &amp; x_2 \\ \vdots &amp; \vdots \\ 1 &amp; x_n \end{bmatrix}$ and $W=\begin{bmatrix} K_\lambda(x_0, x_1) &amp; 0 &amp; \cdots &amp; 0 \\ 0 &amp; K_\lambda(x_0, x_2) &amp; \cdots &amp; 0 \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \cdots &amp; K_\lambda(x_0, x_n) \end{bmatrix}$.</p>
+<p>Sometimes we call the $l_i(x_0)$ as equivalent kernel.</p>
+<p>Local linear regression has its advantage on the boundary due to the fact that it can reduce the first-order bias automatically. We will prove this.</p>
+<hr>
+<p>1) $\displaystyle\sum_{i=1}^nl_i(x_0)=1$, $\displaystyle\sum_{i=1}^nl_i(x_0)x_i=x_0$</p>
+<p>We knot that $\displaystyle\mathbf{b}(x_0)^T(B^TW(x_0)B)^{-1}B^TW(x_0)y=\sum_{i=1}^nl_i(x_0)y_i$, and let $\mathbf{v}_j=\begin{bmatrix} x_1^j &amp; x_2^j &amp; \cdots &amp; x_n^j \end{bmatrix}^T$.</p>
+<p>Then we can show that $\displaystyle\mathbf{b}(x_0)^T(B^TW(x_0)B)^{-1}B^TW(x_0)\mathbf{v}_j=\sum_{i=1}^nl_i(x_0)x_i^j$.</p>
 <p>$\begin{aligned}
-\int_a^b\left\{\tilde{g}(x)\right\}^2dx&amp;=\int_a^b\left\{g&rsquo;'(x)+h&rsquo;'(x)\right\}^2dx \\<br>
-&amp;=\int_a^b\left\{g&rsquo;'(x)\right\}^2dx+\int_a^b\left\{h&rsquo;'(x)\right\}^2dx+2\int_a^bg&rsquo;'(x)h&rsquo;'(x)dx \\<br>
-&amp;=\int_a^b\left\{g&rsquo;'(x)\right\}^2dx+\int_a^b\left\{h&rsquo;'(x)\right\}^2dx \quad (\because \int_a^bg&rsquo;'(x)h&rsquo;'(x)dx=0) \\<br>
-&amp;≥\int_a^b\left\{g&rsquo;'(x)\right\}^2dx
+\mathbf{b}(x_0)^T(B^TW(x_0)B)^{-1}B^TW(x_0)\begin{bmatrix} \mathbf{v}_0 &amp; \mathbf{v}_1 \end{bmatrix}&amp;=\mathbf{b}(x_0)^T(B^TW(x_0)B)^{-1}B^TW(x_0)B \\<br>
+&amp;=\mathbf{b}(x_0)^T \\<br>
+&amp;=\begin{bmatrix} 1 &amp; x_0 \end{bmatrix}
 \end{aligned}$</p>
-<p>$\displaystyle\therefore\int_a^b\left\{\tilde{g}''(x)\right\}^2dx≥\int_a^b\left\{g&rsquo;'(x)\right\}^2dx$</p>
-<p>3) Natural Cubic Spline with $n$ knots is the unique minizer.</p>
-<p>$\displaystyle\int_a^b\left\{\tilde{g}''(x)\right\}^2dx≥\int_a^b\left\{g&rsquo;'(x)\right\}^2dx \\<br>
-\displaystyle\Leftrightarrow\lambda\int_a^b\left\{\tilde{g}''(x)\right\}^2dx≥\lambda\int_a^b\left\{g&rsquo;'(x)\right\}^2dx$</p>
-<p>We knot that $g(x)$ is the natural cubic spline. We assumed that $\tilde{g}$ is the unique minizer, so $\tilde{g}$ should be the natural cubic spline.</p>
-<p>Since the solution is a natural spline, we can write it as $\displaystyle f(x)=\sum_{j=1}^n\theta_jN_j(x)$. The problem about $f(x)$ has been reduced to the problem of estimating $\theta_j$.</p>
-<p>$$\underset{\theta}{\text{argmin}}\;(y-N\theta)^T(y-N\theta)+\lambda\theta^T\Omega_N\theta$$</p>
-<p>$\{N\}_{ij}$ is $N_j(x_i)$ and $\{\Omega_N\}_{jk}$ is $\int N&rsquo;'_j(t)N&rsquo;'_k(t)dt$. The solution will be $\hat{\theta}=(N^TN+\lambda\Omega_N)^{-1}N^Ty$.</p>
+<p>$\displaystyle\therefore \sum_{i=1}^nl_i(x_0)=1, \; \sum_{i=1}^nl_i(x_0)x_i=x_0$</p>
+<p>2) $\text{Bias}(\hat{f}(x_0))=\dfrac{f&rsquo;'(x_0)}{2}\sum_{i=1}^n(x_i-x_0)^2l_i(x_0)+R$</p>
+<p>By using taylor expansion, we can write down the expectation of $\hat{f}(x_0)$ as below.</p>
+<p>$\begin{aligned}
+\text{E}[\hat{f}(x_0)]&amp;=\sum_{i=1}^nl_i(x_0)f(x_i) \\<br>
+&amp;=f(x_0)\sum_{i=1}^nl_i(x_0)+f&rsquo;(x_0)\sum_{i=1}^n(x_i-x_0)l_i(x_0)+\dfrac{f&rsquo;'(x_0)}{2}\sum_{i=1}^n(x_i-x_0)^2l_i(x_0)+R
+\end{aligned}$</p>
+<p>We already showed that $\displaystyle\sum_{i=1}^nl_i(x_0)=1$ and $\displaystyle\sum_{i=1}^nl_i(x_0)x_i=x_0$.</p>
+<p>$\displaystyle\sum_{i=1}^n(x_i-x_0)l_i(x_0)=\sum_{i=1}^nx_il_i(x_0)-x_0\sum_{i=1}^nl_i(x_0)=0$</p>
+<p>$\displaystyle\therefore\text{E}[\hat{f}(x_0)]=f(x_0)+\dfrac{f&rsquo;'(x_0)}{2}\sum_{i=1}^n(x_i-x_0)^2l_i(x_0)+R$</p>
+<p>This implies that the bias of $\hat{f}(x_0)$ only depends on the second derivative and the higher-order terms.</p>
+<hr>
+<p><strong>Local Polynomial Regression</strong></p>
+<p>$\displaystyle\hat{f}(x_0)=\hat{\alpha}(x_0)+\sum_{j=1}^d\hat{\beta}_j(x_0)x_0^j$</p>
+<p>Same as above, we should solve the minimization problem.</p>
+<p>$\displaystyle\underset{\alpha(x_0), \beta_j(x_0)}{\text{argmin}}\sum_{i=1}^nK_\lambda(x_0, x_i)\left\{y_i-\alpha(x_0)-\sum_{j=1}^d\beta_j(x_0)x_i^j\right\}^2$</p>
+<p>The bias of $d$th-order local polynomial only depends on the $(d+1)$th derivative and the higher-order terms. We can prove this by the similar way as in the local linear.</p>
+<p>As a result, local linear regression cannot control the bias related to the interior curvature. Local polynomial can be the solution, but it also increases the model variance. Therefore, we use the local polynomial with</p>
 <div class="edit-meta">
 
-<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Smoothing%20Spline/_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/ridge-regression/" title="Ridge Regression"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Ridge Regression</a>
-<a class="nav nav-next" href="https://statkwon.github.io/visualization/" title="Visualization">Next - Visualization <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Local%20Regression/_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/" title="MyLDA.py"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - MyLDA.py</a>
+<a class="nav nav-next" href="https://statkwon.github.io/ml/logistic-regression/" title="Logistic Regression">Next - Logistic Regression <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -139,7 +152,7 @@
   
 </li>
 
-<li class=""><a href="https://statkwon.github.io/ml/local-regression/">Local Regression</a>
+<li class="parent active"><a href="https://statkwon.github.io/ml/local-regression/">Local Regression</a>
   
 </li>
 
@@ -175,7 +188,7 @@
   
 </li>
 
-<li class="parent active"><a href="https://statkwon.github.io/ml/smoothing-spline/">Smoothing Spline</a>
+<li class=""><a href="https://statkwon.github.io/ml/smoothing-spline/">Smoothing Spline</a>
   
 </li>
 </ul>

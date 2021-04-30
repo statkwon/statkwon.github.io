@@ -30,7 +30,7 @@
 <meta itemprop="description" content="지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다.">
 <meta itemprop="datePublished" content="2021-02-10T16:20:35+09:00" />
 <meta itemprop="dateModified" content="2021-02-10T16:20:35+09:00" />
-<meta itemprop="wordCount" content="2343">
+<meta itemprop="wordCount" content="2320">
 
 
 
@@ -66,12 +66,10 @@
       <ul>
         <li><a href="#741-piecewise-polynomials">7.4.1. Piecewise Polynomials</a></li>
         <li><a href="#742-constraints-and-splines">7.4.2. Constraints and Splines</a></li>
-        <li><a href="#743-the-spline-basis-representation">7.4.3. The Spline Basis Representation</a></li>
         <li><a href="#744-choosing-the-number-and-locations-of-the-knots">7.4.4. Choosing the Number and Locations of the Knots</a></li>
         <li><a href="#745-comparison-to-polynomial-regression">7.4.5. Comparison to Polynomial Regression</a></li>
       </ul>
     </li>
-    <li><a href="#75-smoothing-splines">7.5. Smoothing Splines</a></li>
     <li><a href="#76-local-regression">7.6. Local Regression</a></li>
     <li><a href="#77-generalized-additive-models">7.7. Generalized Additive Models</a>
       <ul>
@@ -103,16 +101,10 @@
 <h3 id="742-constraints-and-splines">7.4.2. Constraints and Splines</h3>
 <p><img src="/ml/islr_fig7.3.png" alt="ISLR fig 7.3"></p>
 <p>아무런 제약 없이 Piecewise Polynomial Regression을 적합하는 경우 위 그림과 같이 불연속한 점이 발생할 수 있다. 이러한 경우 도함수와 이계도함수에 제약을 가함으로써 Curve가 연속임과 동시에 smooth하게 만들어줄 수 있다.</p>
-<h3 id="743-the-spline-basis-representation">7.4.3. The Spline Basis Representation</h3>
-<p>$$y_i=\beta_0+\beta_1b_1(x_i)+\beta_2b_2(x_i)+&hellip;+\beta_{K+3}b_{k+3}(x_i)+\epsilon_i$$</p>
-<p>$$h(x, \xi)=(x-\xi)_+^3=\begin{cases} (x-\xi)^3 &amp; \text{if } x&gt;\xi \ 0 &amp; \text{otherwise} \end{cases}$$</p>
-<p>???</p>
 <h3 id="744-choosing-the-number-and-locations-of-the-knots">7.4.4. Choosing the Number and Locations of the Knots</h3>
 <p>Spline을 적합할 경우 우리는 Knots의 위치와 개수를 결정해야 한다. Knots의 위치를 결정하는 방법에는 두 가지가 있다. 첫번째는 Curve가 급격하게 변화하는 곳에 많은 Knots를, 상대적으로 안정적인 곳에 적은 Knots를 배치하는 방법이다. 하지만 실제로는 이러한 방식보다는 균등한 방식을 사용하여 knots를 배치하는 것이 일반적이다. 컴퓨터 소프트웨어를 사용하여 원하는 자유도에 상응하는 수의 Knots를 일정한 간격으로 배치하는 것이 가능하다. Knots의 개수를 결정하는 방법도 두 가지가 있다. 첫번째는 다양한 개수의 Knots를 배치해보며 최적의 Curve를 형성하는 값을 사용하는 것이다. 다른 방법으로는 CV를 사용하여 결정하는 방법이 있다.</p>
 <h3 id="745-comparison-to-polynomial-regression">7.4.5. Comparison to Polynomial Regression</h3>
 <p>Polynomial Regression의 경우 유연한 모형을 적합하기 위해서는 높은 차수의 다항식을 사용해야 한다. 반면 Regression Spline은 자유도를 고정한 채로 Knots의 개수를 늘려가며 유연성을 조절하기 때문에 더욱 안정적인 추정이 가능하다.</p>
-<h2 id="75-smoothing-splines">7.5. Smoothing Splines</h2>
-<p>???</p>
 <h2 id="76-local-regression">7.6. Local Regression</h2>
 <p>$$\sum_{i=1}^nK_{i0}(y_i-\beta_0-\beta_1x_i)^2$$</p>
 <p>Local Regression은 각각의 Data Point에 대하여 그 근처에 있는 데이터만 가지고 모형을 적합하는 방식이다. 우선 몇 개의 (근처에 있는) 데이터를 사용할 것인지 정해야 한다. 다음으로 사용하고자 하는 데이터들에 대해서 거리에 따라 Weight($K_{i0}=K(x_i, x_0)$)를 부과하고, 위의 식을 최소화하는 계수를 구한다. 매우 간략하게 설명하였지만, 이러한 과정 중에는 Weighitng Function $K$로 어떤 함수를 사용할 것인지, 어떤 종류의 회귀 모형을 적합할 것인지 등 많은 것들을 결정해야 한다. 그 중 가장 중요한 것은 앞서 언급했던 &lsquo;몇 개의 근처 데이터를 사용할 것인지&rsquo;이다. 이것은 Smoothing Splines의 Tuning Parameter $\lambda$와 같이 모형의 유연성을 조절하는 기능을 한다. 이론적으로 2차원 이상에도 적용 가능하지만, 3 또는 4차원이 넘어가게 되면 Training Data인 $x_0$에 가까운 데이터가 많이 없기 때문에 모형의 성능이 급격히 떨어진다.</p>
@@ -192,6 +184,10 @@ Published on 10 Feb 2021
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/">MyLDA.py</a></li>
 </ul>
+  
+</li>
+
+<li class=""><a href="https://statkwon.github.io/ml/local-regression/">Local Regression</a>
   
 </li>
 

@@ -57,7 +57,7 @@
 <p>We will make a proof for the case when $M=3$ and $K=2$.</p>
 <p>$f(X)=\beta_1+\beta_2X+\beta_3X^2+\beta_4X^3+\beta_5(X-\xi_1)_+^3+\beta_6(X-\xi_2)_+^3$</p>
 <p>We will show the continuity of $f(X)$, $f&rsquo;(X)$, $f&rsquo;'(X)$ at the knots $\xi_1$, $\xi_2$ ($\xi_1&lt;\xi_2$).</p>
-<p><strong>1) Continuity of $f(X)$</strong></p>
+<p>1) Continuity of $f(X)$</p>
 <p>$\begin{aligned}
 f(\xi_1-h)&amp;=\beta_1+\beta_2(\xi_1-h)+\beta_3(\xi_1-h)^2+\beta_4(\xi_1-h)^3+\beta_5(\xi_1-h-\xi_1)_+^3+\beta_6(\xi_1-h-\xi_2)_+^3 \\<br>
 &amp;=\beta_1+\beta_2(\xi_1-h)+\beta_3(\xi_1-h)^2+\beta_4(\xi_1-h)^3
@@ -66,7 +66,7 @@ f(\xi_1-h)&amp;=\beta_1+\beta_2(\xi_1-h)+\beta_3(\xi_1-h)^2+\beta_4(\xi_1-h)^3+\
 <p>$\displaystyle\lim_{h\rightarrow0}f(\xi_1-h)=\lim_{h\rightarrow0}f(\xi_1+h)=\beta_1+\beta_2\xi_1+\beta_3\xi_1^2+\beta_4\xi_1^3$</p>
 <p>$\displaystyle\therefore\lim_{x\rightarrow\xi_1}f(x)=\beta_1+\beta_2\xi_1+\beta_3\xi_1^2+\beta_4\xi_1^3=f(\xi_1)$</p>
 <p>$f(X)$ is continuous at $\xi_1$ and we can show that $f(X)$ is continuous at $\xi_2$ by a similar way.</p>
-<p><strong>2) Continuity of $f&rsquo;(X)$ at $\xi_1$, $\xi_2$</strong></p>
+<p>2) Continuity of $f&rsquo;(X)$ at $\xi_1$, $\xi_2$</p>
 <p>$\begin{aligned}
 f&rsquo;(\xi_1^-)&amp;=\lim_{h\rightarrow0}\dfrac{f(\xi_1)-f(\xi_1-h)}{h} \\<br>
 &amp;=\lim_{h\rightarrow0}\dfrac{\beta_2h+2\beta_3\xi_1h+3\beta_4\xi_1^2h+O(h^2)}{h} \\<br>
@@ -79,7 +79,7 @@ f&rsquo;(\xi_1^+)&amp;=\lim_{h\rightarrow0}\dfrac{f(\xi_1+h)-f(\xi_1)}{h} \\<br>
 \end{aligned}$</p>
 <p>$\therefore\lim_{x\rightarrow\xi_1}f&rsquo;(x)=\beta_2+2\beta_3\xi_1+3\beta_4\xi_1^2=f&rsquo;(\xi_1)$</p>
 <p>$f&rsquo;(X)$ is continuous at $\xi_1$ and we can show that $f&rsquo;(X)$ is continuous at $\xi_2$ by a similar way.</p>
-<p><strong>3) Continuity of $f&rsquo;'(X)$ at $\xi_1$, $\xi_2$</strong></p>
+<p>3) Continuity of $f&rsquo;'(X)$ at $\xi_1$, $\xi_2$</p>
 <p>Similarly, $\lim_{x\rightarrow\xi_1}f&rsquo;'(x)=6\beta_4\xi_1^2=f&rsquo;'(\xi_1)$ and $\lim_{x\rightarrow\xi_2}f&rsquo;'(x)=6\beta_4\xi_2^2=f&rsquo;'(\xi_2)$.</p>
 <p>We showed that $f(X)$, $f&rsquo;(X)$ and $f&rsquo;'(X)$ are all continuous at $\xi_1$, $\xi_2$. Thus, $f(X)$ represents a cubic spline with two knots.</p>
 <hr>
@@ -146,6 +146,10 @@ f&rsquo;(\xi_1^+)&amp;=\lim_{h\rightarrow0}\dfrac{f(\xi_1+h)-f(\xi_1)}{h} \\<br>
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/">MyLDA.py</a></li>
 </ul>
+  
+</li>
+
+<li class=""><a href="https://statkwon.github.io/ml/local-regression/">Local Regression</a>
   
 </li>
 
