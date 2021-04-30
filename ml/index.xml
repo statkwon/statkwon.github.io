@@ -12,22 +12,6 @@
     
     
     <item>
-      <title>Splines</title>
-      <link>https://statkwon.github.io/ml/spline/</link>
-      <pubDate>Sat, 10 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/spline/</guid>
-      <description>To move beyond linearity, we will transform $X$ and use linear models in this new space of derived input features.
-$$f(X)=\sum_{m=1}^M\beta_mh_m(X)$$
-1. Piecewise Polynomials Divide the domain of $X$ into contiguous intervals and fit polynomial regression models in each interval.
-Piecewise Constant
-Piecewise Linear
-Piecewise Cubic
-The number of paramters to fit piecewise polynomial is $(M+1)\times(K+1)$, where $M$ is the order and $K$ is the number of knots.
-Piecewise polynomials are erratic at each knots.</description>
-    </item>
-    
-    <item>
       <title>Gauss-Markov Theorem</title>
       <link>https://statkwon.github.io/ml/gauss-markov-theorem/</link>
       <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
@@ -133,49 +117,6 @@ Piecewise polynomials are erratic at each knots.</description>
       
       <guid>https://statkwon.github.io/ml/statistical-learning/</guid>
       <description>2.1. What is Statistical Learning? 2.1.1. Why Estimate $f$? 우리가 $f$를 추정하는 목적은 예측과 해석을 하기 위함이다. $$\hat{Y}=\hat{f}(X)$$ 1. 예측 $f$의 추정치 $\hat{f}$를 안다면, 우리가 가진 $X_1, X_2, &amp;hellip;, X</description>
-    </item>
-    
-    <item>
-      <title>MyLDA.py</title>
-      <link>https://statkwon.github.io/ml/mylda/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/mylda/</guid>
-      <description>Github Link: MyLDA.ipynb
-import numpy as np class MyLDA: def fit(self, X_train, y_train): X_train = np.array(X_train) y_train = np.array(y_train) self.pi = [len(X_train[y_train==i])/len(X_train) for i in np.unique(y_train)] self.mu = [np.sum(X_train[y_train==i], axis=0)/len(X_train[y_train==i]) for i in np.unique(y_train)] self.sigma = np.sum([(np.transpose(X_train[y_train==i]-self.mu[i])).dot(X_train[y_train==i]-self.mu[i]) for i in np.unique(y_train)], axis=0)/(len(X_train)-len(np.unique(y_train))) def predict(self, X_test): delta = [X_test.dot(np.linalg.inv(self.sigma)).dot(self.mu[i])-0.5*self.mu[i].dot(np.linalg.inv(self.sigma)).dot(self.mu[i])+np.log(self.pi[i]) for i in np.unique(y)] yhat = np.argmax(delta, axis=0) return yhat </description>
-    </item>
-    
-    <item>
-      <title>MyLogisticRegression.py</title>
-      <link>https://statkwon.github.io/ml/mylogisticregression/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/mylogisticregression/</guid>
-      <description>Github Link: MyLogisticRegression.ipynb
-import numpy as np class MyLogisticRegression: def __init__(self, max_iter=10): self.max_iter = max_iter def fit(self, X_train, y_train): ones = np.transpose(np.array([[1]*len(X_train)])) X_train = np.concatenate((ones, np.array(X_train)), axis=1) y_train = np.array(y_train) beta = np.array([0]*X_train.shape[1]) for i in range(self.max_iter): p1 = np.exp(X_train.dot(beta))/(1+np.exp(X_train.dot(beta))) p0 = 1-p1 W = np.diag(p0*p1) beta = beta + np.linalg.inv(np.transpose(X_train).dot(W).dot(X_train)).dot(np.transpose(X_train)).dot(y_train-p1) self.beta_new = beta def predict(self, X_test): ones = np.transpose(np.array([[1]*len(X_test)])) X_test = np.concatenate((ones, np.array(X_test)), axis=1) return (np.exp(X_test.dot(self.beta_new))/(1+np.exp(X_test.dot(self.beta_new))) &amp;gt; 0.5).astype(&amp;#39;int&amp;#39;) </description>
-    </item>
-    
-    <item>
-      <title>MyRegressionSpline.py</title>
-      <link>https://statkwon.github.io/ml/myregressionspline/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/myregressionspline/</guid>
-      <description>Github Link: MyRegressionSpline.ipynb
-import numpy as np class MyRegressionSpline: def fit(self, X_train, y_train, m, k): X_train = np.array(X_train) y_train = np.array(y_train) self.m = m self.k = np.array(k) X_train_new = np.power(X_train, 0) for i in range(1, m+1): X_train_new = np.column_stack((X_train_new, np.power(X_train, i))) for i in range(len(k)): X_train_new = np.column_stack((X_train_new, np.where(np.power(X_train-k[i], m) &amp;lt; 0, 0, np.power(X_train-k[i], m)))) self.beta = np.linalg.inv(np.transpose(X_train_new).dot(X_train_new)).dot(np.transpose(X_train_new)).dot(y_train) def predict(self, X_test): X_test = np.array(X_test) X_test_new = np.power(X_test, 0) for i in range(1, self.</description>
-    </item>
-    
-    <item>
-      <title>Ridge Regression</title>
-      <link>https://statkwon.github.io/ml/ridge-regression/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/ridge-regression/</guid>
-      <description>Subset selection methods can sometimes cause high variance due to its discrete characteristic. As an alternative, shrinkage methods such as ridge regression can be used.
-Ridge regression shrinks the regression coefficients by imposing a penalty on their size. The ridge solutions are not equivariant under scaling of the inputs, and so one normally standardizes the inputs.
-$\begin{aligned} \hat{\beta}^{\text{ridge}}&amp;amp;=\underset{\beta}{\text{argmin}}\left\{\sum_{i=1}^N(y_i-\beta_0-\sum_{j=1}^px_{ij}\beta_j)^2+\lambda\sum_{j=1}^p\beta_j^2\right\} \\
-&amp;amp;=\underset{\beta}{\text{argmin}}\sum_{i=1}^N\left(y_i-\beta_0-\sum_{j=1}^px_{ij}\beta_j\right)^2 \; \text{subject to} \; \sum_{j=1}^p\beta_j^2≤t \end{aligned}$
-We can solve this problem with a matrix notation and get the ridge coefficient as $\hat{\beta}^{\text{ridge}}=(X^TX+\lambda I)^{-1}X^Ty$.</description>
     </item>
     
   </channel>

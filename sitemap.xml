@@ -41,11 +41,6 @@
   </url>
   
   <url>
-    <loc>https://statkwon.github.io/ml/spline/</loc>
-    <lastmod>2021-04-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://statkwon.github.io/ml/gauss-markov-theorem/</loc>
     <lastmod>2021-03-10T00:00:00+00:00</lastmod>
   </url>
@@ -120,15 +115,35 @@
   </url>
   
   <url>
-    <loc>https://statkwon.github.io/ml/mylda/</loc>
+    <loc>https://statkwon.github.io/ml/linear-discriminant-analysis/</loc>
   </url>
   
   <url>
-    <loc>https://statkwon.github.io/ml/mylogisticregression/</loc>
+    <loc>https://statkwon.github.io/ml/logistic-regression/</loc>
   </url>
   
   <url>
-    <loc>https://statkwon.github.io/ml/myregressionspline/</loc>
+    <loc>https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/</loc>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/logistic-regression/mylogisticregression/</loc>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/natural-spline/mynaturalcubicspline/</loc>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/regression-spline/myregressionspline/</loc>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/natural-spline/</loc>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/piecewise-polynomial/</loc>
   </url>
   
   <url>
@@ -136,7 +151,15 @@
   </url>
   
   <url>
+    <loc>https://statkwon.github.io/ml/regression-spline/</loc>
+  </url>
+  
+  <url>
     <loc>https://statkwon.github.io/ml/ridge-regression/</loc>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/smoothing-spline/</loc>
   </url>
   
   <url>

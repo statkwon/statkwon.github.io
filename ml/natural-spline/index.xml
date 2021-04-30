@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Natural Spline on ML Lab</title>
+    <link>https://statkwon.github.io/ml/natural-spline/</link>
+    <description>Recent content in Natural Spline on ML Lab</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://statkwon.github.io/ml/natural-spline/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MyNaturalCubicSpline.py</title>
+      <link>https://statkwon.github.io/ml/natural-spline/mynaturalcubicspline/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/natural-spline/mynaturalcubicspline/</guid>
+      <description>Github Link: MyNaturalCubicSpline.ipynb
+import numpy as np class MyNaturalCubicSpline: def fit(self, X_train, y_train, k): X_train = np.array(X_train) y_train = np.array(y_train) self.k = np.array(k) X_train_new = np.column_stack((np.ones(len(X_train)), X_train)) d_Km1 = (np.where(np.power(X_train-k[-2], 3) &amp;lt; 0, 0, np.power(X_train-k[-2], 3))-np.where(np.power(X_train-k[-1], 3) &amp;lt; 0, 0, np.power(X_train-k[-1], 3)))/(k[-2]-k[-1]) for i in range(len(k)-2): d = (np.where(np.power(X_train-k[i], 3) &amp;lt; 0, 0, np.power(X_train-k[i], 3))-np.where(np.power(X_train-k[-1], 3) &amp;lt; 0, 0, np.power(X_train-k[-1], 3)))/(k[i]-k[-1]) X_train_new = np.column_stack((X_train_new, d-d_Km1)) self.beta = np.linalg.inv(np.transpose(X_train_new).dot(X_train_new)).dot(np.transpose(X_train_new)).dot(y_train) def predict(self, X_test): X_test = np.</description>
+    </item>
+    
+  </channel>
+</rss>

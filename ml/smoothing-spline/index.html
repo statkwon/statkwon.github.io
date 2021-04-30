@@ -3,11 +3,11 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>404 Page not found - ML Lab</title>
+<title>Smoothing Spline - ML Lab</title>
 <meta name="description" content="STATKWON">
 <meta name="generator" content="Hugo 0.74.3" />
 <link href="https://statkwon.github.io//index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://statkwon.github.io/404.html">
+<link rel="canonical" href="https://statkwon.github.io/ml/smoothing-spline/">
 <link rel="stylesheet" href="https://statkwon.github.io/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://statkwon.github.io/css/chroma.min.css">
@@ -17,15 +17,15 @@
 <script src="https://statkwon.github.io/js/bundle.js"></script><style>
 :root {}
 </style>
-<meta property="og:title" content="404 Page not found" />
+<meta property="og:title" content="Smoothing Spline" />
 <meta property="og:description" content="STATKWON" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://statkwon.github.io/404.html" />
+<meta property="og:url" content="https://statkwon.github.io/ml/smoothing-spline/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="404 Page not found"/>
+<meta name="twitter:title" content="Smoothing Spline"/>
 <meta name="twitter:description" content="STATKWON"/>
-<meta itemprop="name" content="404 Page not found">
+<meta itemprop="name" content="Smoothing Spline">
 <meta itemprop="description" content="STATKWON">
 </head>
 <body><div class="container"><header>
@@ -47,7 +47,39 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>404 Not Found</h1><footer><script type="text/javascript" async
+<main><h1>Smoothing Spline</h1><p>Without any constraint on the form of $f(X)$, we can make the $\text{RSS}$ to be $0$ by choosing any function that interpolates all data points. However, this will be connected to an overfitting problem. To prevent this, we will use the regularization term.</p>
+<p>$$\underset{f}{\text{argmin}}\sum_{i=1}^n\left\{y_i-f(x_i)\right\}^2+\lambda\int\left\{f^{\left(\frac{M+1}{2}\right)}(x)\right\}^2dx$$</p>
+<p>Here $\lambda$ is called a smoothing parameter. If $\lambda=0$, $f$ can be any function that interpolates the data. If $\lambda=\infty$, $f$ will be a simple line. Now we will show that the unique minimizer of this criterion is a natural cubic spline with knots at each of the $x_i$. We will consider the case with $M=3$. Other cases can be proved similarly.</p>
+<p>Suppose that $n≥2$ and $g$ is the natural cubic spline interpolant to the pairs $(x_i, y_i)$, with $a&lt;x_1&lt;\cdots&lt;x_n&lt;b$. Let $\tilde{g}$ be any other differentiable function on $[a, b]$ that interpolates the $n$ pairs and be the unique solution of $\displaystyle\underset{f}{\text{argmin}}\sum_{i=1}^n\left\{y_i-f(x_i)\right\}^2+\lambda\int\left\{f&rsquo;'(x)\right\}^2dx$. Also let $h(x)=\tilde{g}(x)-g(x)$.</p>
+<p>1) $\displaystyle\int_a^bg&rsquo;'(x)h&rsquo;'(x)dx=0$</p>
+<p>$\begin{aligned}
+\int_a^bg&rsquo;'(x)h&rsquo;'(x)dx&amp;=g&rsquo;'(x)h&rsquo;(x)\Big\vert_a^b-\int_a^bg&rsquo;''(x)h&rsquo;(x)dx \\<br>
+&amp;=-\int_a^bg&rsquo;''(x)h&rsquo;(x)dx \quad (\because g&rsquo;'(a)=g&rsquo;'(b)=0) \\<br>
+&amp;=-g&rsquo;''(x)h(x)\Big\vert_a^b+\int_a^bg&rsquo;'''(x)h&rsquo;(x)dx \\<br>
+&amp;=-g&rsquo;''(x)h(x)\Big\vert_{x_1}^{x_n} \quad (\because g&rsquo;'''(x)=0) \\<br>
+&amp;=0 \quad (\because h(x_1)=h(x_n)=0)
+\end{aligned}$</p>
+<p>$\displaystyle\therefore\int_a^bg&rsquo;'(x)h&rsquo;'(x)dx=0$</p>
+<p>2) $\displaystyle\int_a^b\left\{\tilde{g}''(x)\right\}^2dx≥\int_a^b\left\{g&rsquo;'(x)\right\}^2dx$</p>
+<p>$\begin{aligned}
+\int_a^b\left\{\tilde{g}(x)\right\}^2dx&amp;=\int_a^b\left\{g&rsquo;'(x)+h&rsquo;'(x)\right\}^2dx \\<br>
+&amp;=\int_a^b\left\{g&rsquo;'(x)\right\}^2dx+\int_a^b\left\{h&rsquo;'(x)\right\}^2dx+2\int_a^bg&rsquo;'(x)h&rsquo;'(x)dx \\<br>
+&amp;=\int_a^b\left\{g&rsquo;'(x)\right\}^2dx+\int_a^b\left\{h&rsquo;'(x)\right\}^2dx \quad (\because \int_a^bg&rsquo;'(x)h&rsquo;'(x)dx=0) \\<br>
+&amp;≥\int_a^b\left\{g&rsquo;'(x)\right\}^2dx
+\end{aligned}$</p>
+<p>$\displaystyle\therefore\int_a^b\left\{\tilde{g}''(x)\right\}^2dx≥\int_a^b\left\{g&rsquo;'(x)\right\}^2dx$</p>
+<p>3) Natural Cubic Spline with $n$ knots is the unique minizer.</p>
+<p>$\displaystyle\int_a^b\left\{\tilde{g}''(x)\right\}^2dx≥\int_a^b\left\{g&rsquo;'(x)\right\}^2dx \\<br>
+\displaystyle\Leftrightarrow\lambda\int_a^b\left\{\tilde{g}''(x)\right\}^2dx≥\lambda\int_a^b\left\{g&rsquo;'(x)\right\}^2dx$</p>
+<p>We knot that $g(x)$ is the natural cubic spline. We assumed that $\tilde{g}$ is the unique minizer, so $\tilde{g}$ should be the natural cubic spline.</p>
+<p>Since the solution is a natural spline, we can write it as $\displaystyle f(x)=\sum_{j=1}^n\theta_jN_j(x)$. The problem about $f(x)$ has been reduced to the problem of estimating $\theta_j$.</p>
+<p>$$\underset{\theta}{\text{argmin}}\;(y-N\theta)^T(y-N\theta)+\lambda\theta^T\Omega_N\theta$$</p>
+<p>$\{N\}_{ij}$ is $N_j(x_i)$ and $\{\Omega_N\}_{jk}$ is $\int N&rsquo;'_j(t)N&rsquo;'_k(t)dt$. The solution will be $\hat{\theta}=(N^TN+\lambda\Omega_N)^{-1}N^Ty$.</p>
+<div class="edit-meta">
+
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Smoothing%20Spline/_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/ridge-regression/" title="Ridge Regression"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Ridge Regression</a>
+<a class="nav nav-next" href="https://statkwon.github.io/visualization/" title="Visualization">Next - Visualization <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
   tex2jax: {
@@ -83,7 +115,7 @@
 <ul>
 <li class=""><a href="https://statkwon.github.io/">Home</a></li>
 
-<li class=""><a href="https://statkwon.github.io/ml/">ML</a>
+<li class="parent"><a href="https://statkwon.github.io/ml/">ML</a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/ml/gauss-markov-theorem/">Gauss-Markov Theorem</a></li>
@@ -139,7 +171,7 @@
   
 </li>
 
-<li class=""><a href="https://statkwon.github.io/ml/smoothing-spline/">Smoothing Spline</a>
+<li class="parent active"><a href="https://statkwon.github.io/ml/smoothing-spline/">Smoothing Spline</a>
   
 </li>
 </ul>
