@@ -3,11 +3,11 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Regression Spline - ML Lab</title>
+<title>MyLinearRegression.py - ML Lab</title>
 <meta name="description" content="STATKWON">
 <meta name="generator" content="Hugo 0.74.3" />
 <link href="https://statkwon.github.io//index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://statkwon.github.io/ml/regression-spline/">
+<link rel="canonical" href="https://statkwon.github.io/ml/linear-regression/mylinearregression/">
 <link rel="stylesheet" href="https://statkwon.github.io/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://statkwon.github.io/css/chroma.min.css">
@@ -17,16 +17,25 @@
 <script src="https://statkwon.github.io/js/bundle.js"></script><style>
 :root {}
 </style>
-<meta property="og:title" content="Regression Spline" />
-<meta property="og:description" content="STATKWON" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://statkwon.github.io/ml/regression-spline/" />
+<meta property="og:title" content="MyLinearRegression.py" />
+<meta property="og:description" content="Github Link: MyLinearRegression.ipynb
+import numpy as np class MyLinearRegerssion: def fit(self, X_train, y_train): ones = np.ones(len(X_train)) X_train = np.array(X_train) X_train = np.column_stack((np.ones(len(X_train)), X_train)) y_train = np.array(y_train) self.beta = np.linalg.inv(np.transpose(X_train).dot(X_train)).dot(np.transpose(X_train)).dot(y_train) def predict(self, X_test): ones = np.ones(len(X_test)) X_test = np.array(X_test) X_test = np.column_stack((np.ones(len(X_test)), X_test)) return X_test.dot(self.beta) " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://statkwon.github.io/ml/linear-regression/mylinearregression/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Regression Spline"/>
-<meta name="twitter:description" content="STATKWON"/>
-<meta itemprop="name" content="Regression Spline">
-<meta itemprop="description" content="STATKWON">
+<meta name="twitter:title" content="MyLinearRegression.py"/>
+<meta name="twitter:description" content="Github Link: MyLinearRegression.ipynb
+import numpy as np class MyLinearRegerssion: def fit(self, X_train, y_train): ones = np.ones(len(X_train)) X_train = np.array(X_train) X_train = np.column_stack((np.ones(len(X_train)), X_train)) y_train = np.array(y_train) self.beta = np.linalg.inv(np.transpose(X_train).dot(X_train)).dot(np.transpose(X_train)).dot(y_train) def predict(self, X_test): ones = np.ones(len(X_test)) X_test = np.array(X_test) X_test = np.column_stack((np.ones(len(X_test)), X_test)) return X_test.dot(self.beta) "/>
+<meta itemprop="name" content="MyLinearRegression.py">
+<meta itemprop="description" content="Github Link: MyLinearRegression.ipynb
+import numpy as np class MyLinearRegerssion: def fit(self, X_train, y_train): ones = np.ones(len(X_train)) X_train = np.array(X_train) X_train = np.column_stack((np.ones(len(X_train)), X_train)) y_train = np.array(y_train) self.beta = np.linalg.inv(np.transpose(X_train).dot(X_train)).dot(np.transpose(X_train)).dot(y_train) def predict(self, X_test): ones = np.ones(len(X_test)) X_test = np.array(X_test) X_test = np.column_stack((np.ones(len(X_test)), X_test)) return X_test.dot(self.beta) ">
+
+<meta itemprop="wordCount" content="44">
+
+
+
+<meta itemprop="keywords" content="" />
 </head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
@@ -47,48 +56,27 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>Regression Spline</h1><p>We can obtain regression splines by adding a continuity constraint to piecewise polynomials.</p>
-<p>Regression splines are often called the $M$th order spline, a piecewise polynomial of degree $M$, that is continuous and has continuous derivatives of orders $1, \ldots, M-1$ at its know points.</p>
-<p><strong>$M$th order spline with $K$ knots</strong></p>
-<p>$h_j(X)=X^{j-1} \quad (j=1, 2, \ldots, M+1)$</p>
-<p>$h_{M+1+l}(X)=(X-\xi_l)_+^M \quad (l=1, 2, \ldots, K)$</p>
-<p>$f(X)=\beta_1+\beta_2X\cdots+\beta_{M+1}X^M+\beta_{M+2}(X-\xi_1)_+^M+\cdots+\beta_{M+K+1}(X-\xi_K)_+^M$</p>
-<hr>
-<p>We will make a proof for the case when $M=3$ and $K=2$.</p>
-<p>$f(X)=\beta_1+\beta_2X+\beta_3X^2+\beta_4X^3+\beta_5(X-\xi_1)_+^3+\beta_6(X-\xi_2)_+^3$</p>
-<p>We will show the continuity of $f(X)$, $f&rsquo;(X)$, $f&rsquo;'(X)$ at the knots $\xi_1$, $\xi_2$ ($\xi_1&lt;\xi_2$).</p>
-<p>1) Continuity of $f(X)$</p>
-<p>$\begin{aligned}
-f(\xi_1-h)&amp;=\beta_1+\beta_2(\xi_1-h)+\beta_3(\xi_1-h)^2+\beta_4(\xi_1-h)^3+\beta_5(\xi_1-h-\xi_1)_+^3+\beta_6(\xi_1-h-\xi_2)_+^3 \\<br>
-&amp;=\beta_1+\beta_2(\xi_1-h)+\beta_3(\xi_1-h)^2+\beta_4(\xi_1-h)^3
-\end{aligned}$</p>
-<p>$f(\xi_1+h)=\beta_1+\beta_2(\xi_1+h)+\beta_3(\xi_1+h)^2+\beta_4(\xi_1+h)^3+\beta_5(\xi_1+h-\xi_1)_+^3+\beta_6(\xi_1+h-\xi_2)_+^3$</p>
-<p>$\displaystyle\lim_{h\rightarrow0}f(\xi_1-h)=\lim_{h\rightarrow0}f(\xi_1+h)=\beta_1+\beta_2\xi_1+\beta_3\xi_1^2+\beta_4\xi_1^3$</p>
-<p>$\displaystyle\therefore\lim_{x\rightarrow\xi_1}f(x)=\beta_1+\beta_2\xi_1+\beta_3\xi_1^2+\beta_4\xi_1^3=f(\xi_1)$</p>
-<p>$f(X)$ is continuous at $\xi_1$ and we can show that $f(X)$ is continuous at $\xi_2$ by a similar way.</p>
-<p>2) Continuity of $f&rsquo;(X)$ at $\xi_1$, $\xi_2$</p>
-<p>$\begin{aligned}
-f&rsquo;(\xi_1^-)&amp;=\lim_{h\rightarrow0}\dfrac{f(\xi_1)-f(\xi_1-h)}{h} \\<br>
-&amp;=\lim_{h\rightarrow0}\dfrac{\beta_2h+2\beta_3\xi_1h+3\beta_4\xi_1^2h+O(h^2)}{h} \\<br>
-&amp;=\beta_2+2\beta_3\xi_1+3\beta_4\xi_1^2
-\end{aligned}$</p>
-<p>$\begin{aligned}
-f&rsquo;(\xi_1^+)&amp;=\lim_{h\rightarrow0}\dfrac{f(\xi_1+h)-f(\xi_1)}{h} \\<br>
-&amp;=\lim_{h\rightarrow0}\dfrac{\beta_2h+2\beta_3\xi_1h+3\beta_4\xi_1^2h+\beta_5(\xi_1+h-\xi_1)_+^3+\beta_6(\xi_1+h-\xi_2)_+^3+O(h^2)}{h} \\<br>
-&amp;=\beta_2+2\beta_3\xi_1+3\beta_4\xi_1^2
-\end{aligned}$</p>
-<p>$\therefore\lim_{x\rightarrow\xi_1}f&rsquo;(x)=\beta_2+2\beta_3\xi_1+3\beta_4\xi_1^2=f&rsquo;(\xi_1)$</p>
-<p>$f&rsquo;(X)$ is continuous at $\xi_1$ and we can show that $f&rsquo;(X)$ is continuous at $\xi_2$ by a similar way.</p>
-<p>3) Continuity of $f&rsquo;'(X)$ at $\xi_1$, $\xi_2$</p>
-<p>Similarly, $\lim_{x\rightarrow\xi_1}f&rsquo;'(x)=6\beta_4\xi_1^2=f&rsquo;'(\xi_1)$ and $\lim_{x\rightarrow\xi_2}f&rsquo;'(x)=6\beta_4\xi_2^2=f&rsquo;'(\xi_2)$.</p>
-<p>We showed that $f(X)$, $f&rsquo;(X)$ and $f&rsquo;'(X)$ are all continuous at $\xi_1$, $\xi_2$. Thus, $f(X)$ represents a cubic spline with two knots.</p>
-<hr>
-<p>The number of parameters to fit regression spline is $(M+1)\times(K+1)-M\times K=M+K+1$.</p>
-<p>However, regression spline still has a problem that adding a continuity constraint cannot fix the irregularity beyond the boundaries.</p>
-<div class="edit-meta">
+<main><h1>MyLinearRegression.py</h1>
+<p>Github Link: <a href="https://github.com/statkwon/ML_Study/blob/master/MyLinearRegression.ipynb">MyLinearRegression.ipynb</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
 
-<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Regression%20Spline/_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/posterior-for-normal/" title="Posterior for Normal"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Posterior for Normal</a>
-<a class="nav nav-next" href="https://statkwon.github.io/ml/regression-spline/myregressionspline/" title="MyRegressionSpline.py">Next - MyRegressionSpline.py <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyLinearRegerssion</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fit</span>(self, X_train, y_train):
+        ones <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones(len(X_train))
+        X_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(X_train)
+        X_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>column_stack((np<span style="color:#f92672">.</span>ones(len(X_train)), X_train))
+        y_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(y_train)
+        self<span style="color:#f92672">.</span>beta <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>inv(np<span style="color:#f92672">.</span>transpose(X_train)<span style="color:#f92672">.</span>dot(X_train))<span style="color:#f92672">.</span>dot(np<span style="color:#f92672">.</span>transpose(X_train))<span style="color:#f92672">.</span>dot(y_train)
+        
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict</span>(self, X_test):
+        ones <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones(len(X_test))
+        X_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(X_test)
+        X_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>column_stack((np<span style="color:#f92672">.</span>ones(len(X_test)), X_test))
+        <span style="color:#66d9ef">return</span> X_test<span style="color:#f92672">.</span>dot(self<span style="color:#f92672">.</span>beta)
+</code></pre></div><div class="edit-meta">
+
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Linear%20Regression/MyLinearRegression.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/linear-regression/" title="Linear Regression"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Linear Regression</a>
+<a class="nav nav-next" href="https://statkwon.github.io/ml/qr-decomposition/" title="QR-Decomposition">Next - QR-Decomposition <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -129,10 +117,10 @@ f&rsquo;(\xi_1^+)&amp;=\lim_{h\rightarrow0}\dfrac{f(\xi_1+h)-f(\xi_1)}{h} \\<br>
   
 <ul class="sub-menu">
 
-<li class=""><a href="https://statkwon.github.io/ml/linear-regression/">Linear Regression</a>
+<li class="parent"><a href="https://statkwon.github.io/ml/linear-regression/">Linear Regression</a>
   
 <ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/linear-regression/mylinearregression/">MyLinearRegression.py</a></li>
+<li class="active"><a href="https://statkwon.github.io/ml/linear-regression/mylinearregression/">MyLinearRegression.py</a></li>
 </ul>
   
 </li>
@@ -179,7 +167,7 @@ f&rsquo;(\xi_1^+)&amp;=\lim_{h\rightarrow0}\dfrac{f(\xi_1+h)-f(\xi_1)}{h} \\<br>
 </li>
 <li class=""><a href="https://statkwon.github.io/ml/posterior-for-normal/">Posterior for Normal</a></li>
 
-<li class="parent active"><a href="https://statkwon.github.io/ml/regression-spline/">Regression Spline</a>
+<li class=""><a href="https://statkwon.github.io/ml/regression-spline/">Regression Spline</a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/ml/regression-spline/myregressionspline/">MyRegressionSpline.py</a></li>
