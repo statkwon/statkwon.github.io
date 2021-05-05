@@ -58,11 +58,11 @@
     
     <item>
       <title>QR-Decomposition</title>
-      <link>https://statkwon.github.io/ml/qr-decomposition/</link>
+      <link>https://statkwon.github.io/ml/linear-regression/qr-decomposition/</link>
       <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://statkwon.github.io/ml/qr-decomposition/</guid>
-      <description>1. Gram-Schmidt Process 모든 $n$차원 공간의 영공간이 아닌 Subspace는 Orthonormal Basis를 갖는다. Gram-Schmidt Process는 $n$차원 공간의 영공간이 아닌 Subspace</description>
+      <guid>https://statkwon.github.io/ml/linear-regression/qr-decomposition/</guid>
+      <description>Gram-Schmidt Process Every nonzero subspaces in $R^n$ have its own prthonormal basis. Gram-Schmidt process is the process to change the basis of the nonzero subspace in $R^n$ to orthonormal basis. Now we will check the process to find the orthonormal basis of subspace $W$ in $R^n$ whose basis is $\{\mathbf{w}_1, \mathbf{w}_2, \ldots, \mathbf{w}_k\}$. If we let the first vector $\mathbf{w}_1$ as $\mathbf{v}_1$, then we can find $\mathbf{v}_2$, which is an</description>
     </item>
     
     <item>
@@ -111,15 +111,6 @@
     </item>
     
     <item>
-      <title>Linear Regression</title>
-      <link>https://statkwon.github.io/ml/2/</link>
-      <pubDate>Wed, 10 Feb 2021 16:15:20 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/2/</guid>
-      <description>3.1. Simple Linear Regression Simple Linear Regression은 변수 간의 선형 관계를 잘 나타내는 최적의 직선 $\beta_0+\beta_1X$를 찾는 작업이다. 직선의 식을 아는 경</description>
-    </item>
-    
-    <item>
       <title>About Me</title>
       <link>https://statkwon.github.io/about/</link>
       <pubDate>Wed, 10 Feb 2021 15:32:15 +0900</pubDate>
@@ -135,6 +126,15 @@
       
       <guid>https://statkwon.github.io/ml/classification/</guid>
       <description>4장에서는 반응변수가 범주형인 경우, 즉, Classification의 문제를 다룬다. 4.2. Why Not Linear Regression? 선형 회귀 모형은 반응변수가 범주형인 경우 사용이 적합하</description>
+    </item>
+    
+    <item>
+      <title>ISLR CH2</title>
+      <link>https://statkwon.github.io/ml/linear-regression/islr/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/linear-regression/islr/</guid>
+      <description>3.1. Simple Linear Regression Simple Linear Regression은 변수 간의 선형 관계를 잘 나타내는 최적의 직선 $\beta_0+\beta_1X$를 찾는 작업이다. 직선의 식을 아는 경</description>
     </item>
     
     <item>

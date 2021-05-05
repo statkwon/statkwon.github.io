@@ -12,15 +12,6 @@
     
     
     <item>
-      <title>QR-Decomposition</title>
-      <link>https://statkwon.github.io/ml/qr-decomposition/</link>
-      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/qr-decomposition/</guid>
-      <description>1. Gram-Schmidt Process 모든 $n$차원 공간의 영공간이 아닌 Subspace는 Orthonormal Basis를 갖는다. Gram-Schmidt Process는 $n$차원 공간의 영공간이 아닌 Subspace</description>
-    </item>
-    
-    <item>
       <title>One-parameter models</title>
       <link>https://statkwon.github.io/ml/one-parameter-models/</link>
       <pubDate>Wed, 10 Feb 2021 16:25:47 +0900</pubDate>
@@ -63,15 +54,6 @@
       
       <guid>https://statkwon.github.io/ml/resampling-methods/</guid>
       <description>Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻</description>
-    </item>
-    
-    <item>
-      <title>Linear Regression</title>
-      <link>https://statkwon.github.io/ml/2/</link>
-      <pubDate>Wed, 10 Feb 2021 16:15:20 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/2/</guid>
-      <description>3.1. Simple Linear Regression Simple Linear Regression은 변수 간의 선형 관계를 잘 나타내는 최적의 직선 $\beta_0+\beta_1X$를 찾는 작업이다. 직선의 식을 아는 경</description>
     </item>
     
     <item>

@@ -46,7 +46,7 @@
   </url>
   
   <url>
-    <loc>https://statkwon.github.io/ml/qr-decomposition/</loc>
+    <loc>https://statkwon.github.io/ml/linear-regression/qr-decomposition/</loc>
     <lastmod>2021-03-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -76,11 +76,6 @@
   </url>
   
   <url>
-    <loc>https://statkwon.github.io/ml/2/</loc>
-    <lastmod>2021-02-10T16:15:20+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://statkwon.github.io/about/</loc>
     <lastmod>2021-02-10T15:32:15+09:00</lastmod>
   </url>
@@ -92,6 +87,11 @@
   
   <url>
     <loc>https://statkwon.github.io/ml/classification/</loc>
+    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/linear-regression/islr/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
   </url>
   

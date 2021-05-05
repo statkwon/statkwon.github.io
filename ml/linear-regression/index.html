@@ -47,7 +47,8 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>Linear Regression</h1><p>Linear Regression assumes the linear relationship between the inputs and output.</p>
+<main><h1>Linear Regression</h1><p><strong>Linear Regression</strong></p>
+<p>Linear Regression assumes the linear relationship between the inputs and output.</p>
 <p>$$\mathbf{y}=X\boldsymbol{\beta}+\boldsymbol{\epsilon}, \quad \boldsymbol{\epsilon}\sim (\mathbf{0}, \sigma^2I_n)$$</p>
 <p>Here $\mathbf{y}$ and $\boldsymbol{\epsilon}$ is a $n\times 1$ vector, $X$ is a $n\times p$ matrix, and $\boldsymbol{\beta}$ is a $p\times 1$ vector.</p>
 <p>We have to estimate $\boldsymbol{\beta}$ to fit our linear model and the most common way is to use a LSE(Least Squares Estimate). LSE is an estimate which minimizes $(\mathbf{y}-X\boldsymbol{\beta})^T(\mathbf{y}-X\boldsymbol{\beta})$.</p>
@@ -58,6 +59,7 @@
 \end{aligned}$</p>
 <p>Thus, if we solve the equation $-2X^T\mathbf{y}+2X^TX\boldsymbol{\beta}=0$, we can get the unique solution $\hat{\boldsymbol{\beta}}=(X^TX)^{-1}X^T\mathbf{y}$ when $X^TX$ is nonsingular. This condition is same as that $X$ has a full colunm rank. If don&rsquo;t, a solution still exists, but is not unique. This is the reason why we have to consider the variables to be uncorrelated while fitting the regression model.</p>
 <hr>
+<p><strong>Least Squares Estimate</strong></p>
 <p>It is useful to think about the geometric meaning of least squares estimate.</p>
 <figure>
     <img src="/esl_fig_3.2.png" width="400" height="200"/> 
@@ -65,6 +67,7 @@
 
 <p>When the inverse exists, we can express $\hat{\mathbf{y}}=X\hat{\boldsymbol{\beta}}$ as $X(X^TX)^{-1}X^T\mathbf{y}$. If we let $H=X(X^TX)^{-1}X^T$, it is not that difficult to recognize that $H$ is a projection matrix due to the fact that $H$ is idempotent and symmetric. Thus, $\hat{\mathbf{y}}$ can be thought of as the result of projection of $\mathbf{y}$ onto the column space of $X$. Furthermore, if $X$ does not have full column rank, $\hat{\mathbf{y}}$ can still be regarded as the result of projection of $\mathbf{y}$, but not an orthogonal one.</p>
 <hr>
+<p><strong>Statistical Inferences</strong></p>
 <p>With a bit more strict assumption, we can make some statistical inferences about model parameters. From now on, we will assume that $\boldsymbol{\epsilon}$ follows a multivariate normal distribution with the mean vector $\mathbf{0}$ and the covariance matrix $\sigma^2I_n$. Then it is easy to show that $\hat{\boldsymbol{\beta}}\sim N_p(\boldsymbol{\beta}, \sigma^2(X^TX)^{-1})$.</p>
 <p>$\begin{aligned}
 \text{E}[\hat{\boldsymbol{\beta}}]&amp;=\text{E}[(X^TX)^{-1}X^T\mathbf{y}] \\<br>
@@ -79,6 +82,7 @@
 \end{aligned}$</p>
 <p>Distribution of $\hat{\sigma}^2$ can also be obtained, $(n-p-1)\hat{\sigma}^2\sim\sigma^2\chi^2_{n-p-1}$. With these results, we can get some confidence intervals for the parameters or can conduct some hypothesis tests.</p>
 <hr>
+<p><strong>Gauss-Markov Theorem</strong></p>
 <p>We use the LSE because it has some good properties. Gauss-Markov theorem states that the LSE is BLUE, which means Best Linear Unbiased Estimate. According to this theorem, LSE has the smallest variance among all linear unbiased estimates. We&rsquo;ve already showed that LSE is an unbaised estimate, so we will just proved for the smallest variance.</p>
 <p>Let $\tilde{\boldsymbol{\beta}}=C\mathbf{y}$ is an unbiased estimate for $\boldsymbol{\beta}$, where $C=(X^TX)^{-1}X^T+D$ and $D$ is not a zero matrix.</p>
 <p>$\begin{aligned}
@@ -111,7 +115,7 @@ Last updated on 10 Mar 2021
 <br>
 Published on 10 Mar 2021
 <br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Linear%20Regression/_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/" title="ML"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - ML</a>
-<a class="nav nav-next" href="https://statkwon.github.io/ml/linear-regression/mylinearregression/" title="MyLinearRegression.py">Next - MyLinearRegression.py <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="nav nav-next" href="https://statkwon.github.io/ml/linear-regression/qr-decomposition/" title="QR-Decomposition">Next - QR-Decomposition <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -152,13 +156,65 @@ Published on 10 Mar 2021
   
 <ul class="sub-menu">
 
-<li class=""><a href="https://statkwon.github.io/visualization/python/">Python</a>
+<li class="parent active"><a href="https://statkwon.github.io/ml/linear-regression/">Linear Regression</a>
   
 <ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/visualization/python/1/">1. Matplotlib</a></li>
-<li class=""><a href="https://statkwon.github.io/visualization/python/2/">2. Seaborn</a></li>
-<li class=""><a href="https://statkwon.github.io/visualization/python/3/">3. Bokeh</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/qr-decomposition/">QR-Decomposition</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/islr/">ISLR CH2</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/mylinearregression/">MyLinearRegression.py</a></li>
 </ul>
+  
+</li>
+<li class=""><a href="https://statkwon.github.io/ml/one-parameter-models/">One-parameter models</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/bayesian-statistics/">Bayesian Statistics</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/moving-beyond-linearity/">Moving Beyond Linearity</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/5/">Linear Model Selection and Regularization</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/resampling-methods/">Resampling Methods</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/classification/">Classification</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/statistical-learning/">Statistical Learning</a></li>
+
+<li class=""><a href="https://statkwon.github.io/ml/linear-discriminant-analysis/">Linear Discriminant Analysis</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/">MyLDA.py</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://statkwon.github.io/ml/local-regression/">Local Regression</a>
+  
+</li>
+
+<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/">Logistic Regression</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/mylogisticregression/">MyLogisticRegression.py</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://statkwon.github.io/ml/natural-spline/">Natural Spline</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/natural-spline/mynaturalcubicspline/">MyNaturalCubicSpline.py</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="https://statkwon.github.io/ml/posterior-for-normal/">Posterior for Normal</a></li>
+
+<li class=""><a href="https://statkwon.github.io/ml/regression-spline/">Regression Spline</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/regression-spline/myregressionspline/">MyRegressionSpline.py</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://statkwon.github.io/ml/ridge-regression/">Ridge Regression</a>
+  
+</li>
+
+<li class=""><a href="https://statkwon.github.io/ml/smoothing-spline/">Smoothing Spline</a>
   
 </li>
 </ul>
