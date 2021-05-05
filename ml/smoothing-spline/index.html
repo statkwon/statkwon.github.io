@@ -75,6 +75,11 @@
 <p>Since the solution is a natural spline, we can write it as $\displaystyle f(x)=\sum_{j=1}^n\theta_jN_j(x)$. The problem about $f(x)$ has been reduced to the problem of estimating $\theta_j$.</p>
 <p>$$\underset{\theta}{\text{argmin}}\;(y-N\theta)^T(y-N\theta)+\lambda\theta^T\Omega_N\theta$$</p>
 <p>$\{N\}_{ij}$ is $N_j(x_i)$ and $\{\Omega_N\}_{jk}$ is $\int N&rsquo;'_j(t)N&rsquo;'_k(t)dt$. The solution will be $\hat{\theta}=(N^TN+\lambda\Omega_N)^{-1}N^Ty$.</p>
+<hr>
+<p><strong>Reference</strong></p>
+<ol>
+<li>Elements of Statistical Learning</li>
+</ol>
 <div class="edit-meta">
 
 <br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Smoothing%20Spline/_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/ridge-regression/" title="Ridge Regression"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Ridge Regression</a>
@@ -161,10 +166,6 @@
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/ml/natural-spline/mynaturalcubicspline/">MyNaturalCubicSpline.py</a></li>
 </ul>
-  
-</li>
-
-<li class=""><a href="https://statkwon.github.io/ml/piecewise-polynomial/">Piecewise Polynomial</a>
   
 </li>
 <li class=""><a href="https://statkwon.github.io/ml/posterior-for-normal/">Posterior for Normal</a></li>
