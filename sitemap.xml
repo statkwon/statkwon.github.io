@@ -56,11 +56,6 @@
   </url>
   
   <url>
-    <loc>https://statkwon.github.io/ml/normal-model/</loc>
-    <lastmod>2021-02-11T23:47:49+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://statkwon.github.io/ml/one-parameter-models/</loc>
     <lastmod>2021-02-10T16:25:47+09:00</lastmod>
   </url>
@@ -148,6 +143,10 @@
   
   <url>
     <loc>https://statkwon.github.io/ml/piecewise-polynomial/</loc>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/posterior-for-normal/</loc>
   </url>
   
   <url>

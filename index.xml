@@ -66,30 +66,12 @@
     </item>
     
     <item>
-      <title>Linear Regression</title>
-      <link>https://statkwon.github.io/ml/linear-regression/</link>
-      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/linear-regression/</guid>
-      <description>Linear Regression은 Input과 Output 사이의 Linear Relationship을 가정한다. $$y=X\beta+\epsilon, \quad \epsilon \sim (0, \sigma^2I)$$ $$Y=\begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix} \qquad X=\begin{bmatrix} 1 &amp;amp; x_{11} &amp;amp; x_{12} &amp;amp; \cdots &amp;amp; x_{1p} \\ 1 &amp;amp;</description>
-    </item>
-    
-    <item>
       <title>QR-Decomposition</title>
       <link>https://statkwon.github.io/ml/qr-decomposition/</link>
       <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://statkwon.github.io/ml/qr-decomposition/</guid>
       <description>1. Gram-Schmidt Process 모든 $n$차원 공간의 영공간이 아닌 Subspace는 Orthonormal Basis를 갖는다. Gram-Schmidt Process는 $n$차원 공간의 영공간이 아닌 Subspace</description>
-    </item>
-    
-    <item>
-      <title>Normal Model</title>
-      <link>https://statkwon.github.io/ml/normal-model/</link>
-      <pubDate>Thu, 11 Feb 2021 23:47:49 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/normal-model/</guid>
-      <description>3.1. Inference for the Mean, Conditional on the Variance 3.1.1. Posterior Inference Sampling Model: $Y_1, \ldots, Y_n|\theta, \sigma^2 \sim N(\theta, \sigma^2)$ Prior Distribution: $\theta|\sigma^2 \sim N(\mu_0, \tau_0^2)$ $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\ &amp;amp;\propto \exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}}\times\exp{\left\{-\dfrac{(\theta-\mu_0)^2}{2\tau_0^2}\right\}} \\ &amp;amp;\propto \exp{\left[-\dfrac{1}{2}\left\{\left(\dfrac{1}{\tau_0^2}+\dfrac{n}{\sigma^2}\right)\theta^2+2\left(\dfrac{\mu_0}{\tau_0^2}+\dfrac{\sum y_i}{\sigma^2}\right)\theta\right\}\right]} \\ &amp;amp;\propto \exp{\left\{-\dfrac{1}{2}(a\theta^2+2b\theta)\right\}} \\ &amp;amp;=\exp{\left\{-\dfrac{1}{2}a\left(\theta^2-\dfrac{2b}{a}\theta+\dfrac{b^2}{a^2}\right)+\dfrac{b^2}{2a}\right\}} \\ &amp;amp;\propto \exp{\left\{-\dfrac{1}{2}a\left(\theta-\dfrac{b}{a}\right)^2\right\}} \\ &amp;amp;=\exp{\left\{-\dfrac{1}{2}\left(\dfrac{\theta-b/a}{1/\sqrt{a}}\right)^2\right\}} \sim N\left(\dfrac{b}{a}, \dfrac{1}{a}\right)=N(\mu_n, \tau_n^2) \end{aligned}$ 3.1.2. Parameter Update $\mu_0\rightarrow\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0+\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}+\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0+n\bar{y}}{\kappa_0+n}=\dfrac{\kappa_0\mu_0+n\bar{y}}{\kappa_n}$ Posterior Mean $\m</description>
     </item>
     
     <item>
@@ -211,6 +193,15 @@ import numpy as np class MyNaturalCubicSpline: def fit(self, X_train, y_train, k
       <guid>https://statkwon.github.io/ml/regression-spline/myregressionspline/</guid>
       <description>Github Link: MyRegressionSpline.ipynb
 import numpy as np class MyRegressionSpline: def fit(self, X_train, y_train, m, k): X_train = np.array(X_train) y_train = np.array(y_train) self.m = m self.k = np.array(k) X_train_new = np.power(X_train, 0) for i in range(1, m+1): X_train_new = np.column_stack((X_train_new, np.power(X_train, i))) for i in range(len(k)): X_train_new = np.column_stack((X_train_new, np.where(np.power(X_train-k[i], m) &amp;lt; 0, 0, np.power(X_train-k[i], m)))) self.beta = np.linalg.inv(np.transpose(X_train_new).dot(X_train_new)).dot(np.transpose(X_train_new)).dot(y_train) def predict(self, X_test): X_test = np.array(X_test) X_test_new = np.power(X_test, 0) for i in range(1, self.</description>
+    </item>
+    
+    <item>
+      <title>Posterior for Normal</title>
+      <link>https://statkwon.github.io/ml/posterior-for-normal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/posterior-for-normal/</guid>
+      <description>$p(\theta, \sigma^2|y_1, \ldots, y_n)=p(\theta|\sigma^2, y_1, \ldots, y_n)p(\sigma^2|y_1, \ldots, y_n)$ To calculate the posterior distribution, we should calculate $p(\theta|\sigma^2, y_1, \ldots, y_n)$ and $p(\sigma^2|y_1, \ldots, y_n)$ first. We can consider $p(\theta|\sigma^2, y_1, \ldots, y_n)$ as the posterior distribution when $\sigma^2$ is known. Then $p(\theta|\sigma^2)$ will be the prior distribution and we will assume that this follows a normal distribution with mean $\mu_0$ and variacne $\tau_0^2$. $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;amp;\propto</description>
     </item>
     
   </channel>

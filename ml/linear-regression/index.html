@@ -18,23 +18,15 @@
 :root {}
 </style>
 <meta property="og:title" content="Linear Regression" />
-<meta property="og:description" content="Linear Regression은 Input과 Output 사이의 Linear Relationship을 가정한다. $$y=X\beta&#43;\epsilon, \quad \epsilon \sim (0, \sigma^2I)$$ $$Y=\begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix} \qquad X=\begin{bmatrix} 1 &amp; x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1p} \\ 1 &amp;" />
-<meta property="og:type" content="article" />
+<meta property="og:description" content="STATKWON" />
+<meta property="og:type" content="website" />
 <meta property="og:url" content="https://statkwon.github.io/ml/linear-regression/" />
-<meta property="article:published_time" content="2021-03-10T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-03-10T00:00:00+00:00" />
+<meta property="og:updated_time" content="2021-03-10T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linear Regression"/>
-<meta name="twitter:description" content="Linear Regression은 Input과 Output 사이의 Linear Relationship을 가정한다. $$y=X\beta&#43;\epsilon, \quad \epsilon \sim (0, \sigma^2I)$$ $$Y=\begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix} \qquad X=\begin{bmatrix} 1 &amp; x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1p} \\ 1 &amp;"/>
+<meta name="twitter:description" content="STATKWON"/>
 <meta itemprop="name" content="Linear Regression">
-<meta itemprop="description" content="Linear Regression은 Input과 Output 사이의 Linear Relationship을 가정한다. $$y=X\beta&#43;\epsilon, \quad \epsilon \sim (0, \sigma^2I)$$ $$Y=\begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix} \qquad X=\begin{bmatrix} 1 &amp; x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1p} \\ 1 &amp;">
-<meta itemprop="datePublished" content="2021-03-10T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-03-10T00:00:00+00:00" />
-<meta itemprop="wordCount" content="798">
-
-
-
-<meta itemprop="keywords" content="" />
+<meta itemprop="description" content="STATKWON">
 </head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
@@ -55,8 +47,7 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>Linear Regression</h1>
-<p>Linear Regression은 Input과 Output 사이의 Linear Relationship을 가정한다.</p>
+<main><h1>Linear Regression</h1><p>Linear Regression은 Input과 Output 사이의 Linear Relationship을 가정한다.</p>
 <p>$$y=X\beta+\epsilon, \quad \epsilon \sim (0, \sigma^2I)$$</p>
 <p>$$Y=\begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix} \qquad X=\begin{bmatrix} 1 &amp; x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1p} \\ 1 &amp; x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2p} \\ \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 1 &amp; x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{np} \end{bmatrix} \qquad \beta=\begin{bmatrix} \beta_0 \\ \beta_1 \\ \vdots \\ \beta_p \end{bmatrix} \qquad \epsilon=\begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_n \end{bmatrix}$$</p>
 <p>회귀 모델의 Parameter를 추정하는 방법 중 가장 보편적인 것은 Least Square Estimation이다. LSE는 Residual Sum of Squares인 $(y-X\beta)^T(y-X\beta)$를 최소화하는 값을 $\beta$의 추정치로 사용하는 방식이다.</p>
@@ -70,7 +61,7 @@
 <p>$$X^TX\beta=X^Ty$$</p>
 <p>$X$가 Full Column Rank를 갖는 경우($X^TX$가 Nonsingular한 경우) $\hat{\beta}=(X^TX)^{-1}X^Ty$이 위 식을 만족시키는 유일한 해가 된다. 만약 $X$가 Full Column Rank를 갖지 않는다면 위 식을 만족시키는 해가 존재하기는 하지만, 유일하지 않고 여러 개의 해를 갖게 된다. 회귀 분석에서 $X$ 변수들 사이의 독립을 전제로 하는 것 역시 이와 같은 맥락에서 나온 것으로 생각할 수 있다.</p>
 <p>$$\hat{y}=X\hat{\beta}=X(X^TX)^{-1}X^Ty$$</p>
-<p><img src="/ml/fig/esl_fig3.2.png" alt="ESL fig 3.2"></p>
+<p><img src="/esl_fig_3.2.png" alt="ESL fig 3.2"></p>
 <p>위와 같은 그림을 참고하여 LSE의 기하적인 의미를 생각해볼 수 있다. $\hat{y}=X(X^TX)^{-1}X^Ty$에서 $X(X^TX)^{-1}X^T$를 $H$라고 하면, $H^2=H$이고 $H^T=H$임을 쉽게 확인할 수 있다. 즉, $H$는 Symmetric하고 Idempotent한 행렬이므로 Orthogonal Projection에 대한 Standard Matrix라고 할 수 있다. 그렇기 때문에 $\hat{y}$은 $y$를 $X$의 Column Space에 Orthogonal Projection한 것과 같다. 앞서 $X$가 Full Column Rank를 갖지 않으면 해가 존재하기는 하지만 여러 개의 해를 갖게 된다고 하였는데, 이는 기하적으로 생각했을 때, 여전히 $y$를 $X$의 Column Space에 Projection할 수는 있지만 그것이 Orthogonal하지는 않은 것이라고 할 수 있다.</p>
 <div class="edit-meta">
 Last updated on 10 Mar 2021
@@ -78,7 +69,7 @@ Last updated on 10 Mar 2021
 
 <br>
 Published on 10 Mar 2021
-<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Linear%20Regression.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/gauss-markov-theorem/" title="Gauss-Markov Theorem"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Gauss-Markov Theorem</a>
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Linear%20Regression/_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/gauss-markov-theorem/" title="Gauss-Markov Theorem"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Gauss-Markov Theorem</a>
 <a class="nav nav-next" href="https://statkwon.github.io/ml/qr-decomposition/" title="QR-Decomposition">Next - QR-Decomposition <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -120,9 +111,11 @@ Published on 10 Mar 2021
   
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/ml/gauss-markov-theorem/">Gauss-Markov Theorem</a></li>
-<li class="active"><a href="https://statkwon.github.io/ml/linear-regression/">Linear Regression</a></li>
+
+<li class="parent active"><a href="https://statkwon.github.io/ml/linear-regression/">Linear Regression</a>
+  
+</li>
 <li class=""><a href="https://statkwon.github.io/ml/qr-decomposition/">QR-Decomposition</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/normal-model/">Normal Model</a></li>
 <li class=""><a href="https://statkwon.github.io/ml/one-parameter-models/">One-parameter models</a></li>
 <li class=""><a href="https://statkwon.github.io/ml/bayesian-statistics/">Bayesian Statistics</a></li>
 <li class=""><a href="https://statkwon.github.io/ml/moving-beyond-linearity/">Moving Beyond Linearity</a></li>
@@ -163,6 +156,7 @@ Published on 10 Mar 2021
 <li class=""><a href="https://statkwon.github.io/ml/piecewise-polynomial/">Piecewise Polynomial</a>
   
 </li>
+<li class=""><a href="https://statkwon.github.io/ml/posterior-for-normal/">Posterior for Normal</a></li>
 
 <li class=""><a href="https://statkwon.github.io/ml/regression-spline/">Regression Spline</a>
   
