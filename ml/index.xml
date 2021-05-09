@@ -6,54 +6,27 @@
     <description>Recent content in ML on ML Lab</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 08 May 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://statkwon.github.io/ml/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>One-parameter models</title>
-      <link>https://statkwon.github.io/ml/one-parameter-models/</link>
-      <pubDate>Wed, 10 Feb 2021 16:25:47 +0900</pubDate>
+      <title>8. Tree-Based Methods</title>
+      <link>https://statkwon.github.io/ml/tree-based-methods/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://statkwon.github.io/ml/one-parameter-models/</guid>
-      <description>2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution $Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다. 이때</description>
+      <guid>https://statkwon.github.io/ml/tree-based-methods/</guid>
+      <description>8장에서는 Tree를 기반으로 하는 방법들에 대해 다루고 있다. 각각의 방법들은 Regression과 Classification의 문제에 모두 적용 가능</description>
     </item>
     
     <item>
       <title>Bayesian Statistics</title>
       <link>https://statkwon.github.io/ml/bayesian-statistics/</link>
-      <pubDate>Wed, 10 Feb 2021 16:22:53 +0900</pubDate>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>https://statkwon.github.io/ml/bayesian-statistics/</guid>
       <description>1.1. Introduction Bayesian Learning 통계적 추론은 모집단의 일부를 통해 모집단의 일반적인 특성을 알아내기 위한 과정이다. 이때 대부분의 경우 모집단의 수치적 특성을 모수 $\theta$로</description>
-    </item>
-    
-    <item>
-      <title>Moving Beyond Linearity</title>
-      <link>https://statkwon.github.io/ml/moving-beyond-linearity/</link>
-      <pubDate>Wed, 10 Feb 2021 16:20:35 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/moving-beyond-linearity/</guid>
-      <description>지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다.</description>
-    </item>
-    
-    <item>
-      <title>Linear Model Selection and Regularization</title>
-      <link>https://statkwon.github.io/ml/5/</link>
-      <pubDate>Wed, 10 Feb 2021 16:19:21 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/5/</guid>
-      <description>선형 모형은 많은 전제조건을 필요로 하지만, 추론 영역에서 갖는 강점으로 인해 실생활의 문제들을 푸는데 있어 비선형 모형에 대해 경쟁력을 가지고 있다. 6장에서는 Method</description>
-    </item>
-    
-    <item>
-      <title>Resampling Methods</title>
-      <link>https://statkwon.github.io/ml/resampling-methods/</link>
-      <pubDate>Wed, 10 Feb 2021 16:18:21 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/resampling-methods/</guid>
-      <description>Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻</description>
     </item>
     
     <item>
@@ -63,6 +36,42 @@
       
       <guid>https://statkwon.github.io/ml/classification/</guid>
       <description>4장에서는 반응변수가 범주형인 경우, 즉, Classification의 문제를 다룬다. 4.2. Why Not Linear Regression? 선형 회귀 모형은 반응변수가 범주형인 경우 사용이 적합하</description>
+    </item>
+    
+    <item>
+      <title>Linear Model Selection and Regularization</title>
+      <link>https://statkwon.github.io/ml/5/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/5/</guid>
+      <description>선형 모형은 많은 전제조건을 필요로 하지만, 추론 영역에서 갖는 강점으로 인해 실생활의 문제들을 푸는데 있어 비선형 모형에 대해 경쟁력을 가지고 있다. 6장에서는 Method</description>
+    </item>
+    
+    <item>
+      <title>Moving Beyond Linearity</title>
+      <link>https://statkwon.github.io/ml/moving-beyond-linearity/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/moving-beyond-linearity/</guid>
+      <description>지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다.</description>
+    </item>
+    
+    <item>
+      <title>One-parameter models</title>
+      <link>https://statkwon.github.io/ml/one-parameter-models/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/one-parameter-models/</guid>
+      <description>2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution $Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다. 이때</description>
+    </item>
+    
+    <item>
+      <title>Resampling Methods</title>
+      <link>https://statkwon.github.io/ml/resampling-methods/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/resampling-methods/</guid>
+      <description>Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻</description>
     </item>
     
     <item>
@@ -81,6 +90,16 @@
       
       <guid>https://statkwon.github.io/ml/posterior-for-normal/</guid>
       <description>$p(\theta, \sigma^2|y_1, \ldots, y_n)=p(\theta|\sigma^2, y_1, \ldots, y_n)p(\sigma^2|y_1, \ldots, y_n)$ To calculate the posterior distribution, we should calculate $p(\theta|\sigma^2, y_1, \ldots, y_n)$ and $p(\sigma^2|y_1, \ldots, y_n)$ first. We can consider $p(\theta|\sigma^2, y_1, \ldots, y_n)$ as the posterior distribution when $\sigma^2$ is known. Then $p(\theta|\sigma^2)$ will be the prior distribution and we will assume that this follows a normal distribution with mean $\mu_0$ and variacne $\tau_0^2$. $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;amp;\propto</description>
+    </item>
+    
+    <item>
+      <title>Supervised Learning</title>
+      <link>https://statkwon.github.io/ml/supervised-learning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/supervised-learning/</guid>
+      <description>Regression
+Let $Y$ as a random variable in $\mathbb{R}$ and $X$ as a random vector in $\mathbb{R}^p$. We want to know the relationship between $Y$ and $X$. Actually, we seek a best function $f(X)$ for predicting $Y$. We will first consider the case that $Y$ is a quantitative output. For this case, we use a squared error loss $L(Y, f(X))=(Y-f(X))^2$. Our goal is to find $f$ which minimizes the expected loss $\text{E}[L(Y, f(X))]$.</description>
     </item>
     
   </channel>

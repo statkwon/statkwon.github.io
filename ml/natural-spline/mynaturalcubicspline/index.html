@@ -30,7 +30,8 @@
 import numpy as np class MyNaturalCubicSpline: def fit(self, X_train, y_train, k): X_train = np.array(X_train) y_train = np.array(y_train) self.k = np.array(k) X_train_new = np.column_stack((np.ones(len(X_train)), X_train)) d_Km1 = (np.where(np.power(X_train-k[-2], 3) &lt; 0, 0, np.power(X_train-k[-2], 3))-np.where(np.power(X_train-k[-1], 3) &lt; 0, 0, np.power(X_train-k[-1], 3)))/(k[-2]-k[-1]) for i in range(len(k)-2): d = (np.where(np.power(X_train-k[i], 3) &lt; 0, 0, np.power(X_train-k[i], 3))-np.where(np.power(X_train-k[-1], 3) &lt; 0, 0, np.power(X_train-k[-1], 3)))/(k[i]-k[-1]) X_train_new = np.column_stack((X_train_new, d-d_Km1)) self.beta = np.linalg.inv(np.transpose(X_train_new).dot(X_train_new)).dot(np.transpose(X_train_new)).dot(y_train) def predict(self, X_test): X_test = np." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://statkwon.github.io/ml/natural-spline/mynaturalcubicspline/" />
-
+<meta property="article:published_time" content="2021-05-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-05-02T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MyNaturalCubicSpline.py"/>
 <meta name="twitter:description" content="Github Link: MyNaturalCubicSpline.ipynb
@@ -38,7 +39,8 @@ import numpy as np class MyNaturalCubicSpline: def fit(self, X_train, y_train, k
 <meta itemprop="name" content="MyNaturalCubicSpline.py">
 <meta itemprop="description" content="Github Link: MyNaturalCubicSpline.ipynb
 import numpy as np class MyNaturalCubicSpline: def fit(self, X_train, y_train, k): X_train = np.array(X_train) y_train = np.array(y_train) self.k = np.array(k) X_train_new = np.column_stack((np.ones(len(X_train)), X_train)) d_Km1 = (np.where(np.power(X_train-k[-2], 3) &lt; 0, 0, np.power(X_train-k[-2], 3))-np.where(np.power(X_train-k[-1], 3) &lt; 0, 0, np.power(X_train-k[-1], 3)))/(k[-2]-k[-1]) for i in range(len(k)-2): d = (np.where(np.power(X_train-k[i], 3) &lt; 0, 0, np.power(X_train-k[i], 3))-np.where(np.power(X_train-k[-1], 3) &lt; 0, 0, np.power(X_train-k[-1], 3)))/(k[i]-k[-1]) X_train_new = np.column_stack((X_train_new, d-d_Km1)) self.beta = np.linalg.inv(np.transpose(X_train_new).dot(X_train_new)).dot(np.transpose(X_train_new)).dot(y_train) def predict(self, X_test): X_test = np.">
-
+<meta itemprop="datePublished" content="2021-05-02T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-05-02T00:00:00+00:00" />
 <meta itemprop="wordCount" content="118">
 
 
@@ -89,9 +91,13 @@ import numpy as np class MyNaturalCubicSpline: def fit(self, X_train, y_train, k
             X_test_new <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>column_stack((X_test_new, d<span style="color:#f92672">-</span>d_Km1))
         <span style="color:#66d9ef">return</span> X_test_new<span style="color:#f92672">.</span>dot(self<span style="color:#f92672">.</span>beta)
 </code></pre></div><div class="edit-meta">
+Last updated on 2 May 2021
 
+
+<br>
+Published on 2 May 2021
 <br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Natural%20Spline/MyNaturalCubicSpline.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/natural-spline/" title="Natural Spline"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Natural Spline</a>
-<a class="nav nav-next" href="https://statkwon.github.io/ml/posterior-for-normal/" title="Posterior for Normal">Next - Posterior for Normal <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="nav nav-next" href="https://statkwon.github.io/ml/regression-spline/" title="Regression Spline">Next - Regression Spline <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -132,39 +138,10 @@ import numpy as np class MyNaturalCubicSpline: def fit(self, X_train, y_train, k
   
 <ul class="sub-menu">
 
-<li class=""><a href="https://statkwon.github.io/ml/linear-regression/">Linear Regression</a>
+<li class=""><a href="https://statkwon.github.io/ml/ridge-regression/">Ridge Regression</a>
   
 <ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/linear-regression/qr-decomposition/">QR-Decomposition</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/linear-regression/islr/">ISLR CH2</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/linear-regression/mylinearregression/">MyLinearRegression.py</a></li>
-</ul>
-  
-</li>
-<li class=""><a href="https://statkwon.github.io/ml/one-parameter-models/">One-parameter models</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/bayesian-statistics/">Bayesian Statistics</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/moving-beyond-linearity/">Moving Beyond Linearity</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/5/">Linear Model Selection and Regularization</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/resampling-methods/">Resampling Methods</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/classification/">Classification</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/statistical-learning/">Statistical Learning</a></li>
-
-<li class=""><a href="https://statkwon.github.io/ml/linear-discriminant-analysis/">Linear Discriminant Analysis</a>
-  
-<ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/">MyLDA.py</a></li>
-</ul>
-  
-</li>
-
-<li class=""><a href="https://statkwon.github.io/ml/local-regression/">Local Regression</a>
-  
-</li>
-
-<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/">Logistic Regression</a>
-  
-<ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/mylogisticregression/">MyLogisticRegression.py</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/ridge-regression/myridgeregression/">MyRidgeRegression.py</a></li>
 </ul>
   
 </li>
@@ -176,7 +153,6 @@ import numpy as np class MyNaturalCubicSpline: def fit(self, X_train, y_train, k
 </ul>
   
 </li>
-<li class=""><a href="https://statkwon.github.io/ml/posterior-for-normal/">Posterior for Normal</a></li>
 
 <li class=""><a href="https://statkwon.github.io/ml/regression-spline/">Regression Spline</a>
   
@@ -186,17 +162,49 @@ import numpy as np class MyNaturalCubicSpline: def fit(self, X_train, y_train, k
   
 </li>
 
-<li class=""><a href="https://statkwon.github.io/ml/ridge-regression/">Ridge Regression</a>
+<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/">Logistic Regression</a>
   
 <ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/ridge-regression/myridgeregression/">MyRidgeRegression.py</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/mylogisticregression/">MyLogisticRegression.py</a></li>
 </ul>
   
 </li>
 
+<li class=""><a href="https://statkwon.github.io/ml/linear-discriminant-analysis/">Linear Discriminant Analysis</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/">MyLDA.py</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/">Linear Regression</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/mylinearregression/">MyLinearRegression.py</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/qr-decomposition/">QR-Decomposition</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/islr/">ISLR CH2</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="https://statkwon.github.io/ml/tree-based-methods/">8. Tree-Based Methods</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/bayesian-statistics/">Bayesian Statistics</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/classification/">Classification</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/5/">Linear Model Selection and Regularization</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/moving-beyond-linearity/">Moving Beyond Linearity</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/one-parameter-models/">One-parameter models</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/resampling-methods/">Resampling Methods</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/statistical-learning/">Statistical Learning</a></li>
+
+<li class=""><a href="https://statkwon.github.io/ml/local-regression/">Local Regression</a>
+  
+</li>
+<li class=""><a href="https://statkwon.github.io/ml/posterior-for-normal/">Posterior for Normal</a></li>
+
 <li class=""><a href="https://statkwon.github.io/ml/smoothing-spline/">Smoothing Spline</a>
   
 </li>
+<li class=""><a href="https://statkwon.github.io/ml/supervised-learning/">Supervised Learning</a></li>
 </ul>
   
 </li>

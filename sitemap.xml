@@ -3,13 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://statkwon.github.io/visualization/python/1/</loc>
-    <lastmod>2021-02-11T17:27:37+09:00</lastmod>
+    <loc>https://statkwon.github.io/ml/</loc>
+    <lastmod>2021-05-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://statkwon.github.io/ml/</loc>
-    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
+    <loc>https://statkwon.github.io/visualization/python/1/</loc>
+    <lastmod>2021-02-11T17:27:37+09:00</lastmod>
   </url>
   
   <url>
@@ -41,6 +41,61 @@
   </url>
   
   <url>
+    <loc>https://statkwon.github.io/ml/ridge-regression/myridgeregression/</loc>
+    <lastmod>2021-05-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/ridge-regression/</loc>
+    <lastmod>2021-05-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/linear-regression/mylinearregression/</loc>
+    <lastmod>2021-05-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/natural-spline/mynaturalcubicspline/</loc>
+    <lastmod>2021-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/natural-spline/</loc>
+    <lastmod>2021-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/regression-spline/myregressionspline/</loc>
+    <lastmod>2021-04-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/regression-spline/</loc>
+    <lastmod>2021-04-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/logistic-regression/</loc>
+    <lastmod>2021-04-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/logistic-regression/mylogisticregression/</loc>
+    <lastmod>2021-04-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/linear-discriminant-analysis/</loc>
+    <lastmod>2021-04-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/</loc>
+    <lastmod>2021-04-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://statkwon.github.io/ml/linear-regression/</loc>
     <lastmod>2021-03-10T00:00:00+00:00</lastmod>
   </url>
@@ -51,42 +106,27 @@
   </url>
   
   <url>
-    <loc>https://statkwon.github.io/ml/one-parameter-models/</loc>
-    <lastmod>2021-02-10T16:25:47+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/bayesian-statistics/</loc>
-    <lastmod>2021-02-10T16:22:53+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/moving-beyond-linearity/</loc>
-    <lastmod>2021-02-10T16:20:35+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/5/</loc>
-    <lastmod>2021-02-10T16:19:21+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/resampling-methods/</loc>
-    <lastmod>2021-02-10T16:18:21+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://statkwon.github.io/about/</loc>
     <lastmod>2021-02-10T15:32:15+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://statkwon.github.io/</loc>
-    <lastmod>2021-02-10T15:16:51+09:00</lastmod>
+    <loc>https://statkwon.github.io/ml/tree-based-methods/</loc>
+    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/bayesian-statistics/</loc>
+    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://statkwon.github.io/ml/classification/</loc>
+    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -96,8 +136,28 @@
   </url>
   
   <url>
+    <loc>https://statkwon.github.io/ml/5/</loc>
+    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/moving-beyond-linearity/</loc>
+    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/one-parameter-models/</loc>
+    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/resampling-methods/</loc>
+    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://statkwon.github.io/ml/statistical-learning/</loc>
-    <lastmod>2021-02-13T00:00:00+00:00</lastmod>
+    <lastmod>2020-09-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -105,43 +165,7 @@
   </url>
   
   <url>
-    <loc>https://statkwon.github.io/ml/linear-discriminant-analysis/</loc>
-  </url>
-  
-  <url>
     <loc>https://statkwon.github.io/ml/local-regression/</loc>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/logistic-regression/</loc>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/</loc>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/linear-regression/mylinearregression/</loc>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/logistic-regression/mylogisticregression/</loc>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/natural-spline/mynaturalcubicspline/</loc>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/regression-spline/myregressionspline/</loc>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/ridge-regression/myridgeregression/</loc>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/natural-spline/</loc>
   </url>
   
   <url>
@@ -153,15 +177,11 @@
   </url>
   
   <url>
-    <loc>https://statkwon.github.io/ml/regression-spline/</loc>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/ridge-regression/</loc>
-  </url>
-  
-  <url>
     <loc>https://statkwon.github.io/ml/smoothing-spline/</loc>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/supervised-learning/</loc>
   </url>
   
   <url>

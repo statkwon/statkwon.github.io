@@ -6,7 +6,7 @@
     <description>Recent content in Home on ML Lab</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Feb 2021 15:16:51 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://statkwon.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -57,6 +57,66 @@
     </item>
     
     <item>
+      <title>MyRidgeRegression.py</title>
+      <link>https://statkwon.github.io/ml/ridge-regression/myridgeregression/</link>
+      <pubDate>Sat, 08 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/ridge-regression/myridgeregression/</guid>
+      <description>Github Link: MyRidgeRegression.ipynb
+import numpy as np class MyRidgeRegerssion: def __init__(self, alpha=1.0): self.alpha = alpha def fit(self, X_train, y_train): ones = np.ones(len(X_train)) X_train = np.array(X_train) X_train = np.column_stack((np.ones(len(X_train)), X_train)) y_train = np.array(y_train) self.beta = np.linalg.inv(np.transpose(X_train).dot(X_train)+self.alpha*np.identity(X_train.shape[1])).dot(np.transpose(X_train)).dot(y_train) def predict(self, X_test): ones = np.ones(len(X_test)) X_test = np.array(X_test) X_test = np.column_stack((np.ones(len(X_test)), X_test)) return X_test.dot(self.beta) </description>
+    </item>
+    
+    <item>
+      <title>MyLinearRegression.py</title>
+      <link>https://statkwon.github.io/ml/linear-regression/mylinearregression/</link>
+      <pubDate>Wed, 05 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/linear-regression/mylinearregression/</guid>
+      <description>Github Link: MyLinearRegression.ipynb
+import numpy as np class MyLinearRegerssion: def fit(self, X_train, y_train): ones = np.ones(len(X_train)) X_train = np.array(X_train) X_train = np.column_stack((np.ones(len(X_train)), X_train)) y_train = np.array(y_train) self.beta = np.linalg.inv(np.transpose(X_train).dot(X_train)).dot(np.transpose(X_train)).dot(y_train) def predict(self, X_test): ones = np.ones(len(X_test)) X_test = np.array(X_test) X_test = np.column_stack((np.ones(len(X_test)), X_test)) return X_test.dot(self.beta) </description>
+    </item>
+    
+    <item>
+      <title>MyNaturalCubicSpline.py</title>
+      <link>https://statkwon.github.io/ml/natural-spline/mynaturalcubicspline/</link>
+      <pubDate>Sun, 02 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/natural-spline/mynaturalcubicspline/</guid>
+      <description>Github Link: MyNaturalCubicSpline.ipynb
+import numpy as np class MyNaturalCubicSpline: def fit(self, X_train, y_train, k): X_train = np.array(X_train) y_train = np.array(y_train) self.k = np.array(k) X_train_new = np.column_stack((np.ones(len(X_train)), X_train)) d_Km1 = (np.where(np.power(X_train-k[-2], 3) &amp;lt; 0, 0, np.power(X_train-k[-2], 3))-np.where(np.power(X_train-k[-1], 3) &amp;lt; 0, 0, np.power(X_train-k[-1], 3)))/(k[-2]-k[-1]) for i in range(len(k)-2): d = (np.where(np.power(X_train-k[i], 3) &amp;lt; 0, 0, np.power(X_train-k[i], 3))-np.where(np.power(X_train-k[-1], 3) &amp;lt; 0, 0, np.power(X_train-k[-1], 3)))/(k[i]-k[-1]) X_train_new = np.column_stack((X_train_new, d-d_Km1)) self.beta = np.linalg.inv(np.transpose(X_train_new).dot(X_train_new)).dot(np.transpose(X_train_new)).dot(y_train) def predict(self, X_test): X_test = np.</description>
+    </item>
+    
+    <item>
+      <title>MyRegressionSpline.py</title>
+      <link>https://statkwon.github.io/ml/regression-spline/myregressionspline/</link>
+      <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/regression-spline/myregressionspline/</guid>
+      <description>Github Link: MyRegressionSpline.ipynb
+import numpy as np class MyRegressionSpline: def fit(self, X_train, y_train, m, k): X_train = np.array(X_train) y_train = np.array(y_train) self.m = m self.k = np.array(k) X_train_new = np.power(X_train, 0) for i in range(1, m+1): X_train_new = np.column_stack((X_train_new, np.power(X_train, i))) for i in range(len(k)): X_train_new = np.column_stack((X_train_new, np.where(np.power(X_train-k[i], m) &amp;lt; 0, 0, np.power(X_train-k[i], m)))) self.beta = np.linalg.inv(np.transpose(X_train_new).dot(X_train_new)).dot(np.transpose(X_train_new)).dot(y_train) def predict(self, X_test): X_test = np.array(X_test) X_test_new = np.power(X_test, 0) for i in range(1, self.</description>
+    </item>
+    
+    <item>
+      <title>MyLogisticRegression.py</title>
+      <link>https://statkwon.github.io/ml/logistic-regression/mylogisticregression/</link>
+      <pubDate>Sun, 11 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/logistic-regression/mylogisticregression/</guid>
+      <description>Github Link: MyLogisticRegression.ipynb
+import numpy as np class MyLogisticRegression: def __init__(self, max_iter=10): self.max_iter = max_iter def fit(self, X_train, y_train): ones = np.transpose(np.array([[1]*len(X_train)])) X_train = np.concatenate((ones, np.array(X_train)), axis=1) y_train = np.array(y_train) beta = np.array([0]*X_train.shape[1]) for i in range(self.max_iter): p1 = np.exp(X_train.dot(beta))/(1+np.exp(X_train.dot(beta))) p0 = 1-p1 W = np.diag(p0*p1) beta = beta + np.linalg.inv(np.transpose(X_train).dot(W).dot(X_train)).dot(np.transpose(X_train)).dot(y_train-p1) self.beta_new = beta def predict(self, X_test): ones = np.transpose(np.array([[1]*len(X_test)])) X_test = np.concatenate((ones, np.array(X_test)), axis=1) return (np.exp(X_test.dot(self.beta_new))/(1+np.exp(X_test.dot(self.beta_new))) &amp;gt; 0.5).astype(&amp;#39;int&amp;#39;) </description>
+    </item>
+    
+    <item>
+      <title>MyLDA.py</title>
+      <link>https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/</link>
+      <pubDate>Sun, 04 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/</guid>
+      <description>Github Link: MyLDA.ipynb
+import numpy as np class MyLDA: def fit(self, X_train, y_train): X_train = np.array(X_train) y_train = np.array(y_train) self.pi = [len(X_train[y_train==i])/len(X_train) for i in np.unique(y_train)] self.mu = [np.sum(X_train[y_train==i], axis=0)/len(X_train[y_train==i]) for i in np.unique(y_train)] self.sigma = np.sum([(np.transpose(X_train[y_train==i]-self.mu[i])).dot(X_train[y_train==i]-self.mu[i]) for i in np.unique(y_train)], axis=0)/(len(X_train)-len(np.unique(y_train))) def predict(self, X_test): delta = [X_test.dot(np.linalg.inv(self.sigma)).dot(self.mu[i])-0.5*self.mu[i].dot(np.linalg.inv(self.sigma)).dot(self.mu[i])+np.log(self.pi[i]) for i in np.unique(y)] yhat = np.argmax(delta, axis=0) return yhat </description>
+    </item>
+    
+    <item>
       <title>QR-Decomposition</title>
       <link>https://statkwon.github.io/ml/linear-regression/qr-decomposition/</link>
       <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
@@ -66,57 +126,30 @@
     </item>
     
     <item>
-      <title>One-parameter models</title>
-      <link>https://statkwon.github.io/ml/one-parameter-models/</link>
-      <pubDate>Wed, 10 Feb 2021 16:25:47 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/one-parameter-models/</guid>
-      <description>2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution $Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다. 이때</description>
-    </item>
-    
-    <item>
-      <title>Bayesian Statistics</title>
-      <link>https://statkwon.github.io/ml/bayesian-statistics/</link>
-      <pubDate>Wed, 10 Feb 2021 16:22:53 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/bayesian-statistics/</guid>
-      <description>1.1. Introduction Bayesian Learning 통계적 추론은 모집단의 일부를 통해 모집단의 일반적인 특성을 알아내기 위한 과정이다. 이때 대부분의 경우 모집단의 수치적 특성을 모수 $\theta$로</description>
-    </item>
-    
-    <item>
-      <title>Moving Beyond Linearity</title>
-      <link>https://statkwon.github.io/ml/moving-beyond-linearity/</link>
-      <pubDate>Wed, 10 Feb 2021 16:20:35 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/moving-beyond-linearity/</guid>
-      <description>지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다.</description>
-    </item>
-    
-    <item>
-      <title>Linear Model Selection and Regularization</title>
-      <link>https://statkwon.github.io/ml/5/</link>
-      <pubDate>Wed, 10 Feb 2021 16:19:21 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/5/</guid>
-      <description>선형 모형은 많은 전제조건을 필요로 하지만, 추론 영역에서 갖는 강점으로 인해 실생활의 문제들을 푸는데 있어 비선형 모형에 대해 경쟁력을 가지고 있다. 6장에서는 Method</description>
-    </item>
-    
-    <item>
-      <title>Resampling Methods</title>
-      <link>https://statkwon.github.io/ml/resampling-methods/</link>
-      <pubDate>Wed, 10 Feb 2021 16:18:21 +0900</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/resampling-methods/</guid>
-      <description>Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻</description>
-    </item>
-    
-    <item>
       <title>About Me</title>
       <link>https://statkwon.github.io/about/</link>
       <pubDate>Wed, 10 Feb 2021 15:32:15 +0900</pubDate>
       
       <guid>https://statkwon.github.io/about/</guid>
       <description>Profile 연세대학교에서 응용통계학을 전공하였습니다. (2019.08 ~ 2021.02) 연세대학교 응용통계학과 공식 인증 통계 및 데이터사이언스 학회 ESC에서 활동하였습니다. (2019.09 ~ 2020.08) || Github</description>
+    </item>
+    
+    <item>
+      <title>8. Tree-Based Methods</title>
+      <link>https://statkwon.github.io/ml/tree-based-methods/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/tree-based-methods/</guid>
+      <description>8장에서는 Tree를 기반으로 하는 방법들에 대해 다루고 있다. 각각의 방법들은 Regression과 Classification의 문제에 모두 적용 가능</description>
+    </item>
+    
+    <item>
+      <title>Bayesian Statistics</title>
+      <link>https://statkwon.github.io/ml/bayesian-statistics/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/bayesian-statistics/</guid>
+      <description>1.1. Introduction Bayesian Learning 통계적 추론은 모집단의 일부를 통해 모집단의 일반적인 특성을 알아내기 위한 과정이다. 이때 대부분의 경우 모집단의 수치적 특성을 모수 $\theta$로</description>
     </item>
     
     <item>
@@ -138,6 +171,42 @@
     </item>
     
     <item>
+      <title>Linear Model Selection and Regularization</title>
+      <link>https://statkwon.github.io/ml/5/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/5/</guid>
+      <description>선형 모형은 많은 전제조건을 필요로 하지만, 추론 영역에서 갖는 강점으로 인해 실생활의 문제들을 푸는데 있어 비선형 모형에 대해 경쟁력을 가지고 있다. 6장에서는 Method</description>
+    </item>
+    
+    <item>
+      <title>Moving Beyond Linearity</title>
+      <link>https://statkwon.github.io/ml/moving-beyond-linearity/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/moving-beyond-linearity/</guid>
+      <description>지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다.</description>
+    </item>
+    
+    <item>
+      <title>One-parameter models</title>
+      <link>https://statkwon.github.io/ml/one-parameter-models/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/one-parameter-models/</guid>
+      <description>2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution $Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다. 이때</description>
+    </item>
+    
+    <item>
+      <title>Resampling Methods</title>
+      <link>https://statkwon.github.io/ml/resampling-methods/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/resampling-methods/</guid>
+      <description>Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻</description>
+    </item>
+    
+    <item>
       <title>Statistical Learning</title>
       <link>https://statkwon.github.io/ml/statistical-learning/</link>
       <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
@@ -147,72 +216,22 @@
     </item>
     
     <item>
-      <title>MyLDA.py</title>
-      <link>https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/</guid>
-      <description>Github Link: MyLDA.ipynb
-import numpy as np class MyLDA: def fit(self, X_train, y_train): X_train = np.array(X_train) y_train = np.array(y_train) self.pi = [len(X_train[y_train==i])/len(X_train) for i in np.unique(y_train)] self.mu = [np.sum(X_train[y_train==i], axis=0)/len(X_train[y_train==i]) for i in np.unique(y_train)] self.sigma = np.sum([(np.transpose(X_train[y_train==i]-self.mu[i])).dot(X_train[y_train==i]-self.mu[i]) for i in np.unique(y_train)], axis=0)/(len(X_train)-len(np.unique(y_train))) def predict(self, X_test): delta = [X_test.dot(np.linalg.inv(self.sigma)).dot(self.mu[i])-0.5*self.mu[i].dot(np.linalg.inv(self.sigma)).dot(self.mu[i])+np.log(self.pi[i]) for i in np.unique(y)] yhat = np.argmax(delta, axis=0) return yhat </description>
-    </item>
-    
-    <item>
-      <title>MyLinearRegression.py</title>
-      <link>https://statkwon.github.io/ml/linear-regression/mylinearregression/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/linear-regression/mylinearregression/</guid>
-      <description>Github Link: MyLinearRegression.ipynb
-import numpy as np class MyLinearRegerssion: def fit(self, X_train, y_train): ones = np.ones(len(X_train)) X_train = np.array(X_train) X_train = np.column_stack((np.ones(len(X_train)), X_train)) y_train = np.array(y_train) self.beta = np.linalg.inv(np.transpose(X_train).dot(X_train)).dot(np.transpose(X_train)).dot(y_train) def predict(self, X_test): ones = np.ones(len(X_test)) X_test = np.array(X_test) X_test = np.column_stack((np.ones(len(X_test)), X_test)) return X_test.dot(self.beta) </description>
-    </item>
-    
-    <item>
-      <title>MyLogisticRegression.py</title>
-      <link>https://statkwon.github.io/ml/logistic-regression/mylogisticregression/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/logistic-regression/mylogisticregression/</guid>
-      <description>Github Link: MyLogisticRegression.ipynb
-import numpy as np class MyLogisticRegression: def __init__(self, max_iter=10): self.max_iter = max_iter def fit(self, X_train, y_train): ones = np.transpose(np.array([[1]*len(X_train)])) X_train = np.concatenate((ones, np.array(X_train)), axis=1) y_train = np.array(y_train) beta = np.array([0]*X_train.shape[1]) for i in range(self.max_iter): p1 = np.exp(X_train.dot(beta))/(1+np.exp(X_train.dot(beta))) p0 = 1-p1 W = np.diag(p0*p1) beta = beta + np.linalg.inv(np.transpose(X_train).dot(W).dot(X_train)).dot(np.transpose(X_train)).dot(y_train-p1) self.beta_new = beta def predict(self, X_test): ones = np.transpose(np.array([[1]*len(X_test)])) X_test = np.concatenate((ones, np.array(X_test)), axis=1) return (np.exp(X_test.dot(self.beta_new))/(1+np.exp(X_test.dot(self.beta_new))) &amp;gt; 0.5).astype(&amp;#39;int&amp;#39;) </description>
-    </item>
-    
-    <item>
-      <title>MyNaturalCubicSpline.py</title>
-      <link>https://statkwon.github.io/ml/natural-spline/mynaturalcubicspline/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/natural-spline/mynaturalcubicspline/</guid>
-      <description>Github Link: MyNaturalCubicSpline.ipynb
-import numpy as np class MyNaturalCubicSpline: def fit(self, X_train, y_train, k): X_train = np.array(X_train) y_train = np.array(y_train) self.k = np.array(k) X_train_new = np.column_stack((np.ones(len(X_train)), X_train)) d_Km1 = (np.where(np.power(X_train-k[-2], 3) &amp;lt; 0, 0, np.power(X_train-k[-2], 3))-np.where(np.power(X_train-k[-1], 3) &amp;lt; 0, 0, np.power(X_train-k[-1], 3)))/(k[-2]-k[-1]) for i in range(len(k)-2): d = (np.where(np.power(X_train-k[i], 3) &amp;lt; 0, 0, np.power(X_train-k[i], 3))-np.where(np.power(X_train-k[-1], 3) &amp;lt; 0, 0, np.power(X_train-k[-1], 3)))/(k[i]-k[-1]) X_train_new = np.column_stack((X_train_new, d-d_Km1)) self.beta = np.linalg.inv(np.transpose(X_train_new).dot(X_train_new)).dot(np.transpose(X_train_new)).dot(y_train) def predict(self, X_test): X_test = np.</description>
-    </item>
-    
-    <item>
-      <title>MyRegressionSpline.py</title>
-      <link>https://statkwon.github.io/ml/regression-spline/myregressionspline/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/regression-spline/myregressionspline/</guid>
-      <description>Github Link: MyRegressionSpline.ipynb
-import numpy as np class MyRegressionSpline: def fit(self, X_train, y_train, m, k): X_train = np.array(X_train) y_train = np.array(y_train) self.m = m self.k = np.array(k) X_train_new = np.power(X_train, 0) for i in range(1, m+1): X_train_new = np.column_stack((X_train_new, np.power(X_train, i))) for i in range(len(k)): X_train_new = np.column_stack((X_train_new, np.where(np.power(X_train-k[i], m) &amp;lt; 0, 0, np.power(X_train-k[i], m)))) self.beta = np.linalg.inv(np.transpose(X_train_new).dot(X_train_new)).dot(np.transpose(X_train_new)).dot(y_train) def predict(self, X_test): X_test = np.array(X_test) X_test_new = np.power(X_test, 0) for i in range(1, self.</description>
-    </item>
-    
-    <item>
-      <title>MyRidgeRegression.py</title>
-      <link>https://statkwon.github.io/ml/ridge-regression/myridgeregression/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/ridge-regression/myridgeregression/</guid>
-      <description>Github Link: MyRidgeRegression.ipynb
-import numpy as np class MyRidgeRegerssion: def __init__(self, alpha=1.0): self.alpha = alpha def fit(self, X_train, y_train): ones = np.ones(len(X_train)) X_train = np.array(X_train) X_train = np.column_stack((np.ones(len(X_train)), X_train)) y_train = np.array(y_train) self.beta = np.linalg.inv(np.transpose(X_train).dot(X_train)+self.alpha*np.identity(X_train.shape[1])).dot(np.transpose(X_train)).dot(y_train) def predict(self, X_test): ones = np.ones(len(X_test)) X_test = np.array(X_test) X_test = np.column_stack((np.ones(len(X_test)), X_test)) return X_test.dot(self.beta) </description>
-    </item>
-    
-    <item>
       <title>Posterior for Normal</title>
       <link>https://statkwon.github.io/ml/posterior-for-normal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://statkwon.github.io/ml/posterior-for-normal/</guid>
       <description>$p(\theta, \sigma^2|y_1, \ldots, y_n)=p(\theta|\sigma^2, y_1, \ldots, y_n)p(\sigma^2|y_1, \ldots, y_n)$ To calculate the posterior distribution, we should calculate $p(\theta|\sigma^2, y_1, \ldots, y_n)$ and $p(\sigma^2|y_1, \ldots, y_n)$ first. We can consider $p(\theta|\sigma^2, y_1, \ldots, y_n)$ as the posterior distribution when $\sigma^2$ is known. Then $p(\theta|\sigma^2)$ will be the prior distribution and we will assume that this follows a normal distribution with mean $\mu_0$ and variacne $\tau_0^2$. $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;amp;\propto</description>
+    </item>
+    
+    <item>
+      <title>Supervised Learning</title>
+      <link>https://statkwon.github.io/ml/supervised-learning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/supervised-learning/</guid>
+      <description>Regression
+Let $Y$ as a random variable in $\mathbb{R}$ and $X$ as a random vector in $\mathbb{R}^p$. We want to know the relationship between $Y$ and $X$. Actually, we seek a best function $f(X)$ for predicting $Y$. We will first consider the case that $Y$ is a quantitative output. For this case, we use a squared error loss $L(Y, f(X))=(Y-f(X))^2$. Our goal is to find $f$ which minimizes the expected loss $\text{E}[L(Y, f(X))]$.</description>
     </item>
     
   </channel>

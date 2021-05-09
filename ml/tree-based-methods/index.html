@@ -3,11 +3,11 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Visualization - ML Lab</title>
+<title>8. Tree-Based Methods - ML Lab</title>
 <meta name="description" content="STATKWON">
 <meta name="generator" content="Hugo 0.74.3" />
 <link href="https://statkwon.github.io//index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://statkwon.github.io/visualization/">
+<link rel="canonical" href="https://statkwon.github.io/ml/tree-based-methods/">
 <link rel="stylesheet" href="https://statkwon.github.io/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://statkwon.github.io/css/chroma.min.css">
@@ -25,16 +25,24 @@
 <style>
 :root {}
 </style>
-<meta property="og:title" content="Visualization" />
-<meta property="og:description" content="STATKWON" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://statkwon.github.io/visualization/" />
-<meta property="og:updated_time" content="2021-02-11T17:26:49+09:00" />
+<meta property="og:title" content="8. Tree-Based Methods" />
+<meta property="og:description" content="8장에서는 Tree를 기반으로 하는 방법들에 대해 다루고 있다. 각각의 방법들은 Regression과 Classification의 문제에 모두 적용 가능" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://statkwon.github.io/ml/tree-based-methods/" />
+<meta property="article:published_time" content="2021-02-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-10T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Visualization"/>
-<meta name="twitter:description" content="STATKWON"/>
-<meta itemprop="name" content="Visualization">
-<meta itemprop="description" content="STATKWON">
+<meta name="twitter:title" content="8. Tree-Based Methods"/>
+<meta name="twitter:description" content="8장에서는 Tree를 기반으로 하는 방법들에 대해 다루고 있다. 각각의 방법들은 Regression과 Classification의 문제에 모두 적용 가능"/>
+<meta itemprop="name" content="8. Tree-Based Methods">
+<meta itemprop="description" content="8장에서는 Tree를 기반으로 하는 방법들에 대해 다루고 있다. 각각의 방법들은 Regression과 Classification의 문제에 모두 적용 가능">
+<meta itemprop="datePublished" content="2021-02-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-02-10T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1319">
+
+
+
+<meta itemprop="keywords" content="" />
 </head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
@@ -55,15 +63,43 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>Visualization</h1><h3 id="reference">Reference</h3>
+<main><h1>8. Tree-Based Methods</h1>
+<aside class="table_of_contents">
+<h5>Table of Contents</h5><nav id="TableOfContents">
+  <ul>
+    <li><a href="#81-the-basics-of-decision-trees">8.1. The Basics of Decision Trees</a>
+      <ul>
+        <li><a href="#811-regression-trees">8.1.1. Regression Trees</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></aside>
+
+<p>8장에서는 Tree를 기반으로 하는 방법들에 대해 다루고 있다. 각각의 방법들은 Regression과 Classification의 문제에 모두 적용 가능하다.</p>
+<h2 id="81-the-basics-of-decision-trees">8.1. The Basics of Decision Trees</h2>
+<p>가장 기본적인 형태의 Tree-Method는 독립변수 공간을 여러 개의 영역으로 구분하고, 각 영역에 속한 데이터에 대해서 해당 영역의 평균이나 중앙값 등을 사용하여 반응변수를 예측하는 방식이다. 나무 형태로 결과를 나타내기 때문에 Decision Tree라고 부른다.</p>
+<h3 id="811-regression-trees">8.1.1. Regression Trees</h3>
+<p>Regression Tree는 다음과 같은 두 가지 단계의 과정을 거쳐 만들어진다.</p>
+<ol>
+<li>독립변수 $X_1, X_2, \ldots, X_p$에 대해, Predictor Space를 서로 겹치지 않는 $J$개의 영역, $R_1, R_2, \ldots, R_J$로 구분한다.</li>
+<li>$R_j$에 속한 모든 데이터에 대해서는 동일한 방식으로 반응변수를 예측한다. 일반적으로 $R_j$에 속한 데이터들의 평균을 사용한다.</li>
+</ol>
+<p><img src="/ISLR/FIGURE_8.2.png" alt="FIGURE 8.2"></p>
+<p>Predictor Space를 $R_1, R_2, \ldots, R_J$로 나누기 위해서는 Recursive Binary Splitting이라는 Top-Down 방식을 사용한다. 모든 데이터가 한 영역에 들어있는 상태를 시작으로 해당 영역을 $\{X|X_j&lt;s\}$와 $\{X|X_j≥s\}$로 나누었을 때 아래와 같은 식의 $\text{RSS}$를 최소화하는 $X_j$와 $s$를 결정한다. 예를 들어, 위 그림에서는 Years라는 변수와 $4.5$라는 기준값을 가지고 전체 영역을 $R_1$과 $R_2+R_3$로 구분한 것이다.</p>
+<p>$$\sum_{j=1}^J\sum_{i \in R_j}{(y_i-\hat{y}_{R_j})^2}$$</p>
+<p>이후 나누어진 각 영역들에 대해서 동일한 과정을 반복 시행하며 특정한 정지 기준에 도달할 때까지 분할한다. 위 그림에서는 Years와 $4.5$를 기준으로 첫 번째 분할을 한 후, Hits와 $117.5$를 기준으로 $R_2+R_3$를 $R_2$와 $R_3$로 나누었다.</p>
+<p>하지만 Tree를 계속해서 분할하기만 하는 것은 예측 모형을 만드는데 있어 결코 도움이 되지 않는다. 계속된 분할로 만들어진 복잡한 Tree는 Overfittting 될 확률이 높기 때문에 Test 데이터에 적용이 어렵다. 이러한 문제에 대한 대안으로 Predictor Space를 분할할 때 발생하는 $\text{RSS}$의 감소량이 일정한 Threshold를 넘기는 경우에만 분할이 이루어지도록 하는 방법을 생각해볼 수 있다. 이러한 방법을 사용하면 Tree의 크기를 확실히 줄일 수 있다. 하지만 동시에 지나치게 근시안적인 방법이라는 단점을 가지고 있다. 현 단계에서는 의미없어 보이는 분할이 이후 단계에서는 유효할 수도 있는데, 앞선 방법으로는 이를 반영할 수가 없다. 따라서 우리는 Tree Pruning이라는 방법을 해결책으로 사용한다.</p>
+<p>Tree Pruning은 우선 Tree를 최대한으로 성장시킨 후, 가지를 치며 가장 작은 Test Error를 갖는 Subtree를 얻어내는 방식이다. 이때 각 Subtree의 Test Error를 계산하기 위해 Cross-Validation이나 Validation Set Approach를 사용할 수 있다. 하지만 가능한 모든 경우의 Subtree에 대해 Cross-Validation Error를 계산하는 것은 상당히 오랜 시간을 필요로 하기 때문에, 일반적으로 Cost Complexity Pruning이라는 방식을 사용한다. Cost Complexity Pruning은 가능한 모든 경우의 Subtree가 아닌, 아래와 같은 식을 작게 하는 Subtree만을 고려하는 방식이다. 이때 $|T|$는 Tree $T$의 Terminal Node의 갯수를 의미한다.</p>
+<p>$$\sum_{m=1}^{|T|}\sum_{x_i \in R_m}{(y_i-\hat{y}_{R_m})^2}+\alpha|T|$$</p>
+<p>Tuning Parameter라고 할 수 있는 $\alpha$는 Subtree의 복잡도와 Training 데이터에 대한 Fit 사이의 Trade-Off를 조절한다.</p>
 <div class="edit-meta">
-Last updated on 11 Feb 2021
+Last updated on 10 Feb 2021
 
 
 <br>
-Published on 11 Feb 2021
-<br><a href="https://github.com/statkwon/blog/edit/master/content/Visualization/_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/supervised-learning/" title="Supervised Learning"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Supervised Learning</a>
-<a class="nav nav-next" href="https://statkwon.github.io/visualization/python/" title="Python">Next - Python <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+Published on 10 Feb 2021
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Tree-Based%20Methods.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/linear-regression/islr/" title="ISLR CH2"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - ISLR CH2</a>
+<a class="nav nav-next" href="https://statkwon.github.io/ml/bayesian-statistics/" title="Bayesian Statistics">Next - Bayesian Statistics <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -100,7 +136,7 @@ Published on 11 Feb 2021
 <ul>
 <li class=""><a href="https://statkwon.github.io/">Home</a></li>
 
-<li class=""><a href="https://statkwon.github.io/ml/">ML</a>
+<li class="parent"><a href="https://statkwon.github.io/ml/">ML</a>
   
 <ul class="sub-menu">
 
@@ -153,7 +189,7 @@ Published on 11 Feb 2021
 </ul>
   
 </li>
-<li class=""><a href="https://statkwon.github.io/ml/tree-based-methods/">8. Tree-Based Methods</a></li>
+<li class="active"><a href="https://statkwon.github.io/ml/tree-based-methods/">8. Tree-Based Methods</a></li>
 <li class=""><a href="https://statkwon.github.io/ml/bayesian-statistics/">Bayesian Statistics</a></li>
 <li class=""><a href="https://statkwon.github.io/ml/classification/">Classification</a></li>
 <li class=""><a href="https://statkwon.github.io/ml/5/">Linear Model Selection and Regularization</a></li>
@@ -175,7 +211,7 @@ Published on 11 Feb 2021
   
 </li>
 
-<li class="parent active"><a href="https://statkwon.github.io/visualization/">Visualization</a>
+<li class=""><a href="https://statkwon.github.io/visualization/">Visualization</a>
   
 <ul class="sub-menu">
 

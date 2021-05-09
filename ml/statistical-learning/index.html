@@ -30,14 +30,14 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://statkwon.github.io/ml/statistical-learning/" />
 <meta property="article:published_time" content="2020-09-01T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-02-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-09-01T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Statistical Learning"/>
 <meta name="twitter:description" content="2.1. What is Statistical Learning? 2.1.1. Why Estimate $f$? 우리가 $f$를 추정하는 목적은 예측과 해석을 하기 위함이다. $$\hat{Y}=\hat{f}(X)$$ 1. 예측 $f$의 추정치 $\hat{f}$를 안다면, 우리가 가진 $X_1, X_2, &hellip;, X"/>
 <meta itemprop="name" content="Statistical Learning">
 <meta itemprop="description" content="2.1. What is Statistical Learning? 2.1.1. Why Estimate $f$? 우리가 $f$를 추정하는 목적은 예측과 해석을 하기 위함이다. $$\hat{Y}=\hat{f}(X)$$ 1. 예측 $f$의 추정치 $\hat{f}$를 안다면, 우리가 가진 $X_1, X_2, &hellip;, X">
 <meta itemprop="datePublished" content="2020-09-01T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-02-13T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-09-01T00:00:00+00:00" />
 <meta itemprop="wordCount" content="3185">
 
 
@@ -183,13 +183,13 @@ $$\text{P}(Y=j|X=x_0)$$</p>
 <p>$$\text{P}(Y=j|X=x_0)=\frac{1}{K}\sum_{i\in\mathcal{N}_0}I(y_i=j)$$</p>
 <p>KNN은 위와 같은 방식으로 조건부 확률을 추정한다. Training Data 중에서 $x_0$와 가까운 $K$개의 점을 찾고, 그 $K$개의 점들 가운데 $j$로 분류된 점들의 비율을 조건부 확률의 추정치로 사용한다. 이때 적절한 $K$의 값을 선택하는 것이 중요하다. $K$가 커질 수록 모형의 유연성이 감소하게 된다. 이러한 방식은 매우 단순해보이지만 종종 Bayes Classifier에 근접한 결과를 얻어내기도 한다.</p>
 <div class="edit-meta">
-Last updated on 13 Feb 2021
+Last updated on 1 Sep 2020
 
 
 <br>
 Published on 1 Sep 2020
-<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Statistical%20Learning.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/classification/" title="Classification"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Classification</a>
-<a class="nav nav-next" href="https://statkwon.github.io/ml/linear-discriminant-analysis/" title="Linear Discriminant Analysis">Next - Linear Discriminant Analysis <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Statistical%20Learning.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/resampling-methods/" title="Resampling Methods"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Resampling Methods</a>
+<a class="nav nav-next" href="https://statkwon.github.io/ml/local-regression/" title="Local Regression">Next - Local Regression <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -230,39 +230,10 @@ Published on 1 Sep 2020
   
 <ul class="sub-menu">
 
-<li class=""><a href="https://statkwon.github.io/ml/linear-regression/">Linear Regression</a>
+<li class=""><a href="https://statkwon.github.io/ml/ridge-regression/">Ridge Regression</a>
   
 <ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/linear-regression/qr-decomposition/">QR-Decomposition</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/linear-regression/islr/">ISLR CH2</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/linear-regression/mylinearregression/">MyLinearRegression.py</a></li>
-</ul>
-  
-</li>
-<li class=""><a href="https://statkwon.github.io/ml/one-parameter-models/">One-parameter models</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/bayesian-statistics/">Bayesian Statistics</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/moving-beyond-linearity/">Moving Beyond Linearity</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/5/">Linear Model Selection and Regularization</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/resampling-methods/">Resampling Methods</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/classification/">Classification</a></li>
-<li class="active"><a href="https://statkwon.github.io/ml/statistical-learning/">Statistical Learning</a></li>
-
-<li class=""><a href="https://statkwon.github.io/ml/linear-discriminant-analysis/">Linear Discriminant Analysis</a>
-  
-<ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/">MyLDA.py</a></li>
-</ul>
-  
-</li>
-
-<li class=""><a href="https://statkwon.github.io/ml/local-regression/">Local Regression</a>
-  
-</li>
-
-<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/">Logistic Regression</a>
-  
-<ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/mylogisticregression/">MyLogisticRegression.py</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/ridge-regression/myridgeregression/">MyRidgeRegression.py</a></li>
 </ul>
   
 </li>
@@ -274,7 +245,6 @@ Published on 1 Sep 2020
 </ul>
   
 </li>
-<li class=""><a href="https://statkwon.github.io/ml/posterior-for-normal/">Posterior for Normal</a></li>
 
 <li class=""><a href="https://statkwon.github.io/ml/regression-spline/">Regression Spline</a>
   
@@ -284,17 +254,49 @@ Published on 1 Sep 2020
   
 </li>
 
-<li class=""><a href="https://statkwon.github.io/ml/ridge-regression/">Ridge Regression</a>
+<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/">Logistic Regression</a>
   
 <ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/ridge-regression/myridgeregression/">MyRidgeRegression.py</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/mylogisticregression/">MyLogisticRegression.py</a></li>
 </ul>
   
 </li>
 
+<li class=""><a href="https://statkwon.github.io/ml/linear-discriminant-analysis/">Linear Discriminant Analysis</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/">MyLDA.py</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/">Linear Regression</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/mylinearregression/">MyLinearRegression.py</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/qr-decomposition/">QR-Decomposition</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/islr/">ISLR CH2</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="https://statkwon.github.io/ml/tree-based-methods/">8. Tree-Based Methods</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/bayesian-statistics/">Bayesian Statistics</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/classification/">Classification</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/5/">Linear Model Selection and Regularization</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/moving-beyond-linearity/">Moving Beyond Linearity</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/one-parameter-models/">One-parameter models</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/resampling-methods/">Resampling Methods</a></li>
+<li class="active"><a href="https://statkwon.github.io/ml/statistical-learning/">Statistical Learning</a></li>
+
+<li class=""><a href="https://statkwon.github.io/ml/local-regression/">Local Regression</a>
+  
+</li>
+<li class=""><a href="https://statkwon.github.io/ml/posterior-for-normal/">Posterior for Normal</a></li>
+
 <li class=""><a href="https://statkwon.github.io/ml/smoothing-spline/">Smoothing Spline</a>
   
 </li>
+<li class=""><a href="https://statkwon.github.io/ml/supervised-learning/">Supervised Learning</a></li>
 </ul>
   
 </li>

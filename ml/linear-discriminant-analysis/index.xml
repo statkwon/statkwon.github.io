@@ -6,6 +6,7 @@
     <description>Recent content in Linear Discriminant Analysis on ML Lab</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 04 Apr 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://statkwon.github.io/ml/linear-discriminant-analysis/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,7 +14,7 @@
     <item>
       <title>MyLDA.py</title>
       <link>https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 04 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/</guid>
       <description>Github Link: MyLDA.ipynb
