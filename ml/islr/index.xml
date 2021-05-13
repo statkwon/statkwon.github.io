@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ISLR on ML Lab</title>
+    <link>https://statkwon.github.io/ml/islr/</link>
+    <description>Recent content in ISLR on ML Lab</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://statkwon.github.io/ml/islr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CH2 Statistical Learning</title>
+      <link>https://statkwon.github.io/ml/islr/ch2/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/islr/ch2/</guid>
+      <description>2.1. What is Statistical Learning? 2.1.1. Why Estimate $f$? 우리가 $f$를 추정하는 목적은 예측과 해석을 하기 위함이다. $$\hat{Y}=\hat{f}(X)$$ 1. 예측 $f$의 추정치 $\hat{f}$를 안다면, 우리가 가진 $X_1, X_2, &amp;hellip;, X</description>
+    </item>
+    
+    <item>
+      <title>CH3 Linear Regression</title>
+      <link>https://statkwon.github.io/ml/islr/ch3/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/islr/ch3/</guid>
+      <description>3.1. Simple Linear Regression Simple Linear Regression은 변수 간의 선형 관계를 잘 나타내는 최적의 직선 $\beta_0+\beta_1X$를 찾는 작업이다. 직선의 식을 아는 경</description>
+    </item>
+    
+    <item>
+      <title>CH4 Classification</title>
+      <link>https://statkwon.github.io/ml/islr/ch4/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/islr/ch4/</guid>
+      <description>4장에서는 반응변수가 범주형인 경우, 즉, Classification의 문제를 다룬다. 4.2. Why Not Linear Regression? 선형 회귀 모형은 반응변수가 범주형인 경우 사용이 적합하</description>
+    </item>
+    
+    <item>
+      <title>CH5 Resampling Methods</title>
+      <link>https://statkwon.github.io/ml/islr/ch5/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/islr/ch5/</guid>
+      <description>Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻</description>
+    </item>
+    
+    <item>
+      <title>CH6 Linear Model Selection and Regularization</title>
+      <link>https://statkwon.github.io/ml/islr/ch6/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/islr/ch6/</guid>
+      <description>선형 모형은 많은 전제조건을 필요로 하지만, 추론 영역에서 갖는 강점으로 인해 실생활의 문제들을 푸는데 있어 비선형 모형에 대해 경쟁력을 가지고 있다. 6장에서는 Method</description>
+    </item>
+    
+    <item>
+      <title>CH7 Moving Beyond Linearity</title>
+      <link>https://statkwon.github.io/ml/islr/ch7/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/islr/ch7/</guid>
+      <description>지금까지는 선형 모형에 초점을 맞추어 왔다. 6장에서 Ridge, Lasso, PCA 등 선형 모형의 복잡성을 줄이는 방법들을 다루긴 하였지만, 이 역시 결국 선형 모형을 사용하는 것이었다.</description>
+    </item>
+    
+    <item>
+      <title>8. Tree-Based Methods</title>
+      <link>https://statkwon.github.io/ml/islr/ch8/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/islr/ch8/</guid>
+      <description>8장에서는 Tree를 기반으로 하는 방법들에 대해 다루고 있다. 각각의 방법들은 Regression과 Classification의 문제에 모두 적용 가능</description>
+    </item>
+    
+  </channel>
+</rss>

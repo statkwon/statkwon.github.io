@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>https://statkwon.github.io/ml/islr/ch2/</loc>
+    <lastmod>2020-09-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://statkwon.github.io/projects/bigcon/</loc>
   </url>
   
@@ -32,12 +37,42 @@
   </url>
   
   <url>
+    <loc>https://statkwon.github.io/ml/islr/ch3/</loc>
+    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://statkwon.github.io/projects/dacon/</loc>
   </url>
   
   <url>
     <loc>https://statkwon.github.io/visualization/python/3/</loc>
     <lastmod>2021-02-11T17:29:52+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/islr/ch4/</loc>
+    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/islr/ch5/</loc>
+    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/islr/ch6/</loc>
+    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/islr/ch7/</loc>
+    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://statkwon.github.io/ml/islr/ch8/</loc>
+    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -121,17 +156,7 @@
   </url>
   
   <url>
-    <loc>https://statkwon.github.io/ml/tree-based-methods/</loc>
-    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://statkwon.github.io/ml/bayesian-statistics/</loc>
-    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/classification/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -141,33 +166,13 @@
   </url>
   
   <url>
-    <loc>https://statkwon.github.io/ml/linear-regression/islr/</loc>
-    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/5/</loc>
-    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/moving-beyond-linearity/</loc>
+    <loc>https://statkwon.github.io/ml/islr/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://statkwon.github.io/ml/one-parameter-models/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/resampling-methods/</loc>
-    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://statkwon.github.io/ml/statistical-learning/</loc>
-    <lastmod>2020-09-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>

@@ -3,11 +3,11 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>KBO 정규시즌 팀별 승률, 타율 및 방어율(평균자책점) 예측 - ML Lab</title>
+<title>ISLR - ML Lab</title>
 <meta name="description" content="STATKWON">
 <meta name="generator" content="Hugo 0.74.3" />
 <link href="https://statkwon.github.io//index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://statkwon.github.io/projects/bigcon/">
+<link rel="canonical" href="https://statkwon.github.io/ml/islr/">
 <link rel="stylesheet" href="https://statkwon.github.io/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://statkwon.github.io/css/chroma.min.css">
@@ -25,22 +25,16 @@
 <style>
 :root {}
 </style>
-<meta property="og:title" content="KBO 정규시즌 팀별 승률, 타율 및 방어율(평균자책점) 예측" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://statkwon.github.io/projects/bigcon/" />
-
+<meta property="og:title" content="ISLR" />
+<meta property="og:description" content="STATKWON" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://statkwon.github.io/ml/islr/" />
+<meta property="og:updated_time" content="2021-02-10T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="KBO 정규시즌 팀별 승률, 타율 및 방어율(평균자책점) 예측"/>
-<meta name="twitter:description" content=""/>
-<meta itemprop="name" content="KBO 정규시즌 팀별 승률, 타율 및 방어율(평균자책점) 예측">
-<meta itemprop="description" content="">
-
-<meta itemprop="wordCount" content="0">
-
-
-
-<meta itemprop="keywords" content="" />
+<meta name="twitter:title" content="ISLR"/>
+<meta name="twitter:description" content="STATKWON"/>
+<meta itemprop="name" content="ISLR">
+<meta itemprop="description" content="STATKWON">
 </head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
@@ -52,7 +46,7 @@
 <ul>
 <li><a href="/">Home</a></li>
 <li><a href="https://www.instagram.com/kwon_leben/">Instagram</a></li>
-<li><a href="/about/">About Me</a></li><li class="parent active"><a href="">Projects<i class="fas fa-angle-right"></i></a>
+<li><a href="/about/">About Me</a></li><li class="parent"><a href="">Projects<i class="fas fa-angle-right"></i></a>
 <ul class="sub-menu">
 <li class="child"><a href="/projects/bigcon/">2020 빅콘테스트</a></li>
 <li class="child"><a href="/projects/dacon/">데이콘</a></li>
@@ -61,11 +55,12 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>KBO 정규시즌 팀별 승률, 타율 및 방어율(평균자책점) 예측</h1>
-<div class="edit-meta">
+<main><h1>ISLR</h1><div class="edit-meta">
+Last updated on 10 Feb 2021
 
-<br><a href="https://github.com/statkwon/blog/edit/master/content/Projects/BIGCON.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/projects/" title="Projects"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Projects</a>
-<a class="nav nav-next" href="https://statkwon.github.io/projects/dacon/" title="NH투자증권 Y&amp;Z세대 투자자 프로파일링">Next - NH투자증권 Y&amp;Z세대 투자자 프로파일링 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/ISLR/_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/bayesian-statistics/" title="Bayesian Statistics"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Bayesian Statistics</a>
+<a class="nav nav-next" href="https://statkwon.github.io/ml/islr/ch2/" title="CH2 Statistical Learning">Next - CH2 Statistical Learning <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -102,7 +97,7 @@
 <ul>
 <li class=""><a href="https://statkwon.github.io/">Home</a></li>
 
-<li class=""><a href="https://statkwon.github.io/ml/">ML</a>
+<li class="parent"><a href="https://statkwon.github.io/ml/">ML</a>
   
 <ul class="sub-menu">
 
@@ -164,7 +159,7 @@
 </li>
 <li class=""><a href="https://statkwon.github.io/ml/bayesian-statistics/">Bayesian Statistics</a></li>
 
-<li class=""><a href="https://statkwon.github.io/ml/islr/">ISLR</a>
+<li class="parent active"><a href="https://statkwon.github.io/ml/islr/">ISLR</a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/ml/islr/ch2/">CH2 Statistical Learning</a></li>

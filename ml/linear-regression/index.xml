@@ -30,14 +30,5 @@ import numpy as np class MyLinearRegerssion: def fit(self, X_train, y_train): on
       <description>Gram-Schmidt Process Every nonzero subspaces in $R^n$ have its own prthonormal basis. Gram-Schmidt process is the process to change the basis of the nonzero subspace in $R^n$ to orthonormal basis. Now we will check the process to find the orthonormal basis of subspace $W$ in $R^n$ whose basis is $\{\mathbf{w}_1, \mathbf{w}_2, \ldots, \mathbf{w}_k\}$. If we let the first vector $\mathbf{w}_1$ as $\mathbf{v}_1$, then we can find $\mathbf{v}_2$, which is an</description>
     </item>
     
-    <item>
-      <title>ISLR CH2</title>
-      <link>https://statkwon.github.io/ml/linear-regression/islr/</link>
-      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/linear-regression/islr/</guid>
-      <description>3.1. Simple Linear Regression Simple Linear Regression은 변수 간의 선형 관계를 잘 나타내는 최적의 직선 $\beta_0+\beta_1X$를 찾는 작업이다. 직선의 식을 아는 경</description>
-    </item>
-    
   </channel>
 </rss>
