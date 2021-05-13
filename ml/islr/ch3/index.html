@@ -3,7 +3,7 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>CH3 Linear Regression - ML Lab</title>
+<title>3. Linear Regression - ML Lab</title>
 <meta name="description" content="STATKWON">
 <meta name="generator" content="Hugo 0.74.3" />
 <link href="https://statkwon.github.io//index.xml" rel="alternate" type="application/rss+xml">
@@ -25,16 +25,16 @@
 <style>
 :root {}
 </style>
-<meta property="og:title" content="CH3 Linear Regression" />
+<meta property="og:title" content="3. Linear Regression" />
 <meta property="og:description" content="3.1. Simple Linear Regression Simple Linear Regression은 변수 간의 선형 관계를 잘 나타내는 최적의 직선 $\beta_0&#43;\beta_1X$를 찾는 작업이다. 직선의 식을 아는 경" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://statkwon.github.io/ml/islr/ch3/" />
 <meta property="article:published_time" content="2021-02-10T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-02-10T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="CH3 Linear Regression"/>
+<meta name="twitter:title" content="3. Linear Regression"/>
 <meta name="twitter:description" content="3.1. Simple Linear Regression Simple Linear Regression은 변수 간의 선형 관계를 잘 나타내는 최적의 직선 $\beta_0&#43;\beta_1X$를 찾는 작업이다. 직선의 식을 아는 경"/>
-<meta itemprop="name" content="CH3 Linear Regression">
+<meta itemprop="name" content="3. Linear Regression">
 <meta itemprop="description" content="3.1. Simple Linear Regression Simple Linear Regression은 변수 간의 선형 관계를 잘 나타내는 최적의 직선 $\beta_0&#43;\beta_1X$를 찾는 작업이다. 직선의 식을 아는 경">
 <meta itemprop="datePublished" content="2021-02-10T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-02-10T00:00:00+00:00" />
@@ -63,7 +63,7 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>CH3 Linear Regression</h1>
+<main><h1>3. Linear Regression</h1>
 <aside class="table_of_contents">
 <h5>Table of Contents</h5><nav id="TableOfContents">
   <ul>
@@ -91,7 +91,10 @@
 </nav></aside>
 
 <h2 id="31-simple-linear-regression">3.1. Simple Linear Regression</h2>
-<p><img src="/ISLR/FIGURE_3.1.png" alt="FIGURE 3.1"></p>
+<figure>
+    <img src="/islr_fig_3.1.png" width="400" height="200"/> 
+</figure>
+
 <p>Simple Linear Regression은 변수 간의 선형 관계를 잘 나타내는 최적의 직선 $\beta_0+\beta_1X$를 찾는 작업이다. 직선의 식을 아는 경우, 새로운 데이터에 대한 예측을 할 수 있다. 따라서 우리는 Training Data를 사용하여 회귀계수 $\beta_0$, $\beta_1$을 추정할 것이다.</p>
 <h3 id="311-estimating-the-coefficients">3.1.1. Estimating the Coefficients</h3>
 <p>가장 일반적인 방법은 Method of Least Squares이다. ISLR에 나와있는 LSE의 정의는 잘못되었다. 책에서는 $e_i=Y_i-\hat{Y}_i$, 즉 데이터가 추정된 회귀선으로부터 떨어진 정도를 나타내는 Residual의 제곱합을 최소화하는 추정량이 LSE라고 설명하고 있다. 하지만 LSE는 Residual이 아닌, Error의 제곱합을 최소화하는 추정량이다. 이때 Error는 $\epsilon_i=y_i-\beta_0-\beta_1x_i$로, 데이터가 모회귀선으로부터 떨어진 정도를 의미한다. 따라서 아래와 같이 표기를 수정해야 한다.</p>
@@ -168,21 +171,33 @@ $$x_{i2}=\begin{cases} 1 &amp; \mbox{if } i \mbox{th person is Caucasian} \\ 0 &
 <p>회귀 모형을 적합하기 전에 항상 확인해야 할 것들이 있다.</p>
 <h4 id="1-non-linearity-of-the-data">1. Non-Linearity of the Data</h4>
 <p>선형 회귀 모형은 기본적으로 독립 변수와 반응 변수 사이의 선형 관계를 전제로 한다. 만약 독립 변수와 반응 변수가 선형 관계에 있지 않다면, 모형의 성능이 매우 떨어지게 된다. 따라서 모형을 적합하기 전에 변수 간 관계를 미리 확인할 필요가 있다. Residual Plot은 데이터의 선형성을 확인하기에 가장 적합한 툴이다.</p>
-<p><img src="/ISLR/FIGURE_3.9.png" alt="FIGURE 3.9"></p>
+<figure>
+    <img src="/islr_fig_3.9.png" width="600" height="400"/> 
+</figure>
+
 <p>이상적인 경우, Residual Plot 상에서 어떠한 패턴도 드러나지 않아야 한다. 만약 특정한 패턴이 발견된다면, 선형 가정에 문제가 있다고 볼 수 있다. Residual Plot이 데이터의 비선형성을 보여준다면, 독립변수에 대해 $\log{X}$, $\sqrt{X}$, $X^2$ 등의 변환을 적용하여 비선형성을 완화할 수 있다.</p>
 <h4 id="2-correlation-of-error-terms">2. Correlation of Error Terms</h4>
 <p>선형 회귀 모형의 또 다른 중요한 가정은 Error Terms 사이의 독립성이다. 일반적으로 시계열 자료에서 이러한 독립성 가정이 위배되는 경우가 자주 발생한다. 마찬가지로 Residual Plot을 그려서 확인할 수 있다. 독립성 가정의 경우 데이터를 수집하는 과정에서부터 주의를 기울이는 것이 중요하다.</p>
 <h4 id="3-non-constant-variance-of-error-terms">3. Non-constant Variance of Error Terms</h4>
 <p>Error Terms의 등분산성 역시 선형 회귀 모형의 중요한 전제 사항이다. Residual Plot을 그렸을 때 Funnel Shape이 확인된다면 등분산성 가정이 위배된 것으로 판단할 수 있다. 이를 Heteroscedasticity라고 한다. 이러한 문제가 발생한 경우, 반응변수에 대해 $\log{Y}$, $\sqrt{Y}$ 등의 변환을 가함으로써 Error Terms의 이분산성을 완화시킬 수 있다.</p>
-<p><img src="/ISLR/FIGURE_3.11.png" alt="FIGURE 3.11"></p>
+<figure>
+    <img src="/islr_fig_3.11.png" width="600" height="400"/> 
+</figure>
+
 <h4 id="4-outliers">4. Outliers</h4>
 <p>반응변수의 관점에서 보았을 때, 회귀 모형으로부터 동떨어져 있는 값들을 Outlier라고 부른다. Residual Plot을 그렸을 때 상대적으로 높은 값을 보이는 점들이 Outlier라고 할 수 있다. 하지만 그 기준을 정하기 애매하기 때문에, 일반적으로 Studentized Residual Plot을 그려서 확인한다. Studentized Residual이 $3$보다 큰 경우 Outlier일 가능성이 높다.</p>
-<p><img src="/ISLR/FIGURE_3.12.png" alt="FIGURE 3.12"></p>
+<figure>
+    <img src="/islr_fig_3.12.png" width="600" height="400"/> 
+</figure>
+
 <h4 id="5-high-leverage-points">5. High Leverage Points</h4>
 <p>Outlier가 반응변수의 관점에서 보이는 비정상적인 값이라면, High Leverage Point는 종속변수의 관점에서 비정상적인 값을 찾은 것이다. 단순 선형 회귀에서는 산점도를 그려봄으로써 쉽게 찾아낼 수 있지만, 변수의 갯수가 많아지면 육안으로 구분하는 것이 불가능하다.  따라서 Leverage Statistic이라는 것을 구하게 된다.</p>
 <p>$$h_i=\frac{1}{n}+\frac{\left(X_i-\bar{X}\right)^2}{\sum{\left(X_{i&rsquo;}-\bar{X}\right)^2}}$$</p>
 <p>일반적으로 Leverage Statistic이 $\frac{p+1}{n}$보다 큰 경우 High Leverage Point라고 판단한다.</p>
-<p><img src="/ISLR/FIGURE_3.13.png" alt="FIGURE 3.13"></p>
+<figure>
+    <img src="/islr_fig_3.13.png" width="600" height="400"/> 
+</figure>
+
 <h4 id="6-collinearity">6. Collinearity</h4>
 <p>Collinearity는 두 개 이상의 변수들이 서로 연관되어있는 경우를 의미한다. Collinearity를 확인하기 가장 쉬운 방법은 Correlation Matrix를 그려보는 것이지만, 이러한 방법으로는 세 개 이상의 변수 사이의 Collinearity는 확인하지 못한다. 따라서 다음과 같은 식의 $\text{VIF}$를 계산하여 다중공선성 여부를 확인해야 한다.</p>
 <p>$$\text{VIF}(\hat{\beta}_j)=\frac{1}{1-R^2_{X_j|X_{-j}}}$$</p>
@@ -193,8 +208,8 @@ Last updated on 10 Feb 2021
 
 <br>
 Published on 10 Feb 2021
-<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/ISLR/CH3.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/islr/ch2/" title="CH2 Statistical Learning"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - CH2 Statistical Learning</a>
-<a class="nav nav-next" href="https://statkwon.github.io/ml/islr/ch4/" title="CH4 Classification">Next - CH4 Classification <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/ISLR/CH3.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/islr/ch2/" title="2. Statistical Learning"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 2. Statistical Learning</a>
+<a class="nav nav-next" href="https://statkwon.github.io/ml/islr/ch4/" title="4. Classification">Next - 4. Classification <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -296,12 +311,12 @@ Published on 10 Feb 2021
 <li class="parent"><a href="https://statkwon.github.io/ml/islr/">ISLR</a>
   
 <ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/islr/ch2/">CH2 Statistical Learning</a></li>
-<li class="active"><a href="https://statkwon.github.io/ml/islr/ch3/">CH3 Linear Regression</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/islr/ch4/">CH4 Classification</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/islr/ch5/">CH5 Resampling Methods</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/islr/ch6/">CH6 Linear Model Selection and Regularization</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/islr/ch7/">CH7 Moving Beyond Linearity</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/islr/ch2/">2. Statistical Learning</a></li>
+<li class="active"><a href="https://statkwon.github.io/ml/islr/ch3/">3. Linear Regression</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/islr/ch4/">4. Classification</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/islr/ch5/">5. Resampling Methods</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/islr/ch6/">6. Linear Model Selection and Regularization</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/islr/ch7/">7. Moving Beyond Linearity</a></li>
 <li class=""><a href="https://statkwon.github.io/ml/islr/ch8/">8. Tree-Based Methods</a></li>
 </ul>
   

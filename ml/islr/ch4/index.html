@@ -3,7 +3,7 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>CH4 Classification - ML Lab</title>
+<title>4. Classification - ML Lab</title>
 <meta name="description" content="STATKWON">
 <meta name="generator" content="Hugo 0.74.3" />
 <link href="https://statkwon.github.io//index.xml" rel="alternate" type="application/rss+xml">
@@ -25,16 +25,16 @@
 <style>
 :root {}
 </style>
-<meta property="og:title" content="CH4 Classification" />
+<meta property="og:title" content="4. Classification" />
 <meta property="og:description" content="4장에서는 반응변수가 범주형인 경우, 즉, Classification의 문제를 다룬다. 4.2. Why Not Linear Regression? 선형 회귀 모형은 반응변수가 범주형인 경우 사용이 적합하" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://statkwon.github.io/ml/islr/ch4/" />
 <meta property="article:published_time" content="2021-02-10T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-02-10T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="CH4 Classification"/>
+<meta name="twitter:title" content="4. Classification"/>
 <meta name="twitter:description" content="4장에서는 반응변수가 범주형인 경우, 즉, Classification의 문제를 다룬다. 4.2. Why Not Linear Regression? 선형 회귀 모형은 반응변수가 범주형인 경우 사용이 적합하"/>
-<meta itemprop="name" content="CH4 Classification">
+<meta itemprop="name" content="4. Classification">
 <meta itemprop="description" content="4장에서는 반응변수가 범주형인 경우, 즉, Classification의 문제를 다룬다. 4.2. Why Not Linear Regression? 선형 회귀 모형은 반응변수가 범주형인 경우 사용이 적합하">
 <meta itemprop="datePublished" content="2021-02-10T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-02-10T00:00:00+00:00" />
@@ -63,7 +63,7 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>CH4 Classification</h1>
+<main><h1>4. Classification</h1>
 <aside class="table_of_contents">
 <h5>Table of Contents</h5><nav id="TableOfContents">
   <ul>
@@ -92,7 +92,10 @@
 <h2 id="42-why-not-linear-regression">4.2. Why Not Linear Regression?</h2>
 <p>선형 회귀 모형은 반응변수가 범주형인 경우 사용이 적합하지 않다. 일반적으로 범주의 갯수가 세 개 이상인 경우 범주형 반응변수를 선형회귀분석에 적합한 형태의 수치형 변수로 변환하는 방법이 존재하지 않는다. 설령 범주의 갯수가 두 개라고 하더라도 선형 회귀 모형의 결과를 해석하는데 있어 문제가 발생한다. 두 가지 범주를 0과 1로 코딩하여 선형 회귀 모형을 적합한 경우, 몇몇 예측값은 0과 1의 범위를 벗어나는 값을 가질 수 있다.</p>
 <h2 id="43-logistic-regression">4.3. Logistic Regression</h2>
-<p><img src="/ml/fig/islr_fig4.2.png" alt="ISLR fig 4.2"></p>
+<figure>
+    <img src="/islr_fig_4.2.png" width="600" height="400"/> 
+</figure>
+
 <p>로지스틱 회귀 모형은 $X$가 주어졌을 때 $Y$가 $1$의 범주에 속할 조건부확률인 $P(Y=1|X)$에 대한 모형이다. $P(Y=1|X)$는 확률값이기 때문에 항상 $0$과 $1$ 사이의 값만을 갖는다. 로지스틱 회귀 모형에서는 확률값에 대해 임의의 Cutoff 값을 설정하여 범주를 구분한다. 예를 들어 $0.5$를 기준으로 삼은 경우, $P(Y=1|X)&gt;0.5$면 $1$로 분류하고, $P(Y=1|X)&lt;0.5$면 $0$으로 분류하는 식이다.</p>
 <h3 id="431-the-logistic-model">4.3.1. The Logistic Model</h3>
 <p>선형 회귀 모형에서는 $X$에 대해 $\beta_0+\beta_1X$의 선형 함수를 사용하였지만, 로지스틱 회귀 모형에서는 $0$과 $1$ 사이의 값만을 갖는 함수를 사용한다. 이러한 함수에는 여러 종류가 있지만 그중에서도 $\frac{e^{\beta_0+\beta_1X}}{1+e^{\beta_0+\beta_1X}}$의 로지스틱 함수를 사용한다. 따라서 로지스틱 회귀 모형은 다음과 같은 형태를 갖는다.</p>
@@ -140,22 +143,30 @@
 <p>$X \sim N(\mu, \mathbf{\Sigma})$와 같이 $X=(X_1, X_2, \ldots, X_p)$가 다변량 정규분포를 따르는 경우에도 LDA를 사용할 수 있다. 이러한 경우 $k$번째 범주의 데이터들은 $N(\mu_k, \mathbf{\Sigma})$를 따른다. $p=1$인 경우와 마찬가지로, $\frac{\pi_kf_k(x)}{\sum_{l=1}^K{\pi_lf_l(x)}}$에 $f_k(X=x)$를 대입하여 아래와 같은 식을 얻을 수 있다.</p>
 <p>$$\delta_k(x)=x^T\mathbf{\Sigma}^{-1}\mu_k-\frac{1}{2}\mu^T_k\mathbf{\Sigma}^{-1}+\log{\pi_k}$$</p>
 <p>위 식을 최대화하는 $k$값으로 범주를 분류한다.</p>
-<p><img src="/ml/fig/islr_fig4.6.png" alt="ISLR fig 4.6"></p>
+<figure>
+    <img src="/islr_fig_4.6.png" width="600" height="400"/> 
+</figure>
+
 <p>뿐만 아니라, 위 그림과 같이 각각의 범주를 구분하는 Decision Boundary를 구하는 것도 가능하다. $k$번째 범주와 $l$번째 범주를 구분하는 Decision Boundary는 $\delta_k(x)=\delta_l(x)$, 즉, $x^T\mathbf{\Sigma}^{-1}\mu_k-\frac{1}{2}\mu^T_k\mathbf{\Sigma}^{-1}\mu_k=x^T\mathbf{\Sigma}^{-1}\mu_l-\frac{1}{2}\mu^T_l\mathbf{\Sigma}^{-1}\mu_l$를 만족하는 $x$값들의 집합이다. 이때 여전히 $\mu_1, \ldots, \mu_k$, $\mathbf{\Sigma}$, $\pi_1, \ldots, \pi_k$의 값을 알지 못하므로 각각의 추정치를 대신 사용한다. 위 그림에서 LDA Decision Boudnary(직선)가 Bayes Decision Boundary(점선)와 매우 유사한 것을 확인할 수 있다.</p>
 <p><strong>cf. Confusion Matrix &amp; ROC Curve</strong></p>
 <p>Regression 문제와 달리, Classification 문제에서는 모형의 성능을 측정할 때 주의해야할 점이 있다. 범주가 두 개인 경우, Binary Classifier는 두 가지 종류의 Error를 발생시키기 때문에, 모형의 성능을 판단할 때 두 가지 Error 모두 고려해주어야 한다. Confusion Matrix를 통해 이를 쉽게 확인할 수 있다.</p>
-<p><img src="/ISLR/FIGURE_4.png" alt="FIGURE 4"></p>
 <p>기본적인 형태의 Confusion Matrix는 역학 용어를 기반으로 한다. Positive는 양성을, Negative는 음성을 뜻한다. 따라서 True Positive는 양성으로 예측하였고, 실제로 양성인 경우, True Negative는 음성으로 예측하였고, 실제로 음성인 경우, False Positive는 양성으로 예측하였지만 실제로 음성인 경우, False Negative는 음성으로 예측하였지만 실제로 양성인 경우에 해당한다. 이때 실제로 양성인 경우에 대해 정확하게 예측한 확률을 Sensitivity, 실제로 음성인 경우에 대해 정확하게 예측한 확률을 Specificity라고 한다. 만약 어느 한 쪽의 지표가 더 중요한 상황이라면, 범주를 구분하는 기준값을 조절하여 더 중요한 쪽의 정확도를 높일 수 있다. $P(Y=1|X=x)&gt;c$에서 $c$를 threshold라고 부르는데, 이것이 바로 앞서 말한 범주를 구분하는 기준이 된다. 예를 들어, Sensitivity보다 Specificity를 우선시 해야하는 경우 threshold값을 높임으로써 False Positive인 경우를 줄일 수 있다. threshold값은 분류하고자 하는 데이터의 도메인 지식에 따라 결정해야한다.</p>
 <p>$$\text{Sensitivity}=\frac{\text{TP}}{\text{FN}+\text{TP}} \qquad \text{Specificity}=\frac{\text{TN}}{\text{TN}+\text{FP}}$$</p>
 <p>$1-\text{Specificity}$를 $x$축으로, $\text{Sensitivity}$를 $y$축으로 하는 그래프인 ROC Curve는 각 threshold값에 따른 두 가지 Error를 동시에 표현할 수 있다는 점에서 유용하게 사용된다. 또한 모형의 전체적인 성능을 ROC Curve 아래의 면적, AUC로 판단할 수도 있다.</p>
-<p><img src="/ml/fig/islr_fig4.8.png" alt="ISLR fig 4.8"></p>
+<figure>
+    <img src="/islr_fig_4.8.png" width="400" height="200"/> 
+</figure>
+
 <h3 id="444-quadratic-discriminant-analysis">4.4.4. Quadratic Discriminant Analysis</h3>
 <p>QDA는 LDA와 마찬가지로 변수들이 정규분포를 따름을 가정하지만, 각 범주별로 서로 다른 Covariance Matrix를 갖는다는 점에서 LDA와 차이가 있다. 즉, $k$번째 범주에 속한 데이터들은 $N(\mu_k, \mathbf{\Sigma}_k)$를 따른다. 이러한 가정 하에서 $\delta_k(x)$를 구해보면 다음과 같다.</p>
 <p>$$\begin{align} \delta_k(x)&amp;=-\frac{1}{2}(x-\mu_k)^T\mathbf{\Sigma}^{-1}_k(x-\mu_k)-\frac{1}{2}\log{|\mathbf{\Sigma}_k|}+\log{\pi_k}
 \\<br>
 &amp;=-\frac{1}{2}x^T\mathbf{\Sigma}^{-1}_kx+x^T\mathbf{\Sigma}^{-1}_k\mu_k-\frac{1}{2}\mu^T_k\mathbf{\Sigma}^{-1}_k\mu_k-\frac{1}{2}\log{|\mathbf{\Sigma}_k|}+\log{\pi_k} \end{align}$$</p>
 <p>위 식을 최대화하는 $k$값으로 범주를 분류한다. 앞선 경우와 마찬가지로, $\delta_k(x)$가 $x$에 대한 Quadratic Function이기 때문에 Quadratic Discriminant Analysis라고 부른다.</p>
-<p><img src="/ml/fig/islr_fig4.9.png" alt="ISLR fig 4.9"></p>
+<figure>
+    <img src="/islr_fig_4.9.png" width="600" height="400"/> 
+</figure>
+
 <p>만약 Training Data의 갯수가 부족한 경우라면 일반적으로 분산을 줄일 수 있는 LDA의 성능이 QDA보다 좋다고 할 수 있다. 하지만 Training Data가 충분하여 모형의 분산에 대해 크게 신경을 쓰지 않아도 되는 경우나, Covariance Matrix가 모든 범주에 대해 동일하다는 가정이 적합하지 않은 경우에는 QDA를 사용하는 것이 좋다.</p>
 <div class="edit-meta">
 Last updated on 10 Feb 2021
@@ -163,8 +174,8 @@ Last updated on 10 Feb 2021
 
 <br>
 Published on 10 Feb 2021
-<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/ISLR/CH4.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/islr/ch3/" title="CH3 Linear Regression"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - CH3 Linear Regression</a>
-<a class="nav nav-next" href="https://statkwon.github.io/ml/islr/ch5/" title="CH5 Resampling Methods">Next - CH5 Resampling Methods <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/ISLR/CH4.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/islr/ch3/" title="3. Linear Regression"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 3. Linear Regression</a>
+<a class="nav nav-next" href="https://statkwon.github.io/ml/islr/ch5/" title="5. Resampling Methods">Next - 5. Resampling Methods <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -266,12 +277,12 @@ Published on 10 Feb 2021
 <li class="parent"><a href="https://statkwon.github.io/ml/islr/">ISLR</a>
   
 <ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/islr/ch2/">CH2 Statistical Learning</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/islr/ch3/">CH3 Linear Regression</a></li>
-<li class="active"><a href="https://statkwon.github.io/ml/islr/ch4/">CH4 Classification</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/islr/ch5/">CH5 Resampling Methods</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/islr/ch6/">CH6 Linear Model Selection and Regularization</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/islr/ch7/">CH7 Moving Beyond Linearity</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/islr/ch2/">2. Statistical Learning</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/islr/ch3/">3. Linear Regression</a></li>
+<li class="active"><a href="https://statkwon.github.io/ml/islr/ch4/">4. Classification</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/islr/ch5/">5. Resampling Methods</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/islr/ch6/">6. Linear Model Selection and Regularization</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/islr/ch7/">7. Moving Beyond Linearity</a></li>
 <li class=""><a href="https://statkwon.github.io/ml/islr/ch8/">8. Tree-Based Methods</a></li>
 </ul>
   

@@ -21,7 +21,7 @@
     </item>
     
     <item>
-      <title>CH2 Statistical Learning</title>
+      <title>2. Statistical Learning</title>
       <link>https://statkwon.github.io/ml/islr/ch2/</link>
       <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -48,7 +48,7 @@
     </item>
     
     <item>
-      <title>CH3 Linear Regression</title>
+      <title>3. Linear Regression</title>
       <link>https://statkwon.github.io/ml/islr/ch3/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
@@ -75,7 +75,7 @@
     </item>
     
     <item>
-      <title>CH4 Classification</title>
+      <title>4. Classification</title>
       <link>https://statkwon.github.io/ml/islr/ch4/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
@@ -84,7 +84,7 @@
     </item>
     
     <item>
-      <title>CH5 Resampling Methods</title>
+      <title>5. Resampling Methods</title>
       <link>https://statkwon.github.io/ml/islr/ch5/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
@@ -93,7 +93,7 @@
     </item>
     
     <item>
-      <title>CH6 Linear Model Selection and Regularization</title>
+      <title>6. Linear Model Selection and Regularization</title>
       <link>https://statkwon.github.io/ml/islr/ch6/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
@@ -102,7 +102,7 @@
     </item>
     
     <item>
-      <title>CH7 Moving Beyond Linearity</title>
+      <title>7. Moving Beyond Linearity</title>
       <link>https://statkwon.github.io/ml/islr/ch7/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       

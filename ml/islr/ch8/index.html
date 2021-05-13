@@ -84,7 +84,10 @@
 <li>독립변수 $X_1, X_2, \ldots, X_p$에 대해, Predictor Space를 서로 겹치지 않는 $J$개의 영역, $R_1, R_2, \ldots, R_J$로 구분한다.</li>
 <li>$R_j$에 속한 모든 데이터에 대해서는 동일한 방식으로 반응변수를 예측한다. 일반적으로 $R_j$에 속한 데이터들의 평균을 사용한다.</li>
 </ol>
-<p><img src="/ISLR/FIGURE_8.2.png" alt="FIGURE 8.2"></p>
+<figure>
+    <img src="/islr_fig_8.2.png" width="400" height="200"/> 
+</figure>
+
 <p>Predictor Space를 $R_1, R_2, \ldots, R_J$로 나누기 위해서는 Recursive Binary Splitting이라는 Top-Down 방식을 사용한다. 모든 데이터가 한 영역에 들어있는 상태를 시작으로 해당 영역을 $\{X|X_j&lt;s\}$와 $\{X|X_j≥s\}$로 나누었을 때 아래와 같은 식의 $\text{RSS}$를 최소화하는 $X_j$와 $s$를 결정한다. 예를 들어, 위 그림에서는 Years라는 변수와 $4.5$라는 기준값을 가지고 전체 영역을 $R_1$과 $R_2+R_3$로 구분한 것이다.</p>
 <p>$$\sum_{j=1}^J\sum_{i \in R_j}{(y_i-\hat{y}_{R_j})^2}$$</p>
 <p>이후 나누어진 각 영역들에 대해서 동일한 과정을 반복 시행하며 특정한 정지 기준에 도달할 때까지 분할한다. 위 그림에서는 Years와 $4.5$를 기준으로 첫 번째 분할을 한 후, Hits와 $117.5$를 기준으로 $R_2+R_3$를 $R_2$와 $R_3$로 나누었다.</p>
@@ -98,7 +101,7 @@ Last updated on 10 Feb 2021
 
 <br>
 Published on 10 Feb 2021
-<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/ISLR/CH8.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/islr/ch7/" title="CH7 Moving Beyond Linearity"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - CH7 Moving Beyond Linearity</a>
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/ISLR/CH8.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/islr/ch7/" title="7. Moving Beyond Linearity"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 7. Moving Beyond Linearity</a>
 <a class="nav nav-next" href="https://statkwon.github.io/ml/one-parameter-models/" title="One-parameter models">Next - One-parameter models <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -201,12 +204,12 @@ Published on 10 Feb 2021
 <li class="parent"><a href="https://statkwon.github.io/ml/islr/">ISLR</a>
   
 <ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/islr/ch2/">CH2 Statistical Learning</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/islr/ch3/">CH3 Linear Regression</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/islr/ch4/">CH4 Classification</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/islr/ch5/">CH5 Resampling Methods</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/islr/ch6/">CH6 Linear Model Selection and Regularization</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/islr/ch7/">CH7 Moving Beyond Linearity</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/islr/ch2/">2. Statistical Learning</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/islr/ch3/">3. Linear Regression</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/islr/ch4/">4. Classification</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/islr/ch5/">5. Resampling Methods</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/islr/ch6/">6. Linear Model Selection and Regularization</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/islr/ch7/">7. Moving Beyond Linearity</a></li>
 <li class="active"><a href="https://statkwon.github.io/ml/islr/ch8/">8. Tree-Based Methods</a></li>
 </ul>
   
