@@ -11,5 +11,32 @@
 	<atom:link href="https://statkwon.github.io/visualization/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Matplotlib</title>
+      <link>https://statkwon.github.io/visualization/matplotlib/</link>
+      <pubDate>Thu, 11 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/visualization/matplotlib/</guid>
+      <description>1. Several Options import matplotlib as mpl ; mpl.rcParams[&amp;#39;axes.unicode_minus&amp;#39;] = False import matplotlib.pyplot as plt ; plt.rcParams[&amp;#39;font.family&amp;#39;] = &amp;#39;AppleGothic&amp;#39; 윈도우 유저라면 첫 번째 줄은 입력할 필요가 없다. 맥의 경우 &amp;lsquo;-&amp;rsquo; 기호가 깨져서 나타나는 경우를 해결하기 위해 첫 번째 줄의 코</description>
+    </item>
+    
+    <item>
+      <title>Seaborn</title>
+      <link>https://statkwon.github.io/visualization/seaborn/</link>
+      <pubDate>Thu, 11 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/visualization/seaborn/</guid>
+      <description>0. Import Seaborn and Datasets import pandas as pd import matplotlib.pyplot as plt ; plt.rcParams[&amp;#39;font.family&amp;#39;]=&amp;#39;AppleGothic&amp;#39; ; plt.rc(&amp;#39;axes&amp;#39;, unicode_minus=False) import seaborn as sns Seaborn을 사용하기 위해서는 matplotlib을 먼저 import해야 한다. 두 번째 줄의 옵션들</description>
+    </item>
+    
+    <item>
+      <title>Bokeh</title>
+      <link>https://statkwon.github.io/visualization/bokeh/</link>
+      <pubDate>Thu, 11 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/visualization/bokeh/</guid>
+      <description>1. Introduction to Bokeh from bokeh.io import output_notebook, show from bokeh.plotting import figure 우선 위의 명령어를 사용하여 Bokeh를 import한다. output_notebook() 기본적으로 Bokeh는 html 형식의 결과물을 산출하지만, output_notebook() 명령어</description>
+    </item>
+    
   </channel>
 </rss>
