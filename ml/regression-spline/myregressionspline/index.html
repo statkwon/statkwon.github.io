@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>MyRegressionSpline.py - ML Lab</title>
 <meta name="description" content="STATKWON">
-<meta name="generator" content="Hugo 0.74.3" />
+<meta name="generator" content="Hugo 0.83.1" />
 <link href="https://statkwon.github.io//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://statkwon.github.io/ml/regression-spline/myregressionspline/">
 <link rel="stylesheet" href="https://statkwon.github.io/css/theme.min.css">
@@ -29,24 +29,20 @@
 <meta property="og:description" content="Github Link: MyRegressionSpline.ipynb
 import numpy as np class MyRegressionSpline: def fit(self, X_train, y_train, m, k): X_train = np.array(X_train) y_train = np.array(y_train) self.m = m self.k = np.array(k) X_train_new = np.power(X_train, 0) for i in range(1, m&#43;1): X_train_new = np.column_stack((X_train_new, np.power(X_train, i))) for i in range(len(k)): X_train_new = np.column_stack((X_train_new, np.where(np.power(X_train-k[i], m) &lt; 0, 0, np.power(X_train-k[i], m)))) self.beta = np.linalg.inv(np.transpose(X_train_new).dot(X_train_new)).dot(np.transpose(X_train_new)).dot(y_train) def predict(self, X_test): X_test = np.array(X_test) X_test_new = np.power(X_test, 0) for i in range(1, self." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://statkwon.github.io/ml/regression-spline/myregressionspline/" />
-<meta property="article:published_time" content="2021-04-25T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-04-25T00:00:00+00:00" />
+<meta property="og:url" content="https://statkwon.github.io/ml/regression-spline/myregressionspline/" /><meta property="article:section" content="ML" />
+<meta property="article:published_time" content="2021-04-25T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-04-25T00:00:00&#43;00:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MyRegressionSpline.py"/>
 <meta name="twitter:description" content="Github Link: MyRegressionSpline.ipynb
 import numpy as np class MyRegressionSpline: def fit(self, X_train, y_train, m, k): X_train = np.array(X_train) y_train = np.array(y_train) self.m = m self.k = np.array(k) X_train_new = np.power(X_train, 0) for i in range(1, m&#43;1): X_train_new = np.column_stack((X_train_new, np.power(X_train, i))) for i in range(len(k)): X_train_new = np.column_stack((X_train_new, np.where(np.power(X_train-k[i], m) &lt; 0, 0, np.power(X_train-k[i], m)))) self.beta = np.linalg.inv(np.transpose(X_train_new).dot(X_train_new)).dot(np.transpose(X_train_new)).dot(y_train) def predict(self, X_test): X_test = np.array(X_test) X_test_new = np.power(X_test, 0) for i in range(1, self."/>
 <meta itemprop="name" content="MyRegressionSpline.py">
 <meta itemprop="description" content="Github Link: MyRegressionSpline.ipynb
-import numpy as np class MyRegressionSpline: def fit(self, X_train, y_train, m, k): X_train = np.array(X_train) y_train = np.array(y_train) self.m = m self.k = np.array(k) X_train_new = np.power(X_train, 0) for i in range(1, m&#43;1): X_train_new = np.column_stack((X_train_new, np.power(X_train, i))) for i in range(len(k)): X_train_new = np.column_stack((X_train_new, np.where(np.power(X_train-k[i], m) &lt; 0, 0, np.power(X_train-k[i], m)))) self.beta = np.linalg.inv(np.transpose(X_train_new).dot(X_train_new)).dot(np.transpose(X_train_new)).dot(y_train) def predict(self, X_test): X_test = np.array(X_test) X_test_new = np.power(X_test, 0) for i in range(1, self.">
-<meta itemprop="datePublished" content="2021-04-25T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-04-25T00:00:00+00:00" />
+import numpy as np class MyRegressionSpline: def fit(self, X_train, y_train, m, k): X_train = np.array(X_train) y_train = np.array(y_train) self.m = m self.k = np.array(k) X_train_new = np.power(X_train, 0) for i in range(1, m&#43;1): X_train_new = np.column_stack((X_train_new, np.power(X_train, i))) for i in range(len(k)): X_train_new = np.column_stack((X_train_new, np.where(np.power(X_train-k[i], m) &lt; 0, 0, np.power(X_train-k[i], m)))) self.beta = np.linalg.inv(np.transpose(X_train_new).dot(X_train_new)).dot(np.transpose(X_train_new)).dot(y_train) def predict(self, X_test): X_test = np.array(X_test) X_test_new = np.power(X_test, 0) for i in range(1, self."><meta itemprop="datePublished" content="2021-04-25T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-04-25T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="94">
-
-
-
-<meta itemprop="keywords" content="" />
-</head>
+<meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
 <p class="description">STATKWON</p>
@@ -138,6 +134,14 @@ Published on 25 Apr 2021
 <li class="parent"><a href="https://statkwon.github.io/ml/">ML</a>
   
 <ul class="sub-menu">
+
+<li class=""><a href="https://statkwon.github.io/ml/nadaraya-watson-kernel-regression/">Nadaraya-Watson Kernel Regression</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/nadaraya-watson-kernel-regression/mynwkernelregression/">MyNWKernelRegression.py</a></li>
+</ul>
+  
+</li>
 
 <li class=""><a href="https://statkwon.github.io/ml/smoothing-spline/">Smoothing Spline</a>
   

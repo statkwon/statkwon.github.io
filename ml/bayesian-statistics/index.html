@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Bayesian Statistics - ML Lab</title>
 <meta name="description" content="STATKWON">
-<meta name="generator" content="Hugo 0.74.3" />
+<meta name="generator" content="Hugo 0.83.1" />
 <link href="https://statkwon.github.io//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://statkwon.github.io/ml/bayesian-statistics/">
 <link rel="stylesheet" href="https://statkwon.github.io/css/theme.min.css">
@@ -28,22 +28,18 @@
 <meta property="og:title" content="Bayesian Statistics" />
 <meta property="og:description" content="1.1. Introduction Bayesian Learning 통계적 추론은 모집단의 일부를 통해 모집단의 일반적인 특성을 알아내기 위한 과정이다. 이때 대부분의 경우 모집단의 수치적 특성을 모수 $\theta$로" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://statkwon.github.io/ml/bayesian-statistics/" />
-<meta property="article:published_time" content="2021-02-10T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-02-10T00:00:00+00:00" />
+<meta property="og:url" content="https://statkwon.github.io/ml/bayesian-statistics/" /><meta property="article:section" content="ML" />
+<meta property="article:published_time" content="2021-02-10T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-02-10T00:00:00&#43;00:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Bayesian Statistics"/>
 <meta name="twitter:description" content="1.1. Introduction Bayesian Learning 통계적 추론은 모집단의 일부를 통해 모집단의 일반적인 특성을 알아내기 위한 과정이다. 이때 대부분의 경우 모집단의 수치적 특성을 모수 $\theta$로"/>
 <meta itemprop="name" content="Bayesian Statistics">
-<meta itemprop="description" content="1.1. Introduction Bayesian Learning 통계적 추론은 모집단의 일부를 통해 모집단의 일반적인 특성을 알아내기 위한 과정이다. 이때 대부분의 경우 모집단의 수치적 특성을 모수 $\theta$로">
-<meta itemprop="datePublished" content="2021-02-10T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-02-10T00:00:00+00:00" />
+<meta itemprop="description" content="1.1. Introduction Bayesian Learning 통계적 추론은 모집단의 일부를 통해 모집단의 일반적인 특성을 알아내기 위한 과정이다. 이때 대부분의 경우 모집단의 수치적 특성을 모수 $\theta$로"><meta itemprop="datePublished" content="2021-02-10T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-02-10T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="2594">
-
-
-
-<meta itemprop="keywords" content="" />
-</head>
+<meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
 <p class="description">STATKWON</p>
@@ -88,9 +84,9 @@
 <p>Posterior Distribution $p(\theta|y)$: 데이터셋 $y$를 관찰한 후의 $\theta$($\theta\in\Theta$)가 참값이라는 믿음</p>
 </blockquote>
 <p>$p(\theta|y)=\dfrac{p(y|\theta)p(\theta)}{\int_{\Theta}p(y|\tilde{\theta})p(\tilde{\theta})d\tilde{\theta}}$</p>
-<p>위와 같은 Bayes&rsquo; Rule은 우리의 믿음이 새로운 정보롤 관찰한 후 어떻게 바뀌어야 하는지 설명해준다.</p>
+<p>위와 같은 Bayes' Rule은 우리의 믿음이 새로운 정보롤 관찰한 후 어떻게 바뀌어야 하는지 설명해준다.</p>
 <h2 id="12-why-bayes">1.2. Why Bayes?</h2>
-<p>$p(\theta)$와 $p(y|\theta)$가 한 사람의 합리적인 믿음을 나타낸다면, Bayes&rsquo; Rule은 새로운 정보 $y$가 주어졌을 때 $\theta$에 대한 그 사람의 믿음을 업데이트하는 최적의 방법이다. 하지만 실질적인 데이터 분석 상황에서 Prior Belief를 정확하게 수치화하는 것은 어렵기 때문에, 많은 경우 $p(\theta)$는 계산의 편의를 위한 방식으로 결정된다.</p>
+<p>$p(\theta)$와 $p(y|\theta)$가 한 사람의 합리적인 믿음을 나타낸다면, Bayes' Rule은 새로운 정보 $y$가 주어졌을 때 $\theta$에 대한 그 사람의 믿음을 업데이트하는 최적의 방법이다. 하지만 실질적인 데이터 분석 상황에서 Prior Belief를 정확하게 수치화하는 것은 어렵기 때문에, 많은 경우 $p(\theta)$는 계산의 편의를 위한 방식으로 결정된다.</p>
 <p>그럼에도 불구하고 Bayesian Methods를 사용할 수 있는 이유는 무엇일까?</p>
 <ol>
 <li>&ldquo;All models are wrong, but some are useful.&rdquo; - 설령 $p(\theta)$가 Prior Belief를 정확하게 반영하지 못하더라도, $p(\theta)$가 우리의 믿음과 비슷하다면 $p(\theta|y)$ 역시 Posterior Belief에 대한 좋은 근사치가 될 수 있다.</li>
@@ -172,6 +168,14 @@ Published on 10 Feb 2021
 <li class="parent"><a href="https://statkwon.github.io/ml/">ML</a>
   
 <ul class="sub-menu">
+
+<li class=""><a href="https://statkwon.github.io/ml/nadaraya-watson-kernel-regression/">Nadaraya-Watson Kernel Regression</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/nadaraya-watson-kernel-regression/mynwkernelregression/">MyNWKernelRegression.py</a></li>
+</ul>
+  
+</li>
 
 <li class=""><a href="https://statkwon.github.io/ml/smoothing-spline/">Smoothing Spline</a>
   

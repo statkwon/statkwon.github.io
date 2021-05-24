@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>MySmoothingSpline.py - ML Lab</title>
 <meta name="description" content="STATKWON">
-<meta name="generator" content="Hugo 0.74.3" />
+<meta name="generator" content="Hugo 0.83.1" />
 <link href="https://statkwon.github.io//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://statkwon.github.io/ml/smoothing-spline/mysmoothingspline/">
 <link rel="stylesheet" href="https://statkwon.github.io/css/theme.min.css">
@@ -29,24 +29,20 @@
 <meta property="og:description" content="Github Link: MySmoothingSpline.ipynb
 import numpy as np class MySmoothingSpline: def __init__(self, alpha=1): self.alpha = alpha def fit(self, X_train, y_train): self.X_train = np.array(X_train) y_train = np.array(y_train) X_train_new = np.column_stack((np.ones(len(self.X_train)), self.X_train)) d_Km1 = (np.where(np.power(self.X_train-self.X_train[-2], 3) &lt; 0, 0, np.power(self.X_train-self.X_train[-2], 3))-np.where(np.power(self.X_train-self.X_train[-1], 3) &lt; 0, 0, np.power(self.X_train-self.X_train[-1], 3)))/(self.X_train[-2]-self.X_train[-1]) for i in range(len(self.X_train)-2): d = (np.where(np.power(self.X_train-self.X_train[i], 3) &lt; 0, 0, np.power(self.X_train-self.X_train[i], 3))-np.where(np.power(self.X_train-self.X_train[-1], 3) &lt; 0, 0, np.power(self.X_train-self.X_train[-1], 3)))/(self.X_train[i]-self.X_train[-1]) X_train_new = np.column_stack((X_train_new, d-d_Km1)) delta = np.zeros((len(self.X_train)-2, len(self." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://statkwon.github.io/ml/smoothing-spline/mysmoothingspline/" />
-<meta property="article:published_time" content="2021-05-09T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-05-09T00:00:00+00:00" />
+<meta property="og:url" content="https://statkwon.github.io/ml/smoothing-spline/mysmoothingspline/" /><meta property="article:section" content="ML" />
+<meta property="article:published_time" content="2021-05-09T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-05-09T00:00:00&#43;00:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MySmoothingSpline.py"/>
 <meta name="twitter:description" content="Github Link: MySmoothingSpline.ipynb
 import numpy as np class MySmoothingSpline: def __init__(self, alpha=1): self.alpha = alpha def fit(self, X_train, y_train): self.X_train = np.array(X_train) y_train = np.array(y_train) X_train_new = np.column_stack((np.ones(len(self.X_train)), self.X_train)) d_Km1 = (np.where(np.power(self.X_train-self.X_train[-2], 3) &lt; 0, 0, np.power(self.X_train-self.X_train[-2], 3))-np.where(np.power(self.X_train-self.X_train[-1], 3) &lt; 0, 0, np.power(self.X_train-self.X_train[-1], 3)))/(self.X_train[-2]-self.X_train[-1]) for i in range(len(self.X_train)-2): d = (np.where(np.power(self.X_train-self.X_train[i], 3) &lt; 0, 0, np.power(self.X_train-self.X_train[i], 3))-np.where(np.power(self.X_train-self.X_train[-1], 3) &lt; 0, 0, np.power(self.X_train-self.X_train[-1], 3)))/(self.X_train[i]-self.X_train[-1]) X_train_new = np.column_stack((X_train_new, d-d_Km1)) delta = np.zeros((len(self.X_train)-2, len(self."/>
 <meta itemprop="name" content="MySmoothingSpline.py">
 <meta itemprop="description" content="Github Link: MySmoothingSpline.ipynb
-import numpy as np class MySmoothingSpline: def __init__(self, alpha=1): self.alpha = alpha def fit(self, X_train, y_train): self.X_train = np.array(X_train) y_train = np.array(y_train) X_train_new = np.column_stack((np.ones(len(self.X_train)), self.X_train)) d_Km1 = (np.where(np.power(self.X_train-self.X_train[-2], 3) &lt; 0, 0, np.power(self.X_train-self.X_train[-2], 3))-np.where(np.power(self.X_train-self.X_train[-1], 3) &lt; 0, 0, np.power(self.X_train-self.X_train[-1], 3)))/(self.X_train[-2]-self.X_train[-1]) for i in range(len(self.X_train)-2): d = (np.where(np.power(self.X_train-self.X_train[i], 3) &lt; 0, 0, np.power(self.X_train-self.X_train[i], 3))-np.where(np.power(self.X_train-self.X_train[-1], 3) &lt; 0, 0, np.power(self.X_train-self.X_train[-1], 3)))/(self.X_train[i]-self.X_train[-1]) X_train_new = np.column_stack((X_train_new, d-d_Km1)) delta = np.zeros((len(self.X_train)-2, len(self.">
-<meta itemprop="datePublished" content="2021-05-09T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-05-09T00:00:00+00:00" />
+import numpy as np class MySmoothingSpline: def __init__(self, alpha=1): self.alpha = alpha def fit(self, X_train, y_train): self.X_train = np.array(X_train) y_train = np.array(y_train) X_train_new = np.column_stack((np.ones(len(self.X_train)), self.X_train)) d_Km1 = (np.where(np.power(self.X_train-self.X_train[-2], 3) &lt; 0, 0, np.power(self.X_train-self.X_train[-2], 3))-np.where(np.power(self.X_train-self.X_train[-1], 3) &lt; 0, 0, np.power(self.X_train-self.X_train[-1], 3)))/(self.X_train[-2]-self.X_train[-1]) for i in range(len(self.X_train)-2): d = (np.where(np.power(self.X_train-self.X_train[i], 3) &lt; 0, 0, np.power(self.X_train-self.X_train[i], 3))-np.where(np.power(self.X_train-self.X_train[-1], 3) &lt; 0, 0, np.power(self.X_train-self.X_train[-1], 3)))/(self.X_train[i]-self.X_train[-1]) X_train_new = np.column_stack((X_train_new, d-d_Km1)) delta = np.zeros((len(self.X_train)-2, len(self."><meta itemprop="datePublished" content="2021-05-09T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-05-09T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="163">
-
-
-
-<meta itemprop="keywords" content="" />
-</head>
+<meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
 <p class="description">STATKWON</p>
@@ -149,6 +145,14 @@ Published on 9 May 2021
 <li class="parent"><a href="https://statkwon.github.io/ml/">ML</a>
   
 <ul class="sub-menu">
+
+<li class=""><a href="https://statkwon.github.io/ml/nadaraya-watson-kernel-regression/">Nadaraya-Watson Kernel Regression</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/nadaraya-watson-kernel-regression/mynwkernelregression/">MyNWKernelRegression.py</a></li>
+</ul>
+  
+</li>
 
 <li class="parent"><a href="https://statkwon.github.io/ml/smoothing-spline/">Smoothing Spline</a>
   

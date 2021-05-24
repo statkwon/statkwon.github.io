@@ -5,11 +5,7 @@
     <link>https://statkwon.github.io/projects/</link>
     <description>Recent content in Projects on ML Lab</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    
-	<atom:link href="https://statkwon.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-us</language><atom:link href="https://statkwon.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>KBO 정규시즌 팀별 승률, 타율 및 방어율(평균자책점) 예측</title>
       <link>https://statkwon.github.io/projects/bigcon/</link>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Regression Spline - ML Lab</title>
 <meta name="description" content="STATKWON">
-<meta name="generator" content="Hugo 0.74.3" />
+<meta name="generator" content="Hugo 0.83.1" />
 <link href="https://statkwon.github.io//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://statkwon.github.io/ml/regression-spline/">
 <link rel="stylesheet" href="https://statkwon.github.io/css/theme.min.css">
@@ -29,13 +29,12 @@
 <meta property="og:description" content="STATKWON" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://statkwon.github.io/ml/regression-spline/" />
-<meta property="og:updated_time" content="2021-04-25T00:00:00+00:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Regression Spline"/>
 <meta name="twitter:description" content="STATKWON"/>
 <meta itemprop="name" content="Regression Spline">
-<meta itemprop="description" content="STATKWON">
-</head>
+<meta itemprop="description" content="STATKWON"></head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
 <p class="description">STATKWON</p>
@@ -63,33 +62,33 @@
 <p>$f(X)=\beta_1+\beta_2X\cdots+\beta_{M+1}X^M+\beta_{M+2}(X-\xi_1)_+^M+\cdots+\beta_{M+K+1}(X-\xi_K)_+^M$</p>
 <hr>
 <p>We will make a proof for the case when $M=3$ and $K=2$.</p>
-<p>$f(X)=\beta_1+\beta_2X+\beta_3X^2+\beta_4X^3+\beta_5(X-\xi_1)_+^3+\beta_6(X-\xi_2)_+^3$</p>
-<p>We will show the continuity of $f(X)$, $f&rsquo;(X)$, $f&rsquo;'(X)$ at the knots $\xi_1$, $\xi_2$ ($\xi_1&lt;\xi_2$).</p>
+<p>$f(X)=\beta_1+\beta_2X+\beta_3X^2+\beta_4X^3+\beta_5(X-\xi_1)<em>+^3+\beta_6(X-\xi_2)</em>+^3$</p>
+<p>We will show the continuity of $f(X)$, $f'(X)$, $f''(X)$ at the knots $\xi_1$, $\xi_2$ ($\xi_1&lt;\xi_2$).</p>
 <p>1) Continuity of $f(X)$</p>
 <p>$\begin{aligned}
-f(\xi_1-h)&amp;=\beta_1+\beta_2(\xi_1-h)+\beta_3(\xi_1-h)^2+\beta_4(\xi_1-h)^3+\beta_5(\xi_1-h-\xi_1)_+^3+\beta_6(\xi_1-h-\xi_2)_+^3 \\<br>
+f(\xi_1-h)&amp;=\beta_1+\beta_2(\xi_1-h)+\beta_3(\xi_1-h)^2+\beta_4(\xi_1-h)^3+\beta_5(\xi_1-h-\xi_1)<em>+^3+\beta_6(\xi_1-h-\xi_2)</em>+^3 \\<br>
 &amp;=\beta_1+\beta_2(\xi_1-h)+\beta_3(\xi_1-h)^2+\beta_4(\xi_1-h)^3
 \end{aligned}$</p>
-<p>$f(\xi_1+h)=\beta_1+\beta_2(\xi_1+h)+\beta_3(\xi_1+h)^2+\beta_4(\xi_1+h)^3+\beta_5(\xi_1+h-\xi_1)_+^3+\beta_6(\xi_1+h-\xi_2)_+^3$</p>
+<p>$f(\xi_1+h)=\beta_1+\beta_2(\xi_1+h)+\beta_3(\xi_1+h)^2+\beta_4(\xi_1+h)^3+\beta_5(\xi_1+h-\xi_1)<em>+^3+\beta_6(\xi_1+h-\xi_2)</em>+^3$</p>
 <p>$\displaystyle\lim_{h\rightarrow0}f(\xi_1-h)=\lim_{h\rightarrow0}f(\xi_1+h)=\beta_1+\beta_2\xi_1+\beta_3\xi_1^2+\beta_4\xi_1^3$</p>
 <p>$\displaystyle\therefore\lim_{x\rightarrow\xi_1}f(x)=\beta_1+\beta_2\xi_1+\beta_3\xi_1^2+\beta_4\xi_1^3=f(\xi_1)$</p>
 <p>$f(X)$ is continuous at $\xi_1$ and we can show that $f(X)$ is continuous at $\xi_2$ by a similar way.</p>
-<p>2) Continuity of $f&rsquo;(X)$ at $\xi_1$, $\xi_2$</p>
+<p>2) Continuity of $f'(X)$ at $\xi_1$, $\xi_2$</p>
 <p>$\begin{aligned}
-f&rsquo;(\xi_1^-)&amp;=\lim_{h\rightarrow0}\dfrac{f(\xi_1)-f(\xi_1-h)}{h} \\<br>
+f'(\xi_1^-)&amp;=\lim_{h\rightarrow0}\dfrac{f(\xi_1)-f(\xi_1-h)}{h} \\<br>
 &amp;=\lim_{h\rightarrow0}\dfrac{\beta_2h+2\beta_3\xi_1h+3\beta_4\xi_1^2h+O(h^2)}{h} \\<br>
 &amp;=\beta_2+2\beta_3\xi_1+3\beta_4\xi_1^2
 \end{aligned}$</p>
 <p>$\begin{aligned}
-f&rsquo;(\xi_1^+)&amp;=\lim_{h\rightarrow0}\dfrac{f(\xi_1+h)-f(\xi_1)}{h} \\<br>
+f'(\xi_1^+)&amp;=\lim_{h\rightarrow0}\dfrac{f(\xi_1+h)-f(\xi_1)}{h} \\<br>
 &amp;=\lim_{h\rightarrow0}\dfrac{\beta_2h+2\beta_3\xi_1h+3\beta_4\xi_1^2h+\beta_5(\xi_1+h-\xi_1)_+^3+\beta_6(\xi_1+h-\xi_2)_+^3+O(h^2)}{h} \\<br>
 &amp;=\beta_2+2\beta_3\xi_1+3\beta_4\xi_1^2
 \end{aligned}$</p>
-<p>$\therefore\lim_{x\rightarrow\xi_1}f&rsquo;(x)=\beta_2+2\beta_3\xi_1+3\beta_4\xi_1^2=f&rsquo;(\xi_1)$</p>
-<p>$f&rsquo;(X)$ is continuous at $\xi_1$ and we can show that $f&rsquo;(X)$ is continuous at $\xi_2$ by a similar way.</p>
-<p>3) Continuity of $f&rsquo;'(X)$ at $\xi_1$, $\xi_2$</p>
-<p>Similarly, $\lim_{x\rightarrow\xi_1}f&rsquo;'(x)=6\beta_4\xi_1^2=f&rsquo;'(\xi_1)$ and $\lim_{x\rightarrow\xi_2}f&rsquo;'(x)=6\beta_4\xi_2^2=f&rsquo;'(\xi_2)$.</p>
-<p>We showed that $f(X)$, $f&rsquo;(X)$ and $f&rsquo;'(X)$ are all continuous at $\xi_1$, $\xi_2$. Thus, $f(X)$ represents a cubic spline with two knots.</p>
+<p>$\therefore\lim_{x\rightarrow\xi_1}f'(x)=\beta_2+2\beta_3\xi_1+3\beta_4\xi_1^2=f'(\xi_1)$</p>
+<p>$f'(X)$ is continuous at $\xi_1$ and we can show that $f'(X)$ is continuous at $\xi_2$ by a similar way.</p>
+<p>3) Continuity of $f''(X)$ at $\xi_1$, $\xi_2$</p>
+<p>Similarly, $\lim_{x\rightarrow\xi_1}f''(x)=6\beta_4\xi_1^2=f''(\xi_1)$ and $\lim_{x\rightarrow\xi_2}f''(x)=6\beta_4\xi_2^2=f''(\xi_2)$.</p>
+<p>We showed that $f(X)$, $f'(X)$ and $f''(X)$ are all continuous at $\xi_1$, $\xi_2$. Thus, $f(X)$ represents a cubic spline with two knots.</p>
 <hr>
 <p>The number of parameters to fit regression spline is $(M+1)\times(K+1)-M\times K=M+K+1$.</p>
 <p>However, regression spline still has a problem that adding a continuity constraint cannot fix the irregularity beyond the boundaries.</p>
@@ -143,6 +142,14 @@ Last updated on 25 Apr 2021
 <li class="parent"><a href="https://statkwon.github.io/ml/">ML</a>
   
 <ul class="sub-menu">
+
+<li class=""><a href="https://statkwon.github.io/ml/nadaraya-watson-kernel-regression/">Nadaraya-Watson Kernel Regression</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/nadaraya-watson-kernel-regression/mynwkernelregression/">MyNWKernelRegression.py</a></li>
+</ul>
+  
+</li>
 
 <li class=""><a href="https://statkwon.github.io/ml/smoothing-spline/">Smoothing Spline</a>
   

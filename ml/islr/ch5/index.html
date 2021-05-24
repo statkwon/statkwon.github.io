@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>5. Resampling Methods - ML Lab</title>
 <meta name="description" content="STATKWON">
-<meta name="generator" content="Hugo 0.74.3" />
+<meta name="generator" content="Hugo 0.83.1" />
 <link href="https://statkwon.github.io//index.xml" rel="alternate" type="application/rss+xml">
 <link rel="canonical" href="https://statkwon.github.io/ml/islr/ch5/">
 <link rel="stylesheet" href="https://statkwon.github.io/css/theme.min.css">
@@ -28,22 +28,18 @@
 <meta property="og:title" content="5. Resampling Methods" />
 <meta property="og:description" content="Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://statkwon.github.io/ml/islr/ch5/" />
-<meta property="article:published_time" content="2021-02-10T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-02-10T00:00:00+00:00" />
+<meta property="og:url" content="https://statkwon.github.io/ml/islr/ch5/" /><meta property="article:section" content="ML" />
+<meta property="article:published_time" content="2021-02-10T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-02-10T00:00:00&#43;00:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="5. Resampling Methods"/>
 <meta name="twitter:description" content="Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻"/>
 <meta itemprop="name" content="5. Resampling Methods">
-<meta itemprop="description" content="Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻">
-<meta itemprop="datePublished" content="2021-02-10T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-02-10T00:00:00+00:00" />
+<meta itemprop="description" content="Resampling Methods는 Training Data로부터 반복적으로 표본을 추출하고, 추출한 표본을 사용하여 여러 번 모형을 적합하여 하나의 모형을 적합할 때는 얻을 수 없는 정보를 얻"><meta itemprop="datePublished" content="2021-02-10T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-02-10T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="1911">
-
-
-
-<meta itemprop="keywords" content="" />
-</head>
+<meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
 <p class="description">STATKWON</p>
@@ -85,13 +81,11 @@
 <p>가지고 있는 Training Data의 크기가 작아 Test Error Rate를 직접적으로 추정하기 어려운 경우, Training Data의 일부를 홀드아웃하여 Test $\text{MSE}$를 추정하는 방법에 대해 알아보도록 하자.</p>
 <h3 id="511-the-validation-set-approach">5.1.1. The Validation Set Approach</h3>
 <p>Validation Set Approach는 데이터를 Trainint Set과 Validation Set, 동일한 크기의 두 부분으로 나누어 활용하는 방식이다. 우선 Training Set을 사용하여 모형을 적합하고, 적합한 모형으로 Validation Set에 대한 결과값을 예측하여 $\text{MSE}$를 계산한다. 이러한 $\text{MSE}$를 Test $\text{MSE}$의 추정치로 사용할 수 있다.</p>
-<figure>
-    <img src="/islr_fig_5.1.png" width="600" height="400"/> 
+<figure><img src="/islr_fig_5.1.png" width="600" height="400"/>
 </figure>
 
 <p>하지만 이러한 방식은 두 가지 문제점을 갖는다.</p>
-<figure>
-    <img src="/islr_fig_5.2.png" width="600" height="400"/> 
+<figure><img src="/islr_fig_5.2.png" width="600" height="400"/>
 </figure>
 
 <ol>
@@ -101,8 +95,7 @@
 <p>앞으로 다루게 될 방법들은 이러한 두 가지 문제점들을 보완한 것들이다.</p>
 <h3 id="512-leave-one-out-cross-validation">5.1.2. Leave-One-Out Cross Validation</h3>
 <p>LOOCV는 데이터를 Training Set과 Validation Set으로 나누어 활용한다는 점에서는 Validation Set Approach와 동일하다. 하지만 동일한 크기로 나누지 않고, Validation Set에 오직 한 개의 데이터만을 사용한다는 점에서 앞선 방식과 차이점을 갖는다. 즉, $\left\{(x_1, y_1), \ldots, (x_n, y_n)\right\}$의 데이터가 있을 때, 이중 임의의 $n-1$개 데이터를 Training Set으로, 나머지 한 개 데이터를 Validation Set으로 사용한다.</p>
-<figure>
-    <img src="/islr_fig_5.3.png" width="600" height="400"/> 
+<figure><img src="/islr_fig_5.3.png" width="600" height="400"/>
 </figure>
 
 <p>$n-1$개의 데이터를 가지고 모형을 적합하고, 한 개의 데이터에 대한 예측값을 구하여 $\text{MSE}$를 계산하는 과정을 $n$번 반복하면 총 $n$개의 $\text{MSE}$를 얻을 수 있다. LOOCV는 이 $n$개의 $\text{MSE}$의 평균을 Test $\text{MSE}$의 추정치로 사용하는 방법이다.</p>
@@ -113,8 +106,7 @@
 <p>$k$-Fold Cross-Validation은 데이터를 동일한 크기의 $k$개 그룹으로 나누는 방식이다. 그중 한 개를 Validation Set으로, 나머지 $k-1$개 그룹을 Training Set으로 사용한다. 각 그룹을 한 번씩 Validation Set으로 사용하며 모형 적합과 예측을 총 $k$번 반복하면, $k$개의 $\text{MSE}$를 계산할 수 있다. 이 $k$개의 $\text{MSE}$의 평균을 Test $\text{MSE}$의 추정치로 사용한다.</p>
 <p>$$\text{CV}_{(k)}=\frac{1}{k}\sum_{i=1}^k{\text{MSE}_i}$$</p>
 <p>LOOCV는 $k$-Fold Cross-Validation의 특수한 케이스라고 할 수 있다. $k=n$인 경우 LOOCV와 동일한 결과를 갖는다. 일반적으로는 $k=5$ 또는 $k=10$을 사용하는데, 이러한 경우 $k=n$을 사용할 때보다 수행 시간을 줄일 수 있다는 장점을 갖는다.</p>
-<figure>
-    <img src="/islr_fig_5.5.png" width="600" height="400"/> 
+<figure><img src="/islr_fig_5.5.png" width="600" height="400"/>
 </figure>
 
 <h3 id="514-bias-variance-trade-off-for-k-fold-cross-validation">5.1.4. Bias-Variance Trade-Off for $k$-Fold Cross-Validation</h3>
@@ -171,6 +163,14 @@ Published on 10 Feb 2021
 <li class="parent"><a href="https://statkwon.github.io/ml/">ML</a>
   
 <ul class="sub-menu">
+
+<li class=""><a href="https://statkwon.github.io/ml/nadaraya-watson-kernel-regression/">Nadaraya-Watson Kernel Regression</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/nadaraya-watson-kernel-regression/mynwkernelregression/">MyNWKernelRegression.py</a></li>
+</ul>
+  
+</li>
 
 <li class=""><a href="https://statkwon.github.io/ml/smoothing-spline/">Smoothing Spline</a>
   

@@ -6,11 +6,7 @@
     <description>Recent content in Linear Regression on ML Lab</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Mar 2021 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://statkwon.github.io/ml/linear-regression/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 10 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://statkwon.github.io/ml/linear-regression/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MyLinearRegression.py</title>
       <link>https://statkwon.github.io/ml/linear-regression/mylinearregression/</link>
