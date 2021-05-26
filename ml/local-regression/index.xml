@@ -6,5 +6,14 @@
     <description>Recent content in Local Regression on ML Lab</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://statkwon.github.io/ml/local-regression/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MyLocalRegression.py</title>
+      <link>https://statkwon.github.io/ml/local-regression/mylocalregression/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/local-regression/mylocalregression/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

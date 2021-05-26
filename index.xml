@@ -232,31 +232,12 @@ import numpy as np class MyLDA: def fit(self, X_train, y_train): X_train = np.ar
     </item>
     
     <item>
-      <title>One-parameter models</title>
-      <link>https://statkwon.github.io/ml/one-parameter-models/</link>
-      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/one-parameter-models/</guid>
-      <description>2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution $Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다. 이때</description>
-    </item>
-    
-    <item>
-      <title>Posterior for Normal</title>
-      <link>https://statkwon.github.io/ml/posterior-for-normal/</link>
+      <title>MyLocalRegression.py</title>
+      <link>https://statkwon.github.io/ml/local-regression/mylocalregression/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://statkwon.github.io/ml/posterior-for-normal/</guid>
-      <description>$p(\theta, \sigma^2|y_1, \ldots, y_n)=p(\theta|\sigma^2, y_1, \ldots, y_n)p(\sigma^2|y_1, \ldots, y_n)$ To calculate the posterior distribution, we should calculate $p(\theta|\sigma^2, y_1, \ldots, y_n)$ and $p(\sigma^2|y_1, \ldots, y_n)$ first. We can consider $p(\theta|\sigma^2, y_1, \ldots, y_n)$ as the posterior distribution when $\sigma^2$ is known. Then $p(\theta|\sigma^2)$ will be the prior distribution and we will assume that this follows a normal distribution with mean $\mu_0$ and variacne $\tau_0^2$. $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;amp;\propto</description>
-    </item>
-    
-    <item>
-      <title>Supervised Learning</title>
-      <link>https://statkwon.github.io/ml/supervised-learning/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/supervised-learning/</guid>
-      <description>Regression
-Let $Y$ as a random variable in $\mathbb{R}$ and $X$ as a random vector in $\mathbb{R}^p$. We want to know the relationship between $Y$ and $X$. Actually, we seek a best function $f(X)$ for predicting $Y$. We will first consider the case that $Y$ is a quantitative output. For this case, we use a squared error loss $L(Y, f(X))=(Y-f(X))^2$. Our goal is to find $f$ which minimizes the expected loss $\text{E}[L(Y, f(X))]$.</description>
+      <guid>https://statkwon.github.io/ml/local-regression/mylocalregression/</guid>
+      <description></description>
     </item>
     
   </channel>
