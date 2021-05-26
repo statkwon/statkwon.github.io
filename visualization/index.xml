@@ -34,5 +34,14 @@
       <description>1. Introduction to Bokeh from bokeh.io import output_notebook, show from bokeh.plotting import figure 우선 위의 명령어를 사용하여 Bokeh를 import한다. output_notebook() 기본적으로 Bokeh는 html 형식의 결과물을 산출하지만, output_notebook() 명령어</description>
     </item>
     
+    <item>
+      <title>Folium</title>
+      <link>https://statkwon.github.io/visualization/folium/</link>
+      <pubDate>Thu, 11 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/visualization/folium/</guid>
+      <description>1. Introduction to Folium import folium folium.Map() Make this Notebook Trusted to load map: File -&amp;gt; Trust Notebook folium.Map(location=[37.566064, 126.938308], zoom_start=14) Make this Notebook Trusted to load map: File -&amp;gt; Trust Notebook folium.Map(location=[37.566064, 126.938308], tiles=&amp;#39;cartodbpositron&amp;#39;, zoom_start=14) Make this Notebook Trusted to load map: File -&amp;gt; Trust Notebook folium.Map(location=[37.566064, 126.938308], zoom_start=14, min_zoom=13, max_zoom=15, control_scale=True) Make this Notebook Trusted to load map: File -&amp;gt; Trust Notebook 2. Several Useful Features 1. Add</description>
+    </item>
+    
   </channel>
 </rss>

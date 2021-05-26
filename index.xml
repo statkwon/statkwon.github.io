@@ -80,6 +80,15 @@
     </item>
     
     <item>
+      <title>Folium</title>
+      <link>https://statkwon.github.io/visualization/folium/</link>
+      <pubDate>Thu, 11 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/visualization/folium/</guid>
+      <description>1. Introduction to Folium import folium folium.Map() Make this Notebook Trusted to load map: File -&amp;gt; Trust Notebook folium.Map(location=[37.566064, 126.938308], zoom_start=14) Make this Notebook Trusted to load map: File -&amp;gt; Trust Notebook folium.Map(location=[37.566064, 126.938308], tiles=&amp;#39;cartodbpositron&amp;#39;, zoom_start=14) Make this Notebook Trusted to load map: File -&amp;gt; Trust Notebook folium.Map(location=[37.566064, 126.938308], zoom_start=14, min_zoom=13, max_zoom=15, control_scale=True) Make this Notebook Trusted to load map: File -&amp;gt; Trust Notebook 2. Several Useful Features 1. Add</description>
+    </item>
+    
+    <item>
       <title>5. Resampling Methods</title>
       <link>https://statkwon.github.io/ml/islr/ch5/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
