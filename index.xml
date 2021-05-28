@@ -35,6 +35,17 @@
     </item>
     
     <item>
+      <title>Decision Theory</title>
+      <link>https://statkwon.github.io/ml/decision-theory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/decision-theory/</guid>
+      <description>Let $\mathbf{X}$ be a random vector and $Y$ be a random variable. We want to make a prediction of $Y$ at any point $\mathbf{X}=\mathbf{x}$. Let&amp;rsquo;s assume that we know $f_{\mathbf{X}, Y}(\mathbf{x}, y)$ the joint distribution of $\mathbf{X}$ and $Y$. How can we make the &amp;lsquo;best&amp;rsquo; prediction of $Y$?
+Regression
+We will first consider the case that $Y$ is a quantitative output which is called as a regression problem. We can think about the bivariate distribution of $f_{X, Y}(x, y)$.</description>
+    </item>
+    
+    <item>
       <title>Seaborn</title>
       <link>https://statkwon.github.io/visualization/seaborn/</link>
       <pubDate>Thu, 11 Feb 2021 00:00:00 +0000</pubDate>
@@ -50,6 +61,17 @@
       
       <guid>https://statkwon.github.io/ml/islr/ch3/</guid>
       <description>3.1. Simple Linear Regression Simple Linear Regression은 변수 간의 선형 관계를 잘 나타내는 최적의 직선 $\beta_0+\beta_1X$를 찾는 작업이다. 직선의 식을 아는 경</description>
+    </item>
+    
+    <item>
+      <title>Curse of Dimensionality</title>
+      <link>https://statkwon.github.io/ml/curse-of-dimensionality/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/curse-of-dimensionality/</guid>
+      <description>It would seem that with a reasonably large set of training data, we could always approximate the theoretically optimal conditional expectation by $k$-nearest-neighbor averaging. However, such intuition breaks down in high dimensions due to the phenomenon called Curse of Dimensionality.
+As dimension goes higher, our neighborhood should cover much larger space.
+Suppose that our data are uniformly distributed in a $p$-dimensional unit hypercube. Among them, we will define our neighborhood as a fraction $r$ of the observations.</description>
     </item>
     
     <item>
@@ -224,11 +246,20 @@ import numpy as np class MyLDA: def fit(self, X_train, y_train): X_train = np.ar
     
     <item>
       <title>Bayesian Statistics</title>
-      <link>https://statkwon.github.io/ml/bayesian-statistics/</link>
+      <link>https://statkwon.github.io/bayesian-statistics/bayesian-statistics/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://statkwon.github.io/ml/bayesian-statistics/</guid>
+      <guid>https://statkwon.github.io/bayesian-statistics/bayesian-statistics/</guid>
       <description>1.1. Introduction Bayesian Learning 통계적 추론은 모집단의 일부를 통해 모집단의 일반적인 특성을 알아내기 위한 과정이다. 이때 대부분의 경우 모집단의 수치적 특성을 모수 $\theta$로</description>
+    </item>
+    
+    <item>
+      <title>One-parameter models</title>
+      <link>https://statkwon.github.io/bayesian-statistics/one-parameter-models/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/bayesian-statistics/one-parameter-models/</guid>
+      <description>2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution $Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다. 이때</description>
     </item>
     
     <item>
@@ -238,6 +269,15 @@ import numpy as np class MyLDA: def fit(self, X_train, y_train): X_train = np.ar
       
       <guid>https://statkwon.github.io/ml/local-regression/mylocalregression/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Posterior for Normal</title>
+      <link>https://statkwon.github.io/bayesian-statistics/posterior-for-normal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/bayesian-statistics/posterior-for-normal/</guid>
+      <description>$p(\theta, \sigma^2|y_1, \ldots, y_n)=p(\theta|\sigma^2, y_1, \ldots, y_n)p(\sigma^2|y_1, \ldots, y_n)$ To calculate the posterior distribution, we should calculate $p(\theta|\sigma^2, y_1, \ldots, y_n)$ and $p(\sigma^2|y_1, \ldots, y_n)$ first. We can consider $p(\theta|\sigma^2, y_1, \ldots, y_n)$ as the posterior distribution when $\sigma^2$ is known. Then $p(\theta|\sigma^2)$ will be the prior distribution and we will assume that this follows a normal distribution with mean $\mu_0$ and variacne $\tau_0^2$. $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;amp;\propto</description>
     </item>
     
   </channel>

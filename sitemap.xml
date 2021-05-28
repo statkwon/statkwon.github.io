@@ -13,8 +13,7 @@
   </url><url>
     <loc>https://statkwon.github.io/projects/bigcon/</loc>
   </url><url>
-    <loc>https://statkwon.github.io/visualization/</loc>
-    <lastmod>2021-02-11T17:26:49+09:00</lastmod>
+    <loc>https://statkwon.github.io/ml/decision-theory/</loc>
   </url><url>
     <loc>https://statkwon.github.io/visualization/seaborn/</loc>
     <lastmod>2021-02-11T00:00:00+00:00</lastmod>
@@ -22,9 +21,17 @@
     <loc>https://statkwon.github.io/ml/islr/ch3/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://statkwon.github.io/bayesian-statistics/</loc>
+    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://statkwon.github.io/ml/curse-of-dimensionality/</loc>
+  </url><url>
     <loc>https://statkwon.github.io/projects/dacon/</loc>
   </url><url>
     <loc>https://statkwon.github.io/visualization/bokeh/</loc>
+    <lastmod>2021-02-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://statkwon.github.io/visualization/</loc>
     <lastmod>2021-02-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://statkwon.github.io/ml/islr/ch4/</loc>
@@ -99,7 +106,7 @@
     <loc>https://statkwon.github.io/about/</loc>
     <lastmod>2021-02-10T15:32:15+09:00</lastmod>
   </url><url>
-    <loc>https://statkwon.github.io/ml/bayesian-statistics/</loc>
+    <loc>https://statkwon.github.io/bayesian-statistics/bayesian-statistics/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://statkwon.github.io/</loc>
@@ -108,11 +115,16 @@
     <loc>https://statkwon.github.io/ml/islr/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://statkwon.github.io/bayesian-statistics/one-parameter-models/</loc>
+    <lastmod>2021-02-10T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://statkwon.github.io/categories/</loc>
   </url><url>
     <loc>https://statkwon.github.io/ml/local-regression/</loc>
   </url><url>
     <loc>https://statkwon.github.io/ml/local-regression/mylocalregression/</loc>
+  </url><url>
+    <loc>https://statkwon.github.io/bayesian-statistics/posterior-for-normal/</loc>
   </url><url>
     <loc>https://statkwon.github.io/projects/</loc>
   </url><url>

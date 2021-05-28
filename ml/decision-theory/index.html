@@ -3,11 +3,11 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Categories - ML Lab</title>
+<title>Decision Theory - ML Lab</title>
 <meta name="description" content="STATKWON">
 <meta name="generator" content="Hugo 0.83.1" />
 <link href="https://statkwon.github.io//index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://statkwon.github.io/categories/">
+<link rel="canonical" href="https://statkwon.github.io/ml/decision-theory/">
 <link rel="stylesheet" href="https://statkwon.github.io/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://statkwon.github.io/css/chroma.min.css">
@@ -25,16 +25,27 @@
 <style>
 :root {}
 </style>
-<meta property="og:title" content="Categories" />
-<meta property="og:description" content="STATKWON" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://statkwon.github.io/categories/" />
+<meta property="og:title" content="Decision Theory" />
+<meta property="og:description" content="Let $\mathbf{X}$ be a random vector and $Y$ be a random variable. We want to make a prediction of $Y$ at any point $\mathbf{X}=\mathbf{x}$. Let&rsquo;s assume that we know $f_{\mathbf{X}, Y}(\mathbf{x}, y)$ the joint distribution of $\mathbf{X}$ and $Y$. How can we make the &lsquo;best&rsquo; prediction of $Y$?
+Regression
+We will first consider the case that $Y$ is a quantitative output which is called as a regression problem. We can think about the bivariate distribution of $f_{X, Y}(x, y)$." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://statkwon.github.io/ml/decision-theory/" /><meta property="article:section" content="ML" />
+
+
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Categories"/>
-<meta name="twitter:description" content="STATKWON"/>
-<meta itemprop="name" content="Categories">
-<meta itemprop="description" content="STATKWON"></head>
+<meta name="twitter:title" content="Decision Theory"/>
+<meta name="twitter:description" content="Let $\mathbf{X}$ be a random vector and $Y$ be a random variable. We want to make a prediction of $Y$ at any point $\mathbf{X}=\mathbf{x}$. Let&rsquo;s assume that we know $f_{\mathbf{X}, Y}(\mathbf{x}, y)$ the joint distribution of $\mathbf{X}$ and $Y$. How can we make the &lsquo;best&rsquo; prediction of $Y$?
+Regression
+We will first consider the case that $Y$ is a quantitative output which is called as a regression problem. We can think about the bivariate distribution of $f_{X, Y}(x, y)$."/>
+<meta itemprop="name" content="Decision Theory">
+<meta itemprop="description" content="Let $\mathbf{X}$ be a random vector and $Y$ be a random variable. We want to make a prediction of $Y$ at any point $\mathbf{X}=\mathbf{x}$. Let&rsquo;s assume that we know $f_{\mathbf{X}, Y}(\mathbf{x}, y)$ the joint distribution of $\mathbf{X}$ and $Y$. How can we make the &lsquo;best&rsquo; prediction of $Y$?
+Regression
+We will first consider the case that $Y$ is a quantitative output which is called as a regression problem. We can think about the bivariate distribution of $f_{X, Y}(x, y)$.">
+
+<meta itemprop="wordCount" content="404">
+<meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
 <p class="description">STATKWON</p>
@@ -54,9 +65,51 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>Categories</h1><div class="edit-meta">
+<main><h1>Decision Theory</h1>
+<p>Let $\mathbf{X}$ be a random vector and $Y$ be a random variable. We want to make a prediction of $Y$ at any point $\mathbf{X}=\mathbf{x}$. Let&rsquo;s assume that we know $f_{\mathbf{X}, Y}(\mathbf{x}, y)$ the joint distribution of $\mathbf{X}$ and $Y$. How can we make the &lsquo;best&rsquo; prediction of $Y$?</p>
+<p><strong>Regression</strong></p>
+<p>We will first consider the case that $Y$ is a quantitative output which is called as a regression problem. We can think about the bivariate distribution of $f_{X, Y}(x, y)$.</p>
+<figure><img src="/fig1.jpeg" width="600" height="400"/>
+</figure>
 
-<br></div><nav class="pagination"><a class="nav nav-next" href="https://statkwon.github.io/ml/" title="ML">Next - ML <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<p>$Y$ which satisfies the largest conditional probability $P(Y\vert X=x)$ or the median value of $Y$ might be the answer. We need some criteria to decide which one is the best.</p>
+<p>For this case, a measurement for &lsquo;best&rsquo; is usually a squared error loss, $L(Y, f(X))=(Y-f(X))^2$. Our goal is to find $f$ which minimizes the expected loss $\text{E}[L(Y, f(X))]$.</p>
+<p>$\begin{aligned}
+\text{E}[(Y-f(X))^2]&amp;=\int\int(y-f(x))^2f_{X, Y}(x, y)dxdy \\<br>
+&amp;=\int\left\{\int(y-f(x))^2f_{Y\vert X}(y\vert x)dy\right\}f_X(x)dx
+\end{aligned}$</p>
+<p>It is obvious that minimizing $\text{E}[(Y-f(X))^2]$ is same as to minimize the inside integral. Thus,</p>
+<p>$\begin{aligned}
+\dfrac{\partial}{\partial f}\int(y-f(x))^2f_{Y\vert X}(y\vert x)dy&amp;=\int\dfrac{\partial}{\partial f}\left\{(y-f(x))^2f_{Y\vert X}(y\vert x)\right\}dy \\<br>
+&amp;=2\int(y-f(x))f_{Y\vert X}(y\vert x)dy=0
+\end{aligned}$</p>
+<p>$\displaystyle f(x)\int f_{Y\vert X}(y\vert x)dy=\int yf_{Y\vert X}(y\vert x)dy$</p>
+<p>$\therefore f(x)=\text{E}[Y\vert X=x]$</p>
+<p>Now we know that the best prediction for $Y$ is the conditional expectation of $Y$ given $X$.</p>
+<hr>
+<p><strong>Classification</strong></p>
+<p>Next case is about a quantitative output $Y$, related to a classification problem. Again, we will consider the bivariate distribution $f_{X, Y}(x, y)$, where $\displaystyle\int_x\sum_yf_{X, Y}(x, y)dx=1$. If $Y$ is a binary variable, we can represent a joint pdf of $X$ and $Y$ as below.</p>
+<figure><img src="/fig2.jpeg" width="600" height="400"/>
+</figure>
+
+<p>The most intuitive way for choosing an appropriate value for $f(X)$ is to use $c$ which satisfies $\underset{k}{\text{argmax}}P(X, Y=k)$. By using a bayes' theorem, it is evident that $\underset{k}{\text{argmax}}P(X, Y=k)$ is same as $\underset{k}{\text{argmax}}P(Y=k\vert X)$. This is called as a bayes classifier.</p>
+<p>This intutition can be supported by using $0$-$1$ loss, $L(Y, f(X))=I_{Y\neq f(X)}$.</p>
+<p>$\begin{aligned}
+\text{E}[I_{Y\neq f(X)}]&amp;=\int_x\sum_yI_{Y\neq f(X)}f_{X, Y}(x, y)dx \\<br>
+&amp;=\int_x\sum_yI_{Y\neq f(X)}f_{Y\vert X}(y\vert x)f(x)dx
+\end{aligned}$</p>
+<p>As for the regression case, we will minize the inside summation.</p>
+<p>$\underset{f}{\text{argmin}}\,I_{Y_1\neq f(X)}f_{Y_1\vert X}(y_1\vert x)+\cdots+I_{Y_K\neq f(X)}f_{Y_K\vert X}(y_K\vert x) \\<br>
+=\underset{f}{\text{argmin}}\,f_{Y_1\vert X}(y_1\vert x)+\cdots+f_{Y_{k-1}\vert X}(y_{k-1}\vert x)+f_{Y_{k+1}\vert X}(y_{k+1}\vert x)+\cdots+f_{Y_K\vert X}(y_K\vert x) \\<br>
+=\underset{f}{\text{argmin}}\,\left\{1-f_{Y_k\vert X}(y_k\vert x)\right\} \\<br>
+=\underset{k}{\text{argmax}}\,f_{Y_k\vert X}(y_k\vert x)$</p>
+<hr>
+<p><strong>$k$-NN Method</strong></p>
+<p>If we know the true distribution of $f_{X, Y}(x, y)$, we can easily predict qualitative $Y$ as $\text{E}[Y|X=x]$ and quantitative $Y$ as $\underset{k}{\text{argmax}}\,f_{Y_k\vert X}(y_k\vert x)$. However, actually we don&rsquo;t know the exact form of this joint distribution. One might think that $k$-NN regressor and classifier could be the best approximations for these.</p>
+<div class="edit-meta">
+
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Decision%20Theory.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/" title="ML"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - ML</a>
+<a class="nav nav-next" href="https://statkwon.github.io/ml/curse-of-dimensionality/" title="Curse of Dimensionality">Next - Curse of Dimensionality <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -93,10 +146,10 @@
 <ul>
 <li class=""><a href="https://statkwon.github.io/">Home</a></li>
 
-<li class=""><a href="https://statkwon.github.io/ml/">ML</a>
+<li class="parent"><a href="https://statkwon.github.io/ml/">ML</a>
   
 <ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/decision-theory/">Decision Theory</a></li>
+<li class="active"><a href="https://statkwon.github.io/ml/decision-theory/">Decision Theory</a></li>
 <li class=""><a href="https://statkwon.github.io/ml/curse-of-dimensionality/">Curse of Dimensionality</a></li>
 
 <li class=""><a href="https://statkwon.github.io/ml/nadaraya-watson-kernel-regression/">Nadaraya-Watson Kernel Regression</a>

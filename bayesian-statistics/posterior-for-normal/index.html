@@ -3,11 +3,11 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Categories - ML Lab</title>
+<title>Posterior for Normal - ML Lab</title>
 <meta name="description" content="STATKWON">
 <meta name="generator" content="Hugo 0.83.1" />
 <link href="https://statkwon.github.io//index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://statkwon.github.io/categories/">
+<link rel="canonical" href="https://statkwon.github.io/bayesian-statistics/posterior-for-normal/">
 <link rel="stylesheet" href="https://statkwon.github.io/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://statkwon.github.io/css/chroma.min.css">
@@ -25,16 +25,21 @@
 <style>
 :root {}
 </style>
-<meta property="og:title" content="Categories" />
-<meta property="og:description" content="STATKWON" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://statkwon.github.io/categories/" />
+<meta property="og:title" content="Posterior for Normal" />
+<meta property="og:description" content="$p(\theta, \sigma^2|y_1, \ldots, y_n)=p(\theta|\sigma^2, y_1, \ldots, y_n)p(\sigma^2|y_1, \ldots, y_n)$ To calculate the posterior distribution, we should calculate $p(\theta|\sigma^2, y_1, \ldots, y_n)$ and $p(\sigma^2|y_1, \ldots, y_n)$ first. We can consider $p(\theta|\sigma^2, y_1, \ldots, y_n)$ as the posterior distribution when $\sigma^2$ is known. Then $p(\theta|\sigma^2)$ will be the prior distribution and we will assume that this follows a normal distribution with mean $\mu_0$ and variacne $\tau_0^2$. $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://statkwon.github.io/bayesian-statistics/posterior-for-normal/" /><meta property="article:section" content="Bayesian Statistics" />
+
+
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Categories"/>
-<meta name="twitter:description" content="STATKWON"/>
-<meta itemprop="name" content="Categories">
-<meta itemprop="description" content="STATKWON"></head>
+<meta name="twitter:title" content="Posterior for Normal"/>
+<meta name="twitter:description" content="$p(\theta, \sigma^2|y_1, \ldots, y_n)=p(\theta|\sigma^2, y_1, \ldots, y_n)p(\sigma^2|y_1, \ldots, y_n)$ To calculate the posterior distribution, we should calculate $p(\theta|\sigma^2, y_1, \ldots, y_n)$ and $p(\sigma^2|y_1, \ldots, y_n)$ first. We can consider $p(\theta|\sigma^2, y_1, \ldots, y_n)$ as the posterior distribution when $\sigma^2$ is known. Then $p(\theta|\sigma^2)$ will be the prior distribution and we will assume that this follows a normal distribution with mean $\mu_0$ and variacne $\tau_0^2$. $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto"/>
+<meta itemprop="name" content="Posterior for Normal">
+<meta itemprop="description" content="$p(\theta, \sigma^2|y_1, \ldots, y_n)=p(\theta|\sigma^2, y_1, \ldots, y_n)p(\sigma^2|y_1, \ldots, y_n)$ To calculate the posterior distribution, we should calculate $p(\theta|\sigma^2, y_1, \ldots, y_n)$ and $p(\sigma^2|y_1, \ldots, y_n)$ first. We can consider $p(\theta|\sigma^2, y_1, \ldots, y_n)$ as the posterior distribution when $\sigma^2$ is known. Then $p(\theta|\sigma^2)$ will be the prior distribution and we will assume that this follows a normal distribution with mean $\mu_0$ and variacne $\tau_0^2$. $\begin{aligned} p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto">
+
+<meta itemprop="wordCount" content="501">
+<meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
 <p class="description">STATKWON</p>
@@ -54,9 +59,43 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>Categories</h1><div class="edit-meta">
+<main><h1>Posterior for Normal</h1>
+<p>$p(\theta, \sigma^2|y_1, \ldots, y_n)=p(\theta|\sigma^2, y_1, \ldots, y_n)p(\sigma^2|y_1, \ldots, y_n)$</p>
+<p>To calculate the posterior distribution, we should calculate $p(\theta|\sigma^2, y_1, \ldots, y_n)$ and $p(\sigma^2|y_1, \ldots, y_n)$ first.</p>
+<p>We can consider $p(\theta|\sigma^2, y_1, \ldots, y_n)$ as the posterior distribution when $\sigma^2$ is known. Then $p(\theta|\sigma^2)$ will be the prior distribution and we will assume that this follows a normal distribution with mean $\mu_0$ and variacne $\tau_0^2$.</p>
+<p>$\begin{aligned}
+p(\theta|y_1, \ldots, y_n, \sigma^2) &amp;\propto p(y_1, \ldots, y_n|\theta, \sigma^2) \times p(\theta|\sigma^2) \\<br>
+&amp;\propto \exp{\left\{-\dfrac{\sum(y_i-\theta)^2}{2\sigma^2}\right\}}\times\exp{\left\{-\dfrac{(\theta-\mu_0)^2}{2\tau_0^2}\right\}} \\<br>
+&amp;\propto \exp{\left[-\dfrac{1}{2}\left\{\left(\dfrac{1}{\tau_0^2}+\dfrac{n}{\sigma^2}\right)\theta^2+2\left(\dfrac{\mu_0}{\tau_0^2}+\dfrac{\sum y_i}{\sigma^2}\right)\theta\right\}\right]} \\<br>
+&amp;\propto \exp{\left\{-\dfrac{1}{2}(a\theta^2+2b\theta)\right\}} \\<br>
+&amp;=\exp{\left\{-\dfrac{1}{2}a\left(\theta^2-\dfrac{2b}{a}\theta+\dfrac{b^2}{a^2}\right)+\dfrac{b^2}{2a}\right\}} \\<br>
+&amp;\propto \exp{\left\{-\dfrac{1}{2}a\left(\theta-\dfrac{b}{a}\right)^2\right\}} \\<br>
+&amp;=\exp{\left\{-\dfrac{1}{2}\left(\dfrac{\theta-b/a}{1/\sqrt{a}}\right)^2\right\}} \sim N\left(\dfrac{b}{a}, \dfrac{1}{a}\right)=N(\mu_n, \tau_n^2)
+\end{aligned}$</p>
+<p>Now we can check the parameter update.</p>
+<p>$\mu_0\rightarrow\mu_n=\dfrac{\frac{1}{\tau_0^2}\times\mu_0+\frac{n}{\sigma^2}\times\bar{y}}{\frac{1}{\tau_0^2}+\frac{n}{\sigma^2}}=\dfrac{\kappa_0\mu_0+n\bar{y}}{\kappa_0+n}=\dfrac{\kappa_0\mu_0+n\bar{y}}{\kappa_n}$</p>
+<p>The posterior mean $\mu_n$ is an weighted average between the prior mean and the sample mean. Here the weight of each term is the prior precision $\dfrac{1}{\tau_0^2}$ and the sampling precision $\dfrac{n}{\sigma^2}$. 여기서 Prior Information이 $\kappa_0$개의 Prior Observations에 기반한다고 생각한다면, $\tau_0^2=\dfrac{\sigma^2}{\kappa_0}$라고 나타낼 수 있다. 이를 이용하여 위 식을 변형해주면, $\mu_n$이 각각의 Sample Size를 가중치로 갖는 Prior Mean과 Sample Mean의 가중 평균이라는 보다 직관적인 표현으로 바꾸어줄 수 있다.</p>
+<p>$\tau_0^2\rightarrow\tau_n^2=\dfrac{1}{\frac{1}{\tau_0^2}+\frac{n}{\sigma^2}}=\dfrac{\sigma^2}{\kappa_0+n}=\dfrac{\sigma^2}{\kappa_n}$</p>
+<p>Posterior precision is the sum of prior precision and the sampling precision.</p>
+<p>Now we will think about $p(\sigma^2|y_1, \ldots, y_n)$. We can consider this as a posterior distribution when $p(\sigma^2)$ is a prior which follows a inverse-gamma distribution with parameters $\dfrac{\nu_0}{2}$ and $\dfrac{\nu_0\sigma_0^2}{2}$.</p>
+<p>$\begin{aligned}
+p(\sigma^2|y_1, \ldots, y_n)&amp;\propto p(\sigma^2)p(y_1, \ldots, y_n|\sigma^2) \\<br>
+&amp;=p(\sigma^2)\int p(y_1, \ldots, y_n|\theta, \sigma^2)p(\theta|\sigma^2)d\theta
+\end{aligned}$</p>
+<p>If we solve the integral above, we will get the result that $p(\sigma^2|y_1, \ldots, y_n)$ follows a inverse-gamma distribution with paramters $\dfrac{\nu_n}{2}$ and $\dfrac{\nu_n\sigma_n^2}{2}$. Let&rsquo;s check the paramter update now.</p>
+<p>$\nu_0\rightarrow\nu_n=\nu_0+n$</p>
+<p>Posterior Sample Size $\nu_n$은 Prior Sample Size와 Data Sample Size의 합과 같다. Why?</p>
+<p>$\sigma_0^2\rightarrow\sigma_n^2=\dfrac{\nu_0\sigma_0^2+\sum(y_i-\theta)^2}{\nu_0+n}$</p>
+<p>Posterior Variance $\sigma_n^2$는 Prior Sum of Squares와 Data Sum of Squares의 합을 Prior Sample Size와 Data Sample Size의 합으로 나눈 것과 같다.</p>
+<p><strong>Summary</strong></p>
+<p>$\sigma_0^2\rightarrow\sigma_n^2=\dfrac{\nu_0\sigma_0^2+\sum(y_i-\theta)^2}{\nu_0+n}$</p>
+<p>$\nu_0\rightarrow\nu_n=\nu_0+n$</p>
+<p>$\mu_0\rightarrow\mu_n=\dfrac{\kappa_0\mu_0+n\bar{y}}{\kappa_n}$</p>
+<p>$\kappa_0\rightarrow\kappa_n=\kappa_0+n$</p>
+<div class="edit-meta">
 
-<br></div><nav class="pagination"><a class="nav nav-next" href="https://statkwon.github.io/ml/" title="ML">Next - ML <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<br><a href="https://github.com/statkwon/blog/edit/master/content/Bayesian%20Statistics/Posterior%20for%20Normal.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/bayesian-statistics/one-parameter-models/" title="One-parameter models"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - One-parameter models</a>
+<a class="nav nav-next" href="https://statkwon.github.io/visualization/" title="Visualization">Next - Visualization <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -189,12 +228,12 @@
   
 </li>
 
-<li class=""><a href="https://statkwon.github.io/bayesian-statistics/">Bayesian Statistics</a>
+<li class="parent"><a href="https://statkwon.github.io/bayesian-statistics/">Bayesian Statistics</a>
   
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/bayesian-statistics/bayesian-statistics/">Bayesian Statistics</a></li>
 <li class=""><a href="https://statkwon.github.io/bayesian-statistics/one-parameter-models/">One-parameter models</a></li>
-<li class=""><a href="https://statkwon.github.io/bayesian-statistics/posterior-for-normal/">Posterior for Normal</a></li>
+<li class="active"><a href="https://statkwon.github.io/bayesian-statistics/posterior-for-normal/">Posterior for Normal</a></li>
 </ul>
   
 </li>
