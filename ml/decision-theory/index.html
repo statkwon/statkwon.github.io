@@ -44,7 +44,7 @@ We will first consider the case that $Y$ is a quantitative output which is calle
 Regression
 We will first consider the case that $Y$ is a quantitative output which is called as a regression problem. We can think about the bivariate distribution of $f_{X, Y}(x, y)$.">
 
-<meta itemprop="wordCount" content="404">
+<meta itemprop="wordCount" content="409">
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
@@ -106,6 +106,11 @@ We will first consider the case that $Y$ is a quantitative output which is calle
 <hr>
 <p><strong>$k$-NN Method</strong></p>
 <p>If we know the true distribution of $f_{X, Y}(x, y)$, we can easily predict qualitative $Y$ as $\text{E}[Y|X=x]$ and quantitative $Y$ as $\underset{k}{\text{argmax}}\,f_{Y_k\vert X}(y_k\vert x)$. However, actually we don&rsquo;t know the exact form of this joint distribution. One might think that $k$-NN regressor and classifier could be the best approximations for these.</p>
+<hr>
+<p><strong>Reference</strong></p>
+<ol>
+<li>Elements of Statistical Learning</li>
+</ol>
 <div class="edit-meta">
 
 <br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Decision%20Theory.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/" title="ML"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - ML</a>
