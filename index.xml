@@ -69,9 +69,8 @@ We will first consider the case that $Y$ is a quantitative output which is calle
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://statkwon.github.io/ml/curse-of-dimensionality/</guid>
-      <description>It would seem that with a reasonably large set of training data, we could always approximate the theoretically optimal conditional expectation by $k$-nearest-neighbor averaging. However, such intuition breaks down in high dimensions due to the phenomenon called Curse of Dimensionality.
-As dimension goes higher, our neighborhood should cover much larger space.
-Suppose that our data are uniformly distributed in a $p$-dimensional unit hypercube. Among them, we will define our neighborhood as a fraction $r$ of the observations.</description>
+      <description>As dimension goes higher, the range for a neighborhood gets larger
+ Suppose that our data are uniformly distributed in a $p$-dimensional unit hypercube. Among them, we will define our neighborhood as a fraction $r$ of the observations. Then the expected edge length of our neighborhood will be $r^{1/p}$. Because our input space was a unit hypercube, the edge length of our input space should be $1$. So it is evident that the amount of the data in our neighborhood is $\left(\dfrac{r^{1/p}}{1} \times100\right)\%=r^{1/p}\%$ of the total data.</description>
     </item>
     
     <item>

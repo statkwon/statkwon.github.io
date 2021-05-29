@@ -38,7 +38,7 @@
 <meta itemprop="name" content="One-parameter models">
 <meta itemprop="description" content="2.1. The Binomial Model 2.1.1. Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution $Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다. 이때"><meta itemprop="datePublished" content="2021-02-10T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-02-10T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2961">
+<meta itemprop="wordCount" content="2968">
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
@@ -240,6 +240,11 @@ $\displaystyle \int_0^\infty \theta^{a+\sum y_i+\tilde{y}}e^{-(b+n+1)\theta}d\th
 
 <h2 id="23-exponential-families-and-conjugate-priors">2.3. Exponential Families and Conjugate Priors</h2>
 <p>Binomial Distribution과 Poisson Distribution은 모두 One-Parameter Exponential Family에 속한다. One-Parameter Exponential Family란 분포 함수가 $p(y|\phi)=h(y)c(\phi)e^{\phi t(y)}$의 형태로 표현될 수 있는 분포를 의미한다. 이때 $\phi$는 Unknown Parameter이고 $t(y)$는 Sufficient Statistic이다.</p>
+<hr>
+<p><strong>Reference</strong></p>
+<ol>
+<li>First Course in Bayesian Statistical Methods</li>
+</ol>
 <div class="edit-meta">
 Last updated on 10 Feb 2021
 
