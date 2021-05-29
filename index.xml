@@ -8,6 +8,17 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://statkwon.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Decision Theory</title>
+      <link>https://statkwon.github.io/ml/decision-theory/</link>
+      <pubDate>Sat, 13 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://statkwon.github.io/ml/decision-theory/</guid>
+      <description>Let $\mathbf{X}$ be a random vector and $Y$ be a random variable. We want to make a prediction of $Y$ at any point $\mathbf{X}=\mathbf{x}$. Let&amp;rsquo;s assume that we know $f_{\mathbf{X}, Y}(\mathbf{x}, y)$ the joint distribution of $\mathbf{X}$ and $Y$. How can we make the &amp;lsquo;best&amp;rsquo; prediction of $Y$?
+Regression
+We will first consider the case that $Y$ is a quantitative output which is called as a regression problem. We can think about the bivariate distribution of $f_{X, Y}(x, y)$.</description>
+    </item>
+    
+    <item>
       <title>Matplotlib</title>
       <link>https://statkwon.github.io/visualization/matplotlib/</link>
       <pubDate>Thu, 11 Feb 2021 00:00:00 +0000</pubDate>
@@ -35,14 +46,13 @@
     </item>
     
     <item>
-      <title>Decision Theory</title>
-      <link>https://statkwon.github.io/ml/decision-theory/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Curse of Dimensionality</title>
+      <link>https://statkwon.github.io/ml/curse-of-dimensionality/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://statkwon.github.io/ml/decision-theory/</guid>
-      <description>Let $\mathbf{X}$ be a random vector and $Y$ be a random variable. We want to make a prediction of $Y$ at any point $\mathbf{X}=\mathbf{x}$. Let&amp;rsquo;s assume that we know $f_{\mathbf{X}, Y}(\mathbf{x}, y)$ the joint distribution of $\mathbf{X}$ and $Y$. How can we make the &amp;lsquo;best&amp;rsquo; prediction of $Y$?
-Regression
-We will first consider the case that $Y$ is a quantitative output which is called as a regression problem. We can think about the bivariate distribution of $f_{X, Y}(x, y)$.</description>
+      <guid>https://statkwon.github.io/ml/curse-of-dimensionality/</guid>
+      <description>As dimension goes higher, the range for a neighborhood gets larger
+ Suppose that our data are uniformly distributed in a $p$-dimensional unit hypercube. Among them, we will define our neighborhood as a fraction $r$ of the observations. Then the expected edge length of our neighborhood will be $r^{1/p}$. Because our input space was a unit hypercube, the edge length of our input space should be $1$. So it is evident that the amount of the data in our neighborhood is $\left(\dfrac{r^{1/p}}{1} \times100\right)\%=r^{1/p}\%$ of the total data.</description>
     </item>
     
     <item>
@@ -61,16 +71,6 @@ We will first consider the case that $Y$ is a quantitative output which is calle
       
       <guid>https://statkwon.github.io/ml/islr/ch3/</guid>
       <description>3.1. Simple Linear Regression Simple Linear Regression은 변수 간의 선형 관계를 잘 나타내는 최적의 직선 $\beta_0+\beta_1X$를 찾는 작업이다. 직선의 식을 아는 경</description>
-    </item>
-    
-    <item>
-      <title>Curse of Dimensionality</title>
-      <link>https://statkwon.github.io/ml/curse-of-dimensionality/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/curse-of-dimensionality/</guid>
-      <description>As dimension goes higher, the range for a neighborhood gets larger
- Suppose that our data are uniformly distributed in a $p$-dimensional unit hypercube. Among them, we will define our neighborhood as a fraction $r$ of the observations. Then the expected edge length of our neighborhood will be $r^{1/p}$. Because our input space was a unit hypercube, the edge length of our input space should be $1$. So it is evident that the amount of the data in our neighborhood is $\left(\dfrac{r^{1/p}}{1} \times100\right)\%=r^{1/p}\%$ of the total data.</description>
     </item>
     
     <item>

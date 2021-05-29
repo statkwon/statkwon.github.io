@@ -30,8 +30,8 @@
  Suppose that our data are uniformly distributed in a $p$-dimensional unit hypercube. Among them, we will define our neighborhood as a fraction $r$ of the observations. Then the expected edge length of our neighborhood will be $r^{1/p}$. Because our input space was a unit hypercube, the edge length of our input space should be $1$. So it is evident that the amount of the data in our neighborhood is $\left(\dfrac{r^{1/p}}{1} \times100\right)\%=r^{1/p}\%$ of the total data." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://statkwon.github.io/ml/curse-of-dimensionality/" /><meta property="article:section" content="ML" />
-
-
+<meta property="article:published_time" content="2021-02-15T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-02-15T00:00:00&#43;00:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Curse of Dimensionality"/>
@@ -39,9 +39,9 @@
  Suppose that our data are uniformly distributed in a $p$-dimensional unit hypercube. Among them, we will define our neighborhood as a fraction $r$ of the observations. Then the expected edge length of our neighborhood will be $r^{1/p}$. Because our input space was a unit hypercube, the edge length of our input space should be $1$. So it is evident that the amount of the data in our neighborhood is $\left(\dfrac{r^{1/p}}{1} \times100\right)\%=r^{1/p}\%$ of the total data."/>
 <meta itemprop="name" content="Curse of Dimensionality">
 <meta itemprop="description" content="As dimension goes higher, the range for a neighborhood gets larger
- Suppose that our data are uniformly distributed in a $p$-dimensional unit hypercube. Among them, we will define our neighborhood as a fraction $r$ of the observations. Then the expected edge length of our neighborhood will be $r^{1/p}$. Because our input space was a unit hypercube, the edge length of our input space should be $1$. So it is evident that the amount of the data in our neighborhood is $\left(\dfrac{r^{1/p}}{1} \times100\right)\%=r^{1/p}\%$ of the total data.">
-
-<meta itemprop="wordCount" content="495">
+ Suppose that our data are uniformly distributed in a $p$-dimensional unit hypercube. Among them, we will define our neighborhood as a fraction $r$ of the observations. Then the expected edge length of our neighborhood will be $r^{1/p}$. Because our input space was a unit hypercube, the edge length of our input space should be $1$. So it is evident that the amount of the data in our neighborhood is $\left(\dfrac{r^{1/p}}{1} \times100\right)\%=r^{1/p}\%$ of the total data."><meta itemprop="datePublished" content="2021-02-15T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-02-15T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="465">
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
@@ -83,8 +83,11 @@
 </figure>
 
 <p><strong>As dimension goes higher, the sampling density becomes sparser</strong></p>
-<p>Suppose that our $N$ samples are uniformly distributed in a $p$-dimensional hypercube with volume $N$. The edge length of this space will be $N^{1/p}$ and because the space is totally filled with our data, the sampling density should be proportional to this edge length. For a fixed value of $N$, this edge length becomse smaller as $p$ gets larger. So it is obvious that the data is more sparsly distributed in higher dimension.</p>
-<figure><img src="/fig6.png" width="400" height="400"/>
+<figure><img src="/fig6.jpeg" width="400" height="400"/>
+</figure>
+
+<p>As the picture($9^{1/2}=3$, $8^{1/3}=2$) above, it is evident that the sampling density is proportional to $N^{1/p}$. For a fixed value of $N$, this value becomses smaller as $p$ gets larger, which means that the data is more sparsly distributed in the higher dimension.</p>
+<figure><img src="/fig7.png" width="400" height="400"/>
 </figure>
 
 <hr>
@@ -93,7 +96,11 @@
 <li>Elements of Statistical Learning</li>
 </ol>
 <div class="edit-meta">
+Last updated on 15 Feb 2021
 
+
+<br>
+Published on 15 Feb 2021
 <br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Curse%20of%20Dimensionality.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/decision-theory/" title="Decision Theory"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Decision Theory</a>
 <a class="nav nav-next" href="https://statkwon.github.io/ml/nadaraya-watson-kernel-regression/" title="Nadaraya-Watson Kernel Regression">Next - Nadaraya-Watson Kernel Regression <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async

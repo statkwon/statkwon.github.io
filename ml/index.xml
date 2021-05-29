@@ -10,7 +10,7 @@
     <item>
       <title>Decision Theory</title>
       <link>https://statkwon.github.io/ml/decision-theory/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 13 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>https://statkwon.github.io/ml/decision-theory/</guid>
       <description>Let $\mathbf{X}$ be a random vector and $Y$ be a random variable. We want to make a prediction of $Y$ at any point $\mathbf{X}=\mathbf{x}$. Let&amp;rsquo;s assume that we know $f_{\mathbf{X}, Y}(\mathbf{x}, y)$ the joint distribution of $\mathbf{X}$ and $Y$. How can we make the &amp;lsquo;best&amp;rsquo; prediction of $Y$?
@@ -21,7 +21,7 @@ We will first consider the case that $Y$ is a quantitative output which is calle
     <item>
       <title>Curse of Dimensionality</title>
       <link>https://statkwon.github.io/ml/curse-of-dimensionality/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>https://statkwon.github.io/ml/curse-of-dimensionality/</guid>
       <description>As dimension goes higher, the range for a neighborhood gets larger

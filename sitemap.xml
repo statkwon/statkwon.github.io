@@ -5,6 +5,9 @@
     <loc>https://statkwon.github.io/ml/</loc>
     <lastmod>2021-05-23T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://statkwon.github.io/ml/decision-theory/</loc>
+    <lastmod>2021-02-13T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://statkwon.github.io/visualization/matplotlib/</loc>
     <lastmod>2021-02-11T00:00:00+00:00</lastmod>
   </url><url>
@@ -13,7 +16,8 @@
   </url><url>
     <loc>https://statkwon.github.io/projects/bigcon/</loc>
   </url><url>
-    <loc>https://statkwon.github.io/ml/decision-theory/</loc>
+    <loc>https://statkwon.github.io/ml/curse-of-dimensionality/</loc>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://statkwon.github.io/visualization/seaborn/</loc>
     <lastmod>2021-02-11T00:00:00+00:00</lastmod>
@@ -23,8 +27,6 @@
   </url><url>
     <loc>https://statkwon.github.io/bayesian-statistics/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://statkwon.github.io/ml/curse-of-dimensionality/</loc>
   </url><url>
     <loc>https://statkwon.github.io/projects/dacon/</loc>
   </url><url>
