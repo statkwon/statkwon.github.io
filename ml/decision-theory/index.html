@@ -44,7 +44,7 @@ We will first consider the case that $Y$ is a quantitative output which is calle
 Regression
 We will first consider the case that $Y$ is a quantitative output which is called as a regression problem. We can think about the bivariate distribution of $f_{X, Y}(x, y)$."><meta itemprop="datePublished" content="2021-02-13T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-02-13T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="409">
+<meta itemprop="wordCount" content="462">
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
@@ -105,7 +105,7 @@ We will first consider the case that $Y$ is a quantitative output which is calle
 =\underset{k}{\text{argmax}}\,f_{Y_k\vert X}(y_k\vert x)$</p>
 <hr>
 <p><strong>$k$-NN Method</strong></p>
-<p>If we know the true distribution of $f_{X, Y}(x, y)$, we can easily predict qualitative $Y$ as $\text{E}[Y|X=x]$ and quantitative $Y$ as $\underset{k}{\text{argmax}}\,f_{Y_k\vert X}(y_k\vert x)$. However, actually we don&rsquo;t know the exact form of this joint distribution. One might think that $k$-NN regressor and classifier could be the best approximations for these.</p>
+<p>If we know the true distribution of $f_{X, Y}(x, y)$, we can easily predict $Y$ by using the results above. However, actually we don&rsquo;t know the exact form of this joint distribution. One might think that $k$-NN regressor and classifier could be the best approximations for these, but they can fail in at least two ways. If the dimension of the input space becomes higher, the nearest neighbor is not close to the target point any more and this results in large errors. Or if special structure is known to exist, this can be used to reduce both the bias and variance of the estimates.</p>
 <hr>
 <p><strong>Reference</strong></p>
 <ol>
