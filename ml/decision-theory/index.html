@@ -44,7 +44,7 @@ We will first consider the case that $Y$ is a quantitative output which is calle
 Regression
 We will first consider the case that $Y$ is a quantitative output which is called as a regression problem. We can think about the bivariate distribution of $f_{X, Y}(x, y)$."><meta itemprop="datePublished" content="2021-02-13T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-02-13T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="462">
+<meta itemprop="wordCount" content="469">
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
@@ -85,7 +85,7 @@ We will first consider the case that $Y$ is a quantitative output which is calle
 \end{aligned}$</p>
 <p>$\displaystyle f(x)\int f_{Y\vert X}(y\vert x)dy=\int yf_{Y\vert X}(y\vert x)dy$</p>
 <p>$\therefore f(x)=\text{E}[Y\vert X=x]$</p>
-<p>Now we know that the best prediction for $Y$ is the conditional expectation of $Y$ given $X$.</p>
+<p>Now we know that the best prediction for $Y$ is the conditional expectation of $Y$ given $X$, which is also called as regression function.</p>
 <hr>
 <p><strong>Classification</strong></p>
 <p>Next case is about a quantitative output $Y$, related to a classification problem. Again, we will consider the bivariate distribution $f_{X, Y}(x, y)$, where $\displaystyle\int_x\sum_yf_{X, Y}(x, y)dx=1$. If $Y$ is a binary variable, we can represent a joint pdf of $X$ and $Y$ as below.</p>
@@ -161,6 +161,14 @@ Published on 13 Feb 2021
 <li class="active"><a href="https://statkwon.github.io/ml/decision-theory/">Decision Theory</a></li>
 <li class=""><a href="https://statkwon.github.io/ml/curse-of-dimensionality/">Curse of Dimensionality</a></li>
 
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/">Linear Regression</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/mylinearregression/">MyLinearRegression.py</a></li>
+</ul>
+  
+</li>
+
 <li class=""><a href="https://statkwon.github.io/ml/local-regression/">Local Regression</a>
   
 <ul class="sub-menu">
@@ -225,15 +233,6 @@ Published on 13 Feb 2021
   
 </li>
 
-<li class=""><a href="https://statkwon.github.io/ml/linear-regression/">Linear Regression</a>
-  
-<ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/linear-regression/mylinearregression/">MyLinearRegression.py</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/linear-regression/qr-decomposition/">QR-Decomposition</a></li>
-</ul>
-  
-</li>
-
 <li class=""><a href="https://statkwon.github.io/ml/islr/">ISLR</a>
   
 <ul class="sub-menu">
@@ -257,6 +256,14 @@ Published on 13 Feb 2021
 <li class=""><a href="https://statkwon.github.io/bayesian-statistics/bayesian-statistics/">Bayesian Statistics</a></li>
 <li class=""><a href="https://statkwon.github.io/bayesian-statistics/one-parameter-models/">One-parameter models</a></li>
 <li class=""><a href="https://statkwon.github.io/bayesian-statistics/posterior-for-normal/">Posterior for Normal</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://statkwon.github.io/linear-algebra/">Linear Algebra</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/linear-algebra/qr-decomposition/">QR-Decomposition</a></li>
 </ul>
   
 </li>

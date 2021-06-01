@@ -55,15 +55,17 @@
 </div>
 <div class="content-container">
 <main><h1>Linear Regression</h1><p><strong>Linear Regression</strong></p>
-<p>Linear Regression assumes the linear relationship between the inputs and output.</p>
-<p>$$\mathbf{y}=X\boldsymbol{\beta}+\boldsymbol{\epsilon}, \quad \boldsymbol{\epsilon}\sim (\mathbf{0}, \sigma^2I_n)$$</p>
-<p>Here $\mathbf{y}$ and $\boldsymbol{\epsilon}$ is a $n\times 1$ vector, $X$ is a $n\times p$ matrix, and $\boldsymbol{\beta}$ is a $p\times 1$ vector.</p>
-<p>We have to estimate $\boldsymbol{\beta}$ to fit our linear model and the most common way is to use a LSE(Least Squares Estimate). LSE is an estimate which minimizes $(\mathbf{y}-X\boldsymbol{\beta})^T(\mathbf{y}-X\boldsymbol{\beta})$.</p>
+<p>Linear Regression assumes the linear form of regression function as $\text{E}[Y\vert X]=X\beta$.</p>
+<figure><img src="/esl_fig_3.1.png" width="300" height="200"/>
+</figure>
+
+<p>We have to estimate $\boldsymbol{\beta}$ to fit our linear model and the most common way is to use a LSE(Least Squares Estimate). LSE is an estimate which minimizes the residual sum of squares $(\mathbf{y}-X\boldsymbol{\beta})^T(\mathbf{y}-X\boldsymbol{\beta})$.</p>
 <p>$\begin{aligned}
 \dfrac{\partial}{\partial\boldsymbol{\beta}}(\mathbf{y}-X\boldsymbol{\beta})^T(\mathbf{y}-X\boldsymbol{\beta})&amp;=\dfrac{\partial}{\partial\boldsymbol{\beta}}(\mathbf{y}^T-\boldsymbol{\beta}^TX^T)(\mathbf{y}-X\boldsymbol{\beta}) \\<br>
 &amp;=\dfrac{\partial}{\partial\beta}(\mathbf{y}^T\mathbf{y}-\boldsymbol{\beta}^TX^T\mathbf{y}-\mathbf{y}^TX\boldsymbol{\beta}+\boldsymbol{\beta}^TX^TX\boldsymbol{\beta}) \\<br>
 &amp;=-2X^T\mathbf{y}+2X^TX\boldsymbol{\beta}
 \end{aligned}$</p>
+<p>$\dfrac{\partial^2}{\partial\boldsymbol{\beta}\partial\boldsymbol{\beta}^T}(\mathbf{y}-X\boldsymbol{\beta})^T(\mathbf{y}-X\boldsymbol{\beta})=2X^TX$</p>
 <p>Thus, if we solve the equation $-2X^T\mathbf{y}+2X^TX\boldsymbol{\beta}=0$, we can get the unique solution $\hat{\boldsymbol{\beta}}=(X^TX)^{-1}X^T\mathbf{y}$ when $X^TX$ is nonsingular. This condition is same as that $X$ has a full colunm rank. If don&rsquo;t, a solution still exists, but is not unique. This is the reason why we have to consider the variables to be uncorrelated while fitting the regression model.</p>
 <hr>
 <p><strong>Least Squares Estimate</strong></p>
@@ -86,6 +88,9 @@
 &amp;=(X^TX)^{-1}X^T\text{Cov}(\mathbf{y})X(X^TX)^{-1} \\<br>
 &amp;=\sigma^2(X^TX)^{-1}
 \end{aligned}$</p>
+<p>Now we will get the distribution of $\hat{\sigma}^2$. First, let $\mathbf{e}=\mathbf{y}-\hat{\mathbf{y}}$, then it is easy to show $\mathbf{e}\sim N(\mathbf{0}, \sigma^2(I-H))$.</p>
+<p>$\hat{\sigma}^2=\dfrac{1}{n-p-1}\mathbf{e}^T\mathbf{e}$</p>
+<p>We will use a property of quadratic forms in MVN: If $\mathbf{X}\sim N_p(\mathbf{0}, \Sigma)$ and $\vert\Sigma\vert&gt;0$, then $\mathbf{X}^TA\mathbf{X}\sim\chi_r^2$, if and only if $A\Sigma$ is idempotent and $\text{tr}(A\Sigma)=r$.</p>
 <p>Distribution of $\hat{\sigma}^2$ can also be obtained, $(n-p-1)\hat{\sigma}^2\sim\sigma^2\chi^2_{n-p-1}$. With these results, we can get some confidence intervals for the parameters or can conduct some hypothesis tests.</p>
 <hr>
 <p><strong>Gauss-Markov Theorem</strong></p>
@@ -109,18 +114,27 @@
 <p>This equatinos hold due to the fact that $DX=0$. Thus, it is evident that $\text{Var}(\hat{\boldsymbol{\beta}})≤\text{Var}(\tilde{\boldsymbol{\beta}})$, which means that $\hat{\boldsymbol{\beta}}$ has the smallest variance among all linear unbiased estimates.</p>
 <p>Nonetheless, there might be another better estimate for $\boldsymbol{\beta}$. We proved that the LSE has the smallest variance among unbiased estimates, not among the all estimates. We still has a possibility to trade a little bias for a larger reduction in variance. Ridge regression is one of the example of this possibility.</p>
 <hr>
+<p><strong>Computation with Gram-Schmidt Process</strong></p>
+<p>Coefficients of linear regression can be computed by using Gram-Schmidt process.</p>
+<p>$$X=\begin{bmatrix} \mathbf{1} &amp; \mathbf{x}_1 &amp; \cdots &amp; \mathbf{x}_p \end{bmatrix}$$</p>
+<p>Let the first column vector $\mathbf{1}$(or $\mathbf{x}_0$) as $\mathbf{z}_0$, we can get $\mathbf{z}_1$, which is orthogonal to $\mathbf{z}_0$. 두 번째 벡터 $\mathbf{z}_1$을 $\mathbf{1}$이 Span하는 공간에 Projection한 것을 $\text{proj}_{X_0}\mathbf{x}_1$이라고 하면 $\mathbf{x}_1-\text{proj}_{X_0}\mathbf{x}_1$은 $\mathbf{z}_0$에 Orthogonal한 벡터가 된다. 따라서 $\mathbf{z}_1=\mathbf{x}_1-\text{proj}_{X_0}\mathbf{x}_1$이라고 할 수 있다.</p>
+<p>$$\mathbf{z}_1=\mathbf{x}_1-\text{proj}_{X_0}\mathbf{x}_1=\mathbf{x}_1-\dfrac{\mathbf{x}_1\cdot\mathbf{z}_0}{\Vert\mathbf{z}_0\Vert^2}\mathbf{z}_0$$</p>
+<p>다음으로 $\mathbf{z}_0$와 $\mathbf{z}_1$에 대해 Orthogonal한 벡터 $\mathbf{z}_2$를 구할 수 있다. 마찬가지로 $\mathbf{z}_0$와 $\mathbf{z}_1$이 Span하는 공간에 $\mathbf{x}_2$를 Projection한 것을 $\text{proj}_{X_1}\mathbf{x}_2$라고 하면 $\mathbf{x}_2-\text{proj}_{X_1}\mathbf{x}_2$는 $\mathbf{z}_0$와 $\mathbf{z}_1$에 모두 Orthogonal한 벡터가 된다. 따라서 $\mathbf{z}_2=\mathbf{x}_2-\text{proj}_{X_1}\mathbf{x}_2$이다.</p>
+<p>$$\mathbf{z}_2=\mathbf{x}_2-\text{proj}_{X_1}\mathbf{x}_2=\mathbf{x}_2-\dfrac{\mathbf{x}_2\cdot\mathbf{z}_0}{\Vert\mathbf{z}_0\Vert^2}\mathbf{z}_0-\dfrac{\mathbf{x}_2\cdot\mathbf{z}_1}{\Vert\mathbf{z}_1\Vert^2}\mathbf{z}_1$$</p>
+<p>이런 과정을 반복하면 $\mathbf{z}_p$까지 구할 수 있다. $\begin{bmatrix} \mathbf{1} &amp; \mathbf{x}_1 &amp; \cdots &amp; \mathbf{x}_p \end{bmatrix}$를 $\begin{bmatrix} \mathbf{z}_0 &amp; \mathbf{z}_1 &amp; \cdots &amp; \mathbf{z}_p \end{bmatrix}$로 굳이 바꾸어 준 이유는 $\mathbf{y}$를 각각의 $\mathbf{z}_i$에 Projection하여 $i$ 번째 $X$ 변수의 회귀 계수를 $\hat{\beta}_i=\dfrac{\mathbf{y}\cdot\mathbf{z}_i}{\Vert\mathbf{z}_i\Vert^2}$로 쉽게 계산할 수 있기 때문이다. 이유는 아래의 그림을 통해 확인할 수 있다.</p>
+<p>우리는 $\hat{\mathbf{y}}$을 $a\mathbf{1}+b\mathbf{x}_1$라고 나타낼 수 있다. 이때 $b\mathbf{x}_1$은 $(c\mathbf{1}-a\mathbf{1})+d\mathbf{z}_1$과 같다. 이를 앞의 식에 대입해보면 $\hat{\mathbf{y}}$은 곧 $c\mathbf{1}+d\mathbf{z}_1$과 같다는 것을 확인할 수 있다. 즉, $\mathbf{y}$를 $\mathbf{x}_1$에 Projection 했을 때의 회귀 계수와 $\mathbf{z}_1$에 Projection 했을 때의 회귀 계수는 같은 값을 갖게 된다. 이에 더해, $\mathbf{z}_1, \ldots, \mathbf{z}_p$가 서로 Orthogonal 하기 때문에 $\mathbf{y}$를 $\mathbf{z}_1, \ldots, \mathbf{z}_p$에 Projection 했을 때의 회귀 계수는 $\mathbf{y}$를 각각의 $\mathbf{z}_i$에 Projection 했을 때의 회귀 계수와 같다.</p>
 <p><strong>Reference</strong></p>
 <ol>
 <li>Elements of Statistical Learning</li>
 <li><a href="https://en.wikipedia.org/wiki/Gauss-Markov_theorem">https://en.wikipedia.org/wiki/Gauss-Markov_theorem</a></li>
 </ol>
 <div class="edit-meta">
-Last updated on 10 Mar 2021
+Last updated on 20 Feb 2021
 
 
 <br>
-Published on 10 Mar 2021
-<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Linear%20Regression/_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/" title="MyLDA.py"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - MyLDA.py</a>
+Published on 20 Feb 2021
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Linear%20Regression/_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/curse-of-dimensionality/" title="Curse of Dimensionality"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Curse of Dimensionality</a>
 <a class="nav nav-next" href="https://statkwon.github.io/ml/linear-regression/mylinearregression/" title="MyLinearRegression.py">Next - MyLinearRegression.py <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -163,6 +177,14 @@ Published on 10 Mar 2021
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/ml/decision-theory/">Decision Theory</a></li>
 <li class=""><a href="https://statkwon.github.io/ml/curse-of-dimensionality/">Curse of Dimensionality</a></li>
+
+<li class="parent active"><a href="https://statkwon.github.io/ml/linear-regression/">Linear Regression</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/linear-regression/mylinearregression/">MyLinearRegression.py</a></li>
+</ul>
+  
+</li>
 
 <li class=""><a href="https://statkwon.github.io/ml/local-regression/">Local Regression</a>
   
@@ -228,15 +250,6 @@ Published on 10 Mar 2021
   
 </li>
 
-<li class="parent active"><a href="https://statkwon.github.io/ml/linear-regression/">Linear Regression</a>
-  
-<ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/linear-regression/mylinearregression/">MyLinearRegression.py</a></li>
-<li class=""><a href="https://statkwon.github.io/ml/linear-regression/qr-decomposition/">QR-Decomposition</a></li>
-</ul>
-  
-</li>
-
 <li class=""><a href="https://statkwon.github.io/ml/islr/">ISLR</a>
   
 <ul class="sub-menu">
@@ -260,6 +273,14 @@ Published on 10 Mar 2021
 <li class=""><a href="https://statkwon.github.io/bayesian-statistics/bayesian-statistics/">Bayesian Statistics</a></li>
 <li class=""><a href="https://statkwon.github.io/bayesian-statistics/one-parameter-models/">One-parameter models</a></li>
 <li class=""><a href="https://statkwon.github.io/bayesian-statistics/posterior-for-normal/">Posterior for Normal</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://statkwon.github.io/linear-algebra/">Linear Algebra</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/linear-algebra/qr-decomposition/">QR-Decomposition</a></li>
 </ul>
   
 </li>

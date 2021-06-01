@@ -6,7 +6,7 @@
     <description>Recent content in Linear Regression on ML Lab</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://statkwon.github.io/ml/linear-regression/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://statkwon.github.io/ml/linear-regression/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MyLinearRegression.py</title>
       <link>https://statkwon.github.io/ml/linear-regression/mylinearregression/</link>
@@ -15,15 +15,6 @@
       <guid>https://statkwon.github.io/ml/linear-regression/mylinearregression/</guid>
       <description>Github Link: MyLinearRegression.ipynb
 import numpy as np class MyLinearRegerssion: def fit(self, X_train, y_train): ones = np.ones(len(X_train)) X_train = np.array(X_train) X_train = np.column_stack((np.ones(len(X_train)), X_train)) y_train = np.array(y_train) self.beta = np.linalg.inv(np.transpose(X_train).dot(X_train)).dot(np.transpose(X_train)).dot(y_train) def predict(self, X_test): ones = np.ones(len(X_test)) X_test = np.array(X_test) X_test = np.column_stack((np.ones(len(X_test)), X_test)) return X_test.dot(self.beta) </description>
-    </item>
-    
-    <item>
-      <title>QR-Decomposition</title>
-      <link>https://statkwon.github.io/ml/linear-regression/qr-decomposition/</link>
-      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://statkwon.github.io/ml/linear-regression/qr-decomposition/</guid>
-      <description>Gram-Schmidt Process Every nonzero subspaces in $R^n$ have its own prthonormal basis. Gram-Schmidt process is the process to change the basis of the nonzero subspace in $R^n$ to orthonormal basis. Now we will check the process to find the orthonormal basis of subspace $W$ in $R^n$ whose basis is $\{\mathbf{w}_1, \mathbf{w}_2, \ldots, \mathbf{w}_k\}$. If we let the first vector $\mathbf{w}_1$ as $\mathbf{v}_1$, then we can find $\mathbf{v}_2$, which is an</description>
     </item>
     
   </channel>

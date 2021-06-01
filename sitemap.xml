@@ -30,16 +30,22 @@
   </url><url>
     <loc>https://statkwon.github.io/projects/dacon/</loc>
   </url><url>
-    <loc>https://statkwon.github.io/visualization/bokeh/</loc>
-    <lastmod>2021-02-11T00:00:00+00:00</lastmod>
+    <loc>https://statkwon.github.io/linear-algebra/</loc>
+    <lastmod>2021-03-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://statkwon.github.io/visualization/</loc>
+    <loc>https://statkwon.github.io/ml/linear-regression/</loc>
+    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://statkwon.github.io/visualization/bokeh/</loc>
     <lastmod>2021-02-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://statkwon.github.io/ml/islr/ch4/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://statkwon.github.io/visualization/folium/</loc>
+    <lastmod>2021-02-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://statkwon.github.io/visualization/</loc>
     <lastmod>2021-02-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://statkwon.github.io/ml/islr/ch5/</loc>
@@ -105,10 +111,7 @@
     <loc>https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/</loc>
     <lastmod>2021-04-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://statkwon.github.io/ml/linear-regression/</loc>
-    <lastmod>2021-03-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://statkwon.github.io/ml/linear-regression/qr-decomposition/</loc>
+    <loc>https://statkwon.github.io/linear-algebra/qr-decomposition/</loc>
     <lastmod>2021-03-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://statkwon.github.io/about/</loc>
