@@ -90,8 +90,9 @@
 \end{aligned}$</p>
 <p>Now we will get the distribution of $\hat{\sigma}^2$. First, let $\mathbf{e}=\mathbf{y}-\hat{\mathbf{y}}$, then it is easy to show $\mathbf{e}\sim N(\mathbf{0}, \sigma^2(I-H))$.</p>
 <p>$\hat{\sigma}^2=\dfrac{1}{n-p-1}\mathbf{e}^T\mathbf{e}$</p>
-<p>We will use a property of quadratic forms in MVN: If $\mathbf{X}\sim N_p(\mathbf{0}, \Sigma)$ and $\vert\Sigma\vert&gt;0$, then $\mathbf{X}^TA\mathbf{X}\sim\chi_r^2$, if and only if $A\Sigma$ is idempotent and $\text{tr}(A\Sigma)=r$.</p>
-<p>Distribution of $\hat{\sigma}^2$ can also be obtained, $(n-p-1)\hat{\sigma}^2\sim\sigma^2\chi^2_{n-p-1}$. With these results, we can get some confidence intervals for the parameters or can conduct some hypothesis tests.</p>
+<p>We will use a property of quadratic forms. Because $\mathbf{e}\sim N(\mathbf{0}, \sigma^2(I-H))$, $\vert\sigma^2(I-H)\vert&gt;0$, $\dfrac{1}{\sigma^2}\sigma^2(I-H)$ is idempotent and $\text{tr}(I-H)=n-p-1$, we can say $\dfrac{1}{\sigma^2}\mathbf{e}^T\mathbf{e}\sim\chi_{n-p-1}^2$. Thus,</p>
+<p>$(n-p-1)\hat{\sigma}^2\sim\sigma^2\chi^2_{n-p-1}$</p>
+<p>With these results, we can get some confidence intervals for the parameters or can conduct some hypothesis tests.</p>
 <hr>
 <p><strong>Gauss-Markov Theorem</strong></p>
 <p>We use the LSE because it has some good properties. Gauss-Markov theorem states that the LSE is BLUE, which means Best Linear Unbiased Estimate. According to this theorem, LSE has the smallest variance among all linear unbiased estimates. We&rsquo;ve already showed that LSE is an unbaised estimate, so we will just proved for the smallest variance.</p>
@@ -237,7 +238,7 @@ Published on 20 Feb 2021
 <li class=""><a href="https://statkwon.github.io/ml/logistic-regression/">Logistic Regression</a>
   
 <ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/mylogisticregression/">MyLogisticRegression.py</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/local-regression/mylocalregression/">MyLocalRegression.py</a></li>
 </ul>
   
 </li>
