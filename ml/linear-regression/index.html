@@ -116,17 +116,17 @@
 <p>Nonetheless, there might be another better estimate for $\boldsymbol{\beta}$. We proved that the LSE has the smallest variance among unbiased estimates, not among the all estimates. We still has a possibility to trade a little bias for a larger reduction in variance. Ridge regression is one of the example of this possibility.</p>
 <hr>
 <p><strong>Computation with Gram-Schmidt Process</strong></p>
-<p>Coefficients of linear regression can be computed by using Gram-Schmidt process.</p>
-<p>$$X=\begin{bmatrix} \mathbf{1} &amp; \mathbf{x}_1 &amp; \cdots &amp; \mathbf{x}_p \end{bmatrix}$$</p>
-<p>Let the first column vector $\mathbf{1}$(or $\mathbf{x}_0$) as $\mathbf{z}_0$, we can get $\mathbf{z}_1$, which is orthogonal to $\mathbf{z}_0$. 두 번째 벡터 $\mathbf{z}_1$을 $\mathbf{1}$이 Span하는 공간에 Projection한 것을 $\text{proj}_{X_0}\mathbf{x}_1$이라고 하면 $\mathbf{x}_1-\text{proj}_{X_0}\mathbf{x}_1$은 $\mathbf{z}_0$에 Orthogonal한 벡터가 된다. 따라서 $\mathbf{z}_1=\mathbf{x}_1-\text{proj}_{X_0}\mathbf{x}_1$이라고 할 수 있다.</p>
-<p>$$\mathbf{z}_1=\mathbf{x}_1-\text{proj}_{X_0}\mathbf{x}_1=\mathbf{x}_1-\dfrac{\mathbf{x}_1\cdot\mathbf{z}_0}{\Vert\mathbf{z}_0\Vert^2}\mathbf{z}_0$$</p>
-<p>다음으로 $\mathbf{z}_0$와 $\mathbf{z}_1$에 대해 Orthogonal한 벡터 $\mathbf{z}_2$를 구할 수 있다. 마찬가지로 $\mathbf{z}_0$와 $\mathbf{z}_1$이 Span하는 공간에 $\mathbf{x}_2$를 Projection한 것을 $\text{proj}_{X_1}\mathbf{x}_2$라고 하면 $\mathbf{x}_2-\text{proj}_{X_1}\mathbf{x}_2$는 $\mathbf{z}_0$와 $\mathbf{z}_1$에 모두 Orthogonal한 벡터가 된다. 따라서 $\mathbf{z}_2=\mathbf{x}_2-\text{proj}_{X_1}\mathbf{x}_2$이다.</p>
-<p>$$\mathbf{z}_2=\mathbf{x}_2-\text{proj}_{X_1}\mathbf{x}_2=\mathbf{x}_2-\dfrac{\mathbf{x}_2\cdot\mathbf{z}_0}{\Vert\mathbf{z}_0\Vert^2}\mathbf{z}_0-\dfrac{\mathbf{x}_2\cdot\mathbf{z}_1}{\Vert\mathbf{z}_1\Vert^2}\mathbf{z}_1$$</p>
-<p>이런 과정을 반복하면 $\mathbf{z}_p$까지 구할 수 있다. $\begin{bmatrix} \mathbf{1} &amp; \mathbf{x}_1 &amp; \cdots &amp; \mathbf{x}_p \end{bmatrix}$를 $\begin{bmatrix} \mathbf{z}_0 &amp; \mathbf{z}_1 &amp; \cdots &amp; \mathbf{z}_p \end{bmatrix}$로 굳이 바꾸어 준 이유는 $\mathbf{y}$를 각각의 $\mathbf{z}_i$에 Projection하여 $i$ 번째 $X$ 변수의 회귀 계수를 $\hat{\beta}_i=\dfrac{\mathbf{y}\cdot\mathbf{z}_i}{\Vert\mathbf{z}_i\Vert^2}$로 쉽게 계산할 수 있기 때문이다. 이유는 아래의 그림을 통해 확인할 수 있다.</p>
-<p>우리는 $\hat{\mathbf{y}}$을 $a\mathbf{1}+b\mathbf{x}_1$라고 나타낼 수 있다. 이때 $b\mathbf{x}_1$은 $(c\mathbf{1}-a\mathbf{1})+d\mathbf{z}_1$과 같다. 이를 앞의 식에 대입해보면 $\hat{\mathbf{y}}$은 곧 $c\mathbf{1}+d\mathbf{z}_1$과 같다는 것을 확인할 수 있다. 즉, $\mathbf{y}$를 $\mathbf{x}_1$에 Projection 했을 때의 회귀 계수와 $\mathbf{z}_1$에 Projection 했을 때의 회귀 계수는 같은 값을 갖게 된다. 이에 더해, $\mathbf{z}_1, \ldots, \mathbf{z}_p$가 서로 Orthogonal 하기 때문에 $\mathbf{y}$를 $\mathbf{z}_1, \ldots, \mathbf{z}_p$에 Projection 했을 때의 회귀 계수는 $\mathbf{y}$를 각각의 $\mathbf{z}_i$에 Projection 했을 때의 회귀 계수와 같다.</p>
+<figure><img src="/esl_fig_3.4.png" width="400" height="200"/>
+</figure>
+
+<p>Coefficients of multiple linear regression can be computed much easier by using Gram-Schmidt process.</p>
+<p>Using Gram-Schmidt process, we can transform the column vectors of $X$, $\begin{bmatrix} \mathbf{1} &amp; \mathbf{x}_1 &amp; \cdots &amp; \mathbf{x}_p \end{bmatrix}$ to orthogonal vectors $\begin{bmatrix} \mathbf{z}_0 &amp; \mathbf{z}_1 &amp; \cdots &amp; \mathbf{z}_p \end{bmatrix}$. Then we can get the $i$th coefficient by projecting $\mathbf{y}$ onto the vector $\mathbf{z}_i$, which means $\hat{\beta}_i=\dfrac{\mathbf{y}\cdot\mathbf{z}_i}{\mathbf{z}_i\cdot\mathbf{z}_i}$.</p>
+<hr>
+<p>Linear Regression is a bit classical model, but still has some advantages. It&rsquo;s prediction performance can outperform the latest methods in some specific situations such as small data, low SNR, or sparse data. Also, it can be expanded to nonlinear models by transforming the inputs.</p>
 <p><strong>Reference</strong></p>
 <ol>
 <li>Elements of Statistical Learning</li>
+<li>Applied Linear Regression Models</li>
 <li><a href="https://en.wikipedia.org/wiki/Gauss-Markov_theorem">https://en.wikipedia.org/wiki/Gauss-Markov_theorem</a></li>
 </ol>
 <div class="edit-meta">
@@ -238,7 +238,7 @@ Published on 20 Feb 2021
 <li class=""><a href="https://statkwon.github.io/ml/logistic-regression/">Logistic Regression</a>
   
 <ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/local-regression/mylocalregression/">MyLocalRegression.py</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/mylogisticregression/">MyLogisticRegression.py</a></li>
 </ul>
   
 </li>
@@ -282,6 +282,7 @@ Published on 20 Feb 2021
   
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/linear-algebra/qr-decomposition/">QR-Decomposition</a></li>
+<li class=""><a href="https://statkwon.github.io/linear-algebra/gram-schmidt-process/">Gram-Schmidt Process</a></li>
 </ul>
   
 </li>
