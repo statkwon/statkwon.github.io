@@ -55,7 +55,8 @@
 </div>
 <div class="content-container">
 <main><h1>Linear Regression</h1><p><strong>Linear Regression</strong></p>
-<p>Linear Regression assumes the linear form of regression function as $\text{E}[Y\vert X]=X\beta$.</p>
+<p>Linear Regression is a bit classical model, but still has some advantages. It&rsquo;s prediction performance can outperform the latest methods in some specific situations such as small data, low SNR, or sparse data. Also, it can be expanded to nonlinear models by transforming the inputs.</p>
+<p>Linear Regression assumes the linear form of regression function as $\text{E}[Y\vert X]=X\boldsymbol{\beta}$.</p>
 <figure><img src="/esl_fig_3.1.png" width="300" height="200"/>
 </figure>
 
@@ -115,12 +116,14 @@
 <p>This equatinos hold due to the fact that $DX=0$. Thus, it is evident that $\text{Var}(\hat{\boldsymbol{\beta}})≤\text{Var}(\tilde{\boldsymbol{\beta}})$, which means that $\hat{\boldsymbol{\beta}}$ has the smallest variance among all linear unbiased estimates.</p>
 <p>Nonetheless, there might be another better estimate for $\boldsymbol{\beta}$. We proved that the LSE has the smallest variance among unbiased estimates, not among the all estimates. We still has a possibility to trade a little bias for a larger reduction in variance. Ridge regression is one of the example of this possibility.</p>
 <hr>
-<p><strong>Computation with Gram-Schmidt Process</strong></p>
+<p><strong>Regression by Successive Orthogonalization</strong></p>
 <figure><img src="/esl_fig_3.4.png" width="400" height="200"/>
 </figure>
 
-<p>Coefficients of multiple linear regression can be computed much easier by using Gram-Schmidt process.</p>
-<p>Using Gram-Schmidt process, we can transform the column vectors of $X$, $\begin{bmatrix} \mathbf{1} &amp; \mathbf{x}_1 &amp; \cdots &amp; \mathbf{x}_p \end{bmatrix}$ to orthogonal vectors $\begin{bmatrix} \mathbf{z}_0 &amp; \mathbf{z}_1 &amp; \cdots &amp; \mathbf{z}_p \end{bmatrix}$. Then we can get the $i$th coefficient by projecting $\mathbf{y}$ onto the vector $\mathbf{z}_i$, which means $\hat{\beta}_i=\dfrac{\mathbf{y}\cdot\mathbf{z}_i}{\mathbf{z}_i\cdot\mathbf{z}_i}$.</p>
+<p>If all column vectors of $X$ are orthogonal to each other, it will be much easier to get coefficients of multiple linear regression. We can just project $\mathbf{y}$ onto each vector $\mathbf{x}_i$ and get $\hat{\beta}_i=\dfrac{\mathbf{y}\cdot\mathbf{z}_i}{\mathbf{z}_i\cdot\mathbf{z}_i}$, due to the fact that orthogonal inputs do not effect on each other&rsquo;s parameter estimates. However, orthogonal inputs are actually an impossible situation. Though, we could use this idea to make an efficient way for parameter estimation in multiple regression.</p>
+<p>$\begin{bmatrix} \mathbf{x}_0 &amp; \mathbf{x}_1 &amp; \cdots &amp; \mathbf{x}_p \end{bmatrix}\quad\Rightarrow\quad\begin{bmatrix} \mathbf{z}_0 &amp; \mathbf{z}_1 &amp; \cdots &amp; \mathbf{z}_p \end{bmatrix}$</p>
+<p>By using Gram-Schmidt process, we can transform the column vectors of $X$ to the orthogonal vectors. Then, $\hat{\beta}_p$ can be calculated by projecting $\mathbf{y}$ onto $\mathbf{z}_p$, which can be written as $\hat{\beta}_p=\dfrac{\mathbf{y}\cdot\mathbf{z}_p}{\mathbf{z}_p\cdot\mathbf{z}_p}$. If we change the order of the column vectors of $X$, this can be applied to any coefficient $\hat{\beta}_i$. Now we can state that $\hat{\beta}_i$ represents the additional contribution of $\mathbf{x}_j$ on $\mathbf{y}$, after $\mathbf{x}_j$ has been adjusted for $\mathbf{x}_0, \mathbf{x}_1, \ldots, \mathbf{x}_{j-1}, \mathbf{x}_{j+1}, \ldots, \mathbf{x}_p$.</p>
+<p>This can be proved with calculation via $QR$-decomposition of $X$.</p>
 <p>$\begin{aligned}
 X&amp;=\begin{bmatrix} \mathbf{1} &amp; \mathbf{x}_1 &amp; \cdots &amp; \mathbf{x}_p \end{bmatrix} \\<br>
 &amp;=\begin{bmatrix} \mathbf{z}_0 &amp; \mathbf{z}_1 &amp; \cdots &amp; \mathbf{z}_p \end{bmatrix}\begin{bmatrix} 1 &amp; \dfrac{\mathbf{x}_1\cdot\mathbf{z}_0}{\mathbf{z}_0\cdot\mathbf{z}_0} &amp; \cdots &amp; \dfrac{\mathbf{x}_p\cdot\mathbf{z}_0}{\mathbf{z}_0\cdot\mathbf{z}_0} \\ 0 &amp; 1 &amp; \cdots &amp; \dfrac{\mathbf{x}_1\cdot\mathbf{z}_1}{\mathbf{z}_1\cdot\mathbf{z}_1} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \cdots &amp; 1 \end{bmatrix} \\<br>
@@ -131,7 +134,6 @@ X&amp;=\begin{bmatrix} \mathbf{1} &amp; \mathbf{x}_1 &amp; \cdots &amp; \mathbf{
 <p>$\begin{bmatrix} \Vert\mathbf{z}_0\Vert &amp; \dfrac{\mathbf{x}_1\cdot\mathbf{z}_0}{\Vert\mathbf{z}_0\Vert} &amp; \cdots &amp; \dfrac{\mathbf{x}_p\cdot\mathbf{z}_0}{\Vert\mathbf{z}_0\Vert} \\ 0 &amp; \Vert\mathbf{z}_1\Vert &amp; \cdots &amp; \dfrac{\mathbf{x}_p\cdot\mathbf{z}_1}{\Vert\mathbf{z}_1\Vert} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \cdots &amp; \Vert\mathbf{z}_p\Vert \end{bmatrix}\begin{bmatrix} \beta_0 \\ \beta_1 \\ \vdots \\ \beta_p \end{bmatrix}=\begin{bmatrix} \dfrac{\mathbf{y}\cdot\mathbf{z}_0}{\Vert\mathbf{z}_0\Vert} \\ \dfrac{\mathbf{y}\cdot\mathbf{z}_1}{\Vert\mathbf{z}_1\Vert} \\ \vdots \\ \dfrac{\mathbf{y}\cdot\mathbf{z}_p}{\Vert\mathbf{z}_p\Vert} \end{bmatrix}$</p>
 <p>$R$ is an upper-triangular matrix, so we just use the back-substitution to solve the equation above. For example, first we can get $\hat{\beta}_p=\dfrac{\mathbf{y}_p\cdot\mathbf{z}_p}{\Vert\mathbf{z}_p\Vert^2}$, then $\hat{\beta}_{p-1}=\dfrac{\mathbf{y}\cdot\mathbf{z}_{p-1}}{\Vert\mathbf{z}_{p-1}\Vert^2}-\hat{\beta}_p\dfrac{\mathbf{x}_p\cdot\mathbf{z}_{p-1}}{\Vert\mathbf{z}_{p-1}\Vert^2}$. Repeating this process, we can obtain $\hat{\boldsymbol{\beta}}$.</p>
 <hr>
-<p>Linear Regression is a bit classical model, but still has some advantages. It&rsquo;s prediction performance can outperform the latest methods in some specific situations such as small data, low SNR, or sparse data. Also, it can be expanded to nonlinear models by transforming the inputs.</p>
 <p><strong>Reference</strong></p>
 <ol>
 <li>Elements of Statistical Learning</li>
