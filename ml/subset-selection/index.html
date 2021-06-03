@@ -3,11 +3,11 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>MyRidgeRegression.py - ML Lab</title>
+<title>Subset Selection - ML Lab</title>
 <meta name="description" content="STATKWON">
 <meta name="generator" content="Hugo 0.83.1" />
 <link href="https://statkwon.github.io//index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://statkwon.github.io/ml/ridge-regression/myridgeregression/">
+<link rel="canonical" href="https://statkwon.github.io/ml/subset-selection/">
 <link rel="stylesheet" href="https://statkwon.github.io/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://statkwon.github.io/css/chroma.min.css">
@@ -25,24 +25,16 @@
 <style>
 :root {}
 </style>
-<meta property="og:title" content="MyRidgeRegression.py" />
-<meta property="og:description" content="Github Link: MyRidgeRegression.ipynb
-import numpy as np class MyRidgeRegerssion: def __init__(self, alpha=1.0): self.alpha = alpha def fit(self, X_train, y_train): ones = np.ones(len(X_train)) X_train = np.array(X_train) X_train = np.column_stack((np.ones(len(X_train)), X_train)) y_train = np.array(y_train) self.beta = np.linalg.inv(np.transpose(X_train).dot(X_train)&#43;self.alpha*np.identity(X_train.shape[1])).dot(np.transpose(X_train)).dot(y_train) def predict(self, X_test): ones = np.ones(len(X_test)) X_test = np.array(X_test) X_test = np.column_stack((np.ones(len(X_test)), X_test)) return X_test.dot(self.beta) " />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://statkwon.github.io/ml/ridge-regression/myridgeregression/" /><meta property="article:section" content="ML" />
-<meta property="article:published_time" content="2021-05-08T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-05-08T00:00:00&#43;00:00" />
+<meta property="og:title" content="Subset Selection" />
+<meta property="og:description" content="STATKWON" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://statkwon.github.io/ml/subset-selection/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="MyRidgeRegression.py"/>
-<meta name="twitter:description" content="Github Link: MyRidgeRegression.ipynb
-import numpy as np class MyRidgeRegerssion: def __init__(self, alpha=1.0): self.alpha = alpha def fit(self, X_train, y_train): ones = np.ones(len(X_train)) X_train = np.array(X_train) X_train = np.column_stack((np.ones(len(X_train)), X_train)) y_train = np.array(y_train) self.beta = np.linalg.inv(np.transpose(X_train).dot(X_train)&#43;self.alpha*np.identity(X_train.shape[1])).dot(np.transpose(X_train)).dot(y_train) def predict(self, X_test): ones = np.ones(len(X_test)) X_test = np.array(X_test) X_test = np.column_stack((np.ones(len(X_test)), X_test)) return X_test.dot(self.beta) "/>
-<meta itemprop="name" content="MyRidgeRegression.py">
-<meta itemprop="description" content="Github Link: MyRidgeRegression.ipynb
-import numpy as np class MyRidgeRegerssion: def __init__(self, alpha=1.0): self.alpha = alpha def fit(self, X_train, y_train): ones = np.ones(len(X_train)) X_train = np.array(X_train) X_train = np.column_stack((np.ones(len(X_train)), X_train)) y_train = np.array(y_train) self.beta = np.linalg.inv(np.transpose(X_train).dot(X_train)&#43;self.alpha*np.identity(X_train.shape[1])).dot(np.transpose(X_train)).dot(y_train) def predict(self, X_test): ones = np.ones(len(X_test)) X_test = np.array(X_test) X_test = np.column_stack((np.ones(len(X_test)), X_test)) return X_test.dot(self.beta) "><meta itemprop="datePublished" content="2021-05-08T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-05-08T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="50">
-<meta itemprop="keywords" content="" /></head>
+<meta name="twitter:title" content="Subset Selection"/>
+<meta name="twitter:description" content="STATKWON"/>
+<meta itemprop="name" content="Subset Selection">
+<meta itemprop="description" content="STATKWON"></head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
 <p class="description">STATKWON</p>
@@ -62,34 +54,33 @@ import numpy as np class MyRidgeRegerssion: def __init__(self, alpha=1.0): self.
 </nav>
 </div>
 <div class="content-container">
-<main><h1>MyRidgeRegression.py</h1>
-<p>Github Link: <a href="https://github.com/statkwon/ML_Study/blob/master/MyRidgeRegression.ipynb">MyRidgeRegression.ipynb</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<main><h1>Subset Selection</h1><p><strong>Best-Subset Selection</strong></p>
+<figure><img src="/esl_fig_3.5.png" width="500" height="200"/>
+</figure>
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyRidgeRegerssion</span>:
-    <span style="color:#66d9ef">def</span> __init__(self, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">1.0</span>):
-        self<span style="color:#f92672">.</span>alpha <span style="color:#f92672">=</span> alpha
-        
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fit</span>(self, X_train, y_train):
-        ones <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones(len(X_train))
-        X_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(X_train)
-        X_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>column_stack((np<span style="color:#f92672">.</span>ones(len(X_train)), X_train))
-        y_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(y_train)
-        self<span style="color:#f92672">.</span>beta <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>inv(np<span style="color:#f92672">.</span>transpose(X_train)<span style="color:#f92672">.</span>dot(X_train)<span style="color:#f92672">+</span>self<span style="color:#f92672">.</span>alpha<span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>identity(X_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]))<span style="color:#f92672">.</span>dot(np<span style="color:#f92672">.</span>transpose(X_train))<span style="color:#f92672">.</span>dot(y_train)
-        
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict</span>(self, X_test):
-        ones <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones(len(X_test))
-        X_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(X_test)
-        X_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>column_stack((np<span style="color:#f92672">.</span>ones(len(X_test)), X_test))
-        <span style="color:#66d9ef">return</span> X_test<span style="color:#f92672">.</span>dot(self<span style="color:#f92672">.</span>beta)
-</code></pre></div><div class="edit-meta">
-Last updated on 8 May 2021
+<p>If we have $p$ variables, we can consider $2^p$ models. For each number of variables, we will select a model with smallest residual sum of squares. The red dots in the figure above are the selected ones. Among these $p+1$ models, we have to choose the best model. Here, the best is usually measured by cross-validation error or AIC criterion. It is reasonable to pick a smaller model when the scores are almost similar. This is a quite accurate method as we search through all possible subsets of variables, but is also a time-consuming procedure.</p>
+<hr>
+<p><strong>Forward-Stepwise Selection</strong></p>
+<p>To deal with the calculation cost of best-subset selection, Forward- or Backward-Stepwise Selection can be suggested. Forward-Stepwise Selection differs from best-subset selection in that it starts from the model with only the intercept term and add one variable at a time which reduces the residual sum of squares most. Among $p+1$ models from each step, the best model is selected by the same way used in best-subset selection. This process results in fitting $1+p+(p-1)+\cdots+1=1+\dfrac{p(p+1)}{2}$ models in total, so it is certainly a cost-efficient method.</p>
+<p>This greedy algorithm can be clever by using $QR$-Decomposition.</p>
+<hr>
+<p><strong>Backward-Stepwise Selection</strong></p>
+<p>Backward-Stpewise Selection is almost same as forward-stepwise method, except that it starts with the full model. It removes one variable at a time which reduces the residual sum of squares most.</p>
+<hr>
+<p><strong>Forward-Stagewise Regression</strong></p>
+<hr>
+<p><strong>Reference</strong></p>
+<ol>
+<li>Elements of Statistical Learning</li>
+</ol>
+<div class="edit-meta">
+Last updated on 22 Feb 2021
 
 
 <br>
-Published on 8 May 2021
-<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Ridge%20Regression/MyRidgeRegression.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/ridge-regression/" title="Ridge Regression"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Ridge Regression</a>
-<a class="nav nav-next" href="https://statkwon.github.io/ml/local-regression/" title="Local Regression">Next - Local Regression <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+Published on 22 Feb 2021
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Subset%20Selection/_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/linear-regression/mylinearregression/" title="MyLinearRegression.py"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - MyLinearRegression.py</a>
+<a class="nav nav-next" href="https://statkwon.github.io/ml/ridge-regression/" title="Ridge Regression">Next - Ridge Regression <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -140,14 +131,14 @@ Published on 8 May 2021
   
 </li>
 
-<li class=""><a href="https://statkwon.github.io/ml/subset-selection/">Subset Selection</a>
+<li class="parent active"><a href="https://statkwon.github.io/ml/subset-selection/">Subset Selection</a>
   
 </li>
 
-<li class="parent"><a href="https://statkwon.github.io/ml/ridge-regression/">Ridge Regression</a>
+<li class=""><a href="https://statkwon.github.io/ml/ridge-regression/">Ridge Regression</a>
   
 <ul class="sub-menu">
-<li class="active"><a href="https://statkwon.github.io/ml/ridge-regression/myridgeregression/">MyRidgeRegression.py</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/ridge-regression/myridgeregression/">MyRidgeRegression.py</a></li>
 </ul>
   
 </li>

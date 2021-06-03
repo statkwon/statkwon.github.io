@@ -42,6 +42,9 @@
     <loc>https://statkwon.github.io/ml/islr/ch4/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://statkwon.github.io/ml/subset-selection/</loc>
+    <lastmod>2021-02-22T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://statkwon.github.io/visualization/folium/</loc>
     <lastmod>2021-02-11T00:00:00+00:00</lastmod>
   </url><url>
@@ -50,6 +53,9 @@
   </url><url>
     <loc>https://statkwon.github.io/ml/islr/ch5/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://statkwon.github.io/ml/ridge-regression/</loc>
+    <lastmod>2021-02-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://statkwon.github.io/ml/islr/ch6/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
@@ -79,9 +85,6 @@
     <lastmod>2021-05-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://statkwon.github.io/ml/ridge-regression/myridgeregression/</loc>
-    <lastmod>2021-05-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://statkwon.github.io/ml/ridge-regression/</loc>
     <lastmod>2021-05-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://statkwon.github.io/ml/linear-regression/mylinearregression/</loc>
