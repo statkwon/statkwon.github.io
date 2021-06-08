@@ -54,12 +54,32 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>Logistic Regression</h1><p>Working</p>
+<main><h1>Logistic Regression</h1><p><strong>Linear Regression for Qualitative Output</strong></p>
+<p>Our goal is to model the posterior probability $P(Y_k\vert\mathbf{X})$ or the discriminant function $\delta_k(\mathbf{X})$, because we want to set a decision boundary as $\{\mathbf{X}:P(Y_k\vert\mathbf{X})=P(Y_l\vert\mathbf{X})\}$ or $\{\mathbf{X}:\delta_k(\mathbf{X})=\delta_l(\mathbf{X})\}$. We will classify $\mathbf{X}$ to the class with the largest value of $P(Y_k\vert\mathbf{X})$ or $\delta_k(\mathbf{X})$.</p>
+<p>First, we can consider the case fitting a linear model for the posterior probability as $P(Y_k\vert\mathbf{X})=\mathbf{X}\boldsymbol{\beta}_k$ and it is quite reasonable in that</p>
+<p>$\text{E}[Y_k\vert\mathbf{X}]=P(Y_1\vert\mathbf{X})\cdot0+\cdots+P(Y_k\vert\mathbf{X})\cdot1+\cdots+P(Y_K\vert\mathbf{X})\cdot0=P(Y_k\vert\mathbf{X})$.</p>
+<p>The figure below depicts this situation.</p>
+<figure><img src="/fig9.jpeg" width="600"/>
+</figure>
+
+<p>However, this method has some disadvantages. We know that a probability should be between $0$ and $1$ and the sum of all probabilities should be $1$. If we assume the linear form of posterior probability, it only satisfies that $\sum_k\hat{P}(Y_k\vert\mathbf{X})=1$ for any $\mathbf{X}$. The probability can be negative or greater than $1$ as the figure above. We can handle this problem by using another form of function.</p>
+<hr>
+<p><strong>Logistic Regression</strong></p>
+<figure><img src="/fig10.jpeg" width="600"/>
+</figure>
+
+<hr>
+<p><strong>Reference</strong></p>
+<ol>
+<li>Elements of Statistical Learning</li>
+</ol>
 <div class="edit-meta">
-Last updated on 11 Apr 2021
+Last updated on 1 Mar 2021
 
 
-<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Logistic%20Regression/_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/regression-spline/myregressionspline/" title="MyRegressionSpline.py"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - MyRegressionSpline.py</a>
+<br>
+Published on 1 Mar 2021
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Logistic%20Regression/_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/lasso-regression/" title="Lasso Regression"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Lasso Regression</a>
 <a class="nav nav-next" href="https://statkwon.github.io/ml/logistic-regression/mylogisticregression/" title="MyLogisticRegression.py">Next - MyLogisticRegression.py <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -127,6 +147,14 @@ Last updated on 11 Apr 2021
   
 </li>
 
+<li class="parent active"><a href="https://statkwon.github.io/ml/logistic-regression/">Logistic Regression</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/mylogisticregression/">MyLogisticRegression.py</a></li>
+</ul>
+  
+</li>
+
 <li class=""><a href="https://statkwon.github.io/ml/local-regression/">Local Regression</a>
   
 <ul class="sub-menu">
@@ -163,14 +191,6 @@ Last updated on 11 Apr 2021
   
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/ml/regression-spline/myregressionspline/">MyRegressionSpline.py</a></li>
-</ul>
-  
-</li>
-
-<li class="parent active"><a href="https://statkwon.github.io/ml/logistic-regression/">Logistic Regression</a>
-  
-<ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/mylogisticregression/">MyLogisticRegression.py</a></li>
 </ul>
   
 </li>

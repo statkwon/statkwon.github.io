@@ -54,7 +54,13 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>Lasso Regression</h1><hr>
+<main><h1>Lasso Regression</h1><p>Lasso regression is also a shrinkage method, but differs from ridge regression in that it uses $l_1$ penalty term.</p>
+<p>$\begin{aligned}
+\hat{\beta}^{\text{lasso}}&amp;=\underset{\beta}{\text{argmin}}\left\{\sum_{i=1}^N(y_i-\beta_0-\sum_{j=1}^px_{ij}\beta_j)^2+\lambda\sum_{j=1}^p\vert\beta_j\vert\right\} \\<br>
+&amp;=\underset{\beta}{\text{argmin}}\sum_{i=1}^N\left(y_i-\beta_0-\sum_{j=1}^px_{ij}\beta_j\right)^2 \; \text{subject to} \; \sum_{j=1}^p\vert\beta_j\vert≤t
+\end{aligned}$</p>
+<p>This new $l_1$ penalty makes the coefficients nonlinear in the $y_i$, and there is no closed form expression.</p>
+<hr>
 <p><strong>Reference</strong></p>
 <ol>
 <li>Elements of Statistical Learning</li>
@@ -66,7 +72,7 @@ Last updated on 28 Feb 2021
 <br>
 Published on 28 Feb 2021
 <br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Lasso%20Regression/_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/ridge-regression/myridgeregression/" title="MyRidgeRegression.py"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - MyRidgeRegression.py</a>
-<a class="nav nav-next" href="https://statkwon.github.io/ml/local-regression/" title="Local Regression">Next - Local Regression <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="nav nav-next" href="https://statkwon.github.io/ml/logistic-regression/" title="Logistic Regression">Next - Logistic Regression <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -133,6 +139,14 @@ Published on 28 Feb 2021
   
 </li>
 
+<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/">Logistic Regression</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/mylogisticregression/">MyLogisticRegression.py</a></li>
+</ul>
+  
+</li>
+
 <li class=""><a href="https://statkwon.github.io/ml/local-regression/">Local Regression</a>
   
 <ul class="sub-menu">
@@ -169,14 +183,6 @@ Published on 28 Feb 2021
   
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/ml/regression-spline/myregressionspline/">MyRegressionSpline.py</a></li>
-</ul>
-  
-</li>
-
-<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/">Logistic Regression</a>
-  
-<ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/logistic-regression/mylogisticregression/">MyLogisticRegression.py</a></li>
 </ul>
   
 </li>
