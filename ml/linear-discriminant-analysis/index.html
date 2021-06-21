@@ -3,7 +3,7 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Linear Discriminant Analysis - ML Lab</title>
+<title>Discriminant Analysis - ML Lab</title>
 <meta name="description" content="STATKWON">
 <meta name="generator" content="Hugo 0.83.1" />
 <link href="https://statkwon.github.io//index.xml" rel="alternate" type="application/rss+xml">
@@ -25,15 +25,15 @@
 <style>
 :root {}
 </style>
-<meta property="og:title" content="Linear Discriminant Analysis" />
+<meta property="og:title" content="Discriminant Analysis" />
 <meta property="og:description" content="STATKWON" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://statkwon.github.io/ml/linear-discriminant-analysis/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Linear Discriminant Analysis"/>
+<meta name="twitter:title" content="Discriminant Analysis"/>
 <meta name="twitter:description" content="STATKWON"/>
-<meta itemprop="name" content="Linear Discriminant Analysis">
+<meta itemprop="name" content="Discriminant Analysis">
 <meta itemprop="description" content="STATKWON"></head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
@@ -54,12 +54,43 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>Linear Discriminant Analysis</h1><p>Working</p>
+<main><h1>Discriminant Analysis</h1><p><strong>Linear Discriminant Analysis</strong></p>
+<p>LDA is similar to logistic regression in that it tries to estimate the poterior probability. However, compare to the logistic regression which directly assumes the logistic form, it makes use of Bayes' Rule.</p>
+<p>$P(Y_k\vert\mathbf{X})\approx P(\mathbf{X}\vert Y_k)P(Y_k)$</p>
+<p>From now on, we will use $\pi_k$ instead of $P(Y_k)$ for simplicity. LDA rather assumes that $P(\mathbf{X}\vert Y_k)$ follows a multivariate gaussian distribution with a common covariance matrix $\Sigma$ for all $k$, i.e.</p>
+<p>$P(\mathbf{X}\vert Y_k)=\dfrac{1}{(2\pi)^{p/2}\vert\Sigma\vert^{1/2}}e^{-\frac{1}{2}(\mathbf{X}-\boldsymbol{\mu}_k)^T\Sigma^{-1}(\mathbf{X}-\boldsymbol{\mu}_k)}$.</p>
+<p>Then we can set the decision boundary as $\{\mathbf{X}:P(Y_k\vert\mathbf{X})=P(Y_l\vert\mathbf{X})\}=\{\mathbf{X}:P(\mathbf{X}\vert Y_k)\pi_k=P(\mathbf{X}\vert Y_l)\pi_l\}$ and this can be modified as</p>
+<p>$\left\{\mathbf{X}:P(\mathbf{X}\vert Y_k)\pi_k=P(\mathbf{X}\vert Y_l)\pi_l\right\} \\<br>
+\Leftrightarrow \left\{\mathbf{X}:\log{P(\mathbf{X}\vert Y_k)}+\log{\pi_k}=\log{P(\mathbf{X}\vert Y_l)}+\log{\pi_l}\right\} \\<br>
+\Leftrightarrow \left\{\mathbf{X}:\mathbf{X}^T\Sigma^{-1}\boldsymbol{\mu}_k-\dfrac{1}{2}\boldsymbol{\mu}_k^T\Sigma^{-1}\boldsymbol{\mu}_k+\log{\pi_k}=\mathbf{X}^T\Sigma^{-1}\boldsymbol{\mu}_l-\dfrac{1}{2}\boldsymbol{\mu}_l^T\Sigma^{-1}\boldsymbol{\mu}_l+\log{\pi_l}\right\} \\<br>
+\Leftrightarrow \left\{\mathbf{X}:\log{\dfrac{P(\mathbf{X}\vert Y_k)}{P(\mathbf{X}\vert Y_l)}}=\log{\dfrac{\pi_l}{\pi_k}}\right\} \\<br>
+\Leftrightarrow \left\{\mathbf{X}:-\dfrac{1}{2}(\boldsymbol{\mu}_k+\boldsymbol{\mu}_l)^T\Sigma^{-1}(\boldsymbol{\mu}_k-\boldsymbol{\mu}_l)+\mathbf{X}^T\Sigma^{-1}(\boldsymbol{\mu}_k-\boldsymbol{\mu}_l)=\log{\dfrac{\pi_l}{\pi_k}}\right\}$</p>
+<p>We call $\delta_k(\mathbf{X})=\mathbf{X}^T\Sigma^{-1}\boldsymbol{\mu}_k-\dfrac{1}{2}\boldsymbol{\mu}_k^T\Sigma^{-1}\boldsymbol{\mu}_k+\log{\pi_k}$ as a linear discriminant function and we will classify $\mathbf{X}$ to the class with the largest value of $\delta_k(\mathbf{X})$. However, we don&rsquo;t know the exact value of $\boldsymbol{\mu}_k$, $\Sigma$ and $\pi_k$, so we need to estimate them. Usually we estimate $\boldsymbol{\mu}_k$ as a sample mean vector $\bar{\mathbf{X}}_k$, $\Sigma$ as a covariance matrix $S$, and $\pi_k$ as $\dfrac{n_k}{n}$, where $n_k$ is the number of $k$th class observations. The masking problem with more than $3$ classes in linear regression can be avoided by using LDA.</p>
+<hr>
+<p><strong>Quadratic Discriminant Analysis</strong></p>
+<p>A similar method without the equality assumption of $\Sigma_k$ is called a quadratic discriminant analysis. Due to this weak assumption, the convenient cancellation in LDA does not occur in QDA. Similar to LDA, we can get a quadratic discriminant function as</p>
+<p>$\delta_k(\mathbf{X})=-\dfrac{1}{2}\log{\vert\Sigma_k\vert}-\dfrac{1}{2}(\mathbf{X}-\boldsymbol{\mu}_k)^T\Sigma_k^{-1}(\mathbf{X}-\boldsymbol{\mu}_k)+\log{\pi_k}$.</p>
+<hr>
+<p>We have to calculate the inverse of the covariance matrix for both methods and this can be simplified by using the eigenvalue decomposition of $\hat{\Sigma}_k$. Substituting $\hat{\Sigma}_k$ with $U_kD_kU_k^T$, we can obtain</p>
+<p>$\delta_k(\mathbf{X})=-\dfrac{1}{2}\sum_l\log{d_{kl}}-\dfrac{1}{2}[U_k^T(\mathbf{X}-\boldsymbol{\mu}_k)]^TD_k^{-1}[U_k^T(\mathbf{X}-\boldsymbol{\mu}_k)]+\log{\pi_k}$.</p>
+<p>Both techniques are quite useful despite the strict assumptions about gaussian distribution and equal covariance because the decision boundaries can be estimated with much lower variance than more exotic alternatives.</p>
+<hr>
+<p><strong>Regularized Discriminant Analysis</strong></p>
+<p>Regularized discriminant analysis is a compromise between LDA and QDA, which allows one to shrink the separate covariances of QDA toward a common covariance as in LDA. The regularized covariance matrices have the form</p>
+<p>$\hat{\Sigma}_k(\alpha)=\alpha\hat{\Sigma}_k+(1-\alpha)\hat{\Sigma}$,</p>
+<p>where $\hat{\Sigma}$ is the pooled covariance matrix as used in LDA. $\alpha$ can be selected by cross-validation.</p>
+<hr>
+<p><strong>Reference</strong></p>
+<ol>
+<li>Elements of Statistical Learning</li>
+</ol>
 <div class="edit-meta">
-Last updated on 4 Apr 2021
+Last updated on 5 Mar 2021
 
 
-<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Linear%20Discriminant%20Analysis/_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/regression-spline/myregressionspline/" title="MyRegressionSpline.py"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - MyRegressionSpline.py</a>
+<br>
+Published on 5 Mar 2021
+<br><a href="https://github.com/statkwon/blog/edit/master/content/ML/Linear%20Discriminant%20Analysis/_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="https://statkwon.github.io/ml/logistic-regression/mylogisticregression/" title="MyLogisticRegression.py"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - MyLogisticRegression.py</a>
 <a class="nav nav-next" href="https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/" title="MyLDA.py">Next - MyLDA.py <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -135,6 +166,14 @@ Last updated on 4 Apr 2021
   
 </li>
 
+<li class="parent active"><a href="https://statkwon.github.io/ml/linear-discriminant-analysis/">Discriminant Analysis</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/">MyLDA.py</a></li>
+</ul>
+  
+</li>
+
 <li class=""><a href="https://statkwon.github.io/ml/local-regression/">Local Regression</a>
   
 <ul class="sub-menu">
@@ -171,14 +210,6 @@ Last updated on 4 Apr 2021
   
 <ul class="sub-menu">
 <li class=""><a href="https://statkwon.github.io/ml/regression-spline/myregressionspline/">MyRegressionSpline.py</a></li>
-</ul>
-  
-</li>
-
-<li class="parent active"><a href="https://statkwon.github.io/ml/linear-discriminant-analysis/">Linear Discriminant Analysis</a>
-  
-<ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/linear-discriminant-analysis/mylda/">MyLDA.py</a></li>
 </ul>
   
 </li>
