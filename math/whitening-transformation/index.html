@@ -47,7 +47,7 @@ We want to find a linear transformation which transforms the covariance matrix o
 $\text{Cov}(\mathbf{Y})=\text{Cov}(W\mathbf{X})=W\text{Cov}(\mathbf{X})W^T=W\Sigma W^T=I_p \quad\Rightarrow\quad W^TW=\Sigma^{-1}$
 There are several ways to find $W$, but we will cover only for the ZCA whitening."><meta itemprop="datePublished" content="2021-03-05T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-03-05T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="171">
+<meta itemprop="wordCount" content="150">
 <meta itemprop="keywords" content="" /></head>
 <body><div class="container"><header>
 <h1>ML Lab</h1><span class="version">Version 1.0.0</span><a href="https://github.com/statkwon" class="github"><i class="fab fa-github"></i></a>
@@ -76,8 +76,7 @@ There are several ways to find $W$, but we will cover only for the ZCA whitening
 <p>$\Sigma=UDU^T=UD^{1/2}D^{1/2}U^T \quad\Rightarrow\quad \Sigma^{-1}=UD^{-1/2}D^{-1/2}U^T=W^TW$</p>
 <p>If we let $W=D^{-1/2}U^T$, this satisfies the all conditions above. Thus, if we multiply $D^{-1/2}U^T$ to a random vector $\mathbf{X}$, we can get a random vector $\mathbf{Y}$, whose covariance matrix is an identity matrix. This is called a whitening transformation or sphering transformation.</p>
 <p>$\mathbf{Y}=D^{-1/2}U^T\mathbf{X}$</p>
-<hr>
-<p>This can also be applied to a data matrix. Suppose $X$ is a data matrix with zero sample mean vector. We will transform the sample covariance matrix of $X$ to an identity matrix as before.</p>
+<p>We can think $U$ as a rotation matrix and $D$ as a scaling matrix.</p>
 <hr>
 <p><strong>Reference</strong></p>
 <ol>
