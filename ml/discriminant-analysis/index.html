@@ -72,18 +72,6 @@
 <p>$\hat{\delta}_k(\mathbf{X})=-\dfrac{1}{2}[U^T(\mathbf{X}-\bar{\mathbf{X}}_k)]^TD^{-1}[U^T(\mathbf{X}-\bar{\mathbf{X}}_k)]+\log{\pi_k}$.</p>
 <p>If we let $\mathbf{X}^*=D^{-1/2}U^T(\mathbf{X}-\bar{\mathbf{X}}_k)$, then this can be viewed as a whitening transformation for $\mathbf{X}-\bar{\mathbf{X}}_k$. Therefore, we can say that the LDA is a process to sphere the centered data respect to the common covariance estimate $\hat{\Sigma}$ and then classify $\mathbf{X}$ to the closes class centroid in the transformed space, modulo the effect of the class prior probabilities $\pi_k$.</p>
 <hr>
-<p><strong>Dimension Reduction Effect</strong></p>
-<p>Now we will think about the geometrical aspects. In this point of view, we can see that the LDA results in a huge decrease of a dimension of the input space.</p>
-<figure><img src="/fig12.jpeg" width="800"/>
-</figure>
-
-<figure><img src="/fig13.jpeg" width="300"/>
-</figure>
-
-<figure><img src="/fig14.jpeg" width="600"/>
-</figure>
-
-<hr>
 <p><strong>Quadratic Discriminant Analysis</strong></p>
 <p>A similar method without the equality assumption of $\Sigma_k$ is called a quadratic discriminant analysis. Due to this weak assumption, the convenient cancellation in LDA does not occur in QDA. Similar to LDA, we can get a quadratic discriminant function as</p>
 <p>$\delta_k(\mathbf{X})=-\dfrac{1}{2}\log{\vert\Sigma_k\vert}-\dfrac{1}{2}(\mathbf{X}-\boldsymbol{\mu}_k)^T\Sigma_k^{-1}(\mathbf{X}-\boldsymbol{\mu}_k)+\log{\pi_k}$.</p>
