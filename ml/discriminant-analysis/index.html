@@ -71,6 +71,16 @@
 <p>The computation for LDA, calculating the inverse of $\hat{\Sigma}$, can be simplified by using the eigenvalue decomposition of $\hat{\Sigma}$. Substituting $\hat{\Sigma}$ with $UDU^T$, we can obtain</p>
 <p>$\hat{\delta}_k(\mathbf{X})=-\dfrac{1}{2}[U^T(\mathbf{X}-\bar{\mathbf{X}}_k)]^TD^{-1}[U^T(\mathbf{X}-\bar{\mathbf{X}}_k)]+\log{\pi_k}$.</p>
 <p>If we let $\mathbf{X}^*=D^{-1/2}U^T(\mathbf{X}-\bar{\mathbf{X}}_k)$, then this can be viewed as a whitening transformation for $\mathbf{X}-\bar{\mathbf{X}}_k$. This makes the mahalonbis distance to be same as euclidean distance, because whitening transformation will get rid of the correlation between axes. Therefore, we can say that the LDA is a process to sphere the centered data respect to the common covariance estimate $\hat{\Sigma}$ and then classify $\mathbf{X}$ to the closes class centroid in the transformed space, modulo the effect of the class prior probabilities $\pi_k$.</p>
+<figure><img src="/fig12.jpeg" width="400"/>
+</figure>
+
+<p>Here comes an interesting fact that the $K$ centroids in $p$-dimensional input space always lie in an affine subspace of dimension equal to or less than $K-1$. Therefore when we get the distance between the data point and the centroids, we don&rsquo;t have to consider about the perpendicular distances. We might as well project the $\mathbf{X}^*$ onto this centroid-spanning subspace. This can be regarded as a dimension reduction at least from $p$ to $K-1$.</p>
+<hr>
+<p><strong>Reduced-Rank Linear Discriminant Analysis</strong></p>
+<figure><img src="/fig13.jpeg" width="400"/>
+</figure>
+
+<p>When the number of the centroids is much larger than $3$, the dimension reduction to $K-1$ is meaningless. In such a case, we can find an optimal dimension for LDA in some sense.</p>
 <hr>
 <p><strong>Quadratic Discriminant Analysis</strong></p>
 <p>A similar method without the equality assumption of $\Sigma_k$ is called a quadratic discriminant analysis. Due to this weak assumption, the convenient cancellation in LDA does not occur in QDA. Similar to LDA, we can get a quadratic discriminant function as</p>
@@ -80,8 +90,6 @@
 <p>Regularized discriminant analysis is a compromise between LDA and QDA, which allows one to shrink the separate covariances of QDA toward a common covariance as in LDA. The regularized covariance matrices have the form</p>
 <p>$\hat{\Sigma}_k(\alpha)=\alpha\hat{\Sigma}_k+(1-\alpha)\hat{\Sigma}$,</p>
 <p>where $\hat{\Sigma}$ is the pooled covariance matrix as used in LDA. $\alpha$ can be selected by cross-validation.</p>
-<hr>
-<p>Discriminant analysis techniques are quite useful despite the strict assumptions because the decision boundaries can be estimated with much lower variance than more exotic alternatives.</p>
 <hr>
 <p><strong>Reference</strong></p>
 <ol>
@@ -173,26 +181,10 @@ Published on 5 Mar 2021
   
 </li>
 
-<li class=""><a href="https://statkwon.github.io/ml/local-regression/">Local Regression</a>
+<li class=""><a href="https://statkwon.github.io/ml/regression-spline/">Regression Spline</a>
   
 <ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/local-regression/mylocalregression/">MyLocalRegression.py</a></li>
-</ul>
-  
-</li>
-
-<li class=""><a href="https://statkwon.github.io/ml/nadaraya-watson-kernel-regression/">Nadaraya-Watson Kernel Regression</a>
-  
-<ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/nadaraya-watson-kernel-regression/mynwkernelregression/">MyNWKernelRegression.py</a></li>
-</ul>
-  
-</li>
-
-<li class=""><a href="https://statkwon.github.io/ml/smoothing-spline/">Smoothing Spline</a>
-  
-<ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/smoothing-spline/mysmoothingspline/">MySmoothingSpline.py</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/regression-spline/myregressionspline/">MyRegressionSpline.py</a></li>
 </ul>
   
 </li>
@@ -205,10 +197,26 @@ Published on 5 Mar 2021
   
 </li>
 
-<li class=""><a href="https://statkwon.github.io/ml/regression-spline/">Regression Spline</a>
+<li class=""><a href="https://statkwon.github.io/ml/smoothing-spline/">Smoothing Spline</a>
   
 <ul class="sub-menu">
-<li class=""><a href="https://statkwon.github.io/ml/regression-spline/myregressionspline/">MyRegressionSpline.py</a></li>
+<li class=""><a href="https://statkwon.github.io/ml/smoothing-spline/mysmoothingspline/">MySmoothingSpline.py</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://statkwon.github.io/ml/nadaraya-watson-kernel-regression/">Nadaraya-Watson Kernel Regression</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/nadaraya-watson-kernel-regression/mynwkernelregression/">MyNWKernelRegression.py</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="https://statkwon.github.io/ml/local-regression/">Local Regression</a>
+  
+<ul class="sub-menu">
+<li class=""><a href="https://statkwon.github.io/ml/local-regression/mylocalregression/">MyLocalRegression.py</a></li>
 </ul>
   
 </li>
