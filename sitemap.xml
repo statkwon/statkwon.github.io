@@ -2,10 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>http://statkwon.github.io/about/</loc>
+    <lastmod>2023-06-11T10:53:03+09:00</lastmod>
   </url><url>
-    <loc>http://example.org/</loc>
+    <loc>http://statkwon.github.io/paper_review/attention_is_all_you_need/</loc>
+    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/</loc>
+    <loc>http://statkwon.github.io/categories/</loc>
+    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/</loc>
+    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/tags/nlp/</loc>
+    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/categories/paper-review/</loc>
+    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/paper_review/</loc>
+    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/tags/</loc>
+    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/tags/transformer/</loc>
+    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/paper_review/a_unified_approach_to_interpreting_model_predictions/</loc>
+    <lastmod>2022-04-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/tags/shap/</loc>
+    <lastmod>2022-04-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/tags/xai/</loc>
+    <lastmod>2022-04-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/paper_review/explaining_prediction_models_and_individual_predictions_with_feature_contributions/</loc>
+    <lastmod>2022-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/tags/shapley-sampling-value/</loc>
+    <lastmod>2022-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/paper_review/analysis_of_regression_in_game_theory_approach/</loc>
+    <lastmod>2022-03-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/tags/net-effect/</loc>
+    <lastmod>2022-03-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/tags/shapley-value/</loc>
+    <lastmod>2022-03-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/paper_review/why_should_i_trust_you_explaining_the_predictions_of_any_classifier/</loc>
+    <lastmod>2022-02-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/tags/lime/</loc>
+    <lastmod>2022-02-06T00:00:00+00:00</lastmod>
   </url>
 </urlset>

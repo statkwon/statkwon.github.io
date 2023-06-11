@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LIME on ML LAB</title>
+    <link>http://statkwon.github.io/tags/lime/</link>
+    <description>Recent content in LIME on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 06 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/lime/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>&#34;Why Should I Trust You?&#34; Explaining the Predictions of Any Classifier</title>
+      <link>http://statkwon.github.io/paper_review/why_should_i_trust_you_explaining_the_predictions_of_any_classifier/</link>
+      <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/paper_review/why_should_i_trust_you_explaining_the_predictions_of_any_classifier/</guid>
+      <description>Abstract 이 논문에서는 예측한 데이터 주변에서 해석 가능한 모형을 적합함으로써 임의의 Classifier의 예측 결과를 해석하는 방법(LIME)과 Submodular Optimization을 통해 대표적인 개별 데이터를 제시하는 방법을 제안한다.
+1. Introduction “사용자가 모형 자체나 개별 예측 결과를 믿지 않는다면, 그것을 사용하지 않을 것이다”
+모형을 의사 결정에 활용하는 경우(ex. 의료 진단, 테러 적발 등에 ML 모형을 사용하는 경우) 개별 예측 결과에 대한 신뢰 여부를 결정하는 것은 굉장히 중요한 문제이다. 즉, 개별 예측 결과에 대한 해석을 제공하는 것이 중요하다.</description>
+    </item>
+    
+  </channel>
+</rss>

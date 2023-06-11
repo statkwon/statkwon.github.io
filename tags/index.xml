@@ -1,10 +1,83 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on My New Hugo Site</title>
-    <link>http://example.org/tags/</link>
-    <description>Recent content in Tags on My New Hugo Site</description>
+    <title>Tags on ML LAB</title>
+    <link>http://statkwon.github.io/tags/</link>
+    <description>Recent content in Tags on ML LAB</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NLP</title>
+      <link>http://statkwon.github.io/tags/nlp/</link>
+      <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/tags/nlp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Transformer</title>
+      <link>http://statkwon.github.io/tags/transformer/</link>
+      <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/tags/transformer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SHAP</title>
+      <link>http://statkwon.github.io/tags/shap/</link>
+      <pubDate>Sat, 02 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/tags/shap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>XAI</title>
+      <link>http://statkwon.github.io/tags/xai/</link>
+      <pubDate>Sat, 02 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/tags/xai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shapley Sampling Value</title>
+      <link>http://statkwon.github.io/tags/shapley-sampling-value/</link>
+      <pubDate>Mon, 28 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/tags/shapley-sampling-value/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Net Effect</title>
+      <link>http://statkwon.github.io/tags/net-effect/</link>
+      <pubDate>Sun, 27 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/tags/net-effect/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shapley Value</title>
+      <link>http://statkwon.github.io/tags/shapley-value/</link>
+      <pubDate>Sun, 27 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/tags/shapley-value/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LIME</title>
+      <link>http://statkwon.github.io/tags/lime/</link>
+      <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/tags/lime/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

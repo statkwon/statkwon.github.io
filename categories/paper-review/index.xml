@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Paper Review on ML LAB</title>
+    <link>http://statkwon.github.io/categories/paper-review/</link>
+    <description>Recent content in Paper Review on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/categories/paper-review/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Attention Is All You Need</title>
+      <link>http://statkwon.github.io/paper_review/attention_is_all_you_need/</link>
+      <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/paper_review/attention_is_all_you_need/</guid>
+      <description>1. Introduction RNN 계열의 모형들은 Sequence Modeling에 큰 기여를 하였지만, Sequential한 구조로 인해 병렬 연산이 불가하여 Sequence의 길이가 길어질 수록 계산 효율성이 떨어진다는 단점을 가지고 있다. Attention Mechanism 역시 대부분의 경우 RNN 구조에 기반하기 때문에 이러한 문제로부터 자유로울 수 없다. 따라서 이 논문에서는 RNN 구조를 사용하지 않고, 오로지 Attention Mechanism으로만 구성된 Transformer라는 새로운 모형을 제안한다. Transformer는 RNN 구조를 사용하지 않기 때문에 병렬 연산이 가능하며, 번역 작업에 있어 기존의 방법론보다 짧은 시간 안에 SOTA를 달성할 수 있다.</description>
+    </item>
+    
+    <item>
+      <title>A Unified Approach to Interpreting Model Predictions</title>
+      <link>http://statkwon.github.io/paper_review/a_unified_approach_to_interpreting_model_predictions/</link>
+      <pubDate>Sat, 02 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/paper_review/a_unified_approach_to_interpreting_model_predictions/</guid>
+      <description>Abstract 최근 복잡한 머신러닝 모형의 예측 결과를 해석하기 위한 많은 방법들이 제안되었지만, 서로 어떠한 관련이 있는지, 어떠한 방법이 더 우세한지 등이 불분명한 상황이다. 이 논문에서는 이러한 문제를 해결하기 위해 SHAP(SHapley Additive exPlanations)이라는 통합 프레임워크를 제시한다. SHAP은 기존의 여러 방법들이 충족하지 못하던 몇 가지 바람직한 특성을 모두 만족한다는 장점을 갖는다.
+2. Additive Feature Attribution Methods 간단한 모형(ex. Linear Regression)에 대한 최고의 해석은 모형 그 자체이다. 하지만 복잡한 모형의 경우 모형을 곧바로 해석하는 것이 어려우므로, 기존 모형을 해석 가능한 모형으로 근사한 Explanation Model을 통해 해석하는 것이 일반적이다.</description>
+    </item>
+    
+    <item>
+      <title>Explaining Prediction Models and Individual Predictions with Feature Contributions</title>
+      <link>http://statkwon.github.io/paper_review/explaining_prediction_models_and_individual_predictions_with_feature_contributions/</link>
+      <pubDate>Mon, 28 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/paper_review/explaining_prediction_models_and_individual_predictions_with_feature_contributions/</guid>
+      <description>Abstract 이 논문에서는 어떠한 종류의 Classification 또는 Regression 모형에도 적용할 수 있는 모형 해석 방법에 대해 소개한다. 이 방법은 기존의 방법들과는 달리 가능한 모든 변수 조합을 살핌으로써 변수 간 상호작용을 고려할 수 있다는 장점을 갖는다.
+1. Introduction 변수 간 상호작용이 존재하지 않는 Additive Regression Model에서 모든 변수가 표준화된 경우, 회귀 계수를 통해 변수들의 Global Importance를 파악할 수 있다. 반면 단일 예측값에 대한 변수들의 기여도를 알고 싶은 경우에는 다음과 같은 식의 Situational Importance를 사용할 수 있다.</description>
+    </item>
+    
+    <item>
+      <title>Analysis of Regression in Game Theory Approach</title>
+      <link>http://statkwon.github.io/paper_review/analysis_of_regression_in_game_theory_approach/</link>
+      <pubDate>Sun, 27 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/paper_review/analysis_of_regression_in_game_theory_approach/</guid>
+      <description>Summary Multiple Regression에서 다중공선성이 존재할 경우, 변수들의 상대적 중요도를 파악하기 어렵다. 이 논문에서는 협동 게임 이론의 Shapley Value Imputation을 사용하여 다중공선성이 존재할 때도 일관적인 변수 중요도를 계산할 수 있는 방법을 소개하고 있다.
+1. Introduction Multicollinearity는 예측에 영향을 미치지는 않지만, 예측에 대한 변수들의 영향력을 판단할 때 방해가 된다.
+회귀 계수가 불안정하다. (주어진 데이터가 조금만 바뀌어도 회귀 계수가 크게 바뀐다.) Simple Regression과 Multiple Regression에서의 회귀 계수가 다른 방향의 부호를 가질 수 있다. 이론적으로 중요한 변수의 회귀 계수가 중요하지 않은 값을 가질 수 있다.</description>
+    </item>
+    
+    <item>
+      <title>&#34;Why Should I Trust You?&#34; Explaining the Predictions of Any Classifier</title>
+      <link>http://statkwon.github.io/paper_review/why_should_i_trust_you_explaining_the_predictions_of_any_classifier/</link>
+      <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/paper_review/why_should_i_trust_you_explaining_the_predictions_of_any_classifier/</guid>
+      <description>Abstract 이 논문에서는 예측한 데이터 주변에서 해석 가능한 모형을 적합함으로써 임의의 Classifier의 예측 결과를 해석하는 방법(LIME)과 Submodular Optimization을 통해 대표적인 개별 데이터를 제시하는 방법을 제안한다.
+1. Introduction “사용자가 모형 자체나 개별 예측 결과를 믿지 않는다면, 그것을 사용하지 않을 것이다”
+모형을 의사 결정에 활용하는 경우(ex. 의료 진단, 테러 적발 등에 ML 모형을 사용하는 경우) 개별 예측 결과에 대한 신뢰 여부를 결정하는 것은 굉장히 중요한 문제이다. 즉, 개별 예측 결과에 대한 해석을 제공하는 것이 중요하다.</description>
+    </item>
+    
+  </channel>
+</rss>
