@@ -66,6 +66,26 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/standardizing_and_whitening/" rel="bookmark">
+			Standardizing &amp; Whitening
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-07-16T00:00:00Z">2023-07-16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Random Vector 관점 Standardizing(Normalization)은 mean이 $\boldsymbol{\mu}$이고 covariance가 $\Sigma$인 분포를 따르는 random vector $\mathbf{X}$의 분포가 mean이 $\mathbf{0}$이고 각 feature의 variance가 $1$인 분포가 되도록 처리하는 것 → 각 feature 별 연산이므로 feature 간 covariance에는 영향이 없다.
+Whitening은 mean이 $\mathbf{0}$이고 covariance가 $\Sigma$인 분포를 따르는 random vector $\mathbf{X}$의 covariance가 identity matrix가 되도록 처리하는 것 → feature 간 covariance를 $0$으로 만들어 줄 수 있다.
+$\mathbf{Y}=W\mathbf{X}$일 때, $\text{Cov}(\mathbf{Y})=W\text{Cov}(\mathbf{X})W^T=W\Sigma W^T$
+$W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하도록 하면 된다.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/paper_review/attention_is_all_you_need/" rel="bookmark">
 			Attention Is All You Need
 			</a>
@@ -163,11 +183,11 @@
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/ml/standardizing_and_whitening/">Standardizing &amp; Whitening</a></li>
 			<li class="widget__item"><a class="widget__link" href="/paper_review/attention_is_all_you_need/">Attention Is All You Need</a></li>
 			<li class="widget__item"><a class="widget__link" href="/paper_review/a_unified_approach_to_interpreting_model_predictions/">A Unified Approach to Interpreting Model Predictions</a></li>
 			<li class="widget__item"><a class="widget__link" href="/paper_review/explaining_prediction_models_and_individual_predictions_with_feature_contributions/">Explaining Prediction Models and Individual Predictions with Feature Contributions</a></li>
 			<li class="widget__item"><a class="widget__link" href="/paper_review/analysis_of_regression_in_game_theory_approach/">Analysis of Regression in Game Theory Approach</a></li>
-			<li class="widget__item"><a class="widget__link" href="/paper_review/why_should_i_trust_you_explaining_the_predictions_of_any_classifier/">&#34;Why Should I Trust You?&#34; Explaining the Predictions of Any Classifier</a></li>
 		</ul>
 	</div>
 </div>
@@ -175,6 +195,8 @@
 	<h4 class="widget__title">Categories</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/ml/">ML</a></li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/paper-review/">Paper Review</a></li>
 		</ul>
@@ -190,6 +212,7 @@
 		<a class="widget-taglist__link widget__link btn" href="/tags/shapley-sampling-value/" title="Shapley Sampling Value">Shapley Sampling Value</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/shapley-value/" title="Shapley Value">Shapley Value</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/transformer/" title="Transformer">Transformer</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/whitening/" title="Whitening">Whitening</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xai/" title="XAI">XAI</a>
 	</div>
 </div>

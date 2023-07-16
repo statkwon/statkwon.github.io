@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Standardizing &amp; Whitening - ML LAB</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Standardizing &amp; Whitening" />
+<meta property="og:description" content="Random Vector 관점 Standardizing(Normalization)은 mean이 $\boldsymbol{\mu}$이고 covariance가 $\Sigma$인 분포를 따르는 random vector $\mathbf{X}$의 분포가 mean이 $\mathbf{0}$이고 각 feature의 variance가 $1$인 분포가 되도록 처리하는 것 → 각 feature 별 연산이므로 feature 간 covariance에는 영향이 없다.
+Whitening은 mean이 $\mathbf{0}$이고 covariance가 $\Sigma$인 분포를 따르는 random vector $\mathbf{X}$의 covariance가 identity matrix가 되도록 처리하는 것 → feature 간 covariance를 $0$으로 만들어 줄 수 있다.
+$\mathbf{Y}=W\mathbf{X}$일 때, $\text{Cov}(\mathbf{Y})=W\text{Cov}(\mathbf{X})W^T=W\Sigma W^T$
+$W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하도록 하면 된다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://statkwon.github.io/ml/standardizing_and_whitening/" /><meta property="article:section" content="ml" />
+<meta property="article:published_time" content="2023-07-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-07-16T00:00:00+00:00" />
+
+		<meta itemprop="name" content="Standardizing &amp; Whitening">
+<meta itemprop="description" content="Random Vector 관점 Standardizing(Normalization)은 mean이 $\boldsymbol{\mu}$이고 covariance가 $\Sigma$인 분포를 따르는 random vector $\mathbf{X}$의 분포가 mean이 $\mathbf{0}$이고 각 feature의 variance가 $1$인 분포가 되도록 처리하는 것 → 각 feature 별 연산이므로 feature 간 covariance에는 영향이 없다.
+Whitening은 mean이 $\mathbf{0}$이고 covariance가 $\Sigma$인 분포를 따르는 random vector $\mathbf{X}$의 covariance가 identity matrix가 되도록 처리하는 것 → feature 간 covariance를 $0$으로 만들어 줄 수 있다.
+$\mathbf{Y}=W\mathbf{X}$일 때, $\text{Cov}(\mathbf{Y})=W\text{Cov}(\mathbf{X})W^T=W\Sigma W^T$
+$W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하도록 하면 된다."><meta itemprop="datePublished" content="2023-07-16T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-07-16T00:00:00+00:00" />
+<meta itemprop="wordCount" content="148">
+<meta itemprop="keywords" content="Whitening," />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="ML LAB" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">ML LAB</div>
+					<div class="logo__tagline">To be a skillful ML engineer</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Standardizing &amp; Whitening</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-07-16T00:00:00Z">2023-07-16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#random-vector-관점">Random Vector 관점</a></li>
+    <li><a href="#sample-data-관점">Sample Data 관점</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<h2 id="random-vector-관점">Random Vector 관점</h2>
+<p>Standardizing(Normalization)은 mean이 $\boldsymbol{\mu}$이고 covariance가 $\Sigma$인 분포를 따르는 random vector $\mathbf{X}$의 분포가 mean이 $\mathbf{0}$이고 각 feature의 variance가 $1$인 분포가 되도록 처리하는 것 → 각 feature 별 연산이므로 feature 간 covariance에는 영향이 없다.</p>
+<p>Whitening은 mean이 $\mathbf{0}$이고 covariance가 $\Sigma$인 분포를 따르는 random vector $\mathbf{X}$의 covariance가 identity matrix가 되도록 처리하는 것 → feature 간 covariance를 $0$으로 만들어 줄 수 있다.</p>
+<p>$\mathbf{Y}=W\mathbf{X}$일 때, $\text{Cov}(\mathbf{Y})=W\text{Cov}(\mathbf{X})W^T=W\Sigma W^T$</p>
+<p>$W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하도록 하면 된다.</p>
+<p>$\Sigma$의 EVD를 통해 조건을 만족하는 $W$를 쉽게 찾을 수 있다. → $\Sigma=PDP^T$일 때, $W=D^{-1/2}P^T$</p>
+<p>$\mathbf{Y}=D^{-1/2}P^T\mathbf{X}$ (PCA Whitening)</p>
+<p>위 조건을 만족하는 $W$는 유일하지 않다. $W=PD^{-1/2}P^T$를 사용해도 된다.</p>
+<p>$\mathbf{Y}=PD^{-1/2}P^T\mathbf{X}$ (ZCA Whitening)</p>
+<h2 id="sample-data-관점">Sample Data 관점</h2>
+<p>Standardizing은 각 feature의 sample mean을 $0$, sample variance를 $1$이 되도록 처리하는 것 → 각 feature 별 연산이므로 feature 간 correlation에는 영향이 없음</p>
+<figure><img src="/ml/whitening1.png" width="800"/>
+</figure>
+
+<p>Whitening은 데이터의 sample covariance가 identity matrix가 되도록 처리하는 것 → feature 간 correlation을 $0$으로 만들어 줄 수 있다.</p>
+<p>$\text{Cov}(X)=PDP^T$일 때, $X_\text{whitened}=(D^{-1/2}V^TX^T)^T$</p>
+<figure><img src="/ml/whitening2.png" width="800"/>
+</figure>
+
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/whitening/" rel="tag">Whitening</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Me avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Me</span>
+	</div>
+	<div class="authorbox__description">
+		Data Scientist? Developer?
+	</div>
+</div>
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statkwon" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 STATKWON.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async>
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\[','\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: { equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "AMSsymbols.js"] }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Whitening on ML LAB</title>
+    <link>http://statkwon.github.io/tags/whitening/</link>
+    <description>Recent content in Whitening on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 16 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/whitening/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Standardizing &amp; Whitening</title>
+      <link>http://statkwon.github.io/ml/standardizing_and_whitening/</link>
+      <pubDate>Sun, 16 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/standardizing_and_whitening/</guid>
+      <description>Random Vector 관점 Standardizing(Normalization)은 mean이 $\boldsymbol{\mu}$이고 covariance가 $\Sigma$인 분포를 따르는 random vector $\mathbf{X}$의 분포가 mean이 $\mathbf{0}$이고 각 feature의 variance가 $1$인 분포가 되도록 처리하는 것 → 각 feature 별 연산이므로 feature 간 covariance에는 영향이 없다.
+Whitening은 mean이 $\mathbf{0}$이고 covariance가 $\Sigma$인 분포를 따르는 random vector $\mathbf{X}$의 covariance가 identity matrix가 되도록 처리하는 것 → feature 간 covariance를 $0$으로 만들어 줄 수 있다.
+$\mathbf{Y}=W\mathbf{X}$일 때, $\text{Cov}(\mathbf{Y})=W\text{Cov}(\mathbf{X})W^T=W\Sigma W^T$
+$W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하도록 하면 된다.</description>
+    </item>
+    
+  </channel>
+</rss>

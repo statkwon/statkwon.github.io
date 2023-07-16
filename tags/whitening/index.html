@@ -4,15 +4,15 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>LIME - ML LAB</title>
+	<title>Whitening - ML LAB</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-		<meta property="og:title" content="LIME" />
+		<meta property="og:title" content="Whitening" />
 <meta property="og:description" content="STATKWON&#39;s Personal blog about ML" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://statkwon.github.io/tags/lime/" />
+<meta property="og:url" content="http://statkwon.github.io/tags/whitening/" />
 
-		<meta itemprop="name" content="LIME">
+		<meta itemprop="name" content="Whitening">
 <meta itemprop="description" content="STATKWON&#39;s Personal blog about ML">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -21,7 +21,7 @@
 
 	<link rel="stylesheet" href="/css/style.css">
 	
-	<link rel="alternate" type="application/rss+xml" href="/tags/lime/index.xml" title="ML LAB">
+	<link rel="alternate" type="application/rss+xml" href="/tags/whitening/index.xml" title="ML LAB">
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
@@ -62,25 +62,26 @@
 			
 <main class="main list" role="main">
 	<header class="main__header">
-		<h1 class="main__title">LIME</h1>
+		<h1 class="main__title">Whitening</h1>
 	</header><article class="list__item post">
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
-			<a href="/paper_review/why_should_i_trust_you_explaining_the_predictions_of_any_classifier/" rel="bookmark">
-			&#34;Why Should I Trust You?&#34; Explaining the Predictions of Any Classifier
+			<a href="/ml/standardizing_and_whitening/" rel="bookmark">
+			Standardizing &amp; Whitening
 			</a>
 		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-02-06T00:00:00Z">2022-02-06</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/paper-review/" rel="category">Paper Review</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-07-16T00:00:00Z">2023-07-16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Abstract 이 논문에서는 예측한 데이터 주변에서 해석 가능한 모형을 적합함으로써 임의의 Classifier의 예측 결과를 해석하는 방법(LIME)과 Submodular Optimization을 통해 대표적인 개별 데이터를 제시하는 방법을 제안한다.
-1. Introduction “사용자가 모형 자체나 개별 예측 결과를 믿지 않는다면, 그것을 사용하지 않을 것이다”
-모형을 의사 결정에 활용하는 경우(ex. 의료 진단, 테러 적발 등에 ML 모형을 사용하는 경우) 개별 예측 결과에 대한 신뢰 여부를 결정하는 것은 굉장히 중요한 문제이다. 즉, 개별 예측 결과에 대한 해석을 제공하는 것이 중요하다.
+		Random Vector 관점 Standardizing(Normalization)은 mean이 $\boldsymbol{\mu}$이고 covariance가 $\Sigma$인 분포를 따르는 random vector $\mathbf{X}$의 분포가 mean이 $\mathbf{0}$이고 각 feature의 variance가 $1$인 분포가 되도록 처리하는 것 → 각 feature 별 연산이므로 feature 간 covariance에는 영향이 없다.
+Whitening은 mean이 $\mathbf{0}$이고 covariance가 $\Sigma$인 분포를 따르는 random vector $\mathbf{X}$의 covariance가 identity matrix가 되도록 처리하는 것 → feature 간 covariance를 $0$으로 만들어 줄 수 있다.
+$\mathbf{Y}=W\mathbf{X}$일 때, $\text{Cov}(\mathbf{Y})=W\text{Cov}(\mathbf{X})W^T=W\Sigma W^T$
+$W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하도록 하면 된다.
 	</div>
 </article>
 </main>
