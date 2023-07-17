@@ -66,6 +66,27 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/maximum_likelihood_estimation/" rel="bookmark">
+			Maximum Likelihood Estimation
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-07-17T00:00:00Z">2023-07-17</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		MLE는 통계학에서 모수를 추정하기 위한 방법 중 하나이다. 말 그대로 likelihood를 최대화하는 추정치를 사용하여 모수를 추정하는 방식이다.
+likelihood는 모수의 함수이다. 즉, $L(\theta)$는 데이터가 주어졌을 때 $f(x;\theta)$로부터 해당 데이터가 sampling 되었을 가능성을 의미한다.
+따라서 데이터 $x_1, \ldots, x_n$이 동일한 분포로부터 independently sampling 되었다면, $L(\theta)=\prod_{i=1}^nf(x_i;\theta)$가 된다.
+MLE는 다음과 같은 좋은 성질을 갖는다.
+consistency: $\hat{\theta}_n\overset{p}{\rightarrow}\theta$ asymptotic normality: $\sqrt{n}(\hat{\theta}_n-\theta)\overset{d}{\rightarrow}N(0, \theta^2)$ MLE의 분산은 Cramér-Rao lower bound와 근사적으로 같다. 
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/ml/monte-carlo_and_bootstrap/" rel="bookmark">
 			Monte-Carlo &amp; Bootstrap
 			</a>
@@ -205,11 +226,11 @@ $W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/ml/maximum_likelihood_estimation/">Maximum Likelihood Estimation</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/monte-carlo_and_bootstrap/">Monte-Carlo &amp; Bootstrap</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/standardizing_and_whitening/">Standardizing &amp; Whitening</a></li>
 			<li class="widget__item"><a class="widget__link" href="/paper_review/attention_is_all_you_need/">Attention Is All You Need</a></li>
 			<li class="widget__item"><a class="widget__link" href="/paper_review/a_unified_approach_to_interpreting_model_predictions/">A Unified Approach to Interpreting Model Predictions</a></li>
-			<li class="widget__item"><a class="widget__link" href="/paper_review/explaining_prediction_models_and_individual_predictions_with_feature_contributions/">Explaining Prediction Models and Individual Predictions with Feature Contributions</a></li>
 		</ul>
 	</div>
 </div>
@@ -228,7 +249,9 @@ $W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하�
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
 		<a class="widget-taglist__link widget__link btn" href="/tags/bootstrap/" title="Bootstrap">Bootstrap</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/likelihood/" title="Likelihood">Likelihood</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/lime/" title="LIME">LIME</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mle/" title="MLE">MLE</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/monte-carlo/" title="Monte-Carlo">Monte-Carlo</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/net-effect/" title="Net Effect">Net Effect</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nlp/" title="NLP">NLP</a>

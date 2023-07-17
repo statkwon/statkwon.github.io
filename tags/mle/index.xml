@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MLE on ML LAB</title>
+    <link>http://statkwon.github.io/tags/mle/</link>
+    <description>Recent content in MLE on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 17 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/mle/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Maximum Likelihood Estimation</title>
+      <link>http://statkwon.github.io/ml/maximum_likelihood_estimation/</link>
+      <pubDate>Mon, 17 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/maximum_likelihood_estimation/</guid>
+      <description>MLE는 통계학에서 모수를 추정하기 위한 방법 중 하나이다. 말 그대로 likelihood를 최대화하는 추정치를 사용하여 모수를 추정하는 방식이다.
+likelihood는 모수의 함수이다. 즉, $L(\theta)$는 데이터가 주어졌을 때 $f(x;\theta)$로부터 해당 데이터가 sampling 되었을 가능성을 의미한다.
+따라서 데이터 $x_1, \ldots, x_n$이 동일한 분포로부터 independently sampling 되었다면, $L(\theta)=\prod_{i=1}^nf(x_i;\theta)$가 된다.
+MLE는 다음과 같은 좋은 성질을 갖는다.
+consistency: $\hat{\theta}_n\overset{p}{\rightarrow}\theta$ asymptotic normality: $\sqrt{n}(\hat{\theta}_n-\theta)\overset{d}{\rightarrow}N(0, \theta^2)$ MLE의 분산은 Cramér-Rao lower bound와 근사적으로 같다. </description>
+    </item>
+    
+  </channel>
+</rss>

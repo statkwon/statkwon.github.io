@@ -4,15 +4,15 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Net Effect - ML LAB</title>
+	<title>MLE - ML LAB</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-		<meta property="og:title" content="Net Effect" />
+		<meta property="og:title" content="MLE" />
 <meta property="og:description" content="STATKWON&#39;s Personal blog about ML" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://statkwon.github.io/tags/net-effect/" />
+<meta property="og:url" content="http://statkwon.github.io/tags/mle/" />
 
-		<meta itemprop="name" content="Net Effect">
+		<meta itemprop="name" content="MLE">
 <meta itemprop="description" content="STATKWON&#39;s Personal blog about ML">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -21,7 +21,7 @@
 
 	<link rel="stylesheet" href="/css/style.css">
 	
-	<link rel="alternate" type="application/rss+xml" href="/tags/net-effect/index.xml" title="ML LAB">
+	<link rel="alternate" type="application/rss+xml" href="/tags/mle/index.xml" title="ML LAB">
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
@@ -62,25 +62,27 @@
 			
 <main class="main list" role="main">
 	<header class="main__header">
-		<h1 class="main__title">Net Effect</h1>
+		<h1 class="main__title">MLE</h1>
 	</header><article class="list__item post">
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
-			<a href="/paper_review/analysis_of_regression_in_game_theory_approach/" rel="bookmark">
-			Analysis of Regression in Game Theory Approach
+			<a href="/ml/maximum_likelihood_estimation/" rel="bookmark">
+			Maximum Likelihood Estimation
 			</a>
 		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-03-27T00:00:00Z">2022-03-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/paper-review/" rel="category">Paper Review</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-07-17T00:00:00Z">2023-07-17</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Summary Multiple Regression에서 다중공선성이 존재할 경우, 변수들의 상대적 중요도를 파악하기 어렵다. 이 논문에서는 협동 게임 이론의 Shapley Value Imputation을 사용하여 다중공선성이 존재할 때도 일관적인 변수 중요도를 계산할 수 있는 방법을 소개하고 있다.
-1. Introduction Multicollinearity는 예측에 영향을 미치지는 않지만, 예측에 대한 변수들의 영향력을 판단할 때 방해가 된다.
-회귀 계수가 불안정하다. (주어진 데이터가 조금만 바뀌어도 회귀 계수가 크게 바뀐다.) Simple Regression과 Multiple Regression에서의 회귀 계수가 다른 방향의 부호를 가질 수 있다. 이론적으로 중요한 변수의 회귀 계수가 중요하지 않은 값을 가질 수 있다.
+		MLE는 통계학에서 모수를 추정하기 위한 방법 중 하나이다. 말 그대로 likelihood를 최대화하는 추정치를 사용하여 모수를 추정하는 방식이다.
+likelihood는 모수의 함수이다. 즉, $L(\theta)$는 데이터가 주어졌을 때 $f(x;\theta)$로부터 해당 데이터가 sampling 되었을 가능성을 의미한다.
+따라서 데이터 $x_1, \ldots, x_n$이 동일한 분포로부터 independently sampling 되었다면, $L(\theta)=\prod_{i=1}^nf(x_i;\theta)$가 된다.
+MLE는 다음과 같은 좋은 성질을 갖는다.
+consistency: $\hat{\theta}_n\overset{p}{\rightarrow}\theta$ asymptotic normality: $\sqrt{n}(\hat{\theta}_n-\theta)\overset{d}{\rightarrow}N(0, \theta^2)$ MLE의 분산은 Cramér-Rao lower bound와 근사적으로 같다. 
 	</div>
 </article>
 </main>
