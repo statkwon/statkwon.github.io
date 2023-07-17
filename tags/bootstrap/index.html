@@ -4,15 +4,15 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Standardizing - ML LAB</title>
+	<title>Bootstrap - ML LAB</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-		<meta property="og:title" content="Standardizing" />
+		<meta property="og:title" content="Bootstrap" />
 <meta property="og:description" content="STATKWON&#39;s Personal blog about ML" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://statkwon.github.io/tags/standardizing/" />
+<meta property="og:url" content="http://statkwon.github.io/tags/bootstrap/" />
 
-		<meta itemprop="name" content="Standardizing">
+		<meta itemprop="name" content="Bootstrap">
 <meta itemprop="description" content="STATKWON&#39;s Personal blog about ML">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -21,7 +21,7 @@
 
 	<link rel="stylesheet" href="/css/style.css">
 	
-	<link rel="alternate" type="application/rss+xml" href="/tags/standardizing/index.xml" title="ML LAB">
+	<link rel="alternate" type="application/rss+xml" href="/tags/bootstrap/index.xml" title="ML LAB">
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
@@ -62,13 +62,13 @@
 			
 <main class="main list" role="main">
 	<header class="main__header">
-		<h1 class="main__title">Standardizing</h1>
+		<h1 class="main__title">Bootstrap</h1>
 	</header><article class="list__item post">
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
-			<a href="/ml/standardizing_and_whitening/" rel="bookmark">
-			Standardizing &amp; Whitening
+			<a href="/ml/monte-carlo_and_bootstrap/" rel="bookmark">
+			Monte-Carlo &amp; Bootstrap
 			</a>
 		</h2>
 		<div class="list__meta meta">
@@ -78,10 +78,12 @@
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Random Vector 관점 Standardizing(Normalization)은 mean이 $\boldsymbol{\mu}$이고 covariance가 $\Sigma$인 분포를 따르는 random vector $\mathbf{X}$의 분포가 mean이 $\mathbf{0}$이고 각 feature의 variance가 $1$인 분포가 되도록 처리하는 것 → 각 feature 별 연산이므로 feature 간 covariance에는 영향이 없다.
-Whitening은 mean이 $\mathbf{0}$이고 covariance가 $\Sigma$인 분포를 따르는 random vector $\mathbf{X}$의 covariance가 identity matrix가 되도록 처리하는 것 → feature 간 covariance를 $0$으로 만들어 줄 수 있다.
-$\mathbf{Y}=W\mathbf{X}$일 때, $\text{Cov}(\mathbf{Y})=W\text{Cov}(\mathbf{X})W^T=W\Sigma W^T$
-$W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하도록 하면 된다.
+		Monte-Carlo Method Monte-Carlo 방법은 random sampling을 통해 풀고자 하는 문제에 대한 numerical result를 얻는 방식이다.
+예를 들어, $X\sim\text{Unif}(2, 4)$일 때, $\mathbb{E}[X]$의 analytical한 해는 다음과 같다.
+$\displaystyle \mathbb{E}[X]=\int_2^4x\cdot\dfrac{1}{2}dx=3$
+만약 closed-form으로 해를 구할 수 없는 경우라면 $\text{Unif}(2, 4)$로부터의 random sampling을 통해 numerical한 해를 구할 수 있다.
+np.random.seed(0) X = np.random.uniform(2, 4, size=1000) np.mean(X) # 2.9918430687435653 Bootstrap Method Bootstrap은 데이터를 사용하여 sampling distribution을 근사하는 방식이다.
+Parametric Bootstrap은 데이터의 분포는 알지만 모수는 알지 못하는 경우 모수의 추정치를 사용하여 sampling distribution을 근사한다.
 	</div>
 </article>
 </main>
