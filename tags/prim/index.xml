@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PRIM on ML LAB</title>
+    <link>http://statkwon.github.io/tags/prim/</link>
+    <description>Recent content in PRIM on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 03 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/prim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PRIM</title>
+      <link>http://statkwon.github.io/ml/prim/</link>
+      <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/prim/</guid>
+      <description>Patient Rule Induction Method PRIM은 CART 알고리즘과 같이 Feature Space를 박스 형태의 영역들로 분할하는 알고리즘이다. 하지만 Binary Split을 사용하지는 않는다. CART 알고리즘이 Splitting과 Pruning의 두 가지 단계로 이루어졌듯이, PRIM 알고리즘은 Top-Down Peeling과 Bottom-Up Pasting의 두 가지 단계로 구분된다.
+Top-Down Peeling 모든 데이터가 한 박스 안에 담겨있다고 생각해보자. 박스의 한 면을 선택하고 전체 데이터 중 비율 $\alpha$ 만큼의 데이터가 제외될 때까지 선택된 면을 기준으로 박스의 크기를 줄인다. 이때 줄어든 박스에 속한 데이터의 반응변수의 평균을 최대화하는 것을 기준으로 면을 선택한다.</description>
+    </item>
+    
+  </channel>
+</rss>

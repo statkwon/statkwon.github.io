@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>QR-Decomposition on ML LAB</title>
+    <link>http://statkwon.github.io/tags/qr-decomposition/</link>
+    <description>Recent content in QR-Decomposition on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/qr-decomposition/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>QR-Decomposition</title>
+      <link>http://statkwon.github.io/ml/qr-decomposition/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/qr-decomposition/</guid>
+      <description>When column vectors of a matrix $A$ who has a full column rank are $\{\mathbf{w}_1, \mathbf{w}_2, \ldots, \mathbf{w}_k\}$, an orthonormal basis made through the Gram-Schmidt process are $\{\mathbf{q}_1, \mathbf{q}_2, \ldots, \mathbf{q}_k\}$. Here we can express $\mathbf{w}_i$ as below.
+$\begin{aligned} \mathbf{w}_1&amp;amp;=(\mathbf{w}_1\cdot\mathbf{q}_1)\mathbf{q}_1 \\ \mathbf{w}_2&amp;amp;=(\mathbf{w}_2\cdot\mathbf{q}_1)\mathbf{q}_1+(\mathbf{w}_2\cdot\mathbf{q}_2)\mathbf{q}_2 \\ \vdots \\ \mathbf{w}_k&amp;amp;=(\mathbf{w}_k\cdot\mathbf{q}_1)\mathbf{q}_1+(\mathbf{w}_k\cdot\mathbf{q}_2)\mathbf{q}_2+\cdots+(\mathbf{w}_k\cdot\mathbf{q}_k)\mathbf{q}_k \end{aligned}$
+Now we can write down this equations with the matrix multiplication.
+$\begin{bmatrix} \mathbf{w}_1 &amp;amp; \mathbf{w}_2 &amp;amp; \cdots &amp;amp; \mathbf{w}_k \end{bmatrix}=\begin{bmatrix} \mathbf{q}_1 &amp;amp; \mathbf{q}_2 &amp;amp; \cdots &amp;amp; \mathbf{q}_k \end{bmatrix}\begin{bmatrix} (\mathbf{w}_1\cdot\mathbf{q}_1) &amp;amp; (\mathbf{w}_2\cdot\mathbf{q}_1) &amp;amp; \cdots &amp;amp; (\mathbf{w}_k\cdot\mathbf{q}_1) \\ 0 &amp;amp; (\mathbf{w}_2\cdot\mathbf{q}_2) &amp;amp; \cdots &amp;amp; (\mathbf{w}_k\cdot\mathbf{q}_2) \\ \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\ 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; (\mathbf{w}_k\cdot\mathbf{q}_k) \end{bmatrix}$</description>
+    </item>
+    
+  </channel>
+</rss>

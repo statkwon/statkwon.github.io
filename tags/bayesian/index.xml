@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bayesian on ML LAB</title>
+    <link>http://statkwon.github.io/tags/bayesian/</link>
+    <description>Recent content in Bayesian on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/bayesian/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>One Parameter Models</title>
+      <link>http://statkwon.github.io/ml/one_parameter_models/</link>
+      <pubDate>Tue, 16 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/one_parameter_models/</guid>
+      <description>The Binomial Model Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution
+$Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다.
+이때 임의의 $\theta_a$와 $\theta_b$에 대한 Relative Probability를 계산하면
+$ \begin{align} \dfrac{p(\theta_a | y_1, \ldots, y_n)}{p(\theta_b | y_1, \ldots, y_n)}&amp;amp;=\dfrac{\theta_a^{\sum y_i}(1-\theta_a)^{n-\sum y_i} \times p(\theta_a)/p(y_1, \ldots, y_n)}{\theta_b^{\sum y_i}(1-\theta_b)^{n-\sum y_i} \times p(\theta_b)/p(y_1, \ldots, y_n)} \\ &amp;amp;=\left(\dfrac{\theta_a}{\theta_b}\right)^{\sum y_i}\left(\dfrac{1-\theta_a}{1-\theta_b}\right)^{n-\sum y_i}\dfrac{p(\theta_a)}{p(\theta_b)} \end{align}$
+가 된다. 여기서 $\theta_b$에 대한 $\theta_a$의 확률이 $\sum_{i=1}^n y_i$에 의해 $y_1, \ldots, y_n$에만 의존한다는 것을 알 수 있다.</description>
+    </item>
+    
+    <item>
+      <title>Bayesian Statistics</title>
+      <link>http://statkwon.github.io/ml/bayesian_statistics/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/bayesian_statistics/</guid>
+      <description>Introduction Bayesian Learning
+통계적 추론은 모집단의 일부를 통해 모집단의 일반적인 특성을 알아내기 위한 과정이다. 이때 대부분의 경우 모집단의 수치적 특성을 모수 $\theta$로 표현한다. 하지만 데이터가 주어지기 전까지, 모수 $\theta$의 값은 불확실하다. $y$라는 데이터셋이 주어진다면, 이러한 모수에 대한 불확실성을 줄여나갈 수 있다. Bayesian Inference는 이러한 불확실성의 변화를 측정하는 것에 목적이 있다.
+Sample Space $\mathcal{Y}$: 가능한 모든 데이터셋들의 집합
+Parameter Space $\Theta$: 가능한 모든 모수 값들의 집합
+Prior Distribution $p(\theta)$: $\theta$($\theta\in\Theta$)가 참값(모집단의 특성)이라는 믿음</description>
+    </item>
+    
+  </channel>
+</rss>

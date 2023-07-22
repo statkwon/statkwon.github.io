@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LDA on ML LAB</title>
+    <link>http://statkwon.github.io/tags/lda/</link>
+    <description>Recent content in LDA on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/lda/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LDA-Dimension Reduction</title>
+      <link>http://statkwon.github.io/ml/lda-dimension_reduction/</link>
+      <pubDate>Wed, 02 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/lda-dimension_reduction/</guid>
+      <description>LDA는 MLE를 사용하여 $\boldsymbol{\mu}_k$와 $\Sigma$를 추정하는데, 이러한 추정 방식은 High-Dimension에서 불안정하다는 문제를 갖는다. ($p/n\rightarrow\infty$인 경우 MLE의 Aymptotic Property가 보장되지 않는다.) 이러한 문제는 $p$차원의 데이터 $\mathbf{x}$를 보다 낮은 차원의 데이터 $\mathbf{z}$로 변환한 후 LDA를 적용함으로써 해결할 수 있다. 이러한 변환을 수행하는 가장 간단한 방법은 $l$($&amp;lt;\!\!&amp;lt;p$)차원의 Subspace에 데이터를 Projection 시키는 것이다. 이때 단순히 차원을 낮추는 것뿐만 아니라, Projection 이후 데이터를 가장 잘 분류할 수 있는 Subspace를 찾는 것이 합리적이다. 따라서 우리는 Projection 이후 범주 간 분산은 최대화하고, 범주 내 분산은 최소화하는 $\mathbb{R}^p$의 Subspace를 찾는 것을 목표로 한다.</description>
+    </item>
+    
+    <item>
+      <title>LDA-Classification</title>
+      <link>http://statkwon.github.io/ml/lda-classification/</link>
+      <pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/lda-classification/</guid>
+      <description>Linear Discriminant Analysis(이하 LDA)는 Multiclass 분류 문제를 해결하기 위해 고안된 모형이다. 이 글에서는 LDA의 메커니즘을 크게 두 가지 관점으로 나누어서 정리하고 있다.
+Perspecitve of Bayes Classifier LDA는 각 범주별 Posterior Probability를 추정하고, 해당 확률값이 가장 큰 범주로 데이터를 분류한다는 점에서 Bayes Classifier를 추정한 모형으로 볼 수 있다. 이때 LDA는 Posterior Probability를 직접적으로 추정하지 않고, Bayes&amp;rsquo; Rule을 사용하여 $f(Y_k\vert\mathbf{x})$와 $\text{P}(Y_k)$를 추정하는 방식을 사용한다.
+$\text{P}(Y_k\vert\mathbf{x})\approx f(\mathbf{x}\vert Y_k)\text{P}(Y_k)$
+지금부터 편의를 위해 $\text{P}(Y_k)$를 $\pi_k$로 표기하도록 하겠다.</description>
+    </item>
+    
+  </channel>
+</rss>

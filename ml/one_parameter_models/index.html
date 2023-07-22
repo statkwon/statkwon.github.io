@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>One Parameter Models - ML LAB</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="One Parameter Models" />
+<meta property="og:description" content="The Binomial Model Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution
+$Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다.
+이때 임의의 $\theta_a$와 $\theta_b$에 대한 Relative Probability를 계산하면
+$ \begin{align} \dfrac{p(\theta_a | y_1, \ldots, y_n)}{p(\theta_b | y_1, \ldots, y_n)}&amp;=\dfrac{\theta_a^{\sum y_i}(1-\theta_a)^{n-\sum y_i} \times p(\theta_a)/p(y_1, \ldots, y_n)}{\theta_b^{\sum y_i}(1-\theta_b)^{n-\sum y_i} \times p(\theta_b)/p(y_1, \ldots, y_n)} \\ &amp;=\left(\dfrac{\theta_a}{\theta_b}\right)^{\sum y_i}\left(\dfrac{1-\theta_a}{1-\theta_b}\right)^{n-\sum y_i}\dfrac{p(\theta_a)}{p(\theta_b)} \end{align}$
+가 된다. 여기서 $\theta_b$에 대한 $\theta_a$의 확률이 $\sum_{i=1}^n y_i$에 의해 $y_1, \ldots, y_n$에만 의존한다는 것을 알 수 있다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://statkwon.github.io/ml/one_parameter_models/" /><meta property="article:section" content="ml" />
+<meta property="article:published_time" content="2021-02-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-16T00:00:00+00:00" />
+
+		<meta itemprop="name" content="One Parameter Models">
+<meta itemprop="description" content="The Binomial Model Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution
+$Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다.
+이때 임의의 $\theta_a$와 $\theta_b$에 대한 Relative Probability를 계산하면
+$ \begin{align} \dfrac{p(\theta_a | y_1, \ldots, y_n)}{p(\theta_b | y_1, \ldots, y_n)}&amp;=\dfrac{\theta_a^{\sum y_i}(1-\theta_a)^{n-\sum y_i} \times p(\theta_a)/p(y_1, \ldots, y_n)}{\theta_b^{\sum y_i}(1-\theta_b)^{n-\sum y_i} \times p(\theta_b)/p(y_1, \ldots, y_n)} \\ &amp;=\left(\dfrac{\theta_a}{\theta_b}\right)^{\sum y_i}\left(\dfrac{1-\theta_a}{1-\theta_b}\right)^{n-\sum y_i}\dfrac{p(\theta_a)}{p(\theta_b)} \end{align}$
+가 된다. 여기서 $\theta_b$에 대한 $\theta_a$의 확률이 $\sum_{i=1}^n y_i$에 의해 $y_1, \ldots, y_n$에만 의존한다는 것을 알 수 있다."><meta itemprop="datePublished" content="2021-02-16T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-02-16T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1060">
+<meta itemprop="keywords" content="Bayesian," />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="ML LAB" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">ML LAB</div>
+					<div class="logo__tagline">To be a skillful ML engineer</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">One Parameter Models</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-02-16T00:00:00Z">2021-02-16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-binomial-model">The Binomial Model</a>
+      <ul>
+        <li><a href="#inference-for-exchangable-binary-data">Inference for Exchangable Binary Data</a></li>
+        <li><a href="#confidence-regions">Confidence Regions</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-poisson-model">The Poisson Model</a>
+      <ul>
+        <li><a href="#posterior-inference">Posterior Inference</a></li>
+      </ul>
+    </li>
+    <li><a href="#exponential-families-and-conjugate-priors">Exponential Families and Conjugate Priors</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<h2 id="the-binomial-model">The Binomial Model</h2>
+<h3 id="inference-for-exchangable-binary-data">Inference for Exchangable Binary Data</h3>
+<p><strong>Posterior Inference Under a Unifrom Prior Distribution</strong></p>
+<p>$Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다.</p>
+<p>이때 임의의 $\theta_a$와 $\theta_b$에 대한 Relative Probability를 계산하면</p>
+<p>$ \begin{align}
+\dfrac{p(\theta_a | y_1, \ldots, y_n)}{p(\theta_b | y_1, \ldots, y_n)}&amp;=\dfrac{\theta_a^{\sum y_i}(1-\theta_a)^{n-\sum y_i} \times p(\theta_a)/p(y_1, \ldots, y_n)}{\theta_b^{\sum y_i}(1-\theta_b)^{n-\sum y_i} \times p(\theta_b)/p(y_1, \ldots, y_n)}
+\\
+&amp;=\left(\dfrac{\theta_a}{\theta_b}\right)^{\sum y_i}\left(\dfrac{1-\theta_a}{1-\theta_b}\right)^{n-\sum y_i}\dfrac{p(\theta_a)}{p(\theta_b)}
+\end{align}$</p>
+<p>가 된다. 여기서 $\theta_b$에 대한 $\theta_a$의 확률이 $\sum_{i=1}^n y_i$에 의해 $y_1, \ldots, y_n$에만 의존한다는 것을 알 수 있다.</p>
+<p>$\text{Pr}(\theta \in A|Y_1=y_1, \ldots, Y_n=y_n)=\text{Pr}(\theta \in A|\sum_{i=1}^n Y_i=\sum_{i=1}^n y_i)$</p>
+<p>이는 곧 $\sum_{i=1}^n Y_i$가 주어진 데이터로부터 $\theta$에 대해 알 수 있는 모든 정보를 포함하고 있다는 것, 즉, $\sum_{i=1}^n Y_i$가 $\theta$와 $p(y_1, \ldots, y_n|\theta)$에 대한 Sufficient Statistic이라는 의미를 갖는다. 따라서 $p(y_1, \ldots, y_n|\theta)$ 대신 $p(y|\theta)$를 사용한다. 이때 $Y=\sum_{i=1}^n Y_i$는 $B(n, \theta)$의 Bionmial Distribution을 따른다.</p>
+<p>이렇게 Sampling Model이 Binomial Distribution을 따르는 경우에 Prior Distribution으로 Uniform한 분포를 사용하면, 다음과 같은 Posterior Distribution을 구할 수 있다.</p>
+<p>$\begin{align}
+p(\theta|y)&amp;=\dfrac{p(y|\theta)p(\theta)}{p(y)}
+\\
+&amp;=\dfrac{{n \choose y} \theta^y(1-\theta)^{n-y}p(\theta)}{p(y)}
+\\
+&amp;=c(y)\theta^y(1-\theta)^{n-y}p(\theta)
+\end{align}$</p>
+<p>이때 $p(\theta)=1$이므로 $p(\theta|y)$가 Distribution Function이라는 것을 이용하여 Normalizing Constant $c(y)$의 정확한 값을 계산할 수 있다.</p>
+<p>$\begin{align}
+1&amp;=\displaystyle \int_0^1c(y)\theta^y(1-\theta)^{n-y}d\theta
+\\
+&amp;=c(y)\displaystyle \int_0^1\theta^y(1-\theta)^{n-y}d\theta
+\\
+&amp;=c(y)\dfrac{\Gamma(y+1)\Gamma(n-y+1)}{\Gamma(n+2)}
+\end{align}$</p>
+<p>$\therefore c(y)=\dfrac{\Gamma(n+2)}{\Gamma(y+1)\Gamma(n-y+1)}$</p>
+<p>이를 위의 Posterior Distribution을 구하는 식에 대입하면,</p>
+<p>$\begin{align}
+p(\theta|y)&amp;=\dfrac{\Gamma(n+2)}{\Gamma(y+1)\Gamma(n-y+1)}\theta^y(1-\theta)^{n-y}
+\\
+&amp;=\dfrac{\Gamma(n+2)}{\Gamma(y+1)\Gamma(n-y+1)}\theta^{(y+1)-1}(1-\theta)^{(n-y+1)-1}
+\\
+&amp;=\text{beta}(y+1, n-y+1)
+\end{align}$</p>
+<p>$p(\theta|y)$가 Beta Distribution을 따르는 것을 알 수 있다.</p>
+<p><strong>Posterior Distributions Under Beta Prior Distributions</strong></p>
+<p>여기까지의 과정은 Prior Distribution이 Uniform하다는 것을 전제로 한다. 그런데 Unifrom Distribution $p(\theta)=1$, $\theta \in [0, 1]$은 사실 $(1, 1)$을 Parameter로 갖는 Beta Distribution으로 볼 수 있다.</p>
+<p>$p(\theta)=\dfrac{\Gamma(2)}{\Gamma(1)\Gamma(1)}\theta^{1-1}(1-\theta)^{1-1}=\dfrac{1}{1 \times 1}1 \times 1=1$</p>
+<p>이를 정리하면 $\theta \sim \text{beta}(1, 1)$이고 $Y|\theta \sim B(n, \theta)$인 경우, $\theta|Y \sim \text{beta}(1+y, 1+n-y)$가 된다. 즉, Posterior Distribution의 두 Parameter는 Prior Distribution의 두 Parameter에 각각 $y$와 $n-y$를 더한 것과 같다. 이는 Prior Distribution이 임의의 Parameter $(a, b)$를 갖는 Beta Distribution을 따르는 경우에도 성립한다.</p>
+<p>$\theta \sim \text{beta}(a, b)$이고 $Y|\theta \sim B(n, \theta)$인 상황을 가정하면,</p>
+<p>$\begin{align}
+p(\theta|y)&amp;=\dfrac{p(\theta)p(y|\theta)}{p(y)}
+\\
+&amp;=\dfrac{1}{p(y)}\times\dfrac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\theta^{a-1}(1-\theta)^{b-1} \times {n \choose y}\theta^y(1-\theta)^{n-y}
+\\
+&amp;=c(n, y, a, b) \times \theta^{a+y-1}(1-\theta)^{b+n-y-1}
+\end{align}$</p>
+<p>가 되고, 마찬가지로 $c(\cdot)$의 값을 구하여 대입하면 $p(\theta|y)$가 $\text{beta}(a+y, b+n-y)$를 따름을 확인할 수 있다. 이는 Prior Distribution의 두 Parameter $(a, b)$에 각각 $y$와 $n-y$를 더한 것과 같다.</p>
+<p><strong>Conjugacy</strong></p>
+<p>위와 같이 Prior Distribution $p(\theta)$와 Posterior Distribution $p(\theta|y)$가 동일한 분포를 따르게 하는 분포 $\mathcal{P}$를 Sampling Model $p(y|\theta)$에 대한 Conjugate이라고 한다. 이러한 Conjugate Prior를 사용하는 경우 Prior Information을 정확하게 나타내지는 못하지만, Posterior Distribution을 계산하는 과정을 보다 쉽게 만들 수 있다.</p>
+<p><strong>Combining Information</strong></p>
+<p>Posterior Distribution이 $\text{beta}(a+y, b+n-y)$를 따를 때 평균은 다음과 같다.</p>
+<p>$E[\theta|y]=\dfrac{a+y}{a+b+n}$</p>
+<p>위 식을 변형하면 Posterior Expectation이 Prior Expectation과 Sample Average의 가중 평균인 것을 확인할 수 있다.</p>
+<p>$\begin{align}
+E[\theta|y]&amp;=\dfrac{a+y}{a+b+n}
+\\
+&amp;=\dfrac{a+b}{a+b+n}\dfrac{a}{a+b}+\dfrac{n}{a+b+n}\dfrac{y}{n}
+\\
+&amp;=\dfrac{a+b}{a+b+n}\times\text{posterior expectation}+\dfrac{n}{a+b+n}\times\text{data average}
+\end{align}$</p>
+<p>이는 Sample Size $n$에 따라 데이터가 Posterior Information에 주는 영향력이 달라지는 직관적 구조를 따른다.</p>
+<p><strong>Prediction</strong></p>
+<p>Bayesian Inference의 중요한 기능 중 하나는 새로운 데이터에 대한 Predictive Distribution을 구할 수 있다는 점이다. 주어진 데이터 $y_1, \ldots, y_n$과 동일한 모집단에 속하는 새로운 데이터 $\tilde{Y} \in {0, 1}$에 대한 Predictive Distribution은 ${Y_1=y_1, \ldots, Y_n=y_n}$이 주어졌을 때 $\tilde{Y}$의 조건부 분포를 따른다.</p>
+<p>$\begin{align}
+\text{Pr}(\tilde{Y}=1|y_1, \ldots, y_n)&amp;=\displaystyle \int \text{Pr}(\tilde{Y}=1, \theta|y_1, \ldots, y_n)d\theta
+\\
+&amp;=\int \text{Pr}(\tilde{Y}=1|\theta, y_1, \ldots, y_n)p(\theta|y_1, \ldots, y_n)d\theta
+\\
+&amp;=\int \theta p(\theta|y_1, \ldots, y_n)d\theta
+\\
+&amp;=E[\theta|y_1, \ldots, y_n]=\dfrac{a+\sum_{i=1}^n y_i}{a+b+n}
+\\
+\text{Pr}(\tilde{Y}=0|y_1, \ldots, y_n)&amp;=1-E[\theta|y_1, \ldots, y_n]=\dfrac{b+\sum_{i=1}^n (1-y_i)}{a+b+n}
+\end{align}$</p>
+<p>위 식을 통해 Predictive Distribution은 Unknown Quantities의 영향을 받지 않고, Observed Data의 영향을 받는다는 사실을 확인 수 있다.</p>
+<h3 id="confidence-regions">Confidence Regions</h3>
+<p>빈도론적 관점에서 모수에 대한 신뢰 구간을 구하는 것처럼, Bayesian Methods에도 Bayesian Coverage라는 것이 존재한다.</p>
+<p>Confidence Interval: $\text{Pr}(l(Y)&lt;\theta&lt;u(Y)|\theta)=0.95$</p>
+<p>Bayesian Coverage: $\text{Pr}(l(y)&lt;\theta&lt;u(y)|Y=y)=0.95$</p>
+<p>빈도론적 관점에서의 신뢰 구간이 데이터를 관찰하기 전에 $\theta$를 포함할 확률이 $95$%인 구간을 의미한다면, Bayesian Coverage는 주어진 데이터에 기반하여 $\theta$의 참값의 위치에 대한 정보를 나타내는 것으로 생각할 수 있다.</p>
+<p>데이터 $Y=y$를 관찰한 후, 이를 신뢰 구간에 반영하면</p>
+<p>$\text{Pr}(l(y)&lt;\theta&lt;u(y)|\theta)=\begin{cases} 0 &amp; \text{if } \theta \not\in [l(y), u(y)] \\ 1 &amp; \text{if } \theta \in [l(y), u(y)] \end{cases}$</p>
+<p>와 같은 결과를 얻게 된다. 신뢰 구간은 이렇게 주어진 데이터에 대한 정보를 반영하지 못한다는 한계를 갖는다.</p>
+<p><strong>Highest Posterior Density (HPD) Region</strong></p>
+<p>Quantile-Based Interval과 같은 신뢰 구간을 사용하는 경우 구간 밖에 있는 $\theta$ 값들에 대한 확률이 구간 안보다 높은 경우가 발생한다. 이러한 점을 보완하기 위해 좀 더 엄격한 구간을 정의한 것이 HPD이다.</p>
+<blockquote>
+<p><strong>Definition</strong> <em>A $100 \times (1-\alpha)$% HPD region consists of a subset of the parameter space, $s(y) \subset \Theta$ such that</em></p>
+<ol>
+<li>$\text{Pr}(\theta \in s(y)|Y=y)=1-\alpha$</li>
+<li><em>If $\theta_a \in s(y)$, and $\theta_b \not \in s(y)$, then $p(\theta_a|Y=y)&gt;p(\theta_b|Y=y)$.</em></li>
+</ol>
+</blockquote>
+<p>HPD의 정의는 위와 같다. 하지만 이러한 정의보다 아래의 그래프를 통해 보다 직관적인 이해가 가능하다.</p>
+<h2 id="the-poisson-model">The Poisson Model</h2>
+<h3 id="posterior-inference">Posterior Inference</h3>
+<p>이번에는 $Y_1, \ldots, Y_n$이 평균이 $\theta$인 Poisson Distribution을 따르는 i.i.d. Random Variable이라고 하자. 이러한 경우 Sampling Model은 다음과 같다.</p>
+<p>$\begin{align}
+\text{Pr}(Y_1=y_1, \ldots, Y_n=y_n|\theta)&amp;=\prod_{i=1}^n p(y_i|\theta)
+\\
+&amp;=\prod_{i=1}^n \dfrac{1}{y_i!}\theta^{y_i}e^{-\theta}
+\\
+&amp;=c(y_1, \ldots, y_n)\theta^{\sum y_i}e^{-n\theta}
+\end{align}$</p>
+<p>3.1에서와 마찬가지로 임의의 $\theta_a$와 $\theta_b$에 대한 Relative Probability를 계산하면</p>
+<p>$\begin{align}
+\dfrac{p(\theta_a|y_1, \ldots, y_n)}{p(\theta_b|y_1, \ldots, y_n)}&amp;=\dfrac{c(y_1, \ldots, y_n)}{c(y_1, \ldots, y_n)}\dfrac{e^{-n\theta_a}}{e^{-n\theta_b}}\dfrac{\theta_a^{\sum y_i}}{\theta_b^{\sum y_i}}\dfrac{p(\theta_a)}{p(\theta_b)}
+\\
+&amp;=\dfrac{e^{-n\theta_a}}{e^{-n\theta_b}}\dfrac{\theta_a^{\sum y_i}}{\theta_b^{\sum y_i}}\dfrac{p(\theta_a)}{p(\theta_b)}
+\end{align}$</p>
+<p>가 된다. 여기서도 $\sum_{i=1}^n Y_i$가 Sufficient Statistic임을 확인할 수 있다. 이때 $\sum_{i=1}^n Y_i|\theta$는 $\text{Poisson}(n\theta)$를 따른다.</p>
+<p>이제 앞서 다룬 Conjugacy 개념을 활용하여 Poisson Sampling Model에 대한 Conjugate Prior를 구해보고자 한다.</p>
+<p>$\begin{align}
+p(\theta|y_1, \ldots, y_n) &amp;\propto p(\theta) \times p(y_1, \ldots, y_n|\theta)
+\\
+&amp;\propto p(\theta) \times \theta^{\sum y_i}e^{-n\theta}
+\end{align}$</p>
+<p>$\theta^{c_1}e^{-c_2\theta}$와 같은 구조를 갖는 분포로 Gamma Distribution이 있다. 따라서 Poisson Sampling Model에 대한 Conjugate Prior는 Gamma Distribution이 된다.</p>
+<p>따라서 우리는 $\theta \sim \text{Gamma}(a, b)$이고 $Y|\theta \sim \text{Poisson}(\theta)$에 대한 Posterior Distribution을 구해야 한다.</p>
+<p>$\begin{align}
+p(\theta|y_1, \ldots, y_n)&amp;=p(\theta) \times p(y_1, \ldots, y_n|\theta)/p(y_1, \ldots, y_n)
+\\
+&amp;=\{\theta^{a-1}e^{-b\theta}\} \times \{\theta^{\sum y_i}e^{-n\theta}\} \times c(y_1, \ldots, y_n, a, b)
+\\
+&amp;=\{\theta^{a+\sum y_i-1}e^{-(b+n)\theta}\} \times c(y_1, \ldots, y_n, a, b)
+\end{align}$</p>
+<p>$p(\theta|y)$가 Distribution Function이라는 것을 이용하여 Normalizing Constant를 계산하고 위 식에 대입하면 $p(\theta|y)$가 $\displaystyle \text{Gamma}(a+\sum_{i=1}^n Y_i, b+n)$를 따른다는 것을 알 수 있다.</p>
+<p>Posterior Expectation 역시 Binary Sampling Model의 경우와 마찬가지로 Prior Expectation과 Sample Average의 가중 평균의 형태를 갖는다.</p>
+<p>$\begin{align}
+E[\theta|y_1, \ldots, y_n]&amp;=\dfrac{a+\sum y_i}{b+n}
+\\
+&amp;=\dfrac{b}{b+n}\dfrac{a}{b}+\dfrac{n}{b+n}\dfrac{\sum y_i}{n}
+\end{align}$</p>
+<p>$\tilde{Y}$에 대한 Predictive Distribution을 구해보면</p>
+<p>$\begin{align}
+p(\tilde{y}|y_1, \ldots, y_n)&amp;=\displaystyle \int_0^\infty p(\tilde{y}|\theta, y_1, \ldots, y_n)p(\theta|y_1, \ldots, y_n)d\theta
+\\
+&amp;=\int p(\tilde{y}|\theta)p(\theta|y_1, \ldots, y_n)d\theta
+\\
+&amp;=\int \left\{\dfrac{1}{\tilde{y}!}e^{\tilde{y}}e^{-\theta}\right\}\left\{\dfrac{(b+n)^{a+\sum y_i}}{\Gamma(a+\sum y_i)}\theta^{a+\sum y_i-1}e^{-(b+n)\theta}\right\}d\theta
+\\
+&amp;=\dfrac{(b+n)^{a+\sum y_i}}{\Gamma(\tilde{y}+1)\Gamma(a+\sum y_i)}\int_0^\infty \theta^{a+\sum y_i+\tilde{y}-1}e^{-(b+n+1)\theta}d\theta
+\\
+&amp;=\dfrac{\Gamma(a+\sum y_i+\tilde{y})}{\Gamma(\tilde{y}+1)\Gamma(a+\sum y_i)}\left(\dfrac{b+n}{b+n+1}\right)^{a+\sum y_i}\left(\dfrac{1}{b+n+1}\right)^{\tilde{y}}
+\end{align}$</p>
+<p>가 된다. 이는 $(a+\sum y_i, b+n)$을 Parameter로 갖는 Negative Binomial Distribution에 해당한다. 세부적인 연산 과정은 Details를 눌러 확인할 수 있다.</p>
+
+
+<details>
+<summary>Details</summary>
+$1=\displaystyle \int_0^\infty \dfrac{b^a}{\Gamma(a)}\theta^{a-1}e^{-b\theta}d\theta, \quad \forall a, b>0$ <br>
+$\displaystyle \int_0^\infty \theta^{a-1}e^{-b\theta}d\theta=\dfrac{\Gamma(a)}{b^a}, \quad \forall a, b>0$ <br>
+$\displaystyle \int_0^\infty \theta^{a+\sum y_i+\tilde{y}}e^{-(b+n+1)\theta}d\theta=\dfrac{\Gamma(a+\sum y_i+\tilde{y})}{(b+n+1)^{a+\sum y_i+\tilde{y}}}$
+</details>
+
+
+<h2 id="exponential-families-and-conjugate-priors">Exponential Families and Conjugate Priors</h2>
+<p>Binomial Distribution과 Poisson Distribution은 모두 One-Parameter Exponential Family에 속한다. One-Parameter Exponential Family란 분포 함수가 $p(y|\phi)=h(y)c(\phi)e^{\phi t(y)}$의 형태로 표현될 수 있는 분포를 의미한다. 이때 $\phi$는 Unknown Parameter이고 $t(y)$는 Sufficient Statistic이다.</p>
+<hr>
+<p><strong>Reference</strong></p>
+<ol>
+<li>Hoff, P. D. (2009). A first course in Bayesian statistical methods (Vol. 580). New York: Springer.</li>
+</ol>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/bayesian/" rel="tag">Bayesian</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Me avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Me</span>
+	</div>
+	<div class="authorbox__description">
+		Data Scientist? Developer?
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/ml/curse_of_dimensionality/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Curse of Dimensionality</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/ml/qr-decomposition/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">QR-Decomposition</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statkwon" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 STATKWON.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async>
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\[','\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: { equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "AMSsymbols.js"] }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+</body>
+</html>

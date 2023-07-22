@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dimension on ML LAB</title>
+    <link>http://statkwon.github.io/tags/dimension/</link>
+    <description>Recent content in Dimension on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/dimension/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LDA-Dimension Reduction</title>
+      <link>http://statkwon.github.io/ml/lda-dimension_reduction/</link>
+      <pubDate>Wed, 02 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/lda-dimension_reduction/</guid>
+      <description>LDA는 MLE를 사용하여 $\boldsymbol{\mu}_k$와 $\Sigma$를 추정하는데, 이러한 추정 방식은 High-Dimension에서 불안정하다는 문제를 갖는다. ($p/n\rightarrow\infty$인 경우 MLE의 Aymptotic Property가 보장되지 않는다.) 이러한 문제는 $p$차원의 데이터 $\mathbf{x}$를 보다 낮은 차원의 데이터 $\mathbf{z}$로 변환한 후 LDA를 적용함으로써 해결할 수 있다. 이러한 변환을 수행하는 가장 간단한 방법은 $l$($&amp;lt;\!\!&amp;lt;p$)차원의 Subspace에 데이터를 Projection 시키는 것이다. 이때 단순히 차원을 낮추는 것뿐만 아니라, Projection 이후 데이터를 가장 잘 분류할 수 있는 Subspace를 찾는 것이 합리적이다. 따라서 우리는 Projection 이후 범주 간 분산은 최대화하고, 범주 내 분산은 최소화하는 $\mathbb{R}^p$의 Subspace를 찾는 것을 목표로 한다.</description>
+    </item>
+    
+    <item>
+      <title>Curse of Dimensionality</title>
+      <link>http://statkwon.github.io/ml/curse_of_dimensionality/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/curse_of_dimensionality/</guid>
+      <description>차원의 저주는 고차원의 Feature Space에서 데이터를 다룰 때 발생하는 현상들을 의미한다. 이 글에서는 차원의 저주의 대표적인 세 가지 현상에 대해 소개할 것이다.
+1. Feature Space의 차원이 높아질 수록 Neighborhood의 범위가 넓어진다.
+Feature Space가 $p$차원의 Unit Hypercube이고, 그 안에 데이터가 균등하게 분포되어있는 상황을 생각해보자. 우리는 Feature Space에 속한 임의의 데이터에 대해, 전체 데이터 중 비율 $r$을 차지하는 만큼의 데이터를 Neighborhood로 사용할 것이다. 이때 Feature Space가 Unit Hypercube이므로, Neighborhood의 한 모서리의 평균 길이는 $r^{1/p}$이 된다.</description>
+    </item>
+    
+  </channel>
+</rss>

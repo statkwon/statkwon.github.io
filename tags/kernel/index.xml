@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kernel on ML LAB</title>
+    <link>http://statkwon.github.io/tags/kernel/</link>
+    <description>Recent content in Kernel on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/kernel/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kernel Regression</title>
+      <link>http://statkwon.github.io/ml/kernel_regression/</link>
+      <pubDate>Wed, 17 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/kernel_regression/</guid>
+      <description>Kernel smoothing is a meomry-based method to add a flexibility in estimating the regression function by fitting a different but simple model seperately at each query point $x_0$ with only those observations close to the target point $x_0$. This localization is achieved via kernel $K_\lambda(\mathbf{X}_0, \mathbf{X})$, which assigns a weight to $\mathbf{X}$ based on its distance from $\mathbf{X}_0$.
+Kernel Functions $K_\lambda(\mathbf{X}_0, \mathbf{X})=D\left(\dfrac{d(\mathbf{X}_0, \mathbf{X})}{h_\lambda(\mathbf{X}_0)}\right)$
+Kernel function can be divided by three parts: distance function, width function, and weighting function.</description>
+    </item>
+    
+  </channel>
+</rss>

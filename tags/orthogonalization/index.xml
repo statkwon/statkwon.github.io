@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Orthogonalization on ML LAB</title>
+    <link>http://statkwon.github.io/tags/orthogonalization/</link>
+    <description>Recent content in Orthogonalization on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/orthogonalization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gram-Schmidt Process</title>
+      <link>http://statkwon.github.io/ml/gram-schmidt_process/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/gram-schmidt_process/</guid>
+      <description>Every nonzero subspaces in $R^n$ have its own prthonormal basis. Gram-Schmidt process is the process to change the basis of the nonzero subspace in $R^n$ to orthonormal basis. Now we will check the process to find the orthonormal basis of subspace $W$ in $R^n$ whose basis is $\{\mathbf{w}_1, \mathbf{w}_2, \ldots, \mathbf{w}_k\}$.
+If we let the first vector $\mathbf{w}_1$ as $\mathbf{v}_1$, then we can find $\mathbf{v}_2$, which is an orthogonal vector to $\mathbf{v}_1$.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>LDA-Classification - ML LAB</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="LDA-Classification" />
+<meta property="og:description" content="Linear Discriminant Analysis(이하 LDA)는 Multiclass 분류 문제를 해결하기 위해 고안된 모형이다. 이 글에서는 LDA의 메커니즘을 크게 두 가지 관점으로 나누어서 정리하고 있다.
+Perspecitve of Bayes Classifier LDA는 각 범주별 Posterior Probability를 추정하고, 해당 확률값이 가장 큰 범주로 데이터를 분류한다는 점에서 Bayes Classifier를 추정한 모형으로 볼 수 있다. 이때 LDA는 Posterior Probability를 직접적으로 추정하지 않고, Bayes&rsquo; Rule을 사용하여 $f(Y_k\vert\mathbf{x})$와 $\text{P}(Y_k)$를 추정하는 방식을 사용한다.
+$\text{P}(Y_k\vert\mathbf{x})\approx f(\mathbf{x}\vert Y_k)\text{P}(Y_k)$
+지금부터 편의를 위해 $\text{P}(Y_k)$를 $\pi_k$로 표기하도록 하겠다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://statkwon.github.io/ml/lda-classification/" /><meta property="article:section" content="ml" />
+<meta property="article:published_time" content="2021-03-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-03-05T00:00:00+00:00" />
+
+		<meta itemprop="name" content="LDA-Classification">
+<meta itemprop="description" content="Linear Discriminant Analysis(이하 LDA)는 Multiclass 분류 문제를 해결하기 위해 고안된 모형이다. 이 글에서는 LDA의 메커니즘을 크게 두 가지 관점으로 나누어서 정리하고 있다.
+Perspecitve of Bayes Classifier LDA는 각 범주별 Posterior Probability를 추정하고, 해당 확률값이 가장 큰 범주로 데이터를 분류한다는 점에서 Bayes Classifier를 추정한 모형으로 볼 수 있다. 이때 LDA는 Posterior Probability를 직접적으로 추정하지 않고, Bayes&rsquo; Rule을 사용하여 $f(Y_k\vert\mathbf{x})$와 $\text{P}(Y_k)$를 추정하는 방식을 사용한다.
+$\text{P}(Y_k\vert\mathbf{x})\approx f(\mathbf{x}\vert Y_k)\text{P}(Y_k)$
+지금부터 편의를 위해 $\text{P}(Y_k)$를 $\pi_k$로 표기하도록 하겠다."><meta itemprop="datePublished" content="2021-03-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-03-05T00:00:00+00:00" />
+<meta itemprop="wordCount" content="761">
+<meta itemprop="keywords" content="LDA," />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="ML LAB" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">ML LAB</div>
+					<div class="logo__tagline">To be a skillful ML engineer</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">LDA-Classification</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-03-05T00:00:00Z">2021-03-05</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#perspecitve-of-bayes-classifier">Perspecitve of Bayes Classifier</a></li>
+    <li><a href="#perspective-of-distance-between-data-and-centroid">Perspective of Distance between Data and Centroid</a></li>
+    <li><a href="#whitening-transformation-for-lda">Whitening Transformation for LDA</a></li>
+    <li><a href="#how-to-get-nonlinear-boundaries">How to Get Nonlinear Boundaries</a></li>
+    <li><a href="#python-code-for-lda">Python Code for LDA</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<p>Linear Discriminant Analysis(이하 LDA)는 Multiclass 분류 문제를 해결하기 위해 고안된 모형이다. 이 글에서는 LDA의 메커니즘을 크게 두 가지 관점으로 나누어서 정리하고 있다.</p>
+<h2 id="perspecitve-of-bayes-classifier">Perspecitve of Bayes Classifier</h2>
+<p>LDA는 각 범주별 Posterior Probability를 추정하고, 해당 확률값이 가장 큰 범주로 데이터를 분류한다는 점에서 Bayes Classifier를 추정한 모형으로 볼 수 있다. 이때 LDA는 Posterior Probability를 직접적으로 추정하지 않고, Bayes&rsquo; Rule을 사용하여 $f(Y_k\vert\mathbf{x})$와 $\text{P}(Y_k)$를 추정하는 방식을 사용한다.</p>
+<p>$\text{P}(Y_k\vert\mathbf{x})\approx f(\mathbf{x}\vert Y_k)\text{P}(Y_k)$</p>
+<p>지금부터 편의를 위해 $\text{P}(Y_k)$를 $\pi_k$로 표기하도록 하겠다. LDA는 $\mathbf{x}\vert Y_k$가 다변량 정규분포를 따르며, $k$값에 관계없이 각 분포의 공분산 행렬은 모두 $\Sigma$로 동일함을 가정한다.</p>
+<p>$\mathbf{x}\vert Y_k\sim N(\boldsymbol{\mu}_k, \Sigma) \quad\Rightarrow\quad f(\mathbf{x}\vert Y_k)=\dfrac{1}{(2\pi)^{p/2}\vert\Sigma\vert^{1/2}}e^{-\frac{1}{2}(\mathbf{x}-\boldsymbol{\mu}_k)^T\Sigma^{-1}(\mathbf{x}-\boldsymbol{\mu}_k)}$</p>
+<p>분류 경계선은 서로 다른 범주에 대한 Posterior Probability가 같은 지점에서 형성되므로, $\{\mathbf{x}:\text{P}(Y_k\vert\mathbf{x})=\text{P}(Y_l\vert\mathbf{x})\}$의 형태를 갖는다. 간단한 연산을 통해 분류 경계선의 식을 다음과 같이 변형할 수 있다.</p>
+<p>$\begin{aligned}
+&amp;\{\mathbf{x}:\text{P}(Y_k\vert\mathbf{x})=\text{P}(Y_l\vert\mathbf{x})\} \\
+&amp;\Leftrightarrow \{\mathbf{x}:f(\mathbf{x}\vert Y_k)\pi_k=f(\mathbf{x}\vert Y_l)\pi_l\} \\
+&amp;\Leftrightarrow \{\mathbf{x}:\log{f(\mathbf{x}\vert Y_k)}+\log{\pi_k}=\log{f(\mathbf{x}\vert Y_l)}+\log{\pi_l}\} \\
+&amp;\Leftrightarrow \left\{\mathbf{x}:-\dfrac{1}{2}(\mathbf{x}-\boldsymbol{\mu}_k)^T\Sigma^{-1}(\mathbf{x}-\boldsymbol{\mu}_k)+\log{\pi_k}=-\dfrac{1}{2}(\mathbf{x}-\boldsymbol{\mu}_l)^T\Sigma^{-1}(\mathbf{x}-\boldsymbol{\mu}_l)+\log{\pi_l}\right\} \\
+&amp;\Leftrightarrow \left\{\mathbf{x}:\mathbf{x}^T\Sigma^{-1}\boldsymbol{\mu}_k-\dfrac{1}{2}\boldsymbol{\mu}_k^T\Sigma^{-1}\boldsymbol{\mu}_k+\log{\pi_k}=\mathbf{x}^T\Sigma^{-1}\boldsymbol{\mu}_l-\dfrac{1}{2}\boldsymbol{\mu}_l^T\Sigma^{-1}\boldsymbol{\mu}_l+\log{\pi_l}\right\}
+\end{aligned}$</p>
+<p>마지막 줄의 $\delta_k(\mathbf{x})=\mathbf{x}^T\Sigma^{-1}\boldsymbol{\mu}_k-\dfrac{1}{2}\boldsymbol{\mu}_k^T\Sigma^{-1}\boldsymbol{\mu}_k+\log{\pi_k}$를 Discriminant Function이라고 부른다. 당연하게도, Posterior Probability가 가장 큰 범주로 데이터를 분류하는 것은 곧 $\delta_k(\mathbf{x})$의 값이 가장 큰 범주로 데이터를 분류하는 것과 같다.</p>
+<p>여기서 우리는 모수 $\boldsymbol{\mu}_k$, $\Sigma$, $\pi_k$의 값을 알지 못한다. 하지만 앞서 정규분포를 가정하였으므로, MLE를 사용하여 이 값들을 추정할 수 있다. 따라서 추정된 Discriminant Function을 $\hat{\delta}_k(\mathbf{x})=\mathbf{x}^T\hat{\Sigma}^{-1}\hat{\boldsymbol{\mu}}_k-\dfrac{1}{2}\hat{\boldsymbol{\mu}}_k^T\hat{\Sigma}^{-1}\hat{\boldsymbol{\mu}}_k+\log{\hat{\pi}_k}$로 나타낼 수 있다.</p>
+<h2 id="perspective-of-distance-between-data-and-centroid">Perspective of Distance between Data and Centroid</h2>
+<figure><img src="/ml/lda-cls1.png" width="300"/>
+</figure>
+
+<p>앞서 설정한 것과 동일한 가정 하에, 데이터와 각 분포의 중심 사이의 거리를 기준으로 그 거리가 가장 가까운 범주로 데이터를 분류하는 방식을 생각해볼 수 있다. 이때 거리를 측정하는 척도로 Mahalanobis 거리를 사용할 경우, 분류 경계선은 다음 식과 같이 각 중심과의 거리가 같은 지점에서 형성된다.</p>
+<p>$\left\{\mathbf{x}:\sqrt{(\mathbf{x}-\boldsymbol{\mu}_k)^T\Sigma^{-1}(\mathbf{x}-\boldsymbol{\mu}_k)}=\sqrt{(\mathbf{x}-\boldsymbol{\mu}_l)^T\Sigma^{-1}(\mathbf{x}-\boldsymbol{\mu}_l)}\right\}$</p>
+<p>물론 위 식은 각 범주에 속할 확률 $\pi_k$가 모두 동일한 경우에 해당한다. 설령 확률이 서로 같지 않더라도, 각각의 값에 비례하는 수치를 양변에 더해줌으로써 일반화할 수 있다. 이제 우리는 이 식과 &lsquo;Perspective of Bayes Classifier&rsquo;에서 구한 분류 경계선의 식을 비교함으로써, LDA가 데이터와 분포의 중심 사이의 거리에 기반한 분류 모형이라는 사실을 확인할 수 있다. 이는 분류하려는 데이터와 특정 범주의 분포 사이의 거리가 가까울 수록 해당 범주로 분류될 확률이 높아진다는 점에서 상당히 직관적인 방식이라고 할 수 있다.</p>
+<h2 id="whitening-transformation-for-lda">Whitening Transformation for LDA</h2>
+<p>주어진 데이터에 Whitening Transformation(또는 Sphering Transformation)을 적용함으로써 Discriminant Function을 추정하기 위환 계산 과정을 보다 간소화할 수 있다. $W^TW=\hat{\Sigma}^{-1}$를 만족하는 Whitening Matrix $W$를 구하는 방법은 여러가지지만, 이 글에서는 $\hat{\Sigma}$에 대한 Eigen Decomposition을 사용하여 $W$를 구하는 방법에 대해 다룬다.</p>
+<p>$\hat{\Sigma}=VDV^T=VD^{1/2}D^{1/2}V^T$</p>
+<p>위와 같은 식을 통해 $W=D^{-1/2}V^T$인 경우 $W^TW=\hat{\Sigma}^{-1}$를 만족함을 어렵지 않게 확인할 수 있다. 따라서 Data Matrix $X$에 $D^{-1/2}V^T$를 곱함으로써 해당 데이터가 Identity Matrix를 공분산 행렬로 갖는 분포로부터 생성된 것처럼 변형할 수 있다. 즉, Sphered된 Data Matrix를 $X^*=XD^{-1/2}V^T$로 나타낼 수 있다. $X^*$를 사용하여 추정한 Discriminant Function의 식은 다음과 같다.</p>
+<p>$\hat{\delta}_k(\mathbf{x}^*)={\mathbf{x}^*}^T\mathbf{x}^*-\dfrac{1}{2}{\hat{\boldsymbol{\mu}}_k^*}^T\hat{\boldsymbol{\mu}}_k^*+\log{\hat{\pi}_k}$</p>
+<p>기존의 식과 비교했을 때 공분산 행렬이 생략된 형태로 식이 보다 간소화되었음을 확인할 수 있다.</p>
+<p>또한 이러한 변환을 데이터와 분포 사이의 거리의 관점에서 생각해보면, 각 분포의 공분산 행렬이 Identity Matrix로 변환되는 것이므로 변형된 공간에서의 Mahalnobis 거리는 곧 Euclidean 거리와 일치함을 알 수 있다.</p>
+<p>(Whitening Transformation에 대한 자세한 설명이 필요한 경우 <a href="/ml/standardizing_and_whitening">이 글</a>을 참조)</p>
+<h2 id="how-to-get-nonlinear-boundaries">How to Get Nonlinear Boundaries</h2>
+<p>QDA, FDA, RDA</p>
+<h2 id="python-code-for-lda">Python Code for LDA</h2>
+<p>Github Link: <a href="https://github.com/statkwon/ML_Study/blob/master/Python_Code_for_LDA.ipynb">Python_Code_for_LDA.ipynb</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">import</span> warnings
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_class_means</span>(X, y):
+</span></span><span style="display:flex;"><span>    classes <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>unique(y)
+</span></span><span style="display:flex;"><span>    means <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([np<span style="color:#f92672">.</span>mean(X[y <span style="color:#f92672">==</span> i], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> classes])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> means
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_class_cov</span>(X, y, priors):
+</span></span><span style="display:flex;"><span>    _, p <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>shape
+</span></span><span style="display:flex;"><span>    classes <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>unique(y)
+</span></span><span style="display:flex;"><span>    n_classes <span style="color:#f92672">=</span> len(classes)
+</span></span><span style="display:flex;"><span>    cov <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((p, p))
+</span></span><span style="display:flex;"><span>    cov_ <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([np<span style="color:#f92672">.</span>cov(X[y <span style="color:#f92672">==</span> i], rowvar<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> classes])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n_classes):
+</span></span><span style="display:flex;"><span>        cov <span style="color:#f92672">+=</span> priors[i] <span style="color:#f92672">*</span> cov_[i]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> cov
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">softmax</span>(X):
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>copy(X)
+</span></span><span style="display:flex;"><span>    max_prob <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>max(X, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>reshape((<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">-=</span> max_prob
+</span></span><span style="display:flex;"><span>    np<span style="color:#f92672">.</span>exp(X, X)
+</span></span><span style="display:flex;"><span>    sum_prob <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sum(X, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>reshape((<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">/=</span> sum_prob
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> X
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LinearDiscriminantAnalysis</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;My Linear Discriminant Analysis&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, priors<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>priors <span style="color:#f92672">=</span> priors
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_solve</span>(self, X, y):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>means_ <span style="color:#f92672">=</span> _class_means(X, y)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>covariance_ <span style="color:#f92672">=</span> _class_cov(X, y, self<span style="color:#f92672">.</span>priors_)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>coef_ <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>means_<span style="color:#f92672">.</span>dot(np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>inv(self<span style="color:#f92672">.</span>covariance_))
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>intercept_ <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>diag(self<span style="color:#f92672">.</span>means_<span style="color:#f92672">.</span>dot(self<span style="color:#f92672">.</span>coef_<span style="color:#f92672">.</span>T)) <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>log(self<span style="color:#f92672">.</span>priors_)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fit</span>(self, X, y):
+</span></span><span style="display:flex;"><span>        X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(X) ; y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(y)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>classes_ <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>unique(y)
+</span></span><span style="display:flex;"><span>        n_samples, _ <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>shape
+</span></span><span style="display:flex;"><span>        n_classes <span style="color:#f92672">=</span> len(self<span style="color:#f92672">.</span>classes_)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> n_samples <span style="color:#f92672">==</span> n_classes:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#39;데이터의 개수는 범주의 개수보다 많아야합니다.&#39;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>priors <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>priors_ <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([sum(y <span style="color:#f92672">==</span> i) <span style="color:#f92672">/</span> len(y) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>classes_])
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>priors_ <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(self<span style="color:#f92672">.</span>priors)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> any(self<span style="color:#f92672">.</span>priors_ <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#39;사전 확률은 0보다 커야합니다.&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> np<span style="color:#f92672">.</span>isclose(sum(self<span style="color:#f92672">.</span>priors_), <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>            warnings<span style="color:#f92672">.</span>warn(<span style="color:#e6db74">&#39;사전 확률의 합이 1이 아닙니다. 값을 재조정합니다&#39;</span>, <span style="color:#a6e22e">UserWarning</span>)
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>priors_ <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>priors_ <span style="color:#f92672">/</span> sum(self<span style="color:#f92672">.</span>priors_)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_solve(X, y)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decision_function</span>(self, X):
+</span></span><span style="display:flex;"><span>        X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(X)
+</span></span><span style="display:flex;"><span>        scores <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>dot(self<span style="color:#f92672">.</span>coef_<span style="color:#f92672">.</span>T) <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>intercept_
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> scores<span style="color:#f92672">.</span>ravel() <span style="color:#66d9ef">if</span> scores<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">else</span> scores
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict</span>(self, X):
+</span></span><span style="display:flex;"><span>        decision <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>decision_function(X)
+</span></span><span style="display:flex;"><span>        y_pred <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>classes_<span style="color:#f92672">.</span>take(decision<span style="color:#f92672">.</span>argmax(<span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> y_pred
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict_proba</span>(self, X):
+</span></span><span style="display:flex;"><span>        decision <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>decision_function(X)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> softmax(decision)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict_log_proba</span>(self, X):
+</span></span><span style="display:flex;"><span>        prediction <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>predict_proba(X)
+</span></span><span style="display:flex;"><span>        prediction[prediction <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>] <span style="color:#f92672">+=</span> np<span style="color:#f92672">.</span>finfo(prediction<span style="color:#f92672">.</span>dtype)<span style="color:#f92672">.</span>tiny
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>log(prediction)
+</span></span></code></pre></div><hr>
+<p><strong>Reference</strong></p>
+<ol>
+<li>Hastie, T., Tibshirani, R., Friedman, J. H., &amp; Friedman, J. H. (2009). The elements of statistical learning: data mining, inference, and prediction (Vol. 2, pp. 1-758). New York: springer.</li>
+<li><a href="https://en.wikipedia.org/wiki/Mahalanobis_distance">https://en.wikipedia.org/wiki/Mahalanobis_distance</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Whitening_transformation">https://en.wikipedia.org/wiki/Whitening_transformation</a></li>
+</ol>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/lda/" rel="tag">LDA</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Me avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Me</span>
+	</div>
+	<div class="authorbox__description">
+		Data Scientist? Developer?
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/ml/logistic_regression/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Logistic Regression</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/ml/regression_spline/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">Regression Spline</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statkwon" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 STATKWON.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async>
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\[','\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: { equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "AMSsymbols.js"] }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+</body>
+</html>

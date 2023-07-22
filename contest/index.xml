@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Contests on ML LAB</title>
+    <link>http://statkwon.github.io/contest/</link>
+    <description>Recent content in Contests on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 16 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/contest/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>디지털 경제 기반 지역경제 활성화를 위한 비즈니스 아이디어 및 PoC 결과 제시</title>
+      <link>http://statkwon.github.io/contest/bigcon_kdx/</link>
+      <pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/contest/bigcon_kdx/</guid>
+      <description>1. 대회 주제 및 목적 조선업에 대한 의존도가 높았던 군산은 조선업의 쇠퇴를 기점으로 많은 어려움을 겪고 있다. 뿐만 아니라 코로나 바이러스까지 지역 상권의 붕괴를 가속화하며 소상공인들의 기본적인 생계마저 위협받는 상황에 놓여 있다. 상인들은 배달음식 전문점 등 비대면 서비스로의 업종 전환 또는 기술 훈련을 통한 재창업을 시도하고 있지만 유사한 상황에서의 성공 사례 및 정보 부족으로 인해 아직까지 적절한 해결책을 찾지 못하고 있다.
+2021 빅콘테스트 이노베이션분야 지역활성화부문에서는 이러한 상황에 대하여 군산, 그리고 군산과 유사한 특성을 가진 목포, 통영의 다양한 유통 및 소비 데이터를 활용하여 지역 상권 소생을 위한 비즈니스 아이디어를 제안하는 것을 목표로 하였다.</description>
+    </item>
+    
+    <item>
+      <title>한국토지주택공사 주차수요 예측 AI 경진대회</title>
+      <link>http://statkwon.github.io/contest/dacon_lh/</link>
+      <pubDate>Wed, 27 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/contest/dacon_lh/</guid>
+      <description>1. 대회 주제 및 목적 아파트 단지 내 주차대수는 법정주차대수와 장래주차수요 중 큰 값에 따라 결정하는 것이 원칙이다. 따라서 불필요한 공간 소요를 줄이기 위해서는 장래주차수요를 정확하게 추정하는 것이 중요하다. 현재 단지 내 장래주차수요는 주차원단위와 건축연면적을 활용하는 Rule-Based 방식을 통해 산출되고 있다. 하지만 이러한 방식은 인력 조사로 인한 오차 발생, 현장 조사 시점과 실제 건축 시점 사이의 시간차 등의 문제로 인해 장래주차수요가 과대 또는 과소 추정될 수 있다는 한계점을 가지고 있다.</description>
+    </item>
+    
+    <item>
+      <title>NH투자증권 Y&amp;Z 투자자 프로파일링 시각화 경진대회</title>
+      <link>http://statkwon.github.io/contest/dacon_nh/</link>
+      <pubDate>Fri, 26 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/contest/dacon_nh/</guid>
+      <description>1. 대회 주제 및 목적 코로나 바이러스 창궐 이후 저금리/저성장으로 인해 투자 자산에 대한 관심도가 급증하고 있으며, 그 중심에는 MZ세대가 존재한다. 위 그래프에서 확인할 수 있듯이, NH투자증권 신규 가입 고객의 약 60%가 MZ에 해당한다. 이러한 흐름에 따라 각 증권사에서는 대규모로 유입되고 있는 MZ세대를 장기 고객으로 유치하기 위한 방안을 물색하고 있다.
+이에 NH투자증권 Y&amp;amp;Z 투자자 프로파일링 시각화 경진대회에서는 투자자들의 거래 내역에 관한 데이터로부터 MZ세대의 특성을 추출하고, 해당 특성을 바탕으로 MZ세대에 대한 특화 서비스를 제안하는 것을 목표로 하였다.</description>
+    </item>
+    
+  </channel>
+</rss>

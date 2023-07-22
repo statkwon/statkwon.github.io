@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tree on ML LAB</title>
+    <link>http://statkwon.github.io/tags/tree/</link>
+    <description>Recent content in Tree on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/tree/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Decision Trees</title>
+      <link>http://statkwon.github.io/ml/decision_tree/</link>
+      <pubDate>Sun, 02 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/decision_tree/</guid>
+      <description>의사결정나무는 Feature Space를 여러 개의 영역으로 분할한 후, 각 영역의 종속변수를 어떤 상수나 범주로 예측하는 알고리즘이다. 이때 영역을 분할하는 방법으로 Recursive Binary Split을 사용한다. 의사결정나무와 관련된 여러 알고리즘이 있지만, 이 글에서는 그 중 가장 유명한 CART(Classification and Regression Tree) 알고리즘만을 다룰 것이다.
+Regression Trees Squared Error Loss를 기준으로 하는 경우, Regression Tree의 식을 다음과 같이 표현할 수 있다.
+$\displaystyle f(\mathbf{x})=\sum_{m=1}^Mc_mI(\mathbf{x}\in R_m)$, where $\hat{c}_m=\text{ave}(y_i\vert\mathbf{x}_i\in R_m)$
+즉, Feature Space를 $M$개의 영역으로 나누고, 각 영역의 반응변수를 해당 영역에 속한 $y$값들의 평균으로 예측한다.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>LDA-Dimension Reduction - ML LAB</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="LDA-Dimension Reduction" />
+<meta property="og:description" content="LDA는 MLE를 사용하여 $\boldsymbol{\mu}_k$와 $\Sigma$를 추정하는데, 이러한 추정 방식은 High-Dimension에서 불안정하다는 문제를 갖는다. ($p/n\rightarrow\infty$인 경우 MLE의 Aymptotic Property가 보장되지 않는다.) 이러한 문제는 $p$차원의 데이터 $\mathbf{x}$를 보다 낮은 차원의 데이터 $\mathbf{z}$로 변환한 후 LDA를 적용함으로써 해결할 수 있다. 이러한 변환을 수행하는 가장 간단한 방법은 $l$($&lt;\!\!&lt;p$)차원의 Subspace에 데이터를 Projection 시키는 것이다. 이때 단순히 차원을 낮추는 것뿐만 아니라, Projection 이후 데이터를 가장 잘 분류할 수 있는 Subspace를 찾는 것이 합리적이다. 따라서 우리는 Projection 이후 범주 간 분산은 최대화하고, 범주 내 분산은 최소화하는 $\mathbb{R}^p$의 Subspace를 찾는 것을 목표로 한다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://statkwon.github.io/ml/lda-dimension_reduction/" /><meta property="article:section" content="ml" />
+<meta property="article:published_time" content="2022-02-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-02T00:00:00+00:00" />
+
+		<meta itemprop="name" content="LDA-Dimension Reduction">
+<meta itemprop="description" content="LDA는 MLE를 사용하여 $\boldsymbol{\mu}_k$와 $\Sigma$를 추정하는데, 이러한 추정 방식은 High-Dimension에서 불안정하다는 문제를 갖는다. ($p/n\rightarrow\infty$인 경우 MLE의 Aymptotic Property가 보장되지 않는다.) 이러한 문제는 $p$차원의 데이터 $\mathbf{x}$를 보다 낮은 차원의 데이터 $\mathbf{z}$로 변환한 후 LDA를 적용함으로써 해결할 수 있다. 이러한 변환을 수행하는 가장 간단한 방법은 $l$($&lt;\!\!&lt;p$)차원의 Subspace에 데이터를 Projection 시키는 것이다. 이때 단순히 차원을 낮추는 것뿐만 아니라, Projection 이후 데이터를 가장 잘 분류할 수 있는 Subspace를 찾는 것이 합리적이다. 따라서 우리는 Projection 이후 범주 간 분산은 최대화하고, 범주 내 분산은 최소화하는 $\mathbb{R}^p$의 Subspace를 찾는 것을 목표로 한다."><meta itemprop="datePublished" content="2022-02-02T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-02-02T00:00:00+00:00" />
+<meta itemprop="wordCount" content="434">
+<meta itemprop="keywords" content="LDA,Dimension," />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="ML LAB" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">ML LAB</div>
+					<div class="logo__tagline">To be a skillful ML engineer</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">LDA-Dimension Reduction</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-02-02T00:00:00Z">2022-02-02</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#two-class-casefishers-lda">Two-Class Case(Fisher&rsquo;s LDA)</a></li>
+    <li><a href="#multi-class-case">Multi-Class Case</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<p>LDA는 MLE를 사용하여 $\boldsymbol{\mu}_k$와 $\Sigma$를 추정하는데, 이러한 추정 방식은 High-Dimension에서 불안정하다는 문제를 갖는다. ($p/n\rightarrow\infty$인 경우 MLE의 Aymptotic Property가 보장되지 않는다.) 이러한 문제는 $p$차원의 데이터 $\mathbf{x}$를 보다 낮은 차원의 데이터 $\mathbf{z}$로 변환한 후 LDA를 적용함으로써 해결할 수 있다. 이러한 변환을 수행하는 가장 간단한 방법은 $l$($&lt;\!\!&lt;p$)차원의 Subspace에 데이터를 Projection 시키는 것이다. 이때 단순히 차원을 낮추는 것뿐만 아니라, Projection 이후 데이터를 가장 잘 분류할 수 있는 Subspace를 찾는 것이 합리적이다. 따라서 우리는 Projection 이후 범주 간 분산은 최대화하고, 범주 내 분산은 최소화하는 $\mathbb{R}^p$의 Subspace를 찾는 것을 목표로 한다.</p>
+<h2 id="two-class-casefishers-lda">Two-Class Case(Fisher&rsquo;s LDA)</h2>
+<p>Binary Classification의 경우, Fisher가 제안한 방식을 통해 최적의 Subspace를 찾을 수 있다.</p>
+<figure><img src="/ml/lda-dr1.jpeg" width="700"/>
+</figure>
+
+<p>데이터를 어떤 벡터 $\mathbf{w}$에 Projection 시켰을 때 Projection된 범주별 평균을 $m_1=\mathbf{w}^T\boldsymbol{\mu}_1$, $m_2=\mathbf{w}^T\boldsymbol{\mu}_2$, Projection된 각 데이터를 $z=\mathbf{w}^T\mathbf{x}$라고 하자. 우리의 목표는 Projection 이후 범주 간 분산은 최대화되면서 동시에 범주 내 분산은 최소화되는 벡터 $\mathbf{w}$를 찾는 것이다. 이를 식으로 나타내면 다음과 같다.</p>
+<p>$\displaystyle \max_\mathbf{w}\dfrac{(m_2-m_1)^2}{s_1^2+s_2^2}$, where $s_k^2=\sum_i(z_i-m_k)^2$</p>
+<p>그룹 간 공분산 행렬 $S_B$와 그룹 내 공분산 행렬 $S_W$를 사용하면 위 식을 다음과 같이 표현할 수 있다.</p>
+<p>$\displaystyle \max_\mathbf{w}\dfrac{\mathbf{w}^TS_B\mathbf{w}}{\mathbf{w}^TS_W\mathbf{w}}$, where $S_B=(\boldsymbol{\mu}_2-\boldsymbol{\mu}_1)^T(\boldsymbol{\mu}_2-\boldsymbol{\mu}_1)$ and $\displaystyle S_W=\sum_{k=1}^2\sum_{i:y_i=1}(\mathbf{x}_i-\boldsymbol{\mu}_k)^T(\mathbf{x}_i-\boldsymbol{\mu}_k)$</p>
+
+
+<details>
+<summary>Proof</summary>
+$\begin{aligned}
+\mathbf{w}^TS_B\mathbf{w}&=\mathbf{w}^T(\boldsymbol{\mu}_2-\boldsymbol{\mu}_1)(\boldsymbol{\mu}_2-\boldsymbol{\mu}_1)^T\mathbf{w} \\
+&=(m_2-m_1)(m_2-m_1)
+\end{aligned}$
+<br><br>
+$\begin{aligned}
+\mathbf{w}^TS_W\mathbf{w}&=\sum_{i:y_i=1}\mathbf{w}^T(\mathbf{x}_i-\boldsymbol{\mu}_1)(\mathbf{x}_i-\boldsymbol{\mu}_1)^T\mathbf{w}+\sum_{i:y_i=2}\mathbf{w}^T(\mathbf{x}_i-\boldsymbol{\mu}_2)(\mathbf{x}_i-\boldsymbol{\mu}_2)^T\mathbf{w} \\
+&=\sum_{i:y_i=1}(z_n-m_1)^2+\sum_{i:y_i=2}(z_n-m_2)^2
+\end{aligned}$
+</details>
+<br>
+
+
+<p>이때 Objective Function이 상수이므로, $\mathbf{x}$에 대해 미분하여 최적해를 구할 수 있다.</p>
+<p>$\begin{aligned}
+\dfrac{\partial}{\partial\mathbf{w}}\dfrac{\mathbf{w}^TS_B\mathbf{w}}{\mathbf{w}^TS_W\mathbf{w}}&amp;=\dfrac{1}{(\mathbf{w}^TS_W\mathbf{w})^2}\left\{\left(\dfrac{\partial}{\partial\mathbf{w}}\mathbf{w}^TS_B\mathbf{w}\right)\cdot\mathbf{w}^TS_W\mathbf{w}-\mathbf{w}^TS_B\mathbf{w}\cdot\left(\dfrac{\partial}{\partial\mathbf{w}}\mathbf{w}^TS_W\mathbf{w}\right)\right\} \\
+&amp;=\dfrac{1}{(\mathbf{w}^TS_W\mathbf{w})^2}\left\{(S_B+S_B^T)\mathbf{w}\cdot\mathbf{w}^TS_W\mathbf{w}-\mathbf{w}^TS_B\mathbf{w}\cdot(S_W+S_W^T)\mathbf{w}\right\} \\
+&amp;=\dfrac{2S_B\mathbf{w}}{\mathbf{w}^TS_W\mathbf{w}}-\dfrac{\mathbf{w}^TS_B\mathbf{w}\cdot2S_W\mathbf{w}}{(\mathbf{w}^TS_W\mathbf{w})^2}\overset{\text{let}}{=}0
+\end{aligned}$</p>
+<p>$\begin{aligned}
+&amp;\Leftrightarrow \mathbf{w}^TS_W\mathbf{w}\cdot2S_B\mathbf{w}=\mathbf{w}^TS_B\mathbf{w}\cdot2S_W\mathbf{w} \\
+&amp;\Leftrightarrow S_B\mathbf{w}=\lambda S_W\mathbf{w}, \;\text{where}\;\lambda=\dfrac{\mathbf{w}^TS_B\mathbf{w}}{\mathbf{w}^TS_W\mathbf{w}}
+\end{aligned}$</p>
+<p>이러한 형태의 문제를 Generalized Eigenvalue Problem이라고 하며, 여기서 $S_W$는 Invertible하므로 $S_W^{-1}S_B\mathbf{w}=\lambda\mathbf{w}$의 Regular Eigenvalue Problem으로 바꾸어줄 수 있다. 따라서 최적해 $\mathbf{w}$는 $S_W^{-1}S_B$의 가장 큰 Eigenvalue에 상응하는 Eigenvector가 된다.</p>
+<h2 id="multi-class-case">Multi-Class Case</h2>
+<p>지금부터 Multiclass의 경우에 대해 최적의 Subspace를 찾는 일반화된 과정에 대해 살펴볼 것이다.</p>
+<figure><img src="/ml/lda-dr2.jpeg" width="200"/>
+</figure>
+
+<p>범주가 $K$개인 경우, Feature Space의 차원을 $K-1$차원까지 줄이는 것은 어렵지 않다. 우리는 위 그림으로부터 데이터 $\mathbf{x}$와 Centroid $c_1$, $c_2$와의 거리를 각각 $d_1$, $d_2$라고 했을 때, $d_1&gt;d_2$의 관계는 데이터를 Hyperplane에 Projection 시킨 후에도 $d_1&rsquo;&gt;d_2&rsquo;$으로 그대로 유지됨을 확인할 수 있다. 이는 데이터와 Hyperplane 사이의 수직 거리($h$)가 모든 Centroid에 대해 동일한 값이므로 데이터와 Centroid 사이의 거리를 측정함에 있어 영향을 미치지 않는 정보이기 때문이다. 따라서 $K$개의 Centroid를 포함하는 $K-1$차원의 Hyperplane에 데이터를 Projection 시킴으로써 데이터를 분류하는데 필요한 정보의 손실 없이 Feature Space의 차원을 낮출 수 있다.</p>
+
+
+<div id="/ml/lda-dr3.json" class="plotly" style="height:600px;"></div>
+<script>
+  d3.json("/ml/lda-dr3.json").then(function (fig) {
+      Plotly.newPlot('\/ml\/lda-dr3.json', fig.data, fig.layout, { responsive: true });
+  });
+</script>
+
+<p>하지만 이와 같은 단순한 방식은 범주의 개수가 많을 경우($K&gt;\!\!&gt;3$), $K-1$차원 역시 굉장히 높은 차원이 된다는 한계점을 갖는다. 이러한 경우 Centroid에 대한 PCA를 사용하여 차원을 더 낮추는 것이 가능하다. 보다 자세한 과정은 다음과 같다.</p>
+<ol>
+<li>Class Centroid의 행렬 $M_{K\times p}$과 그룹 내 공분산 행렬 $S_W$를 구한다.</li>
+<li>$S_W$에 대한 Eigen-Decomposition을 사용하여 Centroid에 Whitening Transformation을 적용한다. ($M^*=MW^{-1/2}$)</li>
+<li>변형된 Centroid의 Principal Component Direction을 찾아 그것들이 Span하는 Subspace에 데이터를 Projection 시킨다.</li>
+</ol>
+<hr>
+<p><strong>Reference</strong></p>
+<ol>
+<li>Hastie, T., Tibshirani, R., Friedman, J. H., &amp; Friedman, J. H. (2009). The elements of statistical learning: data mining, inference, and prediction (Vol. 2, pp. 1-758). New York: springer.</li>
+<li>Murphy, K. P. (2022). Probabilistic machine learning: an introduction. MIT press.</li>
+</ol>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/lda/" rel="tag">LDA</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/dimension/" rel="tag">Dimension</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Me avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Me</span>
+	</div>
+	<div class="authorbox__description">
+		Data Scientist? Developer?
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/ml/support_vector_classifier/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Support Vector Classifier</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/ml/standardizing_and_whitening/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">Standardizing &amp; Whitening</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statkwon" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 STATKWON.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async>
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\[','\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: { equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "AMSsymbols.js"] }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+</body>
+</html>

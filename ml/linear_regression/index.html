@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Linear Regression - ML LAB</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Linear Regression" />
+<meta property="og:description" content="Linear Regression is a bit classical model, but still has some advantages. It&rsquo;s prediction performance can outperform the latest methods in some specific situations such as small data, low SNR, or sparse data. Also, it can be expanded to nonlinear models by transforming the inputs.
+Linear Regression assumes the linear form of regression function as $\text{E}[Y\vert X]=X\boldsymbol{\beta}$.
+We have to estimate $\boldsymbol{\beta}$ to fit our linear model and the most common way is to use a LSE(Least Squares Estimate)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://statkwon.github.io/ml/linear_regression/" /><meta property="article:section" content="ml" />
+<meta property="article:published_time" content="2021-02-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-20T00:00:00+00:00" />
+
+		<meta itemprop="name" content="Linear Regression">
+<meta itemprop="description" content="Linear Regression is a bit classical model, but still has some advantages. It&rsquo;s prediction performance can outperform the latest methods in some specific situations such as small data, low SNR, or sparse data. Also, it can be expanded to nonlinear models by transforming the inputs.
+Linear Regression assumes the linear form of regression function as $\text{E}[Y\vert X]=X\boldsymbol{\beta}$.
+We have to estimate $\boldsymbol{\beta}$ to fit our linear model and the most common way is to use a LSE(Least Squares Estimate)."><meta itemprop="datePublished" content="2021-02-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-02-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1058">
+<meta itemprop="keywords" content="" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="ML LAB" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">ML LAB</div>
+					<div class="logo__tagline">To be a skillful ML engineer</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Linear Regression</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-02-20T00:00:00Z">2021-02-20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#least-squares-estimate">Least Squares Estimate</a></li>
+    <li><a href="#statistical-inferences">Statistical Inferences</a></li>
+    <li><a href="#gauss-markov-theorem">Gauss-Markov Theorem</a></li>
+    <li><a href="#regression-by-successive-orthogonalization">Regression by Successive Orthogonalization</a></li>
+    <li><a href="#python-code-for-linear-regression">Python Code for Linear Regression</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<p>Linear Regression is a bit classical model, but still has some advantages. It&rsquo;s prediction performance can outperform the latest methods in some specific situations such as small data, low SNR, or sparse data. Also, it can be expanded to nonlinear models by transforming the inputs.</p>
+<p>Linear Regression assumes the linear form of regression function as $\text{E}[Y\vert X]=X\boldsymbol{\beta}$.</p>
+<figure><img src="/ml/lr1.png" width="300"/>
+</figure>
+
+<p>We have to estimate $\boldsymbol{\beta}$ to fit our linear model and the most common way is to use a LSE(Least Squares Estimate). LSE is an estimate which minimizes the residual sum of squares $(\mathbf{y}-X\boldsymbol{\beta})^T(\mathbf{y}-X\boldsymbol{\beta})$.</p>
+<p>$\begin{aligned}
+\dfrac{\partial}{\partial\boldsymbol{\beta}}(\mathbf{y}-X\boldsymbol{\beta})^T(\mathbf{y}-X\boldsymbol{\beta})&amp;=\dfrac{\partial}{\partial\boldsymbol{\beta}}(\mathbf{y}^T-\boldsymbol{\beta}^TX^T)(\mathbf{y}-X\boldsymbol{\beta}) \\
+&amp;=\dfrac{\partial}{\partial\beta}(\mathbf{y}^T\mathbf{y}-\boldsymbol{\beta}^TX^T\mathbf{y}-\mathbf{y}^TX\boldsymbol{\beta}+\boldsymbol{\beta}^TX^TX\boldsymbol{\beta}) \\
+&amp;=-2X^T\mathbf{y}+2X^TX\boldsymbol{\beta}
+\end{aligned}$</p>
+<p>$\dfrac{\partial^2}{\partial\boldsymbol{\beta}\partial\boldsymbol{\beta}^T}(\mathbf{y}-X\boldsymbol{\beta})^T(\mathbf{y}-X\boldsymbol{\beta})=2X^TX$</p>
+<p>Thus, if we solve the equation $-2X^T\mathbf{y}+2X^TX\boldsymbol{\beta}=0$, we can get the unique solution $\hat{\boldsymbol{\beta}}=(X^TX)^{-1}X^T\mathbf{y}$ when $X^TX$ is nonsingular. This condition is same as that $X$ has a full colunm rank. If don&rsquo;t, a solution still exists, but is not unique. This is the reason why we have to consider the variables to be uncorrelated while fitting the regression model.</p>
+<h2 id="least-squares-estimate">Least Squares Estimate</h2>
+<p>It is useful to think about the geometric meaning of least squares estimate.</p>
+<figure><img src="/ml/lr2.png" width="400"/>
+</figure>
+
+<p>When the inverse exists, we can express $\hat{\mathbf{y}}=X\hat{\boldsymbol{\beta}}$ as $X(X^TX)^{-1}X^T\mathbf{y}$. If we let $H=X(X^TX)^{-1}X^T$, it is not that difficult to recognize that $H$ is a projection matrix due to the fact that $H$ is idempotent and symmetric. Thus, $\hat{\mathbf{y}}$ can be thought of as the result of projection of $\mathbf{y}$ onto the column space of $X$. Furthermore, if $X$ does not have full column rank, $\hat{\mathbf{y}}$ can still be regarded as the result of projection of $\mathbf{y}$, but not an orthogonal one.</p>
+<h2 id="statistical-inferences">Statistical Inferences</h2>
+<p>With a bit more strict assumption, we can make some statistical inferences about model parameters. From now on, we will assume that $\boldsymbol{\epsilon}$ follows a multivariate normal distribution with the mean vector $\mathbf{0}$ and the covariance matrix $\sigma^2I_n$. Then it is easy to show that $\hat{\boldsymbol{\beta}}\sim N_p(\boldsymbol{\beta}, \sigma^2(X^TX)^{-1})$.</p>
+<p>$\begin{aligned}
+\text{E}[\hat{\boldsymbol{\beta}}]&amp;=\text{E}[(X^TX)^{-1}X^T\mathbf{y}] \\
+&amp;=(X^TX)^{-1}X^T\text{E}[\mathbf{y}] \\
+&amp;=(X^TX)^{-1}X^TX\boldsymbol{\beta} \\
+&amp;=\boldsymbol{\beta}
+\end{aligned}$</p>
+<p>$\begin{aligned}
+\text{Cov}(\hat{\boldsymbol{\beta}})&amp;=\text{Cov}((X^TX)^{-1}X^T\mathbf{y}) \\
+&amp;=(X^TX)^{-1}X^T\text{Cov}(\mathbf{y})X(X^TX)^{-1} \\
+&amp;=\sigma^2(X^TX)^{-1}
+\end{aligned}$</p>
+<p>Now we will get the distribution of $\hat{\sigma}^2$. First, let $\mathbf{e}=\mathbf{y}-\hat{\mathbf{y}}$, then it is easy to show $\mathbf{e}\sim N(\mathbf{0}, \sigma^2(I-H))$.</p>
+<p>$\hat{\sigma}^2=\dfrac{1}{n-p-1}\mathbf{e}^T\mathbf{e}$</p>
+<p>We will use a property of quadratic forms. Because $\mathbf{e}\sim N(\mathbf{0}, \sigma^2(I-H))$, $\vert\sigma^2(I-H)\vert&gt;0$, $\dfrac{1}{\sigma^2}\sigma^2(I-H)$ is idempotent and $\text{tr}(I-H)=n-p-1$, we can say $\dfrac{1}{\sigma^2}\mathbf{e}^T\mathbf{e}\sim\chi_{n-p-1}^2$. Thus,</p>
+<p>$(n-p-1)\hat{\sigma}^2\sim\sigma^2\chi^2_{n-p-1}$</p>
+<p>With these results, we can get some confidence intervals for the parameters or can conduct some hypothesis tests.</p>
+<h2 id="gauss-markov-theorem">Gauss-Markov Theorem</h2>
+<p>We use the LSE because it has some good properties. Gauss-Markov theorem states that the LSE is BLUE, which means Best Linear Unbiased Estimate. According to this theorem, LSE has the smallest variance among all linear unbiased estimates. We&rsquo;ve already showed that LSE is an unbaised estimate, so we will just proved for the smallest variance.</p>
+<p>Let $\tilde{\boldsymbol{\beta}}=C\mathbf{y}$ is an unbiased estimate for $\boldsymbol{\beta}$, where $C=(X^TX)^{-1}X^T+D$ and $D$ is not a zero matrix.</p>
+<p>$\begin{aligned}
+\text{E}[\tilde{\boldsymbol{\beta}}]&amp;=\text{E}\left[\left((X^TX)^{-1}X^T+D\right)\mathbf{y}\right] \\
+&amp;=\text{E}\left[\left((X^TX)^{-1}X^T+D\right)(X\boldsymbol{\beta}+\boldsymbol{\epsilon})\right] \\
+&amp;=\left((X^TX)^{-1}X^T+D\right)X\boldsymbol{\beta}+\left((X^TX)^{-1}X^T+D\right)\text{E}[\boldsymbol{\epsilon}] \\
+&amp;=(X^TX)^{-1}X^TX\boldsymbol{\beta}+DX\boldsymbol{\beta} \\
+&amp;=(I+DX)\boldsymbol{\beta}
+\end{aligned}$</p>
+<p>We assumed that $\tilde{\boldsymbol{\beta}}$ is an unbiased estimate of $\boldsymbol{\beta}$, so $DX$ should be $0$.</p>
+<p>$\begin{aligned}
+\text{Var}(\tilde{\boldsymbol{\beta}})&amp;=\sigma^2\left((X^TX)^{-1}X^T+D\right)\left(X(X^TX)^{-1}+D^T\right) \\
+&amp;=\sigma^2\left((X^TX)^{-1}X^TX(X^TX)^{-1}+(X^TX)^{-1}X^TD^T+DX(X^TX)^{-1}+DD^T\right) \\
+&amp;=\sigma^2(X^TX)^{-1}+\sigma^2(X^TX)^{-1}(DX)^T+\sigma^2DX(X^TX)^{-1}+\sigma^2DD^T \\
+&amp;=\sigma^2(X^TX)^{-1}+\sigma^2DD^T \\
+&amp;=\text{Var}(\hat{\boldsymbol{\beta}})+\sigma^2DD^T
+\end{aligned}$</p>
+<p>This equatinos hold due to the fact that $DX=0$. Thus, it is evident that $\text{Var}(\hat{\boldsymbol{\beta}})≤\text{Var}(\tilde{\boldsymbol{\beta}})$, which means that $\hat{\boldsymbol{\beta}}$ has the smallest variance among all linear unbiased estimates.</p>
+<p>Nonetheless, there might be another better estimate for $\boldsymbol{\beta}$. We proved that the LSE has the smallest variance among unbiased estimates, not among the all estimates. We still has a possibility to trade a little bias for a larger reduction in variance. Ridge regression is one of the example of this possibility.</p>
+<h2 id="regression-by-successive-orthogonalization">Regression by Successive Orthogonalization</h2>
+<figure><img src="/ml/lr3.png" width="400"/>
+</figure>
+
+<p>If all column vectors of $X$ are orthogonal to each other, it will be much easier to get coefficients of multiple linear regression. We can just project $\mathbf{y}$ onto each vector $\mathbf{x}_i$ and get $\hat{\beta}_i=\dfrac{\mathbf{y}\cdot\mathbf{z}_i}{\mathbf{z}_i\cdot\mathbf{z}_i}$, due to the fact that orthogonal inputs do not effect on each other&rsquo;s parameter estimates. However, orthogonal inputs are actually an impossible situation. Though, we could use this idea to make an efficient way for parameter estimation in multiple regression.</p>
+<p>$\begin{bmatrix} \mathbf{x}_0 &amp; \mathbf{x}_1 &amp; \cdots &amp; \mathbf{x}_p \end{bmatrix}\quad\Rightarrow\quad\begin{bmatrix} \mathbf{z}_0 &amp; \mathbf{z}_1 &amp; \cdots &amp; \mathbf{z}_p \end{bmatrix}$</p>
+<p>By using Gram-Schmidt process, we can transform the column vectors of $X$ to the orthogonal vectors. Then, $\hat{\beta}_p$ can be calculated by projecting $\mathbf{y}$ onto $\mathbf{z}_p$, which can be written as $\hat{\beta}_p=\dfrac{\mathbf{y}\cdot\mathbf{z}_p}{\mathbf{z}_p\cdot\mathbf{z}_p}$. If we change the order of the column vectors of $X$, this can be applied to any coefficient $\hat{\beta}_i$. Now we can state that $\hat{\beta}_i$ represents the additional contribution of $\mathbf{x}_j$ on $\mathbf{y}$, after $\mathbf{x}_j$ has been adjusted for $\mathbf{x}_0, \mathbf{x}_1, \ldots, \mathbf{x}_{j-1}, \mathbf{x}_{j+1}, \ldots, \mathbf{x}_p$.</p>
+<p>This can be proved with calculation via $QR$-decomposition of $X$.</p>
+<p>$\begin{aligned}
+X&amp;=\begin{bmatrix} \mathbf{1} &amp; \mathbf{x}_1 &amp; \cdots &amp; \mathbf{x}_p \end{bmatrix} \\
+&amp;=\begin{bmatrix} \mathbf{z}_0 &amp; \mathbf{z}_1 &amp; \cdots &amp; \mathbf{z}_p \end{bmatrix}\begin{bmatrix} 1 &amp; \dfrac{\mathbf{x}_1\cdot\mathbf{z}_0}{\mathbf{z}_0\cdot\mathbf{z}_0} &amp; \cdots &amp; \dfrac{\mathbf{x}_p\cdot\mathbf{z}_0}{\mathbf{z}_0\cdot\mathbf{z}_0} \\ 0 &amp; 1 &amp; \cdots &amp; \dfrac{\mathbf{x}_1\cdot\mathbf{z}_1}{\mathbf{z}_1\cdot\mathbf{z}_1} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \cdots &amp; 1 \end{bmatrix} \\
+&amp;=\begin{bmatrix} \dfrac{\mathbf{z}_0}{\Vert\mathbf{z}_0\Vert} &amp; \dfrac{\mathbf{z}_1}{\Vert\mathbf{z}_1\Vert} &amp; \cdots &amp; \dfrac{\mathbf{z}_p}{\Vert\mathbf{z}_p\Vert} \end{bmatrix}\begin{bmatrix} \Vert\mathbf{z}_0\Vert &amp; \dfrac{\mathbf{x}_1\cdot\mathbf{z}_0}{\Vert\mathbf{z}_0\Vert} &amp; \cdots &amp; \dfrac{\mathbf{x}_p\cdot\mathbf{z}_0}{\Vert\mathbf{z}_0\Vert} \\ 0 &amp; \Vert\mathbf{z}_1\Vert &amp; \cdots &amp; \dfrac{\mathbf{x}_p\cdot\mathbf{z}_1}{\Vert\mathbf{z}_1\Vert} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \cdots &amp; \Vert\mathbf{z}_p\Vert \end{bmatrix} \\
+&amp;=QR
+\end{aligned}$</p>
+<p>Now we solve the new equation $\mathbf{y}=QR\boldsymbol{\beta}$, rather than the original one. Because $Q$ is an orthogonal matrix, we can write as $R\boldsymbol{\beta}=Q^T\mathbf{y}$.</p>
+<p>$\begin{bmatrix} \Vert\mathbf{z}_0\Vert &amp; \dfrac{\mathbf{x}_1\cdot\mathbf{z}_0}{\Vert\mathbf{z}_0\Vert} &amp; \cdots &amp; \dfrac{\mathbf{x}_p\cdot\mathbf{z}_0}{\Vert\mathbf{z}_0\Vert} \\ 0 &amp; \Vert\mathbf{z}_1\Vert &amp; \cdots &amp; \dfrac{\mathbf{x}_p\cdot\mathbf{z}_1}{\Vert\mathbf{z}_1\Vert} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \cdots &amp; \Vert\mathbf{z}_p\Vert \end{bmatrix}\begin{bmatrix} \beta_0 \\ \beta_1 \\ \vdots \\ \beta_p \end{bmatrix}=\begin{bmatrix} \dfrac{\mathbf{y}\cdot\mathbf{z}_0}{\Vert\mathbf{z}_0\Vert} \\ \dfrac{\mathbf{y}\cdot\mathbf{z}_1}{\Vert\mathbf{z}_1\Vert} \\ \vdots \\ \dfrac{\mathbf{y}\cdot\mathbf{z}_p}{\Vert\mathbf{z}_p\Vert} \end{bmatrix}$</p>
+<p>$R$ is an upper-triangular matrix, so we just use the back-substitution to solve the equation above. For example, first we can get $\hat{\beta}_p=\dfrac{\mathbf{y}_p\cdot\mathbf{z}_p}{\Vert\mathbf{z}_p\Vert^2}$, then $\hat{\beta}_{p-1}=\dfrac{\mathbf{y}\cdot\mathbf{z}_{p-1}}{\Vert\mathbf{z}_{p-1}\Vert^2}-\hat{\beta}_p\dfrac{\mathbf{x}_p\cdot\mathbf{z}_{p-1}}{\Vert\mathbf{z}_{p-1}\Vert^2}$. Repeating this process, we can obtain $\hat{\boldsymbol{\beta}}$ without calculating the inverse.</p>
+<h2 id="python-code-for-linear-regression">Python Code for Linear Regression</h2>
+<p>Github Link: <a href="https://github.com/statkwon/ML_Study/blob/master/MyLinearRegression.ipynb">MyLinearRegression.ipynb</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyLinearRegerssion</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fit</span>(self, X_train, y_train):
+</span></span><span style="display:flex;"><span>        ones <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones(len(X_train))
+</span></span><span style="display:flex;"><span>        X_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(X_train)
+</span></span><span style="display:flex;"><span>        X_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>column_stack((np<span style="color:#f92672">.</span>ones(len(X_train)), X_train))
+</span></span><span style="display:flex;"><span>        y_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(y_train)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>beta <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>inv(np<span style="color:#f92672">.</span>transpose(X_train)<span style="color:#f92672">.</span>dot(X_train))<span style="color:#f92672">.</span>dot(np<span style="color:#f92672">.</span>transpose(X_train))<span style="color:#f92672">.</span>dot(y_train)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict</span>(self, X_test):
+</span></span><span style="display:flex;"><span>        ones <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones(len(X_test))
+</span></span><span style="display:flex;"><span>        X_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(X_test)
+</span></span><span style="display:flex;"><span>        X_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>column_stack((np<span style="color:#f92672">.</span>ones(len(X_test)), X_test))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> X_test<span style="color:#f92672">.</span>dot(self<span style="color:#f92672">.</span>beta)
+</span></span></code></pre></div><hr>
+<p><strong>Reference</strong></p>
+<ol>
+<li>Hastie, T., Tibshirani, R., Friedman, J. H., &amp; Friedman, J. H. (2009). The elements of statistical learning: data mining, inference, and prediction (Vol. 2, pp. 1-758). New York: springer.</li>
+<li>Weisberg, S. (2005). Applied linear regression (Vol. 528). John Wiley &amp; Sons.</li>
+<li><a href="https://en.wikipedia.org/wiki/Gauss-Markov_theorem">https://en.wikipedia.org/wiki/Gauss-Markov_theorem</a></li>
+</ol>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Me avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Me</span>
+	</div>
+	<div class="authorbox__description">
+		Data Scientist? Developer?
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/ml/qr-decomposition/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">QR-Decomposition</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/ml/gram-schmidt_process/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">Gram-Schmidt Process</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statkwon" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 STATKWON.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async>
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\[','\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: { equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "AMSsymbols.js"] }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 17 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>About</title>
+      <link>http://statkwon.github.io/about/</link>
+      <pubDate>Thu, 20 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/about/</guid>
+      <description>Profile 연세대학교에서 응용통계학을 전공 (2019.08 ~ 2021.02) 연세대학교에서 통계학을 전공 (2021.03 ~ 2023.02) Career EY한영회계법인 컨설팅본부 DnA(Data&amp;amp;Analytics)팀에서 인턴으로 근무 (2021.06 ~ 2021.09) || 스마일게이트 데이터 통합 컨설팅 지원 삼성SDS SCSA 교육 과정 이수 (2022.07 ~ 2023.01) Awards 제1회 NH투자증권 빅데이터 경진대회 입선상 (2021.02) 제1회 LH 시민참여형 빅데이터 분석 공모전 우수상 (2021.10) 제9회 2021 빅콘테스트 이노베이션분야 지역활성화부문 최우수상 (2021.12) </description>
+    </item>
+    
+    <item>
       <title>Maximum Likelihood Estimation</title>
       <link>http://statkwon.github.io/ml/maximum_likelihood_estimation/</link>
       <pubDate>Mon, 17 Jul 2023 00:00:00 +0000</pubDate>
@@ -44,15 +53,6 @@ Parametric Bootstrap은 데이터의 분포는 알지만 모수는 알지 못하
 Whitening은 mean이 $\mathbf{0}$이고 covariance가 $\Sigma$인 분포를 따르는 random vector $\mathbf{X}$의 covariance가 identity matrix가 되도록 처리하는 것 → feature 간 covariance를 $0$으로 만들어 줄 수 있다.
 $\mathbf{Y}=W\mathbf{X}$일 때, $\text{Cov}(\mathbf{Y})=W\text{Cov}(\mathbf{X})W^T=W\Sigma W^T$
 $W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하도록 하면 된다.</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>http://statkwon.github.io/about/</link>
-      <pubDate>Sun, 11 Jun 2023 10:53:03 +0900</pubDate>
-      
-      <guid>http://statkwon.github.io/about/</guid>
-      <description>Profile 연세대학교에서 응용통계학을 전공 (2019.08 ~ 2021.02) 연세대학교에서 통계학을 전공 (2021.03 ~ 2023.02) Career EY한영회계법인 컨설팅본부 DnA(Data&amp;amp;Analytics)팀에서 인턴으로 근무 (2021.06 ~ 2021.09) || 스마일게이트 데이터 통합 컨설팅 지원 삼성SDS SCSA 교육 과정 이수 (2022.07 ~ 2023.01) </description>
     </item>
     
     <item>
@@ -104,6 +104,279 @@ $W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하�
       <description>Abstract 이 논문에서는 예측한 데이터 주변에서 해석 가능한 모형을 적합함으로써 임의의 Classifier의 예측 결과를 해석하는 방법(LIME)과 Submodular Optimization을 통해 대표적인 개별 데이터를 제시하는 방법을 제안한다.
 1. Introduction “사용자가 모형 자체나 개별 예측 결과를 믿지 않는다면, 그것을 사용하지 않을 것이다”
 모형을 의사 결정에 활용하는 경우(ex. 의료 진단, 테러 적발 등에 ML 모형을 사용하는 경우) 개별 예측 결과에 대한 신뢰 여부를 결정하는 것은 굉장히 중요한 문제이다. 즉, 개별 예측 결과에 대한 해석을 제공하는 것이 중요하다.</description>
+    </item>
+    
+    <item>
+      <title>LDA-Dimension Reduction</title>
+      <link>http://statkwon.github.io/ml/lda-dimension_reduction/</link>
+      <pubDate>Wed, 02 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/lda-dimension_reduction/</guid>
+      <description>LDA는 MLE를 사용하여 $\boldsymbol{\mu}_k$와 $\Sigma$를 추정하는데, 이러한 추정 방식은 High-Dimension에서 불안정하다는 문제를 갖는다. ($p/n\rightarrow\infty$인 경우 MLE의 Aymptotic Property가 보장되지 않는다.) 이러한 문제는 $p$차원의 데이터 $\mathbf{x}$를 보다 낮은 차원의 데이터 $\mathbf{z}$로 변환한 후 LDA를 적용함으로써 해결할 수 있다. 이러한 변환을 수행하는 가장 간단한 방법은 $l$($&amp;lt;\!\!&amp;lt;p$)차원의 Subspace에 데이터를 Projection 시키는 것이다. 이때 단순히 차원을 낮추는 것뿐만 아니라, Projection 이후 데이터를 가장 잘 분류할 수 있는 Subspace를 찾는 것이 합리적이다. 따라서 우리는 Projection 이후 범주 간 분산은 최대화하고, 범주 내 분산은 최소화하는 $\mathbb{R}^p$의 Subspace를 찾는 것을 목표로 한다.</description>
+    </item>
+    
+    <item>
+      <title>Support Vector Classifier</title>
+      <link>http://statkwon.github.io/ml/support_vector_classifier/</link>
+      <pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/support_vector_classifier/</guid>
+      <description>Support Vector Classifier는 Optimal Seperating Hyperplane을 Nonseperable Case에 대해 일반화한 모형이다. Support Vector Classifier 역시 Margin을 최대화하는 방향으로 작동하지만, 일정 수준의 오분류를 허용함으로써 Nonseperable Case에서도 수렴할 수 있다는 것이 차이점이다.
+일정 수준의 오분류를 허용한다는 것을 &amp;lsquo;Slack Variable&amp;rsquo;라고 불리는 $\xi_i$를 사용하여 다음과 같이 표현할 수 있다. (위 그림에서 $\xi_i^*=M\xi_i$이다.)
+$\displaystyle \max_{\boldsymbol{\beta}, \beta_0, \Vert\boldsymbol{\beta}\Vert=1}M \quad\text{subject to}\quad y_i(\mathbf{x}_i^T\boldsymbol{\beta}+\beta_0)\geq M-\xi_i,\; \xi_i\geq 0,\; \sum_{i=1}^N\xi_i\leq c,\; ^\forall i$
+하지만 이러한 형태의 제약 조건을 사용할 경우, 더 이상 주어진 문제가 Convex Optimization에 속하지 않는다.</description>
+    </item>
+    
+    <item>
+      <title>Optimal Seperating Hyperplanes</title>
+      <link>http://statkwon.github.io/ml/optimal_seperating_hyperplanes/</link>
+      <pubDate>Sat, 22 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/optimal_seperating_hyperplanes/</guid>
+      <description>Optimal Seperating Hyperplane은 Perceptron Algorithm의 해가 유일하지 않다는 단점을 보완하기 위해 고안된 방식이다. Perceptron Learning Algorithm과 마찬가지로 $y\in\{-1, 1\}$의 Binary Classification 문제에 적용되지만, 데이터와 분류 경계선 사이의 빈 공간을 뜻하는 &amp;lsquo;Margin&amp;rsquo;이라는 새로운 개념을 도입해다는 점에서 차이가 있다. Optimal Seperating Hyperplane의 목표는 이 공간을 최대화하는 Hyperplane을 찾는 것이다.
+Thus, we have to find optimal $\boldsymbol{\beta}$ and $\beta_0$ which maximizes $M$ when the distance between each points and the boundary is greater than or equal to $M$.</description>
+    </item>
+    
+    <item>
+      <title>MARS</title>
+      <link>http://statkwon.github.io/ml/mars/</link>
+      <pubDate>Tue, 04 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/mars/</guid>
+      <description>Multivariate Adaptive Regression Splines $\displaystyle f(\mathbf{x})=\beta_0+\sum_{m=1}^M\beta_mh_m(\mathbf{x})$, where $h_m(\mathbf{x})=(X_j-t)+ \;\text{or}\; (t-X_j)+$
+MARS는 다음과 같은 특수한 형태의 Basis Function들의 선형 결합으로 반응변수를 추정하는 알고리즘이다.
+$(x-t)_+=\begin{cases} x-t &amp;amp; \text{if}\; x&amp;gt;t \\ 0 &amp;amp; \text{otherwise} \end{cases} \quad\text{and}\quad (t-x)_+=\begin{cases} t-x &amp;amp; \text{if}\; x&amp;lt;t \\ 0 &amp;amp; \text{otherwise} \end{cases}$
+MARS는 Forward Modeling과 Backward Deletion의 두 가지 단계로 구성되어 있다.
+Forward Modeling $(x-t)_+$와 $(t-x)_+$가 서로 대칭적인 구조를 가지므로 두 함수를 묶어 Reflected Pair라고 하자. Forward Modeling 단계에서는 이러한 Reflected Pair들의 집합</description>
+    </item>
+    
+    <item>
+      <title>PRIM</title>
+      <link>http://statkwon.github.io/ml/prim/</link>
+      <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/prim/</guid>
+      <description>Patient Rule Induction Method PRIM은 CART 알고리즘과 같이 Feature Space를 박스 형태의 영역들로 분할하는 알고리즘이다. 하지만 Binary Split을 사용하지는 않는다. CART 알고리즘이 Splitting과 Pruning의 두 가지 단계로 이루어졌듯이, PRIM 알고리즘은 Top-Down Peeling과 Bottom-Up Pasting의 두 가지 단계로 구분된다.
+Top-Down Peeling 모든 데이터가 한 박스 안에 담겨있다고 생각해보자. 박스의 한 면을 선택하고 전체 데이터 중 비율 $\alpha$ 만큼의 데이터가 제외될 때까지 선택된 면을 기준으로 박스의 크기를 줄인다. 이때 줄어든 박스에 속한 데이터의 반응변수의 평균을 최대화하는 것을 기준으로 면을 선택한다.</description>
+    </item>
+    
+    <item>
+      <title>Decision Trees</title>
+      <link>http://statkwon.github.io/ml/decision_tree/</link>
+      <pubDate>Sun, 02 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/decision_tree/</guid>
+      <description>의사결정나무는 Feature Space를 여러 개의 영역으로 분할한 후, 각 영역의 종속변수를 어떤 상수나 범주로 예측하는 알고리즘이다. 이때 영역을 분할하는 방법으로 Recursive Binary Split을 사용한다. 의사결정나무와 관련된 여러 알고리즘이 있지만, 이 글에서는 그 중 가장 유명한 CART(Classification and Regression Tree) 알고리즘만을 다룰 것이다.
+Regression Trees Squared Error Loss를 기준으로 하는 경우, Regression Tree의 식을 다음과 같이 표현할 수 있다.
+$\displaystyle f(\mathbf{x})=\sum_{m=1}^Mc_mI(\mathbf{x}\in R_m)$, where $\hat{c}_m=\text{ave}(y_i\vert\mathbf{x}_i\in R_m)$
+즉, Feature Space를 $M$개의 영역으로 나누고, 각 영역의 반응변수를 해당 영역에 속한 $y$값들의 평균으로 예측한다.</description>
+    </item>
+    
+    <item>
+      <title>디지털 경제 기반 지역경제 활성화를 위한 비즈니스 아이디어 및 PoC 결과 제시</title>
+      <link>http://statkwon.github.io/contest/bigcon_kdx/</link>
+      <pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/contest/bigcon_kdx/</guid>
+      <description>1. 대회 주제 및 목적 조선업에 대한 의존도가 높았던 군산은 조선업의 쇠퇴를 기점으로 많은 어려움을 겪고 있다. 뿐만 아니라 코로나 바이러스까지 지역 상권의 붕괴를 가속화하며 소상공인들의 기본적인 생계마저 위협받는 상황에 놓여 있다. 상인들은 배달음식 전문점 등 비대면 서비스로의 업종 전환 또는 기술 훈련을 통한 재창업을 시도하고 있지만 유사한 상황에서의 성공 사례 및 정보 부족으로 인해 아직까지 적절한 해결책을 찾지 못하고 있다.
+2021 빅콘테스트 이노베이션분야 지역활성화부문에서는 이러한 상황에 대하여 군산, 그리고 군산과 유사한 특성을 가진 목포, 통영의 다양한 유통 및 소비 데이터를 활용하여 지역 상권 소생을 위한 비즈니스 아이디어를 제안하는 것을 목표로 하였다.</description>
+    </item>
+    
+    <item>
+      <title>한국토지주택공사 주차수요 예측 AI 경진대회</title>
+      <link>http://statkwon.github.io/contest/dacon_lh/</link>
+      <pubDate>Wed, 27 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/contest/dacon_lh/</guid>
+      <description>1. 대회 주제 및 목적 아파트 단지 내 주차대수는 법정주차대수와 장래주차수요 중 큰 값에 따라 결정하는 것이 원칙이다. 따라서 불필요한 공간 소요를 줄이기 위해서는 장래주차수요를 정확하게 추정하는 것이 중요하다. 현재 단지 내 장래주차수요는 주차원단위와 건축연면적을 활용하는 Rule-Based 방식을 통해 산출되고 있다. 하지만 이러한 방식은 인력 조사로 인한 오차 발생, 현장 조사 시점과 실제 건축 시점 사이의 시간차 등의 문제로 인해 장래주차수요가 과대 또는 과소 추정될 수 있다는 한계점을 가지고 있다.</description>
+    </item>
+    
+    <item>
+      <title>Perceptron Learning Algorithm</title>
+      <link>http://statkwon.github.io/ml/perceptron_learning_algorithm/</link>
+      <pubDate>Sun, 18 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/perceptron_learning_algorithm/</guid>
+      <description>Perceptron Learning Algorithm은 서로 다른 Class에 속한 데이터를 가장 잘 구분하는 Hyperplane을 찾기 위한 알고리즘이다. 이 글에서는 $y\in\{-1, 1\}$의 Binary Outcome에 대한 Classification 문제를 가정한다.
+Perceptron Learning Algorithm은 오분류된 데이터와 Decision Boundary 사이의 거리를 최소화하는 Hyperplane을 찾는 방식으로 작동한다. 일반적으로 $p$차원 공간 속의 Hyperplane은 다음과 같의 정의된다.
+$L=\{\mathbf{x}\in\mathbb{R}^p:f(\mathbf{x})=0\}$, where $f(\mathbf{x})=\beta_0+\boldsymbol{\beta}^T\mathbf{x}$
+따라서 오분류된 데이터와 Hyperplane 사이의 거리를 $d_i$라고 할 때, 우리가 찾는 Hyperplane은
+$\displaystyle \underset{f}{\text{argmin}}\sum_{i\in\mathcal{M}}d_i$, where $\mathcal{M}$ indexes the set of misclassified points</description>
+    </item>
+    
+    <item>
+      <title>Local Regression</title>
+      <link>http://statkwon.github.io/ml/local_regression/</link>
+      <pubDate>Sat, 20 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/local_regression/</guid>
+      <description>Boundary issues of Nadaraya-Watson kernel regression can be solved by fitting a straight line rather than constants locally. This is the concept of local regression which fits a seperate weighted least squares at each target point $\mathbf{X}_0$. For convenience, let&amp;rsquo;s consider the one-dimensional input space from now on.
+Local Linear Regression $\displaystyle\underset{\boldsymbol{\beta}(x_0)}{\text{argmin}}(\mathbf{y}-X\boldsymbol{\beta}(x_0))^TW(x_0)(\mathbf{y}-X\boldsymbol{\beta}(x_0))$
+The coefficients of local linear regression can be obtained by finding a optimal solution of the problem above, where $W$ is a diagonal matrix whose $i$th diagonal elements are $K_\lambda(x_0, x_i)$.</description>
+    </item>
+    
+    <item>
+      <title>Kernel Regression</title>
+      <link>http://statkwon.github.io/ml/kernel_regression/</link>
+      <pubDate>Wed, 17 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/kernel_regression/</guid>
+      <description>Kernel smoothing is a meomry-based method to add a flexibility in estimating the regression function by fitting a different but simple model seperately at each query point $x_0$ with only those observations close to the target point $x_0$. This localization is achieved via kernel $K_\lambda(\mathbf{X}_0, \mathbf{X})$, which assigns a weight to $\mathbf{X}$ based on its distance from $\mathbf{X}_0$.
+Kernel Functions $K_\lambda(\mathbf{X}_0, \mathbf{X})=D\left(\dfrac{d(\mathbf{X}_0, \mathbf{X})}{h_\lambda(\mathbf{X}_0)}\right)$
+Kernel function can be divided by three parts: distance function, width function, and weighting function.</description>
+    </item>
+    
+    <item>
+      <title>Smoothing Spline</title>
+      <link>http://statkwon.github.io/ml/smoothing_spline/</link>
+      <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/smoothing_spline/</guid>
+      <description>Without any constraint on the form of $f(X)$, we can make the $\text{RSS}$ to be $0$ by choosing any function that interpolates all data points. However, this will be connected to an overfitting problem. To prevent this, we will use the regularization term.
+$$\underset{f}{\text{argmin}}\sum_{i=1}^n\left\{y_i-f(x_i)\right\}^2+\lambda\int\left\{f^{\left(\frac{M+1}{2}\right)}(x)\right\}^2dx$$
+Here $\lambda$ is called a smoothing parameter. If $\lambda=0$, $f$ can be any function that interpolates the data. If $\lambda=\infty$, $f$ will be a simple line. Now we will show that the unique minimizer of this criterion is a natural cubic spline with knots at each of the $x_i$.</description>
+    </item>
+    
+    <item>
+      <title>Natural Spline</title>
+      <link>http://statkwon.github.io/ml/natural_spline/</link>
+      <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/natural_spline/</guid>
+      <description>Adding another constraint to regression spline, we can fit natural splines. We will reduce the degree beyond the boundary to $\dfrac{M-1}{2}$.
+The number of parameters to fit natural splines is $(M+1)\times(K-1)-\left(\dfrac{M-1}{2}+1\right)\times2-M\times K=K$ and we can see that it is independent of $M$.
+Natural Cubic Spline is the most common one.
+Natural Cubic Spline $N_1(X)=1, \quad N_2(X)=X, \quad N_{k+2}(X)=d_k(X)-d_{K-1}(X)$
+$d_k(X)=\dfrac{(X-\xi_k)_+^3-(X-\xi_K)_+^3}{\xi_k-\xi_K}$
+We will make a proof for the formula above.
+$\displaystyle f(X)=\sum_{j=1}^4\beta_jX^{j-1}+\sum_{k=1}^K\theta_k(X-\xi_k)_+^3$</description>
+    </item>
+    
+    <item>
+      <title>Regression Spline</title>
+      <link>http://statkwon.github.io/ml/regression_spline/</link>
+      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/regression_spline/</guid>
+      <description>We can obtain regression splines by adding a continuity constraint to piecewise polynomials.
+Regression splines are often called the $M$th order spline, a piecewise polynomial of degree $M$, that is continuous and has continuous derivatives of orders $1, \ldots, M-1$ at its know points.
+$M$th order spline with $K$ knots $h_j(X)=X^{j-1} \quad (j=1, 2, \ldots, M+1)$
+$h_{M+1+l}(X)=(X-\xi_l)_+^M \quad (l=1, 2, \ldots, K)$
+$f(X)=\beta_1+\beta_2X\cdots+\beta_{M+1}X^M+\beta_{M+2}(X-\xi_1)_+^M+\cdots+\beta_{M+K+1}(X-\xi_K)_+^M$
+We will make a proof for the case when $M=3$ and $K=2$.</description>
+    </item>
+    
+    <item>
+      <title>LDA-Classification</title>
+      <link>http://statkwon.github.io/ml/lda-classification/</link>
+      <pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/lda-classification/</guid>
+      <description>Linear Discriminant Analysis(이하 LDA)는 Multiclass 분류 문제를 해결하기 위해 고안된 모형이다. 이 글에서는 LDA의 메커니즘을 크게 두 가지 관점으로 나누어서 정리하고 있다.
+Perspecitve of Bayes Classifier LDA는 각 범주별 Posterior Probability를 추정하고, 해당 확률값이 가장 큰 범주로 데이터를 분류한다는 점에서 Bayes Classifier를 추정한 모형으로 볼 수 있다. 이때 LDA는 Posterior Probability를 직접적으로 추정하지 않고, Bayes&amp;rsquo; Rule을 사용하여 $f(Y_k\vert\mathbf{x})$와 $\text{P}(Y_k)$를 추정하는 방식을 사용한다.
+$\text{P}(Y_k\vert\mathbf{x})\approx f(\mathbf{x}\vert Y_k)\text{P}(Y_k)$
+지금부터 편의를 위해 $\text{P}(Y_k)$를 $\pi_k$로 표기하도록 하겠다.</description>
+    </item>
+    
+    <item>
+      <title>Logistic Regression</title>
+      <link>http://statkwon.github.io/ml/logistic_regression/</link>
+      <pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/logistic_regression/</guid>
+      <description>Linear Regression for Qualitative Output Our goal is to model the posterior probability $P(Y_k\vert\mathbf{X})$ or the discriminant function $\delta_k(\mathbf{X})$, because we want to set a decision boundary as $\{\mathbf{X}:P(Y_k\vert\mathbf{X})=P(Y_l\vert\mathbf{X})\}$ or $\{\mathbf{X}:\delta_k(\mathbf{X})=\delta_l(\mathbf{X})\}$. We will classify $\mathbf{X}$ to the class with the largest value of $P(Y_k\vert\mathbf{X})$ or $\delta_k(\mathbf{X})$.
+First, we can consider the case fitting a linear model for the posterior probability as $P(Y_k\vert\mathbf{X})=\mathbf{X}\boldsymbol{\beta}_k$ and it is quite reasonable in that
+$\text{E}[Y_k\vert\mathbf{X}]=P(Y_1\vert\mathbf{X})\cdot0+\cdots+P(Y_k\vert\mathbf{X})\cdot1+\cdots+P(Y_K\vert\mathbf{X})\cdot0=P(Y_k\vert\mathbf{X})$.</description>
+    </item>
+    
+    <item>
+      <title>NH투자증권 Y&amp;Z 투자자 프로파일링 시각화 경진대회</title>
+      <link>http://statkwon.github.io/contest/dacon_nh/</link>
+      <pubDate>Fri, 26 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/contest/dacon_nh/</guid>
+      <description>1. 대회 주제 및 목적 코로나 바이러스 창궐 이후 저금리/저성장으로 인해 투자 자산에 대한 관심도가 급증하고 있으며, 그 중심에는 MZ세대가 존재한다. 위 그래프에서 확인할 수 있듯이, NH투자증권 신규 가입 고객의 약 60%가 MZ에 해당한다. 이러한 흐름에 따라 각 증권사에서는 대규모로 유입되고 있는 MZ세대를 장기 고객으로 유치하기 위한 방안을 물색하고 있다.
+이에 NH투자증권 Y&amp;amp;Z 투자자 프로파일링 시각화 경진대회에서는 투자자들의 거래 내역에 관한 데이터로부터 MZ세대의 특성을 추출하고, 해당 특성을 바탕으로 MZ세대에 대한 특화 서비스를 제안하는 것을 목표로 하였다.</description>
+    </item>
+    
+    <item>
+      <title>Ridge Regression</title>
+      <link>http://statkwon.github.io/ml/ridge_regression/</link>
+      <pubDate>Thu, 25 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/ridge_regression/</guid>
+      <description>Ridge Regression Subset selection methods can sometimes cause high variance due to its discrete characteristic. As an alternative, shrinkage methods such as ridge regression can be used.
+Ridge regression shrinks the regression coefficients by imposing a penalty on their size. The ridge solutions are not equivariant under scaling of the inputs, and so one normally standardizes the inputs. So until now we will assume that $X$ is a standardized matrix. Coefficients of ridge regression is related to the restricted minimization problem as below.</description>
+    </item>
+    
+    <item>
+      <title>Gram-Schmidt Process</title>
+      <link>http://statkwon.github.io/ml/gram-schmidt_process/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/gram-schmidt_process/</guid>
+      <description>Every nonzero subspaces in $R^n$ have its own prthonormal basis. Gram-Schmidt process is the process to change the basis of the nonzero subspace in $R^n$ to orthonormal basis. Now we will check the process to find the orthonormal basis of subspace $W$ in $R^n$ whose basis is $\{\mathbf{w}_1, \mathbf{w}_2, \ldots, \mathbf{w}_k\}$.
+If we let the first vector $\mathbf{w}_1$ as $\mathbf{v}_1$, then we can find $\mathbf{v}_2$, which is an orthogonal vector to $\mathbf{v}_1$.</description>
+    </item>
+    
+    <item>
+      <title>Linear Regression</title>
+      <link>http://statkwon.github.io/ml/linear_regression/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/linear_regression/</guid>
+      <description>Linear Regression is a bit classical model, but still has some advantages. It&amp;rsquo;s prediction performance can outperform the latest methods in some specific situations such as small data, low SNR, or sparse data. Also, it can be expanded to nonlinear models by transforming the inputs.
+Linear Regression assumes the linear form of regression function as $\text{E}[Y\vert X]=X\boldsymbol{\beta}$.
+We have to estimate $\boldsymbol{\beta}$ to fit our linear model and the most common way is to use a LSE(Least Squares Estimate).</description>
+    </item>
+    
+    <item>
+      <title>QR-Decomposition</title>
+      <link>http://statkwon.github.io/ml/qr-decomposition/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/qr-decomposition/</guid>
+      <description>When column vectors of a matrix $A$ who has a full column rank are $\{\mathbf{w}_1, \mathbf{w}_2, \ldots, \mathbf{w}_k\}$, an orthonormal basis made through the Gram-Schmidt process are $\{\mathbf{q}_1, \mathbf{q}_2, \ldots, \mathbf{q}_k\}$. Here we can express $\mathbf{w}_i$ as below.
+$\begin{aligned} \mathbf{w}_1&amp;amp;=(\mathbf{w}_1\cdot\mathbf{q}_1)\mathbf{q}_1 \\ \mathbf{w}_2&amp;amp;=(\mathbf{w}_2\cdot\mathbf{q}_1)\mathbf{q}_1+(\mathbf{w}_2\cdot\mathbf{q}_2)\mathbf{q}_2 \\ \vdots \\ \mathbf{w}_k&amp;amp;=(\mathbf{w}_k\cdot\mathbf{q}_1)\mathbf{q}_1+(\mathbf{w}_k\cdot\mathbf{q}_2)\mathbf{q}_2+\cdots+(\mathbf{w}_k\cdot\mathbf{q}_k)\mathbf{q}_k \end{aligned}$
+Now we can write down this equations with the matrix multiplication.
+$\begin{bmatrix} \mathbf{w}_1 &amp;amp; \mathbf{w}_2 &amp;amp; \cdots &amp;amp; \mathbf{w}_k \end{bmatrix}=\begin{bmatrix} \mathbf{q}_1 &amp;amp; \mathbf{q}_2 &amp;amp; \cdots &amp;amp; \mathbf{q}_k \end{bmatrix}\begin{bmatrix} (\mathbf{w}_1\cdot\mathbf{q}_1) &amp;amp; (\mathbf{w}_2\cdot\mathbf{q}_1) &amp;amp; \cdots &amp;amp; (\mathbf{w}_k\cdot\mathbf{q}_1) \\ 0 &amp;amp; (\mathbf{w}_2\cdot\mathbf{q}_2) &amp;amp; \cdots &amp;amp; (\mathbf{w}_k\cdot\mathbf{q}_2) \\ \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\ 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; (\mathbf{w}_k\cdot\mathbf{q}_k) \end{bmatrix}$</description>
+    </item>
+    
+    <item>
+      <title>One Parameter Models</title>
+      <link>http://statkwon.github.io/ml/one_parameter_models/</link>
+      <pubDate>Tue, 16 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/one_parameter_models/</guid>
+      <description>The Binomial Model Inference for Exchangable Binary Data Posterior Inference Under a Unifrom Prior Distribution
+$Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model은 $p(y_1, \ldots, y_n|\theta)=\theta^{\sum y_i}(1-\theta)^{n-\sum y_i}$와 같다.
+이때 임의의 $\theta_a$와 $\theta_b$에 대한 Relative Probability를 계산하면
+$ \begin{align} \dfrac{p(\theta_a | y_1, \ldots, y_n)}{p(\theta_b | y_1, \ldots, y_n)}&amp;amp;=\dfrac{\theta_a^{\sum y_i}(1-\theta_a)^{n-\sum y_i} \times p(\theta_a)/p(y_1, \ldots, y_n)}{\theta_b^{\sum y_i}(1-\theta_b)^{n-\sum y_i} \times p(\theta_b)/p(y_1, \ldots, y_n)} \\ &amp;amp;=\left(\dfrac{\theta_a}{\theta_b}\right)^{\sum y_i}\left(\dfrac{1-\theta_a}{1-\theta_b}\right)^{n-\sum y_i}\dfrac{p(\theta_a)}{p(\theta_b)} \end{align}$
+가 된다. 여기서 $\theta_b$에 대한 $\theta_a$의 확률이 $\sum_{i=1}^n y_i$에 의해 $y_1, \ldots, y_n$에만 의존한다는 것을 알 수 있다.</description>
+    </item>
+    
+    <item>
+      <title>Curse of Dimensionality</title>
+      <link>http://statkwon.github.io/ml/curse_of_dimensionality/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/curse_of_dimensionality/</guid>
+      <description>차원의 저주는 고차원의 Feature Space에서 데이터를 다룰 때 발생하는 현상들을 의미한다. 이 글에서는 차원의 저주의 대표적인 세 가지 현상에 대해 소개할 것이다.
+1. Feature Space의 차원이 높아질 수록 Neighborhood의 범위가 넓어진다.
+Feature Space가 $p$차원의 Unit Hypercube이고, 그 안에 데이터가 균등하게 분포되어있는 상황을 생각해보자. 우리는 Feature Space에 속한 임의의 데이터에 대해, 전체 데이터 중 비율 $r$을 차지하는 만큼의 데이터를 Neighborhood로 사용할 것이다. 이때 Feature Space가 Unit Hypercube이므로, Neighborhood의 한 모서리의 평균 길이는 $r^{1/p}$이 된다.</description>
+    </item>
+    
+    <item>
+      <title>Bayesian Statistics</title>
+      <link>http://statkwon.github.io/ml/bayesian_statistics/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/bayesian_statistics/</guid>
+      <description>Introduction Bayesian Learning
+통계적 추론은 모집단의 일부를 통해 모집단의 일반적인 특성을 알아내기 위한 과정이다. 이때 대부분의 경우 모집단의 수치적 특성을 모수 $\theta$로 표현한다. 하지만 데이터가 주어지기 전까지, 모수 $\theta$의 값은 불확실하다. $y$라는 데이터셋이 주어진다면, 이러한 모수에 대한 불확실성을 줄여나갈 수 있다. Bayesian Inference는 이러한 불확실성의 변화를 측정하는 것에 목적이 있다.
+Sample Space $\mathcal{Y}$: 가능한 모든 데이터셋들의 집합
+Parameter Space $\Theta$: 가능한 모든 모수 값들의 집합
+Prior Distribution $p(\theta)$: $\theta$($\theta\in\Theta$)가 참값(모집단의 특성)이라는 믿음</description>
     </item>
     
   </channel>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Logistic Regression - ML LAB</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Logistic Regression" />
+<meta property="og:description" content="Linear Regression for Qualitative Output Our goal is to model the posterior probability $P(Y_k\vert\mathbf{X})$ or the discriminant function $\delta_k(\mathbf{X})$, because we want to set a decision boundary as $\{\mathbf{X}:P(Y_k\vert\mathbf{X})=P(Y_l\vert\mathbf{X})\}$ or $\{\mathbf{X}:\delta_k(\mathbf{X})=\delta_l(\mathbf{X})\}$. We will classify $\mathbf{X}$ to the class with the largest value of $P(Y_k\vert\mathbf{X})$ or $\delta_k(\mathbf{X})$.
+First, we can consider the case fitting a linear model for the posterior probability as $P(Y_k\vert\mathbf{X})=\mathbf{X}\boldsymbol{\beta}_k$ and it is quite reasonable in that
+$\text{E}[Y_k\vert\mathbf{X}]=P(Y_1\vert\mathbf{X})\cdot0&#43;\cdots&#43;P(Y_k\vert\mathbf{X})\cdot1&#43;\cdots&#43;P(Y_K\vert\mathbf{X})\cdot0=P(Y_k\vert\mathbf{X})$." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://statkwon.github.io/ml/logistic_regression/" /><meta property="article:section" content="ml" />
+<meta property="article:published_time" content="2021-03-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-03-01T00:00:00+00:00" />
+
+		<meta itemprop="name" content="Logistic Regression">
+<meta itemprop="description" content="Linear Regression for Qualitative Output Our goal is to model the posterior probability $P(Y_k\vert\mathbf{X})$ or the discriminant function $\delta_k(\mathbf{X})$, because we want to set a decision boundary as $\{\mathbf{X}:P(Y_k\vert\mathbf{X})=P(Y_l\vert\mathbf{X})\}$ or $\{\mathbf{X}:\delta_k(\mathbf{X})=\delta_l(\mathbf{X})\}$. We will classify $\mathbf{X}$ to the class with the largest value of $P(Y_k\vert\mathbf{X})$ or $\delta_k(\mathbf{X})$.
+First, we can consider the case fitting a linear model for the posterior probability as $P(Y_k\vert\mathbf{X})=\mathbf{X}\boldsymbol{\beta}_k$ and it is quite reasonable in that
+$\text{E}[Y_k\vert\mathbf{X}]=P(Y_1\vert\mathbf{X})\cdot0&#43;\cdots&#43;P(Y_k\vert\mathbf{X})\cdot1&#43;\cdots&#43;P(Y_K\vert\mathbf{X})\cdot0=P(Y_k\vert\mathbf{X})$."><meta itemprop="datePublished" content="2021-03-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-03-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="481">
+<meta itemprop="keywords" content="" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="ML LAB" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">ML LAB</div>
+					<div class="logo__tagline">To be a skillful ML engineer</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Logistic Regression</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-03-01T00:00:00Z">2021-03-01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#linear-regression-for-qualitative-output">Linear Regression for Qualitative Output</a></li>
+    <li><a href="#logistic-regression">Logistic Regression</a></li>
+    <li><a href="#python-code-for-logistic-regression">Python Code for Logistic Regression</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<h2 id="linear-regression-for-qualitative-output">Linear Regression for Qualitative Output</h2>
+<p>Our goal is to model the posterior probability $P(Y_k\vert\mathbf{X})$ or the discriminant function $\delta_k(\mathbf{X})$, because we want to set a decision boundary as $\{\mathbf{X}:P(Y_k\vert\mathbf{X})=P(Y_l\vert\mathbf{X})\}$ or $\{\mathbf{X}:\delta_k(\mathbf{X})=\delta_l(\mathbf{X})\}$. We will classify $\mathbf{X}$ to the class with the largest value of $P(Y_k\vert\mathbf{X})$ or $\delta_k(\mathbf{X})$.</p>
+<p>First, we can consider the case fitting a linear model for the posterior probability as $P(Y_k\vert\mathbf{X})=\mathbf{X}\boldsymbol{\beta}_k$ and it is quite reasonable in that</p>
+<p>$\text{E}[Y_k\vert\mathbf{X}]=P(Y_1\vert\mathbf{X})\cdot0+\cdots+P(Y_k\vert\mathbf{X})\cdot1+\cdots+P(Y_K\vert\mathbf{X})\cdot0=P(Y_k\vert\mathbf{X})$.</p>
+<p>The figure below depicts this situation.</p>
+<figure><img src="/ml/logr1.jpeg" width="600"/>
+</figure>
+
+<p>However, this method has some disadvantages. We know that a probability should be between $0$ and $1$ and the sum of all probabilities should be $1$. If we assume the linear form of posterior probability, it only satisfies that $\sum_k\hat{P}(Y_k\vert\mathbf{X})=1$ for any $\mathbf{X}$. The probability can be negative or greater than $1$ as the figure above. Furthermore, this method cannot be used when the number of classes are larger than $3$. We can handle this problems by using another form of function.</p>
+<h2 id="logistic-regression">Logistic Regression</h2>
+<p>Logistic regression assumes the posterior probability to have a form of a logistic function which ensures that they sum to one and remain in $[0, 1]$.</p>
+<p>$P(Y_k\vert\mathbf{X})=\dfrac{\exp{(\mathbf{X}\boldsymbol{\beta}_k)}}{1+\sum_{l=1}^{K-1}\exp{(\mathbf{X}\boldsymbol{\beta}_l)}} \qquad P(Y_K\vert\mathbf{X})=\dfrac{1}{1+\sum_{l=1}^{K-1}\exp{(\mathbf{X}\boldsymbol{\beta}_l)}}$</p>
+<p>When $K=2$, this model is especially simple, since there is only a single linear function and we will concentrate only on this case from now on.</p>
+<p>$P(Y_1\vert\mathbf{X})=\dfrac{\exp{(\mathbf{X}\boldsymbol{\beta})}}{1+\exp{(\mathbf{X}\boldsymbol{\beta})}} \qquad P(Y_0\vert\mathbf{X})=\dfrac{1}{1+\exp{(\mathbf{X}\boldsymbol{\beta})}}$</p>
+<figure><img src="/ml/logr2.jpeg" width="600"/>
+</figure>
+
+<p>To estimate the coefficients, we will assume that our target variable $Y$ follows a binomial distribution with $p_1(\mathbf{x}_i;\boldsymbol{\beta})=P(Y_1\vert\mathbf{X})$. Then the log-likelihood can be written as</p>
+<p>$\begin{aligned}
+l(\boldsymbol{\beta}\vert\mathbf{y})&amp;=\sum_{i=1}^n\left\{y_i\log{p_1(\mathbf{x}_i;\boldsymbol{\beta})}+(1-y_i)\log{(1-p_1(\mathbf{x}_i;\boldsymbol{\beta}))}\right\} \\
+&amp;=\sum_{i=1}^n\left\{y_i\log{\dfrac{\exp{(\boldsymbol{\beta}^T\mathbf{x}_i)}}{1+\exp{(\boldsymbol{\beta}^T\mathbf{x}_i)}}} +(1-y_i)\log{\dfrac{1}{1+\exp{(\boldsymbol{\beta}^T\mathbf{x}_i)}}}\right\} \\
+&amp;=\sum_{i=1}^n\left\{y_i\boldsymbol{\beta}^T\mathbf{x}_i-\log{(1+\exp{(\boldsymbol{\beta}^T\mathbf{x}_i)})}\right\}
+\end{aligned}$</p>
+<p>To maximize the log-likelihood, we set its derivatives to zero.</p>
+<p>$\begin{aligned}
+\dfrac{\partial}{\partial\boldsymbol{\beta}}l(\boldsymbol{\beta}\vert\mathbf{y})&amp;=\sum_{i=1}^n\left\{y_i\mathbf{x}_i-\dfrac{\exp{(\boldsymbol{\beta}^T\mathbf{x}_i)}}{1+\exp{(\boldsymbol{\beta}^T\mathbf{x}_i)}}\mathbf{x}_i\right\} \\
+&amp;=\sum_{i=1}^n\mathbf{x}_i(y_i-p_1(\mathbf{x}_i;\boldsymbol{\beta}))=0
+\end{aligned}$</p>
+<p>Now we will solve this equation by using Newton-Raphson algorithm.</p>
+<p><em>Brief Summary of Newton-Raphson Algorithm</em></p>
+<figure><img src="/ml/logr3.jpeg" width="400"/>
+</figure>
+
+<p>$L_1=y-f(x_1)=f&rsquo;(x_1)(x-x_1)$</p>
+<p>$x_2=x_1-\dfrac{f(x_1)}{f&rsquo;(x_1)} \quad\cdots\quad \underset{n\rightarrow\infty}{\lim}x_n=r$</p>
+<p>We need the second dervatives of log-likelihood.</p>
+<p>$\begin{aligned}
+\dfrac{\partial^2}{\partial\boldsymbol{\beta}\partial\boldsymbol{\beta}^T}l(\boldsymbol{\beta}\vert\mathbf{y})&amp;=-\sum_{i=1}^n\mathbf{x}_i\dfrac{\mathbf{x}_i^T\exp{(\boldsymbol{\beta}^T\mathbf{x}_i)}\left\{1+\exp{(\boldsymbol{\beta}^T\mathbf{x}_i)}\right\}-\mathbf{x}_i^T\exp{(\boldsymbol{\beta}^T\mathbf{x}_i)}\exp{(\boldsymbol{\beta}^T\mathbf{x}_i)}}{\left\{1+\exp{(\boldsymbol{\beta}^T\mathbf{x}_i)}\right\}^2} \\
+&amp;=-\sum_{i=1}^n\mathbf{x}_i\mathbf{x}_i^T\dfrac{\exp{(\boldsymbol{\beta}^T\mathbf{x}_i)}}{\left\{1+\exp{(\boldsymbol{\beta}^T\mathbf{x}_i)}\right\}^2} \\
+&amp;=-\sum_{i=1}^n\mathbf{x}_i\mathbf{x}_i^Tp_1(\mathbf{x}_i;\boldsymbol{\beta})(1-p_1(\mathbf{x}_i;\boldsymbol{\beta}))
+\end{aligned}$</p>
+<p>Starting with some inital point $\boldsymbol{\beta}^\text{old}$, we will continuously update $\boldsymbol{\beta}$ until it converges.</p>
+<p>$\boldsymbol{\beta}^\text{new}=\boldsymbol{\beta}^\text{old}-\left(\dfrac{\partial^2}{\partial\boldsymbol{\beta}\partial\boldsymbol{\beta}^T}l(\boldsymbol{\beta}\vert\mathbf{y})\right)^{-1}\dfrac{\partial}{\partial\boldsymbol{\beta}}l(\boldsymbol{\beta}\vert\mathbf{y})$</p>
+<p>To make the calcuation easier, we will use some matrix notations.</p>
+<p>Let $\dfrac{\partial}{\partial\boldsymbol{\beta}}l(\boldsymbol{\beta}\vert\mathbf{y})=\mathbf{X}^T(\mathbf{y}-\mathbf{p})$ and $\dfrac{\partial^2}{\partial\boldsymbol{\beta}\partial\boldsymbol{\beta}^T}l(\boldsymbol{\beta}\vert\mathbf{y})=-\mathbf{X}^T\mathbf{W}\mathbf{X}$.</p>
+<p>Then we can write down the updating algorithm as</p>
+<p>$\begin{aligned}
+\boldsymbol{\beta}^\text{new}&amp;=\boldsymbol{\beta}^\text{old}+(\mathbf{X}^T\mathbf{W}\mathbf{X})^{-1}\mathbf{X}^T(\mathbf{y}-\mathbf{p}) \\
+&amp;=(\mathbf{X}^T\mathbf{W}\mathbf{X})^{-1}\mathbf{X}^T\mathbf{W}(\mathbf{X}\boldsymbol{\beta}^\text{old}+\mathbf{W}^{-1}(\mathbf{y}-\mathbf{p})) \\
+&amp;=(\mathbf{X}^T\mathbf{W}\mathbf{X})^{-1}\mathbf{X}^T\mathbf{W}\mathbf{z}
+\end{aligned}$</p>
+<p>Usually $\boldsymbol{\beta}=\mathbf{0}$ is used as an inital point for the iterative procedure, though the convergence is never guaranteed. Typically the algorithm does converge, since the log-likelihood is concave, but overshooting can occur.</p>
+<h2 id="python-code-for-logistic-regression">Python Code for Logistic Regression</h2>
+<p>Github Link: <a href="https://github.com/statkwon/ML_Study/blob/master/MyLogisticRegression.ipynb">MyLogisticRegression.ipynb</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyLogisticRegression</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, max_iter<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>max_iter <span style="color:#f92672">=</span> max_iter
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fit</span>(self, X_train, y_train):
+</span></span><span style="display:flex;"><span>        ones <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>transpose(np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">*</span>len(X_train)]))
+</span></span><span style="display:flex;"><span>        X_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>concatenate((ones, np<span style="color:#f92672">.</span>array(X_train)), axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        y_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(y_train)
+</span></span><span style="display:flex;"><span>        beta <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">0</span>]<span style="color:#f92672">*</span>X_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>max_iter):
+</span></span><span style="display:flex;"><span>            p1 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>exp(X_train<span style="color:#f92672">.</span>dot(beta))<span style="color:#f92672">/</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">+</span>np<span style="color:#f92672">.</span>exp(X_train<span style="color:#f92672">.</span>dot(beta)))
+</span></span><span style="display:flex;"><span>            p0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>p1
+</span></span><span style="display:flex;"><span>            W <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>diag(p0<span style="color:#f92672">*</span>p1)
+</span></span><span style="display:flex;"><span>            beta <span style="color:#f92672">=</span> beta <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>inv(np<span style="color:#f92672">.</span>transpose(X_train)<span style="color:#f92672">.</span>dot(W)<span style="color:#f92672">.</span>dot(X_train))<span style="color:#f92672">.</span>dot(np<span style="color:#f92672">.</span>transpose(X_train))<span style="color:#f92672">.</span>dot(y_train<span style="color:#f92672">-</span>p1)
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>beta_new <span style="color:#f92672">=</span> beta
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict</span>(self, X_test):
+</span></span><span style="display:flex;"><span>        ones <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>transpose(np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">*</span>len(X_test)]))
+</span></span><span style="display:flex;"><span>        X_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>concatenate((ones, np<span style="color:#f92672">.</span>array(X_test)), axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> (np<span style="color:#f92672">.</span>exp(X_test<span style="color:#f92672">.</span>dot(self<span style="color:#f92672">.</span>beta_new))<span style="color:#f92672">/</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">+</span>np<span style="color:#f92672">.</span>exp(X_test<span style="color:#f92672">.</span>dot(self<span style="color:#f92672">.</span>beta_new))) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0.5</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;int&#39;</span>)
+</span></span></code></pre></div><hr>
+<p><strong>Reference</strong></p>
+<ol>
+<li>Hastie, T., Tibshirani, R., Friedman, J. H., &amp; Friedman, J. H. (2009). The elements of statistical learning: data mining, inference, and prediction (Vol. 2, pp. 1-758). New York: springer.</li>
+</ol>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Me avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Me</span>
+	</div>
+	<div class="authorbox__description">
+		Data Scientist? Developer?
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/ml/ridge_regression/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Ridge Regression</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/ml/lda-classification/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">LDA-Classification</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statkwon" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 STATKWON.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async>
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\[','\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: { equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "AMSsymbols.js"] }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+</body>
+</html>

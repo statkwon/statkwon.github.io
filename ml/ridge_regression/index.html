@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ridge Regression - ML LAB</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Ridge Regression" />
+<meta property="og:description" content="Ridge Regression Subset selection methods can sometimes cause high variance due to its discrete characteristic. As an alternative, shrinkage methods such as ridge regression can be used.
+Ridge regression shrinks the regression coefficients by imposing a penalty on their size. The ridge solutions are not equivariant under scaling of the inputs, and so one normally standardizes the inputs. So until now we will assume that $X$ is a standardized matrix. Coefficients of ridge regression is related to the restricted minimization problem as below." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://statkwon.github.io/ml/ridge_regression/" /><meta property="article:section" content="ml" />
+<meta property="article:published_time" content="2021-02-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-25T00:00:00+00:00" />
+
+		<meta itemprop="name" content="Ridge Regression">
+<meta itemprop="description" content="Ridge Regression Subset selection methods can sometimes cause high variance due to its discrete characteristic. As an alternative, shrinkage methods such as ridge regression can be used.
+Ridge regression shrinks the regression coefficients by imposing a penalty on their size. The ridge solutions are not equivariant under scaling of the inputs, and so one normally standardizes the inputs. So until now we will assume that $X$ is a standardized matrix. Coefficients of ridge regression is related to the restricted minimization problem as below."><meta itemprop="datePublished" content="2021-02-25T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-02-25T00:00:00+00:00" />
+<meta itemprop="wordCount" content="389">
+<meta itemprop="keywords" content="Regularization," />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="ML LAB" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">ML LAB</div>
+					<div class="logo__tagline">To be a skillful ML engineer</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Ridge Regression</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-02-25T00:00:00Z">2021-02-25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ridge-regression">Ridge Regression</a></li>
+    <li><a href="#geometric-interpretation-of-ridge-regression">Geometric Interpretation of Ridge Regression</a></li>
+    <li><a href="#python-code-for-ridge-regression">Python Code for Ridge Regression</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<h2 id="ridge-regression">Ridge Regression</h2>
+<p>Subset selection methods can sometimes cause high variance due to its discrete characteristic. As an alternative, shrinkage methods such as ridge regression can be used.</p>
+<p>Ridge regression shrinks the regression coefficients by imposing a penalty on their size. The ridge solutions are not equivariant under scaling of the inputs, and so one normally standardizes the inputs. So until now we will assume that $X$ is a standardized matrix. Coefficients of ridge regression is related to the restricted minimization problem as below.</p>
+<p>$\begin{aligned}
+\hat{\beta}^{\text{ridge}}&amp;=\underset{\beta}{\text{argmin}}\left\{\sum_{i=1}^N(y_i-\beta_0-\sum_{j=1}^px_{ij}\beta_j)^2+\lambda\sum_{j=1}^p\beta_j^2\right\} \\
+&amp;=\underset{\beta}{\text{argmin}}\sum_{i=1}^N\left(y_i-\beta_0-\sum_{j=1}^px_{ij}\beta_j\right)^2 \; \text{subject to} \; \sum_{j=1}^p\beta_j^2≤t
+\end{aligned}$</p>
+<p>We can solve this problem with a matrix notation and get the ridge coefficient as $\hat{\beta}^{\text{ridge}}=(X^TX+\lambda I)^{-1}X^Ty$.</p>
+<p>$\begin{aligned}
+\dfrac{\partial}{\partial\beta}(y-X\beta)^T(y-X\beta)+\lambda\beta^T\beta&amp;=\dfrac{\partial}{\partial\beta}y^Ty-2\beta^TX^Ty+\beta^TX^TX\beta+\lambda\beta^T\beta \\
+&amp;=-2X^Ty+2X^TX\beta+2\lambda\beta
+\end{aligned}$</p>
+<p>Here, $X^TX+\lambda I$ is always invertible for any $\lambda&gt;0$ because the positive semi-definite matrix $X^TX$ becomes positive definite when a positive constant is added to the diagonal of $X^T$. Therefore, we can express our fitted value $\hat{y}$ as $X\hat{\beta}^{\text{ridge}}=X(X^TX+\lambda I)^{-1}X^Ty$.</p>
+<h2 id="geometric-interpretation-of-ridge-regression">Geometric Interpretation of Ridge Regression</h2>
+<p>We can make some geometric interpretation using $X=UDV^T$, the singular value decomposition of $X$. Let&rsquo;s think about the case of linear regerssion first.</p>
+<p>$\begin{aligned}
+\hat{y}&amp;=X(X^TX)^{-1}X^Ty \\
+&amp;=UDV^T(VDU^TUDV^T)^{-1}VDU^Ty \\
+&amp;=UDV^T(V^T)^{-1}(D^2)^{-1}V^{-1}VDU^Ty \\
+&amp;=UU^Ty \\
+&amp;=\sum_{i=1}^pu_iu_i^Ty \\
+&amp;=\dfrac{y\cdot u_1}{u_1\cdot u_1}u_1+\cdots+\dfrac{y\cdot u_p}{u_p\cdot u_p}u_p
+\end{aligned}$</p>
+<p>This is same as to project $y$ onto each vector in the orthogonal basis of column space of $X$ and make sum of them.</p>
+<figure><img src="/ml/ridge1.png" width="300"/>
+</figure>
+
+<p>Now we will apply this concept to ridge regression.</p>
+<p>$\begin{aligned}
+\hat{y}&amp;=X(X^TX+\lambda I)^{-1}X^Ty \\
+&amp;=UDV^T(VDU^TUDV^T+\lambda I)^{-1}VDU^Ty \\
+&amp;=UDV^T(VD^2V^T+\lambda I)^{-1}VDU^Ty \\
+&amp;=UD\{V^{-1}(VD^2V^T+\lambda I)(V^T)^{-1}\}DU^Ty \\
+&amp;=U(D^2+\lambda I)^{-1}U^Ty \\
+&amp;=\sum_{i=1}^pu_i\dfrac{d_i^2}{d_i^2+\lambda}u_i^Ty \\
+&amp;=\dfrac{d_1^2}{d_1^2+\lambda}\dfrac{y\cdot u_1}{u_1\cdot u_1}y+\cdots+\dfrac{d_p^2}{d_p^2+\lambda}\dfrac{y\cdot u_p}{u_p\cdot u_p}y
+\end{aligned}$</p>
+<p>Ridge regression is similar to the linear regression, but differs in that it makes a shrinkage to the direction of each $u_i$ by the amount of $\dfrac{d_i^2}{d_i^2+\lambda}$. Thus, it means that a greater amount of shrinkage is applied to the coordinates of basis vectors with smaller $d_j^2$.</p>
+<h2 id="python-code-for-ridge-regression">Python Code for Ridge Regression</h2>
+<p>Github Link: <a href="https://github.com/statkwon/ML_Study/blob/master/MyRidgeRegression.ipynb">MyRidgeRegression.ipynb</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyRidgeRegerssion</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">1.0</span>):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>alpha <span style="color:#f92672">=</span> alpha
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fit</span>(self, X_train, y_train):
+</span></span><span style="display:flex;"><span>        ones <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones(len(X_train))
+</span></span><span style="display:flex;"><span>        X_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(X_train)
+</span></span><span style="display:flex;"><span>        X_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>column_stack((np<span style="color:#f92672">.</span>ones(len(X_train)), X_train))
+</span></span><span style="display:flex;"><span>        y_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(y_train)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>beta <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>inv(np<span style="color:#f92672">.</span>transpose(X_train)<span style="color:#f92672">.</span>dot(X_train)<span style="color:#f92672">+</span>self<span style="color:#f92672">.</span>alpha<span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>identity(X_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]))<span style="color:#f92672">.</span>dot(np<span style="color:#f92672">.</span>transpose(X_train))<span style="color:#f92672">.</span>dot(y_train)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict</span>(self, X_test):
+</span></span><span style="display:flex;"><span>        ones <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones(len(X_test))
+</span></span><span style="display:flex;"><span>        X_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(X_test)
+</span></span><span style="display:flex;"><span>        X_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>column_stack((np<span style="color:#f92672">.</span>ones(len(X_test)), X_test))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> X_test<span style="color:#f92672">.</span>dot(self<span style="color:#f92672">.</span>beta)
+</span></span></code></pre></div><hr>
+<p><strong>Reference</strong></p>
+<ol>
+<li>Hastie, T., Tibshirani, R., Friedman, J. H., &amp; Friedman, J. H. (2009). The elements of statistical learning: data mining, inference, and prediction (Vol. 2, pp. 1-758). New York: springer.</li>
+</ol>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/regularization/" rel="tag">Regularization</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Me avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Me</span>
+	</div>
+	<div class="authorbox__description">
+		Data Scientist? Developer?
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/ml/gram-schmidt_process/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Gram-Schmidt Process</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/ml/logistic_regression/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">Logistic Regression</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statkwon" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 STATKWON.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async>
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\[','\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: { equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "AMSsymbols.js"] }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+</body>
+</html>

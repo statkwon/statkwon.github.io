@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>한국토지주택공사 주차수요 예측 AI 경진대회 - ML LAB</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="한국토지주택공사 주차수요 예측 AI 경진대회" />
+<meta property="og:description" content="1. 대회 주제 및 목적 아파트 단지 내 주차대수는 법정주차대수와 장래주차수요 중 큰 값에 따라 결정하는 것이 원칙이다. 따라서 불필요한 공간 소요를 줄이기 위해서는 장래주차수요를 정확하게 추정하는 것이 중요하다. 현재 단지 내 장래주차수요는 주차원단위와 건축연면적을 활용하는 Rule-Based 방식을 통해 산출되고 있다. 하지만 이러한 방식은 인력 조사로 인한 오차 발생, 현장 조사 시점과 실제 건축 시점 사이의 시간차 등의 문제로 인해 장래주차수요가 과대 또는 과소 추정될 수 있다는 한계점을 가지고 있다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://statkwon.github.io/contest/dacon_lh/" /><meta property="article:section" content="contest" />
+<meta property="article:published_time" content="2021-10-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-27T00:00:00+00:00" />
+
+		<meta itemprop="name" content="한국토지주택공사 주차수요 예측 AI 경진대회">
+<meta itemprop="description" content="1. 대회 주제 및 목적 아파트 단지 내 주차대수는 법정주차대수와 장래주차수요 중 큰 값에 따라 결정하는 것이 원칙이다. 따라서 불필요한 공간 소요를 줄이기 위해서는 장래주차수요를 정확하게 추정하는 것이 중요하다. 현재 단지 내 장래주차수요는 주차원단위와 건축연면적을 활용하는 Rule-Based 방식을 통해 산출되고 있다. 하지만 이러한 방식은 인력 조사로 인한 오차 발생, 현장 조사 시점과 실제 건축 시점 사이의 시간차 등의 문제로 인해 장래주차수요가 과대 또는 과소 추정될 수 있다는 한계점을 가지고 있다."><meta itemprop="datePublished" content="2021-10-27T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-10-27T00:00:00+00:00" />
+<meta itemprop="wordCount" content="202">
+<meta itemprop="keywords" content="" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="ML LAB" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">ML LAB</div>
+					<div class="logo__tagline">To be a skillful ML engineer</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">한국토지주택공사 주차수요 예측 AI 경진대회</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-10-27T00:00:00Z">2021-10-27</time></div></div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-대회-주제-및-목적">1. 대회 주제 및 목적</a></li>
+    <li><a href="#2-데이터-설명">2. 데이터 설명</a></li>
+    <li><a href="#3-주요-과정-및-결과">3. 주요 과정 및 결과</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<h2 id="1-대회-주제-및-목적">1. 대회 주제 및 목적</h2>
+<p>아파트 단지 내 주차대수는 법정주차대수와 장래주차수요 중 큰 값에 따라 결정하는 것이 원칙이다. 따라서 불필요한 공간 소요를 줄이기 위해서는 장래주차수요를 정확하게 추정하는 것이 중요하다. 현재 단지 내 장래주차수요는 주차원단위와 건축연면적을 활용하는 Rule-Based 방식을 통해 산출되고 있다. 하지만 이러한 방식은 인력 조사로 인한 오차 발생, 현장 조사 시점과 실제 건축 시점 사이의 시간차 등의 문제로 인해 장래주차수요가 과대 또는 과소 추정될 수 있다는 한계점을 가지고 있다.</p>
+<blockquote>
+<p><strong>주차원단위법</strong></p>
+<p>$P=\dfrac{U\times F}{1000\times e}$</p>
+<p>$P$: 주차 수요(대) <br>
+$U$: 주차원단위(대/$1,000m^2$), 건축 예정 부지 인근 유사 단지의 피크 시간대 건물연면적 $1,000m^2$당 주차발생량 <br>
+$F$: 건축 예정 부지의 건축연면적($m^2$) <br>
+$e$: 주차 이용 효율</p>
+</blockquote>
+<p>이에 한국토지주택공사 주차수요 예측 AI 경진대회에서는 머신러닝 모형을 활용하여 유형별 임대주택 설계 시 단지 내 적정 주차 수요를 예측함으로써 기존의 추정 방식을 보완할 수 있는 방안을 제안하는 것을 목표로 하였다. 제안된 모형의 예측 정확도 평가 기준으로는 실제 단지 내 등록차량수와 예측값 사이의 MAE를 사용하였다.</p>
+<h2 id="2-데이터-설명">2. 데이터 설명</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">테이블명</th>
+<th style="text-align:center">설명</th>
+<th style="text-align:center">크기</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">TRAIN</td>
+<td style="text-align:center">총세대수, 공급유형, 전용면적, 자격유형, 임대료, 도보 10분거리 내 지하철역 수, 등록차량수 등 단지 내 건물별 정보 (종속변수 포함)</td>
+<td style="text-align:center">2,952$\times$15</td>
+</tr>
+<tr>
+<td style="text-align:center">TEST</td>
+<td style="text-align:center">총세대수, 전용면적, 임대료, 도보 10분거리 내 지하철역 수 등 단지 내 건물별 정보 (종속변수 미포함)</td>
+<td style="text-align:center">1,022$\times$14</td>
+</tr>
+<tr>
+<td style="text-align:center">AGE_GENDER_INFO</td>
+<td style="text-align:center">지역 임대주택 나이별, 성별 인구 분포</td>
+<td style="text-align:center">16$\times$23</td>
+</tr>
+</tbody>
+</table>
+<p>Sample Data: <a href="https://dacon.io/competitions/official/235745/data">https://dacon.io/competitions/official/235745/data</a></p>
+<h2 id="3-주요-과정-및-결과">3. 주요 과정 및 결과</h2>
+<figure><img src="/contest/lh1.jpg" width="1100"/>
+</figure>
+
+<figure><img src="/contest/lh2.jpg" width="1100"/>
+</figure>
+
+<figure><img src="/contest/lh3.jpg" width="1100"/>
+</figure>
+
+<figure><img src="/contest/lh4.jpg" width="1100"/>
+</figure>
+
+<figure><img src="/contest/lh5.jpg" width="1100"/>
+</figure>
+
+<figure><img src="/contest/lh6.jpg" width="1100"/>
+</figure>
+
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Me avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Me</span>
+	</div>
+	<div class="authorbox__description">
+		Data Scientist? Developer?
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/contest/dacon_nh/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">NH투자증권 Y&amp;Z 투자자 프로파일링 시각화 경진대회</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/contest/bigcon_kdx/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">디지털 경제 기반 지역경제 활성화를 위한 비즈니스 아이디어 및 PoC 결과 제시</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statkwon" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 STATKWON.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async>
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\[','\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: { equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "AMSsymbols.js"] }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+</body>
+</html>

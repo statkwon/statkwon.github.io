@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Regularization on ML LAB</title>
+    <link>http://statkwon.github.io/tags/regularization/</link>
+    <description>Recent content in Regularization on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 25 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/regularization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ridge Regression</title>
+      <link>http://statkwon.github.io/ml/ridge_regression/</link>
+      <pubDate>Thu, 25 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/ridge_regression/</guid>
+      <description>Ridge Regression Subset selection methods can sometimes cause high variance due to its discrete characteristic. As an alternative, shrinkage methods such as ridge regression can be used.
+Ridge regression shrinks the regression coefficients by imposing a penalty on their size. The ridge solutions are not equivariant under scaling of the inputs, and so one normally standardizes the inputs. So until now we will assume that $X$ is a standardized matrix. Coefficients of ridge regression is related to the restricted minimization problem as below.</description>
+    </item>
+    
+  </channel>
+</rss>

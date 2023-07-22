@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Bayesian Statistics - ML LAB</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Bayesian Statistics" />
+<meta property="og:description" content="Introduction Bayesian Learning
+통계적 추론은 모집단의 일부를 통해 모집단의 일반적인 특성을 알아내기 위한 과정이다. 이때 대부분의 경우 모집단의 수치적 특성을 모수 $\theta$로 표현한다. 하지만 데이터가 주어지기 전까지, 모수 $\theta$의 값은 불확실하다. $y$라는 데이터셋이 주어진다면, 이러한 모수에 대한 불확실성을 줄여나갈 수 있다. Bayesian Inference는 이러한 불확실성의 변화를 측정하는 것에 목적이 있다.
+Sample Space $\mathcal{Y}$: 가능한 모든 데이터셋들의 집합
+Parameter Space $\Theta$: 가능한 모든 모수 값들의 집합
+Prior Distribution $p(\theta)$: $\theta$($\theta\in\Theta$)가 참값(모집단의 특성)이라는 믿음" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://statkwon.github.io/ml/bayesian_statistics/" /><meta property="article:section" content="ml" />
+<meta property="article:published_time" content="2021-02-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-10T00:00:00+00:00" />
+
+		<meta itemprop="name" content="Bayesian Statistics">
+<meta itemprop="description" content="Introduction Bayesian Learning
+통계적 추론은 모집단의 일부를 통해 모집단의 일반적인 특성을 알아내기 위한 과정이다. 이때 대부분의 경우 모집단의 수치적 특성을 모수 $\theta$로 표현한다. 하지만 데이터가 주어지기 전까지, 모수 $\theta$의 값은 불확실하다. $y$라는 데이터셋이 주어진다면, 이러한 모수에 대한 불확실성을 줄여나갈 수 있다. Bayesian Inference는 이러한 불확실성의 변화를 측정하는 것에 목적이 있다.
+Sample Space $\mathcal{Y}$: 가능한 모든 데이터셋들의 집합
+Parameter Space $\Theta$: 가능한 모든 모수 값들의 집합
+Prior Distribution $p(\theta)$: $\theta$($\theta\in\Theta$)가 참값(모집단의 특성)이라는 믿음"><meta itemprop="datePublished" content="2021-02-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-02-10T00:00:00+00:00" />
+<meta itemprop="wordCount" content="735">
+<meta itemprop="keywords" content="Bayesian," />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="ML LAB" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">ML LAB</div>
+					<div class="logo__tagline">To be a skillful ML engineer</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Bayesian Statistics</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-02-10T00:00:00Z">2021-02-10</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#why-bayes">Why Bayes?</a>
+      <ul>
+        <li><a href="#estimating-the-probability-of-a-rare-event">Estimating the Probability of a Rare Event</a></li>
+        <li><a href="#building-a-predictive-model">Building a Predictive Model</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<h2 id="introduction">Introduction</h2>
+<p><strong>Bayesian Learning</strong></p>
+<p>통계적 추론은 모집단의 일부를 통해 모집단의 일반적인 특성을 알아내기 위한 과정이다. 이때 대부분의 경우 모집단의 수치적 특성을 모수 $\theta$로 표현한다. 하지만 데이터가 주어지기 전까지, 모수 $\theta$의 값은 불확실하다. $y$라는 데이터셋이 주어진다면, 이러한 모수에 대한 불확실성을 줄여나갈 수 있다. Bayesian Inference는 이러한 불확실성의 변화를 측정하는 것에 목적이 있다.</p>
+<blockquote>
+<p>Sample Space $\mathcal{Y}$: 가능한 모든 데이터셋들의 집합</p>
+<p>Parameter Space $\Theta$: 가능한 모든 모수 값들의 집합</p>
+<p>Prior Distribution $p(\theta)$: $\theta$($\theta\in\Theta$)가 참값(모집단의 특성)이라는 믿음</p>
+<p>Sampling Model $p(y|\theta)$: $\theta$($\theta\in\Theta$)가 참값이라는 전제 하에 샘플링을 했을 때, 데이터셋 $y$($y\in\mathcal{Y}$)가 나올 것이라는 믿음</p>
+<p>Posterior Distribution $p(\theta|y)$: 데이터셋 $y$를 관찰한 후의 $\theta$($\theta\in\Theta$)가 참값이라는 믿음</p>
+</blockquote>
+<p>$p(\theta|y)=\dfrac{p(y|\theta)p(\theta)}{\int_{\Theta}p(y|\tilde{\theta})p(\tilde{\theta})d\tilde{\theta}}$</p>
+<p>위와 같은 Bayes&rsquo; Rule은 우리의 믿음이 새로운 정보롤 관찰한 후 어떻게 바뀌어야 하는지 설명해준다.</p>
+<h2 id="why-bayes">Why Bayes?</h2>
+<p>$p(\theta)$와 $p(y|\theta)$가 한 사람의 합리적인 믿음을 나타낸다면, Bayes&rsquo; Rule은 새로운 정보 $y$가 주어졌을 때 $\theta$에 대한 그 사람의 믿음을 업데이트하는 최적의 방법이다. 하지만 실질적인 데이터 분석 상황에서 Prior Belief를 정확하게 수치화하는 것은 어렵기 때문에, 많은 경우 $p(\theta)$는 계산의 편의를 위한 방식으로 결정된다.</p>
+<p>그럼에도 불구하고 Bayesian Methods를 사용할 수 있는 이유는 무엇일까?</p>
+<ol>
+<li>&ldquo;All models are wrong, but some are useful.&rdquo; - 설령 $p(\theta)$가 Prior Belief를 정확하게 반영하지 못하더라도, $p(\theta)$가 우리의 믿음과 비슷하다면 $p(\theta|y)$ 역시 Posterior Belief에 대한 좋은 근사치가 될 수 있다.</li>
+<li>관심사가 우리의 믿음이 아닌 경우도 있다. 데이터가 서로 다른 Prior Belief를 가진 사람들의 다양한 믿음을 어떻게 업데이트 할 것인지에 대해 관심이 있는 경우, Parameter Space의 전 영역에 걸쳐 분산되어 있는 Prior Distribution을 사용할 수 있다.</li>
+<li>많은 복잡한 통계 문제들을 해결함에 있어, Non-Bayesian 문제라고 하더라도, Bayesian Methods를 사용하는 것은 매우 효과적이다.</li>
+</ol>
+<h3 id="estimating-the-probability-of-a-rare-event">Estimating the Probability of a Rare Event</h3>
+<p>한 도시의 코로나 확진자 비율 $\theta$에 관심이 있다고 하자.</p>
+<p>관련 연구에 따르면 여러 도시들의 확진자 비율은 $0.05$에서 $0.20$ 사이이고, 평균 비율은 $0.10$이다. 따라서 우리의 Prior Belief는 $(0.05, 0.20)$에서 대부분의 확률을 갖고, 평균이 $0.10$인 분포를 따라야 한다. 이러한 조건을 만족하는 분포는 굉장히 많지만, 계산의 편의를 고려하여 $\text{beta}(2, 20)$을 사용할 것이다.</p>
+<p>이제 모수를 추정하기 위해 $20$명의 표본을 뽑아야 한다. $20$명의 표본 중 확진자 수를 $Y$라고 하면, $\theta$가 참값이라는 전제 하에 $Y$에 대한 합리적인 Sampling Model은 $\text{binomial}(20, \theta)$이라고 할 수 있다.</p>
+<p>Prior Distribution이 $\theta\sim\text{beta}(2, 40)$이고 Sampling Model이 $Y|\theta\sim\text{binomial}(20, \theta)$인 경우의 Posterior Distribution은 $\text{beta}(2+y, 40-y)$가 된다. (이유는 3장에서 다룬다.)</p>
+<p><a href="https://ysuks.shinyapps.io/Bayes/">Simulation Link</a></p>
+<p>위 링크로 들어가면 위와 같은 조건 하에서 $0$부터 $20$ 사이의 $y$값에 따른 Posterior Distribution의 변화를 확인할 수 있다. 표본에서 관찰되는 확진자 수가 증가할 수록 $E[\theta|Y=y]$가 커지게 되는데, Posterior Distribution이 데이터셋을 관찰한 후의 $\theta$가 참값이라는 믿음이라는 점에서, 표본에서 더 많은 확진자가 발견될 수록 도시의 확진자 비율을 높게 추정하는 것은 상당히 직관적인 결과라고 할 수 있다.</p>
+<p>이에 더해 Posterior Expectation의 식을 살펴보면</p>
+<p>$\begin{align}
+E[\theta|Y=y]&amp;=\dfrac{a+y}{a+b+n} \\
+&amp;=\dfrac{n}{a+b+n}\dfrac{y}{n}+\dfrac{a+b}{a+b+n}\dfrac{a}{a+b} \\
+&amp;=\dfrac{n}{w+n}\bar{y}+\dfrac{w}{w+n}\theta_0
+\end{align}$</p>
+<p>Sample Mean $\bar{y}$와 Prior Expectation $\theta_0$의 가중 평균인 것을 확인할 수 있다. 즉, 더 많은 수의 표본을 뽑을 수록 표본 평균이 Posterior Expectation에 미치는 영향이 커지게 된다. 더 많은 데이터를 관찰했을 때 그 결과가 우리의 믿음의 변화에 미치는 영향이 커지는 것 역시 직관적이다.</p>
+<p>이러한 Bayesian Methods의 장점은 표본의 갯수가 적을 때에도 충분히 활용 가능하다는 점이다. 빈도론적 관점에서는 표본 비율 $\bar{y}=\dfrac{y}{n}$을 사용하여 모비율 $\theta$를 추정한다. 이때 추정의 불확실성을 ($95$%) 신뢰구간으로 나타내는데, 일반적으로 $\bar{y} \pm 1.96\sqrt{\bar{y}(1-\bar{y}/n)}$의 Wald 신뢰 구간을 사용한다. 하지만 Wald의 신뢰구간은 $n$이 작은 경우 추정의 불확실성을 정확히 표현하지 못한다.</p>
+<p>$\hat{\theta} \pm 1.96\sqrt{\hat{\theta}(1-\hat{\theta}/n)}$, where</p>
+<p>$\hat{\theta}=\dfrac{n}{n+4}\bar{y}+\dfrac{4}{n+4}\dfrac{1}{2}$</p>
+<p>이러한 문제점을 보완하기 위해 여러 대안이 제시되었고, 그중 하나가 위와 같은 Adjusted Wald 신뢰구간이다. 하지만 이러한 신뢰구간은 곧 Bayesian Inference와 밀접한 연관을 가지고 있다. 위 식에서의 $\hat{\theta}$는 Prior Distribution이 $\text{beta}(2, 2)$를 따를 때의 Posterior Expectation과 같다. 이때 $\text{beta}(2, 2)$는 평균이 $0.5$인 분포로, Prior Information이 약한 경우를 의미한다.</p>
+<p>이외에도 앞서 보았던 것처럼 Prior Expectation은 표본의 갯수를 고려한 결과이므로 $n$이 적은 상황에서도 모수에 대한 합리적인 추정치로 사용하는 것이 가능하다.</p>
+<h3 id="building-a-predictive-model">Building a Predictive Model</h3>
+<p>예측 모형을 만드는 경우에도 Bayesian Methods를 사용할 수 있다.</p>
+<p>$Y_i=\beta_1x_{i, 1}+\beta_2x_{i, 2}+\cdots+\beta_64x_{i, 64}+\sigma\epsilon_i$</p>
+<p>$64$개의 설명 변수를 사용하여 당뇨 진행에 대한 예측 모형을 만드는 상황을 생각해보자.</p>
+<p>우선 $342$명의 환자에 대한 데이터를 트레인셋으로 사용하여 회귀 모형의 모수를 추정하고, 나머지 $100$명의 데이터를 테스트셋으로 사용하여 모형을 평가할 것이다.</p>
+<p>이때 $65$개의 모수에 대한 정확한 Joint Prior Distribution을 찾는 것은 불가능하다. 따라서 대부분의 변수가 당뇨 진행에 영향을 미치지 않는다는 우리의 믿음을 반영하기 위해 각각의 회귀 계수가 $0$일 확률이 $50$%가 되게 하는 분포를 사용한다.</p>
+<p>빈도론적 관점에서는 이러한 경우 OLS를 사용하여 회귀 계수를 추정한다. 하지만 OLS는 표본의 크기가 적은 경우 좋은 성능을 보이지 못한다. 위의 예시에서도 $\boldsymbol{\beta}_{\text{OLS}}$보다 $\boldsymbol{\beta}_{\text{Bayes}}$를 사용했을 때의 Prediction Error가 더 낮게 나타났다. 이러한 문제점에 대한 대안으로 Lasso 회귀가 제시된다.</p>
+<p>$\text{SSR}(\boldsymbol{\beta}:\lambda)=\sum_{i=1}^n(y_i-\mathbf{x}_i^T\boldsymbol{\beta})^2+\lambda\sum_{j=1}^p|\beta_j|$</p>
+<p>하지만 Lasso 회귀 계수는 결국 각각의 $\beta_j$에 대한 Prior Distribution이 Double-Exponential 분포를 따르는 경우의 Posterior Mode와 같다는 점에서 Bayesian Estimate와 연관되어 있다.</p>
+<hr>
+<p><strong>Reference</strong></p>
+<ol>
+<li>Hoff, P. D. (2009). A first course in Bayesian statistical methods (Vol. 580). New York: Springer.</li>
+</ol>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/bayesian/" rel="tag">Bayesian</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Me avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Me</span>
+	</div>
+	<div class="authorbox__description">
+		Data Scientist? Developer?
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/ml/curse_of_dimensionality/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">Curse of Dimensionality</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statkwon" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 STATKWON.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async>
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\[','\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: { equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "AMSsymbols.js"] }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+</body>
+</html>

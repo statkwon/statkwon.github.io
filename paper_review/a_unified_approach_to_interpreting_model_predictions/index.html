@@ -19,8 +19,8 @@
 <meta itemprop="description" content="Abstract 최근 복잡한 머신러닝 모형의 예측 결과를 해석하기 위한 많은 방법들이 제안되었지만, 서로 어떠한 관련이 있는지, 어떠한 방법이 더 우세한지 등이 불분명한 상황이다. 이 논문에서는 이러한 문제를 해결하기 위해 SHAP(SHapley Additive exPlanations)이라는 통합 프레임워크를 제시한다. SHAP은 기존의 여러 방법들이 충족하지 못하던 몇 가지 바람직한 특성을 모두 만족한다는 장점을 갖는다.
 2. Additive Feature Attribution Methods 간단한 모형(ex. Linear Regression)에 대한 최고의 해석은 모형 그 자체이다. 하지만 복잡한 모형의 경우 모형을 곧바로 해석하는 것이 어려우므로, 기존 모형을 해석 가능한 모형으로 근사한 Explanation Model을 통해 해석하는 것이 일반적이다."><meta itemprop="datePublished" content="2022-04-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-04-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="582">
-<meta itemprop="keywords" content="XAI,SHAP," />
+<meta itemprop="wordCount" content="570">
+<meta itemprop="keywords" content="XAI,SHAP,Shapley Value," />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -88,33 +88,28 @@
     <li><a href="#4-shap-shapley-additive-explanation-values">4. SHAP (SHapley Additive exPlanation) Values</a>
       <ul>
         <li><a href="#41-model-agnostic-approximations">4.1. Model-Agnostic Approximations</a></li>
-        <li><a href="#42-model-specific-approximations">4.2. Model-Specific Approximations</a></li>
       </ul>
     </li>
     <li><a href="#memo">Memo</a></li>
-    <li><a href="#reference">Reference</a></li>
   </ul>
 </nav>
 	</div>
 </div><div class="content post__content clearfix">
 			<h2 id="abstract">Abstract</h2>
-<hr>
 <p>최근 복잡한 머신러닝 모형의 예측 결과를 해석하기 위한 많은 방법들이 제안되었지만, 서로 어떠한 관련이 있는지, 어떠한 방법이 더 우세한지 등이 불분명한 상황이다. 이 논문에서는 이러한 문제를 해결하기 위해 SHAP(SHapley Additive exPlanations)이라는 통합 프레임워크를 제시한다. SHAP은 기존의 여러 방법들이 충족하지 못하던 몇 가지 바람직한 특성을 모두 만족한다는 장점을 갖는다.</p>
 <h2 id="2-additive-feature-attribution-methods">2. Additive Feature Attribution Methods</h2>
-<hr>
 <p>간단한 모형(ex. Linear Regression)에 대한 최고의 해석은 모형 그 자체이다. 하지만 복잡한 모형의 경우 모형을 곧바로 해석하는 것이 어려우므로, 기존 모형을 해석 가능한 모형으로 근사한 Explanation Model을 통해 해석하는 것이 일반적이다. 이 논문에서는 임의의 $\mathbf{x}$에 대한 예측 결과인 $f(\mathbf{x})$를 해석하는 경우에 초점을 맞추고 있다.</p>
 <p>Explanation Model은 종종 Original Input $\mathbf{x}$ 대신 임의의 Mapping Function $h_\mathbf{x}$를 통해 $\mathbf{x}$로 매핑되는 Simplified Input $\mathbf{x}&rsquo;$을 사용한다. 2장에서는 이러한 Explanation Model의 한 형태로 다음과 같은 식의 Additive Feature Attribution Method(이하 AFAM)를 소개하고 있다.</p>
 <p>$\displaystyle g(\mathbf{z}&rsquo;)=\phi_0+\sum_{i=1}^M\phi_iz_i&rsquo;$, where $\mathbf{z}&rsquo;\in\{0, 1\}^M$, $M$ is the number of simplified input features, and $\phi_i\in\mathbb{R}$</p>
 <p>AFAM은 $0$ 또는 $1$의 값만을 갖는 Simplified Input $z_1&rsquo;, \ldots, z_M&rsquo;$의 선형 결합으로 $f(\mathbf{z})$를 근사한다. ($\mathbf{z}&rsquo;\approx\mathbf{x}&rsquo;$)</p>
-<p>여기서 주목할 점은 <a href="/paper_review/why_should_i_trust_you_explaining_the_predictions_of_any_classifier">LIME</a>, DeepLIFT, Layer-Wise Relevance Propagation, <a href="/paper_review/analysis_of_regression_in_game_theory_approach">Shapley Regression Values</a>, <a href="/paper_review/explaining_prediction_models_and_individual_predictions_with_feature_contributions">Shapley Sampling Values</a>, <a href="/paper_review/algorithmic_transparency_via_quantitative_input_influence">Quantitative Input Influence</a> 등의 기존 방법론들이 모두 이와 같은 형태를 갖는다는 것이다.</p>
+<p>여기서 주목할 점은 <a href="/paper_review/why_should_i_trust_you_explaining_the_predictions_of_any_classifier">LIME</a>, DeepLIFT, Layer-Wise Relevance Propagation, <a href="/paper_review/analysis_of_regression_in_game_theory_approach">Shapley Regression Values</a>, <a href="/paper_review/explaining_prediction_models_and_individual_predictions_with_feature_contributions">Shapley Sampling Values</a>, Quantitative Input Influence 등의 기존 방법론들이 모두 이와 같은 형태를 갖는다는 것이다.</p>
 <h2 id="3-simple-properties-uniquely-determine-additive-feature-attributions">3. Simple Properties Uniquely Determine Additive Feature Attributions</h2>
-<hr>
 <p>3장에서는 AFAM이 갖추면 좋을 세 가지 특성에 대해 소개하고 있다.</p>
 <p><strong>Local Accuracy</strong> - &ldquo;Explanation Model이 Original Model을 정확하게 근사한다.&rdquo;</p>
 <p>$\displaystyle f(\mathbf{x})=g(\mathbf{x}&rsquo;)=\phi_0+\sum_{i=1}^M\phi_ix_i&rsquo;$, where $\mathbf{x}=h_\mathbf{x}(\mathbf{x}&rsquo;)$</p>
-<p><strong>Missingness</strong> - &quot;&quot;</p>
+<p><strong>Missingness</strong></p>
 <p>$x_i&rsquo;=0 \quad\Rightarrow\quad \phi_i=0$</p>
-<p><strong>Consistency</strong> - &quot;&quot;</p>
+<p><strong>Consistency</strong></p>
 <p>Let $f_\mathbf{x}(\mathbf{z}&rsquo;)=f(h_\mathbf{x}(\mathbf{z}&rsquo;))$ and $\mathbf{z}&rsquo;\backslash i$ denote setting $z_i&rsquo;=0$.</p>
 <p>For any two models $f$ and $f&rsquo;$, if $f_\mathbf{x}&rsquo;(\mathbf{z}&rsquo;)-f_\mathbf{x}&rsquo;(\mathbf{z}&rsquo;\backslash i)≥f_\mathbf{x}(\mathbf{z}&rsquo;)-f_\mathbf{x}(\mathbf{z}&rsquo;\backslash i)$ for all inputs $\mathbf{z}&rsquo;\in\{0, 1\}^M$, then $\phi_i(f&rsquo;, \mathbf{x})≥\phi_i(f, \mathbf{x})$.</p>
 <p>하지만 모든 AFAM이 항상 이 세 가지 특성을 만족하는 것은 아니다.</p>
@@ -124,7 +119,6 @@
 <p>where $\vert\mathbf{z}&rsquo;\vert$ is the number of non-zero entries in $\mathbf{z}&rsquo;$, and $\mathbf{z}&rsquo;\subseteq\mathbf{x}&rsquo;$ represents all $\mathbf{z}&rsquo;$ vectors where the non-zero entries are a subset of the non-zero entries in $\mathbf{x}&rsquo;$.</p>
 <p>AFAM이 Local Accuracy, Missingness, 그리고 Consistency를 만족시키기 위해서는 반드시 위와 같은 형태의 $\phi_i$를 사용해야 한다. 이때 $\phi_i(f, \mathbf{x})$는 Value Function이 $f_\mathbf{x}(\mathbf{z}&rsquo;)$일 때 $f_\mathbf{x}(\mathbf{x}&rsquo;)$에 대한 $i$번째 변수의 Shapley Value를 의미한다. LIME이나 DeepLIFT와 같은 기존 방법들은 AFAM에 속하지만 Shapley Value에 기반하지 않으므로 Local Accuracy 또는 Consistency를 만족하지 못한다.</p>
 <h2 id="4-shap-shapley-additive-explanation-values">4. SHAP (SHapley Additive exPlanation) Values</h2>
-<hr>
 <figure><img src="/paper_review/shap1.png" width="700"/>
 </figure>
 
@@ -137,24 +131,19 @@ f_\mathbf{x}(\mathbf{z}&rsquo;)&amp;=\text{E}[f(\mathbf{z})\vert\mathbf{z}_S] \\
 &amp;=\text{E}_{\mathbf{z}_\bar{S}\vert\mathbf{z}_S}[f(\mathbf{z})] \qquad (\bar{S} \; \text{is the set of features not in} \; S)\\
 &amp;\approx\text{E}_{\mathbf{z}_\bar{S}}[f(\mathbf{z})] \qquad (\text{Feature Independence})
 \end{aligned}$</p>
-<p><a href="/papre_review/explaining_prediction_models_and_individual_predictions_with_feature_contributions">Shapley Sampling Values</a>나 <a href="/paper_review/algorithmic_transparency_via_quantitative_input_influence">Quantitative Input Influence</a>와 같은 방식으로 SHAP Value를 추정할 수 있다.</p>
+<p><a href="/paper_review/explaining_prediction_models_and_individual_predictions_with_feature_contributions">Shapley Sampling Values</a>나 Quantitative Input Influence와 같은 방식으로 SHAP Value를 추정할 수 있다.</p>
 <p><strong>Kernel SHAP</strong></p>
 <p>$\Omega(g)=0$</p>
 <p>$\pi_{\mathbf{x}&rsquo;}(\mathbf{z}&rsquo;)=\dfrac{(M-1)}{_MC_{\vert\mathbf{z}&rsquo;\vert}\vert\mathbf{z}&rsquo;\vert(M-\vert\mathbf{z}&rsquo;\vert)}$, where $\vert\mathbf{z}&rsquo;\vert$ is the number of non-zero elements in $\mathbf{z}'$</p>
 <p>$\displaystyle L(f, g, \pi_{\mathbf{x}&rsquo;})=\sum_{\mathbf{z}&rsquo;\in Z}[f(h_\mathbf{x}(\mathbf{z}&rsquo;))-g(\mathbf{z}&rsquo;)]^2\pi_{\mathbf{x}&rsquo;}(\mathbf{z}&rsquo;)$</p>
-<h3 id="42-model-specific-approximations">4.2. Model-Specific Approximations</h3>
-<p><strong>Linear SHAP</strong></p>
-<p><strong>Deep SHAP</strong></p>
-<p>Working</p>
 <h2 id="memo">Memo</h2>
-<hr>
 <ul>
 <li>Shapley Regression Values의 경우 Global Interpretation을 위한 방식이므로 Additive Feature Attribution Method에 포함시키는 것이 다소 부적절하다고 생각한다.</li>
 <li>Shapley Value를 사용하여 변수들의 기여도를 책정하겠다는 시도는 SHAP이 발표되기 이전부터 존재하였다.</li>
 <li>이 논문에서 소개하고 있는 모든 SHAP Value 추정 방식은 Feature Independence를 가정한다.</li>
 </ul>
-<h2 id="reference">Reference</h2>
 <hr>
+<p><strong>Reference</strong></p>
 <ol>
 <li>Lundberg, S. M., &amp; Lee, S. I. (2017). A unified approach to interpreting model predictions. Advances in neural information processing systems, 30.</li>
 <li>Lundberg, S., &amp; Lee, S. I. (2016). An unexpected unity among methods for interpreting model predictions. arXiv preprint arXiv:1611.07478.</li>
@@ -171,6 +160,9 @@ f_\mathbf{x}(\mathbf{z}&rsquo;)&amp;=\text{E}[f(\mathbf{z})\vert\mathbf{z}_S] \\
 		</li>
 		<li class="tags__item">
 			<a class="tags__link btn" href="/tags/shap/" rel="tag">SHAP</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/shapley-value/" rel="tag">Shapley Value</a>
 		</li>
 	</ul>
 </div>
@@ -266,5 +258,6 @@ f_\mathbf{x}(\mathbf{z}&rsquo;)&amp;=\text{E}[f(\mathbf{z})\vert\mathbf{z}_S] \\
         }
     });
 </script>
+
 </body>
 </html>

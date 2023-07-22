@@ -126,9 +126,50 @@ Whitening은 mean이 $\mathbf{0}$이고 covariance가 $\Sigma$인 분포를 따�
 $\mathbf{Y}=W\mathbf{X}$일 때, $\text{Cov}(\mathbf{Y})=W\text{Cov}(\mathbf{X})W^T=W\Sigma W^T$
 $W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하도록 하면 된다.
 	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/ml/lda-dimension_reduction/" rel="bookmark">
+			LDA-Dimension Reduction
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-02-02T00:00:00Z">2022-02-02</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		LDA는 MLE를 사용하여 $\boldsymbol{\mu}_k$와 $\Sigma$를 추정하는데, 이러한 추정 방식은 High-Dimension에서 불안정하다는 문제를 갖는다. ($p/n\rightarrow\infty$인 경우 MLE의 Aymptotic Property가 보장되지 않는다.) 이러한 문제는 $p$차원의 데이터 $\mathbf{x}$를 보다 낮은 차원의 데이터 $\mathbf{z}$로 변환한 후 LDA를 적용함으로써 해결할 수 있다. 이러한 변환을 수행하는 가장 간단한 방법은 $l$($&lt;\!\!&lt;p$)차원의 Subspace에 데이터를 Projection 시키는 것이다. 이때 단순히 차원을 낮추는 것뿐만 아니라, Projection 이후 데이터를 가장 잘 분류할 수 있는 Subspace를 찾는 것이 합리적이다. 따라서 우리는 Projection 이후 범주 간 분산은 최대화하고, 범주 내 분산은 최소화하는 $\mathbb{R}^p$의 Subspace를 찾는 것을 목표로 한다.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/ml/support_vector_classifier/" rel="bookmark">
+			Support Vector Classifier
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-23T00:00:00Z">2022-01-23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Support Vector Classifier는 Optimal Seperating Hyperplane을 Nonseperable Case에 대해 일반화한 모형이다. Support Vector Classifier 역시 Margin을 최대화하는 방향으로 작동하지만, 일정 수준의 오분류를 허용함으로써 Nonseperable Case에서도 수렴할 수 있다는 것이 차이점이다.
+일정 수준의 오분류를 허용한다는 것을 &lsquo;Slack Variable&rsquo;라고 불리는 $\xi_i$를 사용하여 다음과 같이 표현할 수 있다. (위 그림에서 $\xi_i^*=M\xi_i$이다.)
+$\displaystyle \max_{\boldsymbol{\beta}, \beta_0, \Vert\boldsymbol{\beta}\Vert=1}M \quad\text{subject to}\quad y_i(\mathbf{x}_i^T\boldsymbol{\beta}+\beta_0)\geq M-\xi_i,\; \xi_i\geq 0,\; \sum_{i=1}^N\xi_i\leq c,\; ^\forall i$
+하지만 이러한 형태의 제약 조건을 사용할 경우, 더 이상 주어진 문제가 Convex Optimization에 속하지 않는다.
+	</div>
 </article>
 </main>
 
+<div class="pagination">
+	<span class="pagination__item pagination__item--current">1/5</span>
+	<a class="pagination__item pagination__item--next btn" href="/ml/page/2/">»</a>
+</div>
 
 			</div>
 			
@@ -159,18 +200,29 @@ $W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하�
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/bayesian/" title="Bayesian">Bayesian</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bootstrap/" title="Bootstrap">Bootstrap</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/dimension/" title="Dimension">Dimension</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gram-schmidt/" title="Gram-Schmidt">Gram-Schmidt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kernel/" title="Kernel">Kernel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/lda/" title="LDA">LDA</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/likelihood/" title="Likelihood">Likelihood</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/lime/" title="LIME">LIME</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mle/" title="MLE">MLE</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/monte-carlo/" title="Monte-Carlo">Monte-Carlo</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/net-effect/" title="Net Effect">Net Effect</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nlp/" title="NLP">NLP</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/orthogonalization/" title="Orthogonalization">Orthogonalization</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/perceptron/" title="Perceptron">Perceptron</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/prim/" title="PRIM">PRIM</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/qr-decomposition/" title="QR-Decomposition">QR-Decomposition</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/regularization/" title="Regularization">Regularization</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/shap/" title="SHAP">SHAP</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/shapley-sampling-value/" title="Shapley Sampling Value">Shapley Sampling Value</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/shapley-value/" title="Shapley Value">Shapley Value</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/spline/" title="Spline">Spline</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/standardizing/" title="Standardizing">Standardizing</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svm/" title="SVM">SVM</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/transformer/" title="Transformer">Transformer</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tree/" title="Tree">Tree</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/whitening/" title="Whitening">Whitening</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xai/" title="XAI">XAI</a>
 	</div>
@@ -213,5 +265,6 @@ $W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하�
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
+
 </body>
 </html>
