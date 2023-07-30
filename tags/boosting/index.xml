@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Boosting on ML LAB</title>
+    <link>http://statkwon.github.io/tags/boosting/</link>
+    <description>Recent content in Boosting on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 12 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/boosting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AdaBoost Classifier</title>
+      <link>http://statkwon.github.io/ml/adaboost/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/adaboost/</guid>
+      <description>AdaBoost.M1 &amp;ldquo;weak classifier를 모아 powerful committee를 만들자&amp;rdquo;
+여기서 weak은 random guessing 보다 조금 나은 정도를 의미한다. (ex. stump, a tree with only 2 nodes)
+Setting: $y\in\{-1, 1\}$
+AdaBoost는 학습한 (weak) 모델의 분류 결과에 따라 데이터의 가중치를 조절하면서 다음 (weak) 모델을 학습시키고, 그렇게 얻은 $M$개의 모델의 가중합의 부호로 최종 예측값을 계산한다. 첫 번째 step에서는 각 데이터에 동등한 가중치($1/N$)를 적용하고, 이후 $m$ 번째 step마다 오분류한 데이터의 가중치를 늘리고 정분류한 데이터의 가중치를 줄인다.</description>
+    </item>
+    
+  </channel>
+</rss>

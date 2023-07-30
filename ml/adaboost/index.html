@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>AdaBoost Classifier - ML LAB</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="AdaBoost Classifier" />
+<meta property="og:description" content="AdaBoost.M1 &ldquo;weak classifier를 모아 powerful committee를 만들자&rdquo;
+여기서 weak은 random guessing 보다 조금 나은 정도를 의미한다. (ex. stump, a tree with only 2 nodes)
+Setting: $y\in\{-1, 1\}$
+AdaBoost는 학습한 (weak) 모델의 분류 결과에 따라 데이터의 가중치를 조절하면서 다음 (weak) 모델을 학습시키고, 그렇게 얻은 $M$개의 모델의 가중합의 부호로 최종 예측값을 계산한다. 첫 번째 step에서는 각 데이터에 동등한 가중치($1/N$)를 적용하고, 이후 $m$ 번째 step마다 오분류한 데이터의 가중치를 늘리고 정분류한 데이터의 가중치를 줄인다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://statkwon.github.io/ml/adaboost/" /><meta property="article:section" content="ml" />
+<meta property="article:published_time" content="2022-01-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-01-12T00:00:00+00:00" />
+
+		<meta itemprop="name" content="AdaBoost Classifier">
+<meta itemprop="description" content="AdaBoost.M1 &ldquo;weak classifier를 모아 powerful committee를 만들자&rdquo;
+여기서 weak은 random guessing 보다 조금 나은 정도를 의미한다. (ex. stump, a tree with only 2 nodes)
+Setting: $y\in\{-1, 1\}$
+AdaBoost는 학습한 (weak) 모델의 분류 결과에 따라 데이터의 가중치를 조절하면서 다음 (weak) 모델을 학습시키고, 그렇게 얻은 $M$개의 모델의 가중합의 부호로 최종 예측값을 계산한다. 첫 번째 step에서는 각 데이터에 동등한 가중치($1/N$)를 적용하고, 이후 $m$ 번째 step마다 오분류한 데이터의 가중치를 늘리고 정분류한 데이터의 가중치를 줄인다."><meta itemprop="datePublished" content="2022-01-12T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-01-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="299">
+<meta itemprop="keywords" content="Tree,Boosting,AdaBoost," />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="INTUITIVE STATISTICAL LEARNING" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">INTUITIVE STATISTICAL LEARNING</div>
+					<div class="logo__tagline">Wanna be a Skillful Data Scientist</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">AdaBoost Classifier</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-12T00:00:00Z">2022-01-12</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#adaboostm1">AdaBoost.M1</a></li>
+    <li><a href="#multi-class-adaboost">Multi-class AdaBoost</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<h2 id="adaboostm1">AdaBoost.M1</h2>
+<p>&ldquo;weak classifier를 모아 powerful committee를 만들자&rdquo;</p>
+<p>여기서 weak은 random guessing 보다 조금 나은 정도를 의미한다. (ex. stump, a tree with only 2 nodes)</p>
+<figure><img src="/ml/ada1.png" width="400"/>
+</figure>
+
+<p>Setting: $y\in\{-1, 1\}$</p>
+<p>AdaBoost는 학습한 (weak) 모델의 분류 결과에 따라 데이터의 가중치를 조절하면서 다음 (weak) 모델을 학습시키고, 그렇게 얻은 $M$개의 모델의 가중합의 부호로 최종 예측값을 계산한다. 첫 번째 step에서는 각 데이터에 동등한 가중치($1/N$)를 적용하고, 이후 $m$ 번째 step마다 오분류한 데이터의 가중치를 늘리고 정분류한 데이터의 가중치를 줄인다.</p>
+
+
+<details><br>
+<summary>AdaBoost</summary>
+<ol>
+<li>Initialize the observation weights $w_i=1/N$, $i=1, 2, \ldots, N$.</li>
+<li>For $m=1$ to $M$:
+  <ol>
+  <li>Fit a classifier $G_m(x)$ to the training data using weights $w_i$.</li>
+  <li>Compute $\text{err}_m=\dfrac{\sum_{i=1}^Mw_iI(y_i\neq G_m(x_i))}{\sum_{i=1}^Nw_i}$.</li>
+  <li>Compute $\alpha_m=\log((1-\text{err}_m)/\text{err}_m)$.</li>
+  <li>Set $w_i\leftarrow w_i\cdot\exp[\alpha_m\cdot I(y_i\neq G_m(x_i))]$, $i=1, 2, \ldots, N$.</li>
+  </ol>
+</li>
+<li>Output $G(x)=\text{sign}\left[\sum_{m=1}^M\alpha_mG_m(x)\right]=\underset{k}{\text{argmax}}\sum_{m=1}^M\alpha_m\cdot I(G_m(x)=k)$.</li>
+</ol>
+</details><br>
+
+
+<p>그런데 이러한 AdaBoost는 basis function $b(x;\gamma_m)$이 $G_m(x)$이고 loss function $L(y, f(x))$가 $e^{-yf(x)}$인 Forward Stagewise Additive Modeling이다. (각각의 weak classifier를 basis로 하는 basis expansion)</p>
+
+
+<details><br>
+<summary>Forward Stagewise Additive Modeling</summary>
+$f(x)=\sum_{m=1}^M\beta_mb(x;\gamma_m)$과 같은 basis expansion 형태의 모델은 $\displaystyle \min_{\{\beta_m, \gamma_m\}_1^M}\sum_{i=1}^NL(y_i, f(x_i))$의 최적해를 구하는 것이 쉽지 않다.<br>
+그런데 subproblem인 $\displaystyle \min_{\beta, \gamma}\sum_{i=1}^NL(y_i, \beta b(x_i;\gamma))$만 풀 수 있어도 해결책을 구할 수 있다!?<br>
+&rarr; 한 개의 basis function씩 최적화하여 더해나간다! 이때 이미 최적화된 파라미터는 더 이상 건들지 않는다.<br><br>
+<ol>
+<li>Initialize $f_0(x)=0$.</li>
+<li>For $m=1$ to $M$:
+<ol>
+  <li>Compute $(\beta_m, \gamma_m)=\underset{\beta, \gamma}{\text{argmin}}\sum_{i=1}^NL(y_i, f_{m-1}(x_i)+\beta b(x_i;\gamma))$.</li>
+  <li>Set $f_m(x)=f_{m-1}(x)+\beta_mb(x;\gamma_m)$.</li>
+</ol>
+</li>
+</ol>
+</details><br>
+
+
+<h2 id="multi-class-adaboost">Multi-class AdaBoost</h2>
+<p>기존 loss 대신 multi-class exponential loss를 사용하면 AdaBoost를 multi-class 문제에도 적용할 수 있다. 결과적으로 기존 알고리즘에서 각 weak classifier에 대한 가중치만 다음과 같이 변경된다.</p>
+<p>Setting: $y\in\{1, 2, \ldots, K\}$</p>
+<p>$\alpha_m=\log\left(\dfrac{1-\text{err}_m}{\text{err}_m}\right)+\log(K-1)$</p>
+<p>위 식이 의미하는 것은 어떤 weak classifier의 가중치가 양수가 되려면 $1-\text{err}_m&gt;1/K$이어야 한다는 것이다. <br>
+→ 어떤 weak classifier의 accuracy가 random guessing($1/K$)보다 좋아야 한다.</p>
+<hr>
+<p><strong>Reference</strong></p>
+<ol>
+<li>Hastie, T., Tibshirani, R., Friedman, J. H., &amp; Friedman, J. H. (2009). The elements of statistical learning: data mining, inference, and prediction (Vol. 2, pp. 1-758). New York: springer.</li>
+<li>Hastie, T., Rosset, S., Zhu, J., &amp; Zou, H. (2009). Multi-class adaboost. Statistics and its Interface, 2(3), 349-360.</li>
+</ol>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/tree/" rel="tag">Tree</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/boosting/" rel="tag">Boosting</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/adaboost/" rel="tag">AdaBoost</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="STATKWON avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About STATKWON</span>
+	</div>
+	<div class="authorbox__description">
+		Wanna be a Skillful Data Scientist
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/ml/mars/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">MARS</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/ml/optimal_seperating_hyperplanes/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">Optimal Seperating Hyperplanes</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statkwon" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 STATKWON.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async>
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\[','\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: { equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "AMSsymbols.js"] }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+</body>
+</html>

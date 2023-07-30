@@ -84,6 +84,26 @@ Thus, we have to find optimal $\boldsymbol{\beta}$ and $\beta_0$ which maximizes
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/adaboost/" rel="bookmark">
+			AdaBoost Classifier
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-12T00:00:00Z">2022-01-12</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		AdaBoost.M1 &ldquo;weak classifier를 모아 powerful committee를 만들자&rdquo;
+여기서 weak은 random guessing 보다 조금 나은 정도를 의미한다. (ex. stump, a tree with only 2 nodes)
+Setting: $y\in\{-1, 1\}$
+AdaBoost는 학습한 (weak) 모델의 분류 결과에 따라 데이터의 가중치를 조절하면서 다음 (weak) 모델을 학습시키고, 그렇게 얻은 $M$개의 모델의 가중합의 부호로 최종 예측값을 계산한다. 첫 번째 step에서는 각 데이터에 동등한 가중치($1/N$)를 적용하고, 이후 $m$ 번째 step마다 오분류한 데이터의 가중치를 늘리고 정분류한 데이터의 가중치를 줄인다.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/ml/mars/" rel="bookmark">
 			MARS
 			</a>
@@ -139,27 +159,6 @@ Regression Trees Squared Error Loss를 기준으로 하는 경우, Regression Tr
 $\displaystyle f(\mathbf{x})=\sum_{m=1}^Mc_mI(\mathbf{x}\in R_m)$, where $\hat{c}_m=\text{ave}(y_i\vert\mathbf{x}_i\in R_m)$
 즉, Feature Space를 $M$개의 영역으로 나누고, 각 영역의 반응변수를 해당 영역에 속한 $y$값들의 평균으로 예측한다.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/ml/perceptron_learning_algorithm/" rel="bookmark">
-			Perceptron Learning Algorithm
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-04-18T00:00:00Z">2021-04-18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Perceptron Learning Algorithm은 서로 다른 Class에 속한 데이터를 가장 잘 구분하는 Hyperplane을 찾기 위한 알고리즘이다. 이 글에서는 $y\in\{-1, 1\}$의 Binary Outcome에 대한 Classification 문제를 가정한다.
-Perceptron Learning Algorithm은 오분류된 데이터와 Decision Boundary 사이의 거리를 최소화하는 Hyperplane을 찾는 방식으로 작동한다. 일반적으로 $p$차원 공간 속의 Hyperplane은 다음과 같의 정의된다.
-$L=\{\mathbf{x}\in\mathbb{R}^p:f(\mathbf{x})=0\}$, where $f(\mathbf{x})=\beta_0+\boldsymbol{\beta}^T\mathbf{x}$
-따라서 오분류된 데이터와 Hyperplane 사이의 거리를 $d_i$라고 할 때, 우리가 찾는 Hyperplane은
-$\displaystyle \underset{f}{\text{argmin}}\sum_{i\in\mathcal{M}}d_i$, where $\mathcal{M}$ indexes the set of misclassified points
-	</div>
 </article>
 </main>
 
@@ -197,7 +196,9 @@ $\displaystyle \underset{f}{\text{argmin}}\sum_{i\in\mathcal{M}}d_i$, where $\ma
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/adaboost/" title="AdaBoost">AdaBoost</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bayesian/" title="Bayesian">Bayesian</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/boosting/" title="Boosting">Boosting</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bootstrap/" title="Bootstrap">Bootstrap</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/dimension/" title="Dimension">Dimension</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gram-schmidt/" title="Gram-Schmidt">Gram-Schmidt</a>

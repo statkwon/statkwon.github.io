@@ -67,6 +67,28 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/regression_spline/" rel="bookmark">
+			Regression Spline
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-03-10T00:00:00Z">2021-03-10</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		We can obtain regression splines by adding a continuity constraint to piecewise polynomials.
+Regression splines are often called the $M$th order spline, a piecewise polynomial of degree $M$, that is continuous and has continuous derivatives of orders $1, \ldots, M-1$ at its know points.
+$M$th order spline with $K$ knots $h_j(X)=X^{j-1} \quad (j=1, 2, \ldots, M+1)$
+$h_{M+1+l}(X)=(X-\xi_l)_+^M \quad (l=1, 2, \ldots, K)$
+$f(X)=\beta_1+\beta_2X\cdots+\beta_{M+1}X^M+\beta_{M+2}(X-\xi_1)_+^M+\cdots+\beta_{M+K+1}(X-\xi_K)_+^M$
+We will make a proof for the case when $M=3$ and $K=2$.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/ml/lda-classification/" rel="bookmark">
 			LDA-Classification
 			</a>
@@ -138,25 +160,6 @@ Ridge regression shrinks the regression coefficients by imposing a penalty on th
 		Every nonzero subspaces in $R^n$ have its own prthonormal basis. Gram-Schmidt process is the process to change the basis of the nonzero subspace in $R^n$ to orthonormal basis. Now we will check the process to find the orthonormal basis of subspace $W$ in $R^n$ whose basis is $\{\mathbf{w}_1, \mathbf{w}_2, \ldots, \mathbf{w}_k\}$.
 If we let the first vector $\mathbf{w}_1$ as $\mathbf{v}_1$, then we can find $\mathbf{v}_2$, which is an orthogonal vector to $\mathbf{v}_1$.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/ml/linear_regression/" rel="bookmark">
-			Linear Regression
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-02-20T00:00:00Z">2021-02-20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Linear Regression is a bit classical model, but still has some advantages. It&rsquo;s prediction performance can outperform the latest methods in some specific situations such as small data, low SNR, or sparse data. Also, it can be expanded to nonlinear models by transforming the inputs.
-Linear Regression assumes the linear form of regression function as $\text{E}[Y\vert X]=X\boldsymbol{\beta}$.
-We have to estimate $\boldsymbol{\beta}$ to fit our linear model and the most common way is to use a LSE(Least Squares Estimate).
-	</div>
 </article>
 </main>
 
@@ -195,7 +198,9 @@ We have to estimate $\boldsymbol{\beta}$ to fit our linear model and the most co
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/adaboost/" title="AdaBoost">AdaBoost</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bayesian/" title="Bayesian">Bayesian</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/boosting/" title="Boosting">Boosting</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bootstrap/" title="Bootstrap">Bootstrap</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/dimension/" title="Dimension">Dimension</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gram-schmidt/" title="Gram-Schmidt">Gram-Schmidt</a>

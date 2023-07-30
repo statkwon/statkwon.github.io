@@ -104,6 +104,18 @@
     <loc>http://statkwon.github.io/ml/optimal_seperating_hyperplanes/</loc>
     <lastmod>2022-01-22T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://statkwon.github.io/tags/adaboost/</loc>
+    <lastmod>2022-01-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/ml/adaboost/</loc>
+    <lastmod>2022-01-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/tags/boosting/</loc>
+    <lastmod>2022-01-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/tags/tree/</loc>
+    <lastmod>2022-01-12T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://statkwon.github.io/ml/mars/</loc>
     <lastmod>2022-01-04T00:00:00+00:00</lastmod>
   </url><url>
@@ -117,9 +129,6 @@
     <lastmod>2022-01-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://statkwon.github.io/ml/decision_tree/</loc>
-    <lastmod>2022-01-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://statkwon.github.io/tags/tree/</loc>
     <lastmod>2022-01-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://statkwon.github.io/contest/</loc>
