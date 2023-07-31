@@ -21,10 +21,10 @@ AdaBoost는 학습한 (weak) 모델의 분류 결과에 따라 데이터의 가�
     
     <item>
       <title>Decision Trees</title>
-      <link>http://statkwon.github.io/ml/decision_tree/</link>
+      <link>http://statkwon.github.io/ml/decision_trees/</link>
       <pubDate>Sun, 02 Jan 2022 00:00:00 +0000</pubDate>
       
-      <guid>http://statkwon.github.io/ml/decision_tree/</guid>
+      <guid>http://statkwon.github.io/ml/decision_trees/</guid>
       <description>의사결정나무는 Feature Space를 여러 개의 영역으로 분할한 후, 각 영역의 종속변수를 어떤 상수나 범주로 예측하는 알고리즘이다. 이때 영역을 분할하는 방법으로 Recursive Binary Split을 사용한다. 의사결정나무와 관련된 여러 알고리즘이 있지만, 이 글에서는 그 중 가장 유명한 CART(Classification and Regression Tree) 알고리즘만을 다룰 것이다.
 Regression Trees Squared Error Loss를 기준으로 하는 경우, Regression Tree의 식을 다음과 같이 표현할 수 있다.
 $\displaystyle f(\mathbf{x})=\sum_{m=1}^Mc_mI(\mathbf{x}\in R_m)$, where $\hat{c}_m=\text{ave}(y_i\vert\mathbf{x}_i\in R_m)$
