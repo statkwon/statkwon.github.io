@@ -85,6 +85,28 @@ Thus, we have to find optimal $\boldsymbol{\beta}$ and $\beta_0$ which maximizes
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/gradient_boosting/" rel="bookmark">
+			Gradient Boosting
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-13T00:00:00Z">2022-01-13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Optimization Problem for Trees $\displaystyle T(x;\Theta)=\sum_{j=1}^J\gamma_jI(x\in R_j)$, where $\Theta=\{R_j, \gamma_j\}_1^J$
+tree는 feature space를 $J$개의 disjoint한 영역 $R_j$로 분할한 뒤, 각 영역마다 부여된 값인 $\gamma_j$를 사용하여 예측을 하는 방식으로 동작한다.
+하지만 다음과 같은 loss function을 최소화하는 parameter $\Theta$를 찾는 것은 쉽지 않다.
+$\displaystyle \hat{\Theta}=\underset{\Theta}{\text{argmin}}\sum_{j=1}^J\sum_{x_i\in R_j}L(y_i, \gamma_j)$
+따라서 최적화 문제를 다음과 같은 두 파트로 나누어 풀게 된다.
+$R_j$를 안다는 전제 하에 $\gamma_j$를 찾는다. $R_j$를 찾는다. 1번은 쉽다. regression 문제의 경우 $\hat{\gamma}_j=\bar{y}_j$, classification 문제의 경우 $\hat{\gamma_j}=\underset{k}{\text{argmax}}\sum_iI(y_i=k)$가 된다.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/ml/adaboost/" rel="bookmark">
 			AdaBoost Classifier
 			</a>
@@ -140,32 +162,12 @@ Forward Modeling $(x-t)_+$와 $(t-x)_+$가 서로 대칭적인 구조를 가지�
 		Patient Rule Induction Method PRIM은 CART 알고리즘과 같이 Feature Space를 박스 형태의 영역들로 분할하는 알고리즘이다. 하지만 Binary Split을 사용하지는 않는다. CART 알고리즘이 Splitting과 Pruning의 두 가지 단계로 이루어졌듯이, PRIM 알고리즘은 Top-Down Peeling과 Bottom-Up Pasting의 두 가지 단계로 구분된다.
 Top-Down Peeling 모든 데이터가 한 박스 안에 담겨있다고 생각해보자. 박스의 한 면을 선택하고 전체 데이터 중 비율 $\alpha$ 만큼의 데이터가 제외될 때까지 선택된 면을 기준으로 박스의 크기를 줄인다. 이때 줄어든 박스에 속한 데이터의 반응변수의 평균을 최대화하는 것을 기준으로 면을 선택한다.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/ml/decision_trees/" rel="bookmark">
-			Decision Trees
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-02T00:00:00Z">2022-01-02</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		의사결정나무는 Feature Space를 여러 개의 영역으로 분할한 후, 각 영역의 종속변수를 어떤 상수나 범주로 예측하는 알고리즘이다. 이때 영역을 분할하는 방법으로 Recursive Binary Split을 사용한다. 의사결정나무와 관련된 여러 알고리즘이 있지만, 이 글에서는 그 중 가장 유명한 CART(Classification and Regression Tree) 알고리즘만을 다룰 것이다.
-Regression Trees Squared Error Loss를 기준으로 하는 경우, Regression Tree의 식을 다음과 같이 표현할 수 있다.
-$\displaystyle f(\mathbf{x})=\sum_{m=1}^Mc_mI(\mathbf{x}\in R_m)$, where $\hat{c}_m=\text{ave}(y_i\vert\mathbf{x}_i\in R_m)$
-즉, Feature Space를 $M$개의 영역으로 나누고, 각 영역의 반응변수를 해당 영역에 속한 $y$값들의 평균으로 예측한다.
-	</div>
 </article>
 </main>
 
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/ml/">«</a>
-	<span class="pagination__item pagination__item--current">2/5</span>
+	<span class="pagination__item pagination__item--current">2/6</span>
 	<a class="pagination__item pagination__item--next btn" href="/ml/page/3/">»</a>
 </div>
 

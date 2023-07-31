@@ -78,6 +78,20 @@ Thus, we have to find optimal $\boldsymbol{\beta}$ and $\beta_0$ which maximizes
     </item>
     
     <item>
+      <title>Gradient Boosting</title>
+      <link>http://statkwon.github.io/ml/gradient_boosting/</link>
+      <pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/gradient_boosting/</guid>
+      <description>Optimization Problem for Trees $\displaystyle T(x;\Theta)=\sum_{j=1}^J\gamma_jI(x\in R_j)$, where $\Theta=\{R_j, \gamma_j\}_1^J$
+tree는 feature space를 $J$개의 disjoint한 영역 $R_j$로 분할한 뒤, 각 영역마다 부여된 값인 $\gamma_j$를 사용하여 예측을 하는 방식으로 동작한다.
+하지만 다음과 같은 loss function을 최소화하는 parameter $\Theta$를 찾는 것은 쉽지 않다.
+$\displaystyle \hat{\Theta}=\underset{\Theta}{\text{argmin}}\sum_{j=1}^J\sum_{x_i\in R_j}L(y_i, \gamma_j)$
+따라서 최적화 문제를 다음과 같은 두 파트로 나누어 풀게 된다.
+$R_j$를 안다는 전제 하에 $\gamma_j$를 찾는다. $R_j$를 찾는다. 1번은 쉽다. regression 문제의 경우 $\hat{\gamma}_j=\bar{y}_j$, classification 문제의 경우 $\hat{\gamma_j}=\underset{k}{\text{argmax}}\sum_iI(y_i=k)$가 된다.</description>
+    </item>
+    
+    <item>
       <title>AdaBoost Classifier</title>
       <link>http://statkwon.github.io/ml/adaboost/</link>
       <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>

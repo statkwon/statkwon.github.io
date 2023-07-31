@@ -67,6 +67,28 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/gradient_boosting/" rel="bookmark">
+			Gradient Boosting
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-13T00:00:00Z">2022-01-13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Optimization Problem for Trees $\displaystyle T(x;\Theta)=\sum_{j=1}^J\gamma_jI(x\in R_j)$, where $\Theta=\{R_j, \gamma_j\}_1^J$
+tree는 feature space를 $J$개의 disjoint한 영역 $R_j$로 분할한 뒤, 각 영역마다 부여된 값인 $\gamma_j$를 사용하여 예측을 하는 방식으로 동작한다.
+하지만 다음과 같은 loss function을 최소화하는 parameter $\Theta$를 찾는 것은 쉽지 않다.
+$\displaystyle \hat{\Theta}=\underset{\Theta}{\text{argmin}}\sum_{j=1}^J\sum_{x_i\in R_j}L(y_i, \gamma_j)$
+따라서 최적화 문제를 다음과 같은 두 파트로 나누어 풀게 된다.
+$R_j$를 안다는 전제 하에 $\gamma_j$를 찾는다. $R_j$를 찾는다. 1번은 쉽다. regression 문제의 경우 $\hat{\gamma}_j=\bar{y}_j$, classification 문제의 경우 $\hat{\gamma_j}=\underset{k}{\text{argmax}}\sum_iI(y_i=k)$가 된다.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/ml/adaboost/" rel="bookmark">
 			AdaBoost Classifier
 			</a>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Gradient Boosting - ML LAB</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Gradient Boosting" />
+<meta property="og:description" content="Optimization Problem for Trees $\displaystyle T(x;\Theta)=\sum_{j=1}^J\gamma_jI(x\in R_j)$, where $\Theta=\{R_j, \gamma_j\}_1^J$
+tree는 feature space를 $J$개의 disjoint한 영역 $R_j$로 분할한 뒤, 각 영역마다 부여된 값인 $\gamma_j$를 사용하여 예측을 하는 방식으로 동작한다.
+하지만 다음과 같은 loss function을 최소화하는 parameter $\Theta$를 찾는 것은 쉽지 않다.
+$\displaystyle \hat{\Theta}=\underset{\Theta}{\text{argmin}}\sum_{j=1}^J\sum_{x_i\in R_j}L(y_i, \gamma_j)$
+따라서 최적화 문제를 다음과 같은 두 파트로 나누어 풀게 된다.
+$R_j$를 안다는 전제 하에 $\gamma_j$를 찾는다. $R_j$를 찾는다. 1번은 쉽다. regression 문제의 경우 $\hat{\gamma}_j=\bar{y}_j$, classification 문제의 경우 $\hat{\gamma_j}=\underset{k}{\text{argmax}}\sum_iI(y_i=k)$가 된다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://statkwon.github.io/ml/gradient_boosting/" /><meta property="article:section" content="ml" />
+<meta property="article:published_time" content="2022-01-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-01-13T00:00:00+00:00" />
+
+		<meta itemprop="name" content="Gradient Boosting">
+<meta itemprop="description" content="Optimization Problem for Trees $\displaystyle T(x;\Theta)=\sum_{j=1}^J\gamma_jI(x\in R_j)$, where $\Theta=\{R_j, \gamma_j\}_1^J$
+tree는 feature space를 $J$개의 disjoint한 영역 $R_j$로 분할한 뒤, 각 영역마다 부여된 값인 $\gamma_j$를 사용하여 예측을 하는 방식으로 동작한다.
+하지만 다음과 같은 loss function을 최소화하는 parameter $\Theta$를 찾는 것은 쉽지 않다.
+$\displaystyle \hat{\Theta}=\underset{\Theta}{\text{argmin}}\sum_{j=1}^J\sum_{x_i\in R_j}L(y_i, \gamma_j)$
+따라서 최적화 문제를 다음과 같은 두 파트로 나누어 풀게 된다.
+$R_j$를 안다는 전제 하에 $\gamma_j$를 찾는다. $R_j$를 찾는다. 1번은 쉽다. regression 문제의 경우 $\hat{\gamma}_j=\bar{y}_j$, classification 문제의 경우 $\hat{\gamma_j}=\underset{k}{\text{argmax}}\sum_iI(y_i=k)$가 된다."><meta itemprop="datePublished" content="2022-01-13T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-01-13T00:00:00+00:00" />
+<meta itemprop="wordCount" content="323">
+<meta itemprop="keywords" content="Tree,Boosting," />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="INTUITIVE STATISTICAL LEARNING" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">INTUITIVE STATISTICAL LEARNING</div>
+					<div class="logo__tagline">Wanna be a Skillful Data Scientist</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Gradient Boosting</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-13T00:00:00Z">2022-01-13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#optimization-problem-for-trees">Optimization Problem for Trees</a></li>
+    <li><a href="#gradient-boosting">Gradient Boosting</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<h2 id="optimization-problem-for-trees">Optimization Problem for Trees</h2>
+<p>$\displaystyle T(x;\Theta)=\sum_{j=1}^J\gamma_jI(x\in R_j)$, where $\Theta=\{R_j, \gamma_j\}_1^J$</p>
+<p>tree는 feature space를 $J$개의 disjoint한 영역 $R_j$로 분할한 뒤, 각 영역마다 부여된 값인 $\gamma_j$를 사용하여 예측을 하는 방식으로 동작한다.</p>
+<p>하지만 다음과 같은 loss function을 최소화하는 parameter $\Theta$를 찾는 것은 쉽지 않다.</p>
+<p>$\displaystyle \hat{\Theta}=\underset{\Theta}{\text{argmin}}\sum_{j=1}^J\sum_{x_i\in R_j}L(y_i, \gamma_j)$</p>
+<p>따라서 최적화 문제를 다음과 같은 두 파트로 나누어 풀게 된다.</p>
+<ol>
+<li>$R_j$를 안다는 전제 하에 $\gamma_j$를 찾는다.</li>
+<li>$R_j$를 찾는다.</li>
+</ol>
+<p>1번은 쉽다. regression 문제의 경우 $\hat{\gamma}_j=\bar{y}_j$, classification 문제의 경우 $\hat{\gamma_j}=\underset{k}{\text{argmax}}\sum_iI(y_i=k)$가 된다. <br>
+2번은 어렵다. 따라서 <a href="/ml/decision_trees">Decision Trees</a>에서 언급한 것과 같이 greedy algorithm을 사용하여 근사해를 구한다.</p>
+<h2 id="gradient-boosting">Gradient Boosting</h2>
+<p>AdaBoost를 적합하기 위해서는 매 step마다 loss를 최소화하는 tree를 찾아야 한다. 그 전에 다음과 같은 문제를 생각해볼 수 있다.</p>
+<p>우리의 목표는 loss function $\displaystyle L(f)=\sum_{i=1}^NL(y_i, f(x_i))$를 최소화하는 $f$를 찾는 것이다. 이 문제를 아래와 같은 수치 해석의 관점으로 바라보고</p>
+<p>$\hat{\mathbf{f}}=\underset{\mathbf{f}}{\text{argmin}}\;L(\mathbf{f})$, where $\mathbf{f}=\begin{bmatrix} f(x_1) &amp; f(x_2) &amp; \cdots &amp; f(x_N) \end{bmatrix}^T$</p>
+<p>$\mathbf{f}_m=\mathbf{f}_{m-1}-\rho_m\nabla L(\mathbf{f}_{m-1})$과 같은 Gradient Descent 방식을 사용하여 최적화 할 수 있다.</p>
+<p>결과적으로 최적해는 $\mathbf{f}_M=\mathbf{f}_0-\rho_1\nabla L(\mathbf{f}_0)-\rho_2\nabla L(\mathbf{f}_1)-\cdots-\rho_M\nabla L(\mathbf{f}_{M-1})$과 같은, 매 step마다 모델에 negative gradient를 더해가는 형태가 된다.</p>
+<p>이는 AdaBoost가 매 step마다 loss를 최소화하는 tree를 찾아 모델에 더해가는 것과 유사하므로, $\mathbf{t}_m=\begin{bmatrix} T(x_1;\Theta_m) &amp; T(x_2;\Theta_m) &amp; \cdots &amp; T(x_N;\Theta_m) \end{bmatrix}^T$가 negative gradient인 $-\rho_m\nabla L(\mathbf{f}_{m-1})$과 가까워지도록 최적화하는 방식을 고려해볼 수 있다.</p>
+<p>즉, $\displaystyle \tilde{\Theta}_m=\underset{\Theta}{\text{argmin}}\sum_{i=1}^N(-g_{im}-T(x_i;\Theta))^2$이 된다.</p>
+<p>$\mathbf{f}_0=\mathbf{h}_0$, $\mathbf{h}_m=-\rho_m\nabla L(\mathbf{f}_{m-1})$이라고 하면, $\mathbf{f}_M=\mathbf{h}_0+\mathbf{h}_1+\cdots+\mathbf{h}_M$으로 쓸 수 있다.</p>
+<p>이때 squared loss를 사용하는 regression 문제의 경우 $-\rho_m\nabla L(\mathbf{f}_{m-1})$이 $m-1$ 번째 step에서의 모델의 residual과 같으므로 $\mathbf{h}_m$이 이 residual을 타겟으로 적합한 모형으로 볼 수 있다. 즉, 매 step마다 이전 step의 residual을 타겟으로 모델을 적합하여 더해나가는 방식이 된다.</p>
+<p><strong>Algorithm</strong></p>
+<ol>
+<li>Initialize $f_0(x)=\underset{\gamma}{\text{argmin}}\sum_{i=1}^NL(y_i, \gamma)$.</li>
+<li>For $m=1$ to $M$:
+<ol>
+<li>For $i=1, 2, \ldots, N$ compute $r_{im}=-\left[\dfrac{\partial L(y_i, f(x_i))}{\partial f(x_i)}\right]_{f=f_{m-1}}$.</li>
+<li>Fit a regression tree to the targets $r_{im}$ giving terminal regions $R_{jm}$, $j=1, 2, \ldots, J_m$.</li>
+<li>For $j=1, 2, \ldots, J_m$ compute $\displaystyle \gamma_{jm}=\underset{\gamma}{\text{argmin}}\sum_{x_i\in R_{jm}}L(y_i, f_{m-1}(x_i)+\gamma)$.</li>
+<li>Update $f_m(x)=f_{m-1}(x)+\sum_{j=1}^{J_m}\gamma_{jm}I(x\in R_{jm})$.</li>
+</ol>
+</li>
+<li>Output $\hat{f}(x)=f_M(x)$.</li>
+</ol>
+<hr>
+<p><strong>Reference</strong></p>
+<ol>
+<li>Hastie, T., Tibshirani, R., Friedman, J. H., &amp; Friedman, J. H. (2009). The elements of statistical learning: data mining, inference, and prediction (Vol. 2, pp. 1-758). New York: springer.</li>
+<li><a href="https://convex-optimization-for-all.github.io/contents/chapter06/2021/03/20/06_04_gradient_boosting/">https://convex-optimization-for-all.github.io/contents/chapter06/2021/03/20/06_04_gradient_boosting/</a></li>
+<li><a href="https://youtu.be/d6nRgztYWQM">https://youtu.be/d6nRgztYWQM</a></li>
+</ol>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/tree/" rel="tag">Tree</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/boosting/" rel="tag">Boosting</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="STATKWON avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About STATKWON</span>
+	</div>
+	<div class="authorbox__description">
+		Wanna be a Skillful Data Scientist
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/ml/adaboost/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">AdaBoost Classifier</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/ml/optimal_seperating_hyperplanes/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">Optimal Seperating Hyperplanes</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statkwon" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 STATKWON.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async>
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\[','\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: { equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "AMSsymbols.js"] }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+</body>
+</html>

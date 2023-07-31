@@ -67,6 +67,24 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/gram-schmidt_process/" rel="bookmark">
+			Gram-Schmidt Process
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-02-20T00:00:00Z">2021-02-20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Every nonzero subspaces in $R^n$ have its own prthonormal basis. Gram-Schmidt process is the process to change the basis of the nonzero subspace in $R^n$ to orthonormal basis. Now we will check the process to find the orthonormal basis of subspace $W$ in $R^n$ whose basis is $\{\mathbf{w}_1, \mathbf{w}_2, \ldots, \mathbf{w}_k\}$.
+If we let the first vector $\mathbf{w}_1$ as $\mathbf{v}_1$, then we can find $\mathbf{v}_2$, which is an orthogonal vector to $\mathbf{v}_1$.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/ml/linear_regression/" rel="bookmark">
 			Linear Regression
 			</a>
@@ -142,33 +160,13 @@ $ \begin{align} \dfrac{p(\theta_a | y_1, \ldots, y_n)}{p(\theta_b | y_1, \ldots,
 1. Feature Space의 차원이 높아질 수록 Neighborhood의 범위가 넓어진다.
 Feature Space가 $p$차원의 Unit Hypercube이고, 그 안에 데이터가 균등하게 분포되어있는 상황을 생각해보자. 우리는 Feature Space에 속한 임의의 데이터에 대해, 전체 데이터 중 비율 $r$을 차지하는 만큼의 데이터를 Neighborhood로 사용할 것이다. 이때 Feature Space가 Unit Hypercube이므로, Neighborhood의 한 모서리의 평균 길이는 $r^{1/p}$이 된다.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/ml/bayesian_statistics/" rel="bookmark">
-			Bayesian Statistics
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-02-10T00:00:00Z">2021-02-10</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Introduction Bayesian Learning
-통계적 추론은 모집단의 일부를 통해 모집단의 일반적인 특성을 알아내기 위한 과정이다. 이때 대부분의 경우 모집단의 수치적 특성을 모수 $\theta$로 표현한다. 하지만 데이터가 주어지기 전까지, 모수 $\theta$의 값은 불확실하다. $y$라는 데이터셋이 주어진다면, 이러한 모수에 대한 불확실성을 줄여나갈 수 있다. Bayesian Inference는 이러한 불확실성의 변화를 측정하는 것에 목적이 있다.
-Sample Space $\mathcal{Y}$: 가능한 모든 데이터셋들의 집합
-Parameter Space $\Theta$: 가능한 모든 모수 값들의 집합
-Prior Distribution $p(\theta)$: $\theta$($\theta\in\Theta$)가 참값(모집단의 특성)이라는 믿음
-	</div>
 </article>
 </main>
 
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/categories/ml/page/4/">«</a>
-	<span class="pagination__item pagination__item--current">5/5</span>
+	<span class="pagination__item pagination__item--current">5/6</span>
+	<a class="pagination__item pagination__item--next btn" href="/categories/ml/page/6/">»</a>
 </div>
 
 			</div>

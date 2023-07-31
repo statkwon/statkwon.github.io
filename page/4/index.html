@@ -66,6 +66,26 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/decision_trees/" rel="bookmark">
+			Decision Trees
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-02T00:00:00Z">2022-01-02</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		의사결정나무는 Feature Space를 여러 개의 영역으로 분할한 후, 각 영역의 종속변수를 어떤 상수나 범주로 예측하는 알고리즘이다. 이때 영역을 분할하는 방법으로 Recursive Binary Split을 사용한다. 의사결정나무와 관련된 여러 알고리즘이 있지만, 이 글에서는 그 중 가장 유명한 CART(Classification and Regression Tree) 알고리즘만을 다룰 것이다.
+Regression Trees Squared Error Loss를 기준으로 하는 경우, Regression Tree의 식을 다음과 같이 표현할 수 있다.
+$\displaystyle f(\mathbf{x})=\sum_{m=1}^Mc_mI(\mathbf{x}\in R_m)$, where $\hat{c}_m=\text{ave}(y_i\vert\mathbf{x}_i\in R_m)$
+즉, Feature Space를 $M$개의 영역으로 나누고, 각 영역의 반응변수를 해당 영역에 속한 $y$값들의 평균으로 예측한다.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/ml/perceptron_learning_algorithm/" rel="bookmark">
 			Perceptron Learning Algorithm
 			</a>
@@ -140,35 +160,12 @@ Kernel function can be divided by three parts: distance function, width function
 $$\underset{f}{\text{argmin}}\sum_{i=1}^n\left\{y_i-f(x_i)\right\}^2+\lambda\int\left\{f^{\left(\frac{M+1}{2}\right)}(x)\right\}^2dx$$
 Here $\lambda$ is called a smoothing parameter. If $\lambda=0$, $f$ can be any function that interpolates the data. If $\lambda=\infty$, $f$ will be a simple line. Now we will show that the unique minimizer of this criterion is a natural cubic spline with knots at each of the $x_i$.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/ml/natural_spline/" rel="bookmark">
-			Natural Spline
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-03-12T00:00:00Z">2021-03-12</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Adding another constraint to regression spline, we can fit natural splines. We will reduce the degree beyond the boundary to $\dfrac{M-1}{2}$.
-The number of parameters to fit natural splines is $(M+1)\times(K-1)-\left(\dfrac{M-1}{2}+1\right)\times2-M\times K=K$ and we can see that it is independent of $M$.
-Natural Cubic Spline is the most common one.
-Natural Cubic Spline $N_1(X)=1, \quad N_2(X)=X, \quad N_{k+2}(X)=d_k(X)-d_{K-1}(X)$
-$d_k(X)=\dfrac{(X-\xi_k)_+^3-(X-\xi_K)_+^3}{\xi_k-\xi_K}$
-We will make a proof for the formula above.
-$\displaystyle f(X)=\sum_{j=1}^4\beta_jX^{j-1}+\sum_{k=1}^K\theta_k(X-\xi_k)_+^3$
-	</div>
 </article>
 </main>
 
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/page/3/">«</a>
-	<span class="pagination__item pagination__item--current">4/6</span>
+	<span class="pagination__item pagination__item--current">4/7</span>
 	<a class="pagination__item pagination__item--next btn" href="/page/5/">»</a>
 </div>
 
