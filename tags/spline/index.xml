@@ -13,7 +13,7 @@
       <pubDate>Tue, 04 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>http://statkwon.github.io/ml/mars/</guid>
-      <description>Multivariate Adaptive Regression Splines $\displaystyle f(\mathbf{x})=\beta_0+\sum_{m=1}^M\beta_mh_m(\mathbf{x})$, where $h_m(\mathbf{x})=(X_j-t)+ \;\text{or}\; (t-X_j)+$
+      <description>Multivariate Adaptive Regression Splines $\displaystyle f(\mathbf{x})=\beta_0+\sum_{m=1}^M\beta_mh_m(\mathbf{x})$, where $h_m(\mathbf{x})=(X_j-t)_+\;\text{or}\; (t-X_j)_+$
 MARS는 다음과 같은 특수한 형태의 Basis Function들의 선형 결합으로 반응변수를 추정하는 알고리즘이다.
 $(x-t)_+=\begin{cases} x-t &amp;amp; \text{if}\; x&amp;gt;t \\ 0 &amp;amp; \text{otherwise} \end{cases} \quad\text{and}\quad (t-x)_+=\begin{cases} t-x &amp;amp; \text{if}\; x&amp;lt;t \\ 0 &amp;amp; \text{otherwise} \end{cases}$
 MARS는 Forward Modeling과 Backward Deletion의 두 가지 단계로 구성되어 있다.

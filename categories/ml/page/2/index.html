@@ -138,7 +138,7 @@ AdaBoost는 학습한 (weak) 모델의 분류 결과에 따라 데이터의 가�
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Multivariate Adaptive Regression Splines $\displaystyle f(\mathbf{x})=\beta_0+\sum_{m=1}^M\beta_mh_m(\mathbf{x})$, where $h_m(\mathbf{x})=(X_j-t)+ \;\text{or}\; (t-X_j)+$
+		Multivariate Adaptive Regression Splines $\displaystyle f(\mathbf{x})=\beta_0+\sum_{m=1}^M\beta_mh_m(\mathbf{x})$, where $h_m(\mathbf{x})=(X_j-t)_+\;\text{or}\; (t-X_j)_+$
 MARS는 다음과 같은 특수한 형태의 Basis Function들의 선형 결합으로 반응변수를 추정하는 알고리즘이다.
 $(x-t)_+=\begin{cases} x-t &amp; \text{if}\; x&gt;t \\ 0 &amp; \text{otherwise} \end{cases} \quad\text{and}\quad (t-x)_+=\begin{cases} t-x &amp; \text{if}\; x&lt;t \\ 0 &amp; \text{otherwise} \end{cases}$
 MARS는 Forward Modeling과 Backward Deletion의 두 가지 단계로 구성되어 있다.

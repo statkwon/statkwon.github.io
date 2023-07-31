@@ -8,7 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		<meta property="og:title" content="MARS" />
-<meta property="og:description" content="Multivariate Adaptive Regression Splines $\displaystyle f(\mathbf{x})=\beta_0&#43;\sum_{m=1}^M\beta_mh_m(\mathbf{x})$, where $h_m(\mathbf{x})=(X_j-t)&#43; \;\text{or}\; (t-X_j)&#43;$
+<meta property="og:description" content="Multivariate Adaptive Regression Splines $\displaystyle f(\mathbf{x})=\beta_0&#43;\sum_{m=1}^M\beta_mh_m(\mathbf{x})$, where $h_m(\mathbf{x})=(X_j-t)_&#43;\;\text{or}\; (t-X_j)_&#43;$
 MARS는 다음과 같은 특수한 형태의 Basis Function들의 선형 결합으로 반응변수를 추정하는 알고리즘이다.
 $(x-t)_&#43;=\begin{cases} x-t &amp; \text{if}\; x&gt;t \\ 0 &amp; \text{otherwise} \end{cases} \quad\text{and}\quad (t-x)_&#43;=\begin{cases} t-x &amp; \text{if}\; x&lt;t \\ 0 &amp; \text{otherwise} \end{cases}$
 MARS는 Forward Modeling과 Backward Deletion의 두 가지 단계로 구성되어 있다.
@@ -19,13 +19,13 @@ Forward Modeling $(x-t)_&#43;$와 $(t-x)_&#43;$가 서로 대칭적인 구조를
 <meta property="article:modified_time" content="2022-01-04T00:00:00+00:00" />
 
 		<meta itemprop="name" content="MARS">
-<meta itemprop="description" content="Multivariate Adaptive Regression Splines $\displaystyle f(\mathbf{x})=\beta_0&#43;\sum_{m=1}^M\beta_mh_m(\mathbf{x})$, where $h_m(\mathbf{x})=(X_j-t)&#43; \;\text{or}\; (t-X_j)&#43;$
+<meta itemprop="description" content="Multivariate Adaptive Regression Splines $\displaystyle f(\mathbf{x})=\beta_0&#43;\sum_{m=1}^M\beta_mh_m(\mathbf{x})$, where $h_m(\mathbf{x})=(X_j-t)_&#43;\;\text{or}\; (t-X_j)_&#43;$
 MARS는 다음과 같은 특수한 형태의 Basis Function들의 선형 결합으로 반응변수를 추정하는 알고리즘이다.
 $(x-t)_&#43;=\begin{cases} x-t &amp; \text{if}\; x&gt;t \\ 0 &amp; \text{otherwise} \end{cases} \quad\text{and}\quad (t-x)_&#43;=\begin{cases} t-x &amp; \text{if}\; x&lt;t \\ 0 &amp; \text{otherwise} \end{cases}$
 MARS는 Forward Modeling과 Backward Deletion의 두 가지 단계로 구성되어 있다.
 Forward Modeling $(x-t)_&#43;$와 $(t-x)_&#43;$가 서로 대칭적인 구조를 가지므로 두 함수를 묶어 Reflected Pair라고 하자. Forward Modeling 단계에서는 이러한 Reflected Pair들의 집합"><meta itemprop="datePublished" content="2022-01-04T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-01-04T00:00:00+00:00" />
-<meta itemprop="wordCount" content="369">
+<meta itemprop="wordCount" content="368">
 <meta itemprop="keywords" content="Spline," />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -97,7 +97,7 @@ Forward Modeling $(x-t)_&#43;$와 $(t-x)_&#43;$가 서로 대칭적인 구조를
 	</div>
 </div><div class="content post__content clearfix">
 			<h2 id="multivariate-adaptive-regression-splines">Multivariate Adaptive Regression Splines</h2>
-<p>$\displaystyle f(\mathbf{x})=\beta_0+\sum_{m=1}^M\beta_mh_m(\mathbf{x})$, where $h_m(\mathbf{x})=(X_j-t)<em>+ \;\text{or}\; (t-X_j)</em>+$</p>
+<p>$\displaystyle f(\mathbf{x})=\beta_0+\sum_{m=1}^M\beta_mh_m(\mathbf{x})$, where $h_m(\mathbf{x})=(X_j-t)_+\;\text{or}\; (t-X_j)_+$</p>
 <p>MARS는 다음과 같은 특수한 형태의 Basis Function들의 선형 결합으로 반응변수를 추정하는 알고리즘이다.</p>
 <p>$(x-t)_+=\begin{cases} x-t &amp; \text{if}\; x&gt;t \\ 0 &amp; \text{otherwise} \end{cases} \quad\text{and}\quad (t-x)_+=\begin{cases} t-x &amp; \text{if}\; x&lt;t \\ 0 &amp; \text{otherwise} \end{cases}$</p>
 <figure><img src="/ml/mars1.png" width="600"/>
