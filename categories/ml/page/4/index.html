@@ -67,6 +67,25 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/smoothing_spline/" rel="bookmark">
+			Smoothing Spline
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-03-15T00:00:00Z">2021-03-15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Without any constraint on the form of $f(X)$, we can make the $\text{RSS}$ to be $0$ by choosing any function that interpolates all data points. However, this will be connected to an overfitting problem. To prevent this, we will use the regularization term.
+$$\underset{f}{\text{argmin}}\sum_{i=1}^n\left\{y_i-f(x_i)\right\}^2+\lambda\int\left\{f^{\left(\frac{M+1}{2}\right)}(x)\right\}^2dx$$
+Here $\lambda$ is called a smoothing parameter. If $\lambda=0$, $f$ can be any function that interpolates the data. If $\lambda=\infty$, $f$ will be a simple line. Now we will show that the unique minimizer of this criterion is a natural cubic spline with knots at each of the $x_i$.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/ml/natural_spline/" rel="bookmark">
 			Natural Spline
 			</a>
@@ -147,24 +166,6 @@ $\text{P}(Y_k\vert\mathbf{x})\approx f(\mathbf{x}\vert Y_k)\text{P}(Y_k)$
 First, we can consider the case fitting a linear model for the posterior probability as $P(Y_k\vert\mathbf{X})=\mathbf{X}\boldsymbol{\beta}_k$ and it is quite reasonable in that
 $\text{E}[Y_k\vert\mathbf{X}]=P(Y_1\vert\mathbf{X})\cdot0+\cdots+P(Y_k\vert\mathbf{X})\cdot1+\cdots+P(Y_K\vert\mathbf{X})\cdot0=P(Y_k\vert\mathbf{X})$.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/ml/ridge_regression/" rel="bookmark">
-			Ridge Regression
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-02-25T00:00:00Z">2021-02-25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Ridge Regression Subset selection methods can sometimes cause high variance due to its discrete characteristic. As an alternative, shrinkage methods such as ridge regression can be used.
-Ridge regression shrinks the regression coefficients by imposing a penalty on their size. The ridge solutions are not equivariant under scaling of the inputs, and so one normally standardizes the inputs. So until now we will assume that $X$ is a standardized matrix. Coefficients of ridge regression is related to the restricted minimization problem as below.
-	</div>
 </article>
 </main>
 
@@ -204,6 +205,7 @@ Ridge regression shrinks the regression coefficients by imposing a penalty on th
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
 		<a class="widget-taglist__link widget__link btn" href="/tags/adaboost/" title="AdaBoost">AdaBoost</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/bagging/" title="Bagging">Bagging</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bayesian/" title="Bayesian">Bayesian</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/boosting/" title="Boosting">Boosting</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bootstrap/" title="Bootstrap">Bootstrap</a>
@@ -220,6 +222,7 @@ Ridge regression shrinks the regression coefficients by imposing a penalty on th
 		<a class="widget-taglist__link widget__link btn" href="/tags/perceptron/" title="Perceptron">Perceptron</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/prim/" title="PRIM">PRIM</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/qr-decomposition/" title="QR-Decomposition">QR-Decomposition</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/random-forests/" title="Random Forests">Random Forests</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/regularization/" title="Regularization">Regularization</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/shap/" title="SHAP">SHAP</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/shapley-value/" title="Shapley Value">Shapley Value</a>

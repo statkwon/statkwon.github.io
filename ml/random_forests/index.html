@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Random Forests - ML LAB</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Random Forests" />
+<meta property="og:description" content="Bagging: 추정량의 분산을 줄이기 위한 방법 → DT와 같은 고분산 &amp; 저편향 모형에 잘 작동함
+Boosting: Committe of Weak Learners
+Random Forests: Bagging의 수정 버전, De-Correlated Tree들의 평균
+Random Forests Bagging에서 만들어지는 모든 tree들은 identically distributed → bias가 같음 → 분산을 줄이는 것만 가능
+분산이 $\sigma^2$인 $B$개의 i.i.d. 확률변수들의 평균의 분산은 $\dfrac{1}{B}\sigma^2$이지만, pairwise correlation이 $\rho$인 i.d. $B$개의 확률변수들의 평균의 분산은 $\rho\sigma^2&#43;\dfrac{1-\rho}{B}\sigma^2$이다.
+Proof $\begin{aligned} \text{Var}\left(\dfrac{\sum_{i=1}^BX_i}{B}\right)&=\dfrac{1}{B^2}\sum_{i=1}^B\text{Var}(X_i)&#43;\dfrac{1}{B^2}\sum_{i\neq j}^B\text{Cov}(X_i, X_j) \\ &=\dfrac{1}{B^2}\cdot B\sigma^2&#43;\dfrac{1}{B^2}\cdot B(B-1)\sigma^2\rho \\ &=\dfrac{\sigma^2}{B}&#43;\dfrac{B-1}{B}\sigma^2\rho \\ &=\rho\sigma^2&#43;\dfrac{1-\rho}{B}\sigma^2 \end{aligned}$ $\rho$가 Bagging의 성능 개선(분산 감소)에 걸림돌이 됨 → &lsquo;Tree들 간의 correlation을 줄여서 성능을 개선해보자!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://statkwon.github.io/ml/random_forests/" /><meta property="article:section" content="ml" />
+<meta property="article:published_time" content="2022-01-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-01-15T00:00:00+00:00" />
+
+		<meta itemprop="name" content="Random Forests">
+<meta itemprop="description" content="Bagging: 추정량의 분산을 줄이기 위한 방법 → DT와 같은 고분산 &amp; 저편향 모형에 잘 작동함
+Boosting: Committe of Weak Learners
+Random Forests: Bagging의 수정 버전, De-Correlated Tree들의 평균
+Random Forests Bagging에서 만들어지는 모든 tree들은 identically distributed → bias가 같음 → 분산을 줄이는 것만 가능
+분산이 $\sigma^2$인 $B$개의 i.i.d. 확률변수들의 평균의 분산은 $\dfrac{1}{B}\sigma^2$이지만, pairwise correlation이 $\rho$인 i.d. $B$개의 확률변수들의 평균의 분산은 $\rho\sigma^2&#43;\dfrac{1-\rho}{B}\sigma^2$이다.
+Proof $\begin{aligned} \text{Var}\left(\dfrac{\sum_{i=1}^BX_i}{B}\right)&=\dfrac{1}{B^2}\sum_{i=1}^B\text{Var}(X_i)&#43;\dfrac{1}{B^2}\sum_{i\neq j}^B\text{Cov}(X_i, X_j) \\ &=\dfrac{1}{B^2}\cdot B\sigma^2&#43;\dfrac{1}{B^2}\cdot B(B-1)\sigma^2\rho \\ &=\dfrac{\sigma^2}{B}&#43;\dfrac{B-1}{B}\sigma^2\rho \\ &=\rho\sigma^2&#43;\dfrac{1-\rho}{B}\sigma^2 \end{aligned}$ $\rho$가 Bagging의 성능 개선(분산 감소)에 걸림돌이 됨 → &lsquo;Tree들 간의 correlation을 줄여서 성능을 개선해보자!"><meta itemprop="datePublished" content="2022-01-15T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-01-15T00:00:00+00:00" />
+<meta itemprop="wordCount" content="536">
+<meta itemprop="keywords" content="Tree,Bagging,Random Forests," />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="INTUITIVE STATISTICAL LEARNING" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">INTUITIVE STATISTICAL LEARNING</div>
+					<div class="logo__tagline">Wanna be a Skillful Data Scientist</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Random Forests</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-15T00:00:00Z">2022-01-15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#random-forests">Random Forests</a></li>
+    <li><a href="#details-of-random-forests">Details of Random Forests</a>
+      <ul>
+        <li><a href="#oob-sample">OOB Sample</a></li>
+        <li><a href="#variable-importance">Variable Importance</a></li>
+        <li><a href="#proximity-plots">Proximity Plots</a></li>
+      </ul>
+    </li>
+    <li><a href="#overfitting">Overfitting</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<p>Bagging: 추정량의 분산을 줄이기 위한 방법 → DT와 같은 고분산 &amp; 저편향 모형에 잘 작동함</p>
+<p>Boosting: Committe of Weak Learners</p>
+<p>Random Forests: Bagging의 수정 버전, De-Correlated Tree들의 평균</p>
+<h2 id="random-forests">Random Forests</h2>
+<p>Bagging에서 만들어지는 모든 tree들은 identically distributed → bias가 같음 → 분산을 줄이는 것만 가능</p>
+<p>분산이 $\sigma^2$인 $B$개의 i.i.d. 확률변수들의 평균의 분산은 $\dfrac{1}{B}\sigma^2$이지만, pairwise correlation이 $\rho$인 i.d. $B$개의 확률변수들의 평균의 분산은 $\rho\sigma^2+\dfrac{1-\rho}{B}\sigma^2$이다.</p>
+
+
+<details><br>
+<summary>Proof</summary>
+$\begin{aligned}
+\text{Var}\left(\dfrac{\sum_{i=1}^BX_i}{B}\right)&=\dfrac{1}{B^2}\sum_{i=1}^B\text{Var}(X_i)+\dfrac{1}{B^2}\sum_{i\neq j}^B\text{Cov}(X_i, X_j) \\
+&=\dfrac{1}{B^2}\cdot B\sigma^2+\dfrac{1}{B^2}\cdot B(B-1)\sigma^2\rho \\
+&=\dfrac{\sigma^2}{B}+\dfrac{B-1}{B}\sigma^2\rho \\
+&=\rho\sigma^2+\dfrac{1-\rho}{B}\sigma^2
+\end{aligned}$
+</details><br>
+
+
+<p>$\rho$가 Bagging의 성능 개선(분산 감소)에 걸림돌이 됨 → &lsquo;Tree들 간의 correlation을 줄여서 성능을 개선해보자!&lsquo;는 것이 Random Forest의 아이디어</p>
+<p><strong>Algorithm</strong></p>
+<p>Training set: $Z=(z_1, z_2, \ldots, z_N)$ where $z_i=(x_i, y_i)$</p>
+<ol>
+<li>$B$개의 Bootstrap 데이터셋을 생성한다.</li>
+<li>각각의 $b$번째 Bootstrap 데이터셋에 대하여 Tree($T_b$)를 적합한다. 이때 Tree를 키움에 있어 각 노드를 분할하기 전에 $m$(Regression $p/3$, Classification $\sqrt{p}$ 추천)개 변수를 랜덤하게 선택하고, 선택된 변수들만 사용하여 최적의 분할점을 찾는다. Tree가 최소 노드 크기($n_\text{min}$, Regression $5$, Classification $1$ 추천)를 만족시킬 때까지 분할한다.</li>
+<li>$B$개의 Tree들($\{T_b\}_1^B$)에 ensemble 기법을 적용한다.
+<ol>
+<li>Regression: $\displaystyle
+\hat{f}_\text{rf}^B(x)=\dfrac{1}{B}\sum_{b=1}^BT(x;\Theta_b)$, where $\Theta_b$ is the $b$th RF tree.</li>
+<li>Classification: $\hat{C}_\text{rf}^B(x)=\text{majority vote};\{\hat{C}(x;\Theta_b)\}_1^B$</li>
+</ol>
+</li>
+</ol>
+<p>직관적으로 $m$을 줄이면 ensemble에 사용된 tree들 간의 correlation이 줄어듦 → 분산이 줄어듦</p>
+<p>이러한 방식이 모든 모형에서 잘 작동하는 것은 아님 → tree와 같이 비선형적인 모형에서 가장 효과적</p>
+<p>RF와 다르게, Bagging은 linear statistics(ex. $\bar{x}$)의 분산을 일정 수준 이상 줄이지 못함</p>
+<h2 id="details-of-random-forests">Details of Random Forests</h2>
+<h3 id="oob-sample">OOB Sample</h3>
+<p>RF는 Bootstrap 기법을 활용하기 때문에 각각의 tree($T_b$)를 적합할 때 사용되지 않는 데이터가 존재한다. 이러한 $z_i=(x_i, y_i)$가 사용되지 않은 tree들에만 ensemble 모형을 적합하고, $z_i$를 test set으로 사용하여 해당 ensemble 모형으로 test error를 계산한다. (이렇게 구한 OOB error는 $N$-fold CV error와 거의 동일) OOB error가 안정화되었을 때 모형의 학습을 종료한다.</p>
+<h3 id="variable-importance">Variable Importance</h3>
+<p>RF도 Gradient Boosting과 같이 split criterion에 대한 개선도를 기준으로 변수 중요도를 구할 수 있다. But, RF만의 차별화된 방식이 존재한다.</p>
+<ol>
+<li>각각의 $b$번째 Tree에 대한 OOB error를 계산한다.</li>
+<li>동일한 상황에 대하여 $j$번째 변수에 대한 값으로 임의의 상수를 사용했을 때의 OOB error를 계산한다.</li>
+<li>$B$개의 두 Error의 차이에 대한 평균, 표준편차를 구하고, 평균/표준편차를 $j$번째 변수의 중요도로 사용한다.</li>
+</ol>
+<h3 id="proximity-plots">Proximity Plots</h3>
+<figure><img src="/ml/rf1.png" width="600"/>
+</figure>
+
+<p>RF를 적합할 때 각각의 tree에 대해 데이터가 같은 terminal node에 속할 때마다 해당 데이터 사이의 proximity를 한 단위씩 증가시키고, 그 결과를 $N\times N$ proximity matrix로 저장한 것을 MDS를 사용하여 2차원으로 표현한 것</p>
+<p>→ 기존 데이터의 차원이 높더라도 proximity plot을 사용하여 데이터 사이의 거리를 가늠할 수 있음</p>
+<p>기존 feature space 상의 pure region에 속한 데이터일수록 proximity plot에서 끝 쪽에 위치한다.</p>
+<h2 id="overfitting">Overfitting</h2>
+<p>전체 변수의 개수는 많지만 유효한 변수들의 개수는 적은 경우, RF는 노드를 분할하기 위해 선택하는 변수의 개수($m$)가 작은 경우에 대하여 좋지 않은 성능을 보인다. (유효한 변수들이 선택될 확률이 줄어들기 때문)</p>
+<p>사용하는 Tree의 개수($B$)를 늘리는 것은 overfitting을 일으키지 않는다.</p>
+<p>$\displaystyle \hat{f}_\text{rf}(\mathbf{x})=\text{E}_\Theta[T(x;\Theta)]=\lim_{B\rightarrow\infty}\hat{f}(x)_\text{rf}^B$</p>
+<p>RF는 $\text{E}_\Theta[T(x;\Theta)]$로 $f$를 추정하는 알고리즘이지만, 우리가 이 평균값을 정확하게 계산하는 것은 불가능하기 때문에 앞서 보았던 것과 같이 $\displaystyle
+\hat{f}_\text{rf}^B(x)=\dfrac{1}{B}\sum_{b=1}^BT(x;\Theta_b)$와 같은 방식으로 평균값을 근사하는 것이다. 따라서 $B$를 키우는 것은 overfitting을 일으키지 않는다.</p>
+<p>하지만 이것이 RF가 결코 overfitting 되지 않음을 의미하는 것은 아니다. 우리가 어떤 확률변수 $X$의 평균을 알고싶은 경우 $X$의 분포로부터 $n$개의 표본을 임의로 추출하여 해당 표본들의 평균으로 $X$의 평균을 추정하는 것처럼, RF 역시 $\Theta$에 대한 평균을 구하는 것이므로 $\Theta$의 분포로부터 $B$개의 표본을 임의로 추출하여 해당 표본들의 평균으로 $\text{E}_\Theta[T(\mathbf{x};\Theta)]$를 추정한다. 이때 $\Theta$의 분포가 training data에 의존하기 때문에 RF는 overfitting 될 수 있다.</p>
+<hr>
+<p><strong>Reference</strong></p>
+<ol>
+<li>Hastie, T., Tibshirani, R., Friedman, J. H., &amp; Friedman, J. H. (2009). The elements of statistical learning: data mining, inference, and prediction (Vol. 2, pp. 1-758). New York: springer.</li>
+</ol>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/tree/" rel="tag">Tree</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/bagging/" rel="tag">Bagging</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/random-forests/" rel="tag">Random Forests</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="STATKWON avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About STATKWON</span>
+	</div>
+	<div class="authorbox__description">
+		Wanna be a Skillful Data Scientist
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/ml/gradient_boosting/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Gradient Boosting</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/ml/optimal_seperating_hyperplanes/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">Optimal Seperating Hyperplanes</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statkwon" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 STATKWON.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async>
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\[','\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: { equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "AMSsymbols.js"] }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+</body>
+</html>

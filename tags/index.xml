@@ -143,20 +143,38 @@
     </item>
     
     <item>
-      <title>Boosting</title>
-      <link>http://statkwon.github.io/tags/boosting/</link>
-      <pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate>
+      <title>Bagging</title>
+      <link>http://statkwon.github.io/tags/bagging/</link>
+      <pubDate>Sat, 15 Jan 2022 00:00:00 +0000</pubDate>
       
-      <guid>http://statkwon.github.io/tags/boosting/</guid>
+      <guid>http://statkwon.github.io/tags/bagging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Random Forests</title>
+      <link>http://statkwon.github.io/tags/random-forests/</link>
+      <pubDate>Sat, 15 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/tags/random-forests/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tree</title>
       <link>http://statkwon.github.io/tags/tree/</link>
-      <pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 15 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>http://statkwon.github.io/tags/tree/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Boosting</title>
+      <link>http://statkwon.github.io/tags/boosting/</link>
+      <pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/tags/boosting/</guid>
       <description></description>
     </item>
     

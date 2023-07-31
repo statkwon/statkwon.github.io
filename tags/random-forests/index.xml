@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Random Forests on ML LAB</title>
+    <link>http://statkwon.github.io/tags/random-forests/</link>
+    <description>Recent content in Random Forests on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 15 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/random-forests/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Random Forests</title>
+      <link>http://statkwon.github.io/ml/random_forests/</link>
+      <pubDate>Sat, 15 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/random_forests/</guid>
+      <description>Bagging: 추정량의 분산을 줄이기 위한 방법 → DT와 같은 고분산 &amp;amp; 저편향 모형에 잘 작동함
+Boosting: Committe of Weak Learners
+Random Forests: Bagging의 수정 버전, De-Correlated Tree들의 평균
+Random Forests Bagging에서 만들어지는 모든 tree들은 identically distributed → bias가 같음 → 분산을 줄이는 것만 가능
+분산이 $\sigma^2$인 $B$개의 i.i.d. 확률변수들의 평균의 분산은 $\dfrac{1}{B}\sigma^2$이지만, pairwise correlation이 $\rho$인 i.d. $B$개의 확률변수들의 평균의 분산은 $\rho\sigma^2+\dfrac{1-\rho}{B}\sigma^2$이다.
+Proof $\begin{aligned} \text{Var}\left(\dfrac{\sum_{i=1}^BX_i}{B}\right)&amp;=\dfrac{1}{B^2}\sum_{i=1}^B\text{Var}(X_i)+\dfrac{1}{B^2}\sum_{i\neq j}^B\text{Cov}(X_i, X_j) \\ &amp;=\dfrac{1}{B^2}\cdot B\sigma^2+\dfrac{1}{B^2}\cdot B(B-1)\sigma^2\rho \\ &amp;=\dfrac{\sigma^2}{B}+\dfrac{B-1}{B}\sigma^2\rho \\ &amp;=\rho\sigma^2+\dfrac{1-\rho}{B}\sigma^2 \end{aligned}$ $\rho$가 Bagging의 성능 개선(분산 감소)에 걸림돌이 됨 → &amp;lsquo;Tree들 간의 correlation을 줄여서 성능을 개선해보자!</description>
+    </item>
+    
+  </channel>
+</rss>

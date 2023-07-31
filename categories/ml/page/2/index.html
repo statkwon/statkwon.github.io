@@ -85,6 +85,28 @@ Thus, we have to find optimal $\boldsymbol{\beta}$ and $\beta_0$ which maximizes
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/random_forests/" rel="bookmark">
+			Random Forests
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-15T00:00:00Z">2022-01-15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Bagging: 추정량의 분산을 줄이기 위한 방법 → DT와 같은 고분산 &amp; 저편향 모형에 잘 작동함
+Boosting: Committe of Weak Learners
+Random Forests: Bagging의 수정 버전, De-Correlated Tree들의 평균
+Random Forests Bagging에서 만들어지는 모든 tree들은 identically distributed → bias가 같음 → 분산을 줄이는 것만 가능
+분산이 $\sigma^2$인 $B$개의 i.i.d. 확률변수들의 평균의 분산은 $\dfrac{1}{B}\sigma^2$이지만, pairwise correlation이 $\rho$인 i.d. $B$개의 확률변수들의 평균의 분산은 $\rho\sigma^2+\dfrac{1-\rho}{B}\sigma^2$이다.
+Proof $\begin{aligned} \text{Var}\left(\dfrac{\sum_{i=1}^BX_i}{B}\right)&=\dfrac{1}{B^2}\sum_{i=1}^B\text{Var}(X_i)+\dfrac{1}{B^2}\sum_{i\neq j}^B\text{Cov}(X_i, X_j) \\ &=\dfrac{1}{B^2}\cdot B\sigma^2+\dfrac{1}{B^2}\cdot B(B-1)\sigma^2\rho \\ &=\dfrac{\sigma^2}{B}+\dfrac{B-1}{B}\sigma^2\rho \\ &=\rho\sigma^2+\dfrac{1-\rho}{B}\sigma^2 \end{aligned}$ $\rho$가 Bagging의 성능 개선(분산 감소)에 걸림돌이 됨 → &lsquo;Tree들 간의 correlation을 줄여서 성능을 개선해보자!
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/ml/gradient_boosting/" rel="bookmark">
 			Gradient Boosting
 			</a>
@@ -144,24 +166,6 @@ $(x-t)_+=\begin{cases} x-t &amp; \text{if}\; x&gt;t \\ 0 &amp; \text{otherwise} 
 MARS는 Forward Modeling과 Backward Deletion의 두 가지 단계로 구성되어 있다.
 Forward Modeling $(x-t)_+$와 $(t-x)_+$가 서로 대칭적인 구조를 가지므로 두 함수를 묶어 Reflected Pair라고 하자. Forward Modeling 단계에서는 이러한 Reflected Pair들의 집합
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/ml/prim/" rel="bookmark">
-			PRIM
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-03T00:00:00Z">2022-01-03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Patient Rule Induction Method PRIM은 CART 알고리즘과 같이 Feature Space를 박스 형태의 영역들로 분할하는 알고리즘이다. 하지만 Binary Split을 사용하지는 않는다. CART 알고리즘이 Splitting과 Pruning의 두 가지 단계로 이루어졌듯이, PRIM 알고리즘은 Top-Down Peeling과 Bottom-Up Pasting의 두 가지 단계로 구분된다.
-Top-Down Peeling 모든 데이터가 한 박스 안에 담겨있다고 생각해보자. 박스의 한 면을 선택하고 전체 데이터 중 비율 $\alpha$ 만큼의 데이터가 제외될 때까지 선택된 면을 기준으로 박스의 크기를 줄인다. 이때 줄어든 박스에 속한 데이터의 반응변수의 평균을 최대화하는 것을 기준으로 면을 선택한다.
-	</div>
 </article>
 </main>
 
@@ -201,6 +205,7 @@ Top-Down Peeling 모든 데이터가 한 박스 안에 담겨있다고 생각해
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
 		<a class="widget-taglist__link widget__link btn" href="/tags/adaboost/" title="AdaBoost">AdaBoost</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/bagging/" title="Bagging">Bagging</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bayesian/" title="Bayesian">Bayesian</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/boosting/" title="Boosting">Boosting</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bootstrap/" title="Bootstrap">Bootstrap</a>
@@ -217,6 +222,7 @@ Top-Down Peeling 모든 데이터가 한 박스 안에 담겨있다고 생각해
 		<a class="widget-taglist__link widget__link btn" href="/tags/perceptron/" title="Perceptron">Perceptron</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/prim/" title="PRIM">PRIM</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/qr-decomposition/" title="QR-Decomposition">QR-Decomposition</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/random-forests/" title="Random Forests">Random Forests</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/regularization/" title="Regularization">Regularization</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/shap/" title="SHAP">SHAP</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/shapley-value/" title="Shapley Value">Shapley Value</a>

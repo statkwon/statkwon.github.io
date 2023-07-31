@@ -4,15 +4,15 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Boosting - ML LAB</title>
+	<title>Bagging - ML LAB</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-		<meta property="og:title" content="Boosting" />
+		<meta property="og:title" content="Bagging" />
 <meta property="og:description" content="STATKWON&#39;s Personal blog about ML" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://statkwon.github.io/tags/boosting/" />
+<meta property="og:url" content="http://statkwon.github.io/tags/bagging/" />
 
-		<meta itemprop="name" content="Boosting">
+		<meta itemprop="name" content="Bagging">
 <meta itemprop="description" content="STATKWON&#39;s Personal blog about ML">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -21,7 +21,7 @@
 
 	<link rel="stylesheet" href="/css/style.css">
 	
-	<link rel="alternate" type="application/rss+xml" href="/tags/boosting/index.xml" title="ML LAB">
+	<link rel="alternate" type="application/rss+xml" href="/tags/bagging/index.xml" title="ML LAB">
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
@@ -62,48 +62,28 @@
 			
 <main class="main list" role="main">
 	<header class="main__header">
-		<h1 class="main__title">Boosting</h1>
+		<h1 class="main__title">Bagging</h1>
 	</header><article class="list__item post">
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
-			<a href="/ml/gradient_boosting/" rel="bookmark">
-			Gradient Boosting
+			<a href="/ml/random_forests/" rel="bookmark">
+			Random Forests
 			</a>
 		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-13T00:00:00Z">2022-01-13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-15T00:00:00Z">2022-01-15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Optimization Problem for Trees $\displaystyle T(x;\Theta)=\sum_{j=1}^J\gamma_jI(x\in R_j)$, where $\Theta=\{R_j, \gamma_j\}_1^J$
-tree는 feature space를 $J$개의 disjoint한 영역 $R_j$로 분할한 뒤, 각 영역마다 부여된 값인 $\gamma_j$를 사용하여 예측을 하는 방식으로 동작한다.
-하지만 다음과 같은 loss function을 최소화하는 parameter $\Theta$를 찾는 것은 쉽지 않다.
-$\displaystyle \hat{\Theta}=\underset{\Theta}{\text{argmin}}\sum_{j=1}^J\sum_{x_i\in R_j}L(y_i, \gamma_j)$
-따라서 최적화 문제를 다음과 같은 두 파트로 나누어 풀게 된다.
-$R_j$를 안다는 전제 하에 $\gamma_j$를 찾는다. $R_j$를 찾는다. 1번은 쉽다. regression 문제의 경우 $\hat{\gamma}_j=\bar{y}_j$, classification 문제의 경우 $\hat{\gamma_j}=\underset{k}{\text{argmax}}\sum_iI(y_i=k)$가 된다.
-	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/ml/adaboost/" rel="bookmark">
-			AdaBoost
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-12T00:00:00Z">2022-01-12</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		AdaBoost.M1 &ldquo;weak classifier를 모아 powerful committee를 만들자&rdquo;
-여기서 weak은 random guessing 보다 조금 나은 정도를 의미한다. (ex. stump, a tree with only 2 nodes)
-Setting: $y\in\{-1, 1\}$
-AdaBoost는 학습한 (weak) 모델의 분류 결과에 따라 데이터의 가중치를 조절하면서 다음 (weak) 모델을 학습시키고, 그렇게 얻은 $M$개의 모델의 가중합의 부호로 최종 예측값을 계산한다. 첫 번째 step에서는 각 데이터에 동등한 가중치($1/N$)를 적용하고, 이후 $m$ 번째 step마다 오분류한 데이터의 가중치를 늘리고 정분류한 데이터의 가중치를 줄인다.
+		Bagging: 추정량의 분산을 줄이기 위한 방법 → DT와 같은 고분산 &amp; 저편향 모형에 잘 작동함
+Boosting: Committe of Weak Learners
+Random Forests: Bagging의 수정 버전, De-Correlated Tree들의 평균
+Random Forests Bagging에서 만들어지는 모든 tree들은 identically distributed → bias가 같음 → 분산을 줄이는 것만 가능
+분산이 $\sigma^2$인 $B$개의 i.i.d. 확률변수들의 평균의 분산은 $\dfrac{1}{B}\sigma^2$이지만, pairwise correlation이 $\rho$인 i.d. $B$개의 확률변수들의 평균의 분산은 $\rho\sigma^2+\dfrac{1-\rho}{B}\sigma^2$이다.
+Proof $\begin{aligned} \text{Var}\left(\dfrac{\sum_{i=1}^BX_i}{B}\right)&=\dfrac{1}{B^2}\sum_{i=1}^B\text{Var}(X_i)+\dfrac{1}{B^2}\sum_{i\neq j}^B\text{Cov}(X_i, X_j) \\ &=\dfrac{1}{B^2}\cdot B\sigma^2+\dfrac{1}{B^2}\cdot B(B-1)\sigma^2\rho \\ &=\dfrac{\sigma^2}{B}+\dfrac{B-1}{B}\sigma^2\rho \\ &=\rho\sigma^2+\dfrac{1-\rho}{B}\sigma^2 \end{aligned}$ $\rho$가 Bagging의 성능 개선(분산 감소)에 걸림돌이 됨 → &lsquo;Tree들 간의 correlation을 줄여서 성능을 개선해보자!
 	</div>
 </article>
 </main>

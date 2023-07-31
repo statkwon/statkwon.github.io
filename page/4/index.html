@@ -66,6 +66,24 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/prim/" rel="bookmark">
+			PRIM
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-03T00:00:00Z">2022-01-03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Patient Rule Induction Method PRIM은 CART 알고리즘과 같이 Feature Space를 박스 형태의 영역들로 분할하는 알고리즘이다. 하지만 Binary Split을 사용하지는 않는다. CART 알고리즘이 Splitting과 Pruning의 두 가지 단계로 이루어졌듯이, PRIM 알고리즘은 Top-Down Peeling과 Bottom-Up Pasting의 두 가지 단계로 구분된다.
+Top-Down Peeling 모든 데이터가 한 박스 안에 담겨있다고 생각해보자. 박스의 한 면을 선택하고 전체 데이터 중 비율 $\alpha$ 만큼의 데이터가 제외될 때까지 선택된 면을 기준으로 박스의 크기를 줄인다. 이때 줄어든 박스에 속한 데이터의 반응변수의 평균을 최대화하는 것을 기준으로 면을 선택한다.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/ml/decision_trees/" rel="bookmark">
 			Decision Trees
 			</a>
@@ -141,25 +159,6 @@ The coefficients of local linear regression can be obtained by finding a optimal
 Kernel Functions $K_\lambda(\mathbf{X}_0, \mathbf{X})=D\left(\dfrac{d(\mathbf{X}_0, \mathbf{X})}{h_\lambda(\mathbf{X}_0)}\right)$
 Kernel function can be divided by three parts: distance function, width function, and weighting function.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/ml/smoothing_spline/" rel="bookmark">
-			Smoothing Spline
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-03-15T00:00:00Z">2021-03-15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Without any constraint on the form of $f(X)$, we can make the $\text{RSS}$ to be $0$ by choosing any function that interpolates all data points. However, this will be connected to an overfitting problem. To prevent this, we will use the regularization term.
-$$\underset{f}{\text{argmin}}\sum_{i=1}^n\left\{y_i-f(x_i)\right\}^2+\lambda\int\left\{f^{\left(\frac{M+1}{2}\right)}(x)\right\}^2dx$$
-Here $\lambda$ is called a smoothing parameter. If $\lambda=0$, $f$ can be any function that interpolates the data. If $\lambda=\infty$, $f$ will be a simple line. Now we will show that the unique minimizer of this criterion is a natural cubic spline with knots at each of the $x_i$.
-	</div>
 </article>
 </main>
 
@@ -198,6 +197,7 @@ Here $\lambda$ is called a smoothing parameter. If $\lambda=0$, $f$ can be any f
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
 		<a class="widget-taglist__link widget__link btn" href="/tags/adaboost/" title="AdaBoost">AdaBoost</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/bagging/" title="Bagging">Bagging</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bayesian/" title="Bayesian">Bayesian</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/boosting/" title="Boosting">Boosting</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bootstrap/" title="Bootstrap">Bootstrap</a>
@@ -214,6 +214,7 @@ Here $\lambda$ is called a smoothing parameter. If $\lambda=0$, $f$ can be any f
 		<a class="widget-taglist__link widget__link btn" href="/tags/perceptron/" title="Perceptron">Perceptron</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/prim/" title="PRIM">PRIM</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/qr-decomposition/" title="QR-Decomposition">QR-Decomposition</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/random-forests/" title="Random Forests">Random Forests</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/regularization/" title="Regularization">Regularization</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/shap/" title="SHAP">SHAP</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/shapley-value/" title="Shapley Value">Shapley Value</a>

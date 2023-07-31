@@ -67,6 +67,24 @@
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/ridge_regression/" rel="bookmark">
+			Ridge Regression
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-02-25T00:00:00Z">2021-02-25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Ridge Regression Subset selection methods can sometimes cause high variance due to its discrete characteristic. As an alternative, shrinkage methods such as ridge regression can be used.
+Ridge regression shrinks the regression coefficients by imposing a penalty on their size. The ridge solutions are not equivariant under scaling of the inputs, and so one normally standardizes the inputs. So until now we will assume that $X$ is a standardized matrix. Coefficients of ridge regression is related to the restricted minimization problem as below.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/ml/gram-schmidt_process/" rel="bookmark">
 			Gram-Schmidt Process
 			</a>
@@ -141,25 +159,6 @@ $Y_i$가 평균이 $\theta$인 i.i.d. Binary Variable인 경우 Sampling Model�
 $ \begin{align} \dfrac{p(\theta_a | y_1, \ldots, y_n)}{p(\theta_b | y_1, \ldots, y_n)}&amp;=\dfrac{\theta_a^{\sum y_i}(1-\theta_a)^{n-\sum y_i} \times p(\theta_a)/p(y_1, \ldots, y_n)}{\theta_b^{\sum y_i}(1-\theta_b)^{n-\sum y_i} \times p(\theta_b)/p(y_1, \ldots, y_n)} \\ &amp;=\left(\dfrac{\theta_a}{\theta_b}\right)^{\sum y_i}\left(\dfrac{1-\theta_a}{1-\theta_b}\right)^{n-\sum y_i}\dfrac{p(\theta_a)}{p(\theta_b)} \end{align}$
 가 된다. 여기서 $\theta_b$에 대한 $\theta_a$의 확률이 $\sum_{i=1}^n y_i$에 의해 $y_1, \ldots, y_n$에만 의존한다는 것을 알 수 있다.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/ml/curse_of_dimensionality/" rel="bookmark">
-			Curse of Dimensionality
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-02-15T00:00:00Z">2021-02-15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		차원의 저주는 고차원의 Feature Space에서 데이터를 다룰 때 발생하는 현상들을 의미한다. 이 글에서는 차원의 저주의 대표적인 세 가지 현상에 대해 소개할 것이다.
-1. Feature Space의 차원이 높아질 수록 Neighborhood의 범위가 넓어진다.
-Feature Space가 $p$차원의 Unit Hypercube이고, 그 안에 데이터가 균등하게 분포되어있는 상황을 생각해보자. 우리는 Feature Space에 속한 임의의 데이터에 대해, 전체 데이터 중 비율 $r$을 차지하는 만큼의 데이터를 Neighborhood로 사용할 것이다. 이때 Feature Space가 Unit Hypercube이므로, Neighborhood의 한 모서리의 평균 길이는 $r^{1/p}$이 된다.
-	</div>
 </article>
 </main>
 
@@ -199,6 +198,7 @@ Feature Space가 $p$차원의 Unit Hypercube이고, 그 안에 데이터가 균�
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
 		<a class="widget-taglist__link widget__link btn" href="/tags/adaboost/" title="AdaBoost">AdaBoost</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/bagging/" title="Bagging">Bagging</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bayesian/" title="Bayesian">Bayesian</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/boosting/" title="Boosting">Boosting</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bootstrap/" title="Bootstrap">Bootstrap</a>
@@ -215,6 +215,7 @@ Feature Space가 $p$차원의 Unit Hypercube이고, 그 안에 데이터가 균�
 		<a class="widget-taglist__link widget__link btn" href="/tags/perceptron/" title="Perceptron">Perceptron</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/prim/" title="PRIM">PRIM</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/qr-decomposition/" title="QR-Decomposition">QR-Decomposition</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/random-forests/" title="Random Forests">Random Forests</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/regularization/" title="Regularization">Regularization</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/shap/" title="SHAP">SHAP</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/shapley-value/" title="Shapley Value">Shapley Value</a>
