@@ -100,10 +100,9 @@ $R_j$를 안다는 전제 하에 $\gamma_j$를 찾는다. $R_j$를 찾는다. 1�
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		AdaBoost.M1 &ldquo;weak classifier를 모아 powerful committee를 만들자&rdquo;
-여기서 weak은 random guessing 보다 조금 나은 정도를 의미한다. (ex. stump, a tree with only 2 nodes)
-Setting: $y\in\{-1, 1\}$
-AdaBoost는 학습한 (weak) 모델의 분류 결과에 따라 데이터의 가중치를 조절하면서 다음 (weak) 모델을 학습시키고, 그렇게 얻은 $M$개의 모델의 가중합의 부호로 최종 예측값을 계산한다. 첫 번째 step에서는 각 데이터에 동등한 가중치($1/N$)를 적용하고, 이후 $m$ 번째 step마다 오분류한 데이터의 가중치를 늘리고 정분류한 데이터의 가중치를 줄인다.
+		AdaBoost.M1 AdaBoost의 초기 버전인 AdaBoost.M1은 $y\in\{-1, 1\}$의 binary classification 문제를 해결하기 위한 모델로 제안되었다. AdaBoost의 핵심 컨셉은 &ldquo;weak classifier를 모아 powerful committee를 만들자&quot;이다. 여기서 weak은 random guessing 보다 조금 나은 정도를 의미한다. (ex. stump, a tree with only 2 nodes)
+Algorithm
+Initialize the observation weights $w_i=1/N$, $i=1, 2, \ldots, N$. ➡ 첫 iteration에서는 각 데이터에 동등한 가중치를 적용한다. For $m=1$ to $M$: Fit a classifier $G_m(x)$ to the training data using weights $w_i$.
 	</div>
 </article>
 </main>
