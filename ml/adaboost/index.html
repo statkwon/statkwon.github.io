@@ -21,7 +21,7 @@ Initialize the observation weights $w_i=1/N$, $i=1, 2, \ldots, N$. ➡ 첫 itera
 Algorithm
 Initialize the observation weights $w_i=1/N$, $i=1, 2, \ldots, N$. ➡ 첫 iteration에서는 각 데이터에 동등한 가중치를 적용한다. For $m=1$ to $M$: Fit a classifier $G_m(x)$ to the training data using weights $w_i$."><meta itemprop="datePublished" content="2022-01-12T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-01-12T00:00:00+00:00" />
-<meta itemprop="wordCount" content="352">
+<meta itemprop="wordCount" content="350">
 <meta itemprop="keywords" content="Tree,Boosting,AdaBoost," />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -85,8 +85,8 @@ Initialize the observation weights $w_i=1/N$, $i=1, 2, \ldots, N$. ➡ 첫 itera
 		<nav id="TableOfContents">
   <ul>
     <li><a href="#adaboostm1">AdaBoost.M1</a></li>
-    <li><a href="#multi-class-adaboost">Multi-class AdaBoost</a></li>
-    <li><a href="#adaboost-regressor">AdaBoost Regressor</a></li>
+    <li><a href="#adaboost-samme">AdaBoost-SAMME</a></li>
+    <li><a href="#adaboostr2">AdaBoost.R2</a></li>
   </ul>
 </nav>
 	</div>
@@ -122,13 +122,13 @@ Initialize the observation weights $w_i=1/N$, $i=1, 2, \ldots, N$. ➡ 첫 itera
 </ol>
 </li>
 </ol>
-<h2 id="multi-class-adaboost">Multi-class AdaBoost</h2>
+<h2 id="adaboost-samme">AdaBoost-SAMME</h2>
 <p>기존 loss 대신 multi-class exponential loss를 사용하면 AdaBoost를 multi-class 문제에도 적용할 수 있다. 결과적으로 기존 알고리즘에서 각 weak classifier에 대한 가중치만 다음과 같이 변경된다.</p>
 <p>Setting: $y\in\{1, 2, \ldots, K\}$</p>
 <p>$\alpha_m=\log\left(\dfrac{1-\text{err}_m}{\text{err}_m}\right)+\log(K-1)$</p>
 <p>위 식이 의미하는 것은 어떤 weak classifier의 가중치가 양수가 되려면 $1-\text{err}_m&gt;1/K$이어야 한다는 것이다. <br>
 → 어떤 weak classifier의 accuracy가 random guessing($1/K$)보다 좋아야 한다.</p>
-<h2 id="adaboost-regressor">AdaBoost Regressor</h2>
+<h2 id="adaboostr2">AdaBoost.R2</h2>
 <p>AdaBoost를 regression 문제에 적용하고 싶으면 다음과 같은 loss를 사용하면 된다.</p>
 <p>$\displaystyle D=\sup_i\vert\hat{y}_i^{(m)}-y_i\vert$</p>
 <p>$L_i=\begin{cases} \dfrac{\vert\hat{y}_i^{(m)}-y_i\vert}{D} &amp; \text{(linear)} \\ \dfrac{\vert\hat{y}_i^{(m)}-y_i\vert^2}{D} &amp; \text{(square)} \\ 1-\exp\left[\dfrac{\vert\hat{y}_i^{(m)}-y_i\vert}{D}\right] &amp; \text{(exponential)} \end{cases}$</p>

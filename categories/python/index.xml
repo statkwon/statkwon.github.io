@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on ML LAB</title>
+    <link>http://statkwon.github.io/categories/python/</link>
+    <description>Recent content in Python on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 01 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Abstract Class</title>
+      <link>http://statkwon.github.io/python/abstract_class/</link>
+      <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/python/abstract_class/</guid>
+      <description>파이썬에서도 abstract class를 만들 수 있다. abstract class로부터 인스턴스를 생성하는 것은 당연히 불가능하다.
+from abc import ABCMeta, abstractmethod class BaseClass(metaclass=ABCMeta): @abstractmethod def func1(self): pass @abstractmethod def func2(self): pass class DerivedClass(BaseClass): def func1(self): print(&amp;#34;func1()&amp;#34;) def func2(self): print(&amp;#34;func2()&amp;#34;) 파이썬에서 abstract class를 만들기 위해서는 abc(abstract base class) 모듈을 사용해야 한다. 사용 방법은 간단하다.
+abc 모듈로부터 ABCMeta와 abstractmethod를 import한다. 만들고자 하는 abstract class의 괄호 안에 metaclass=ABCMeta를 추가한다. abstract method 위에는 @abstractmethod를 추가한다. 일반적으로 구현부에는 pass를 적지만, 실질적인 구현부를 포함하는 것 역시 가능하다.</description>
+    </item>
+    
+  </channel>
+</rss>
