@@ -6,7 +6,16 @@
     <description>Recent content in Categories on ML LAB</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 28 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Speech Enhancement</title>
+      <link>http://statkwon.github.io/categories/speech-enhancement/</link>
+      <pubDate>Tue, 28 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/categories/speech-enhancement/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Python</title>
       <link>http://statkwon.github.io/categories/python/</link>
@@ -26,11 +35,11 @@
     </item>
     
     <item>
-      <title>Paper Review</title>
-      <link>http://statkwon.github.io/categories/paper-review/</link>
-      <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
+      <title>XAI</title>
+      <link>http://statkwon.github.io/categories/xai/</link>
+      <pubDate>Sat, 02 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>http://statkwon.github.io/categories/paper-review/</guid>
+      <guid>http://statkwon.github.io/categories/xai/</guid>
       <description></description>
     </item>
     

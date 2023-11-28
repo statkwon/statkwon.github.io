@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>A Unified Approach to Interpreting Model Predictions - ML LAB</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="A Unified Approach to Interpreting Model Predictions" />
+<meta property="og:description" content="Abstract 최근 복잡한 머신러닝 모형의 예측 결과를 해석하기 위한 많은 방법들이 제안되었지만, 서로 어떠한 관련이 있는지, 어떠한 방법이 더 우세한지 등이 불분명한 상황이다. 이 논문에서는 이러한 문제를 해결하기 위해 SHAP(SHapley Additive exPlanations)이라는 통합 프레임워크를 제시한다. SHAP은 기존의 여러 방법들이 충족하지 못하던 몇 가지 바람직한 특성을 모두 만족한다는 장점을 갖는다.
+2. Additive Feature Attribution Methods 간단한 모형(ex. Linear Regression)에 대한 최고의 해석은 모형 그 자체이다. 하지만 복잡한 모형의 경우 모형을 곧바로 해석하는 것이 어려우므로, 기존 모형을 해석 가능한 모형으로 근사한 Explanation Model을 통해 해석하는 것이 일반적이다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://statkwon.github.io/xai/a_unified_approach_to_interpreting_model_predictions/" /><meta property="article:section" content="xai" />
+<meta property="article:published_time" content="2022-04-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-02T00:00:00+00:00" />
+
+		<meta itemprop="name" content="A Unified Approach to Interpreting Model Predictions">
+<meta itemprop="description" content="Abstract 최근 복잡한 머신러닝 모형의 예측 결과를 해석하기 위한 많은 방법들이 제안되었지만, 서로 어떠한 관련이 있는지, 어떠한 방법이 더 우세한지 등이 불분명한 상황이다. 이 논문에서는 이러한 문제를 해결하기 위해 SHAP(SHapley Additive exPlanations)이라는 통합 프레임워크를 제시한다. SHAP은 기존의 여러 방법들이 충족하지 못하던 몇 가지 바람직한 특성을 모두 만족한다는 장점을 갖는다.
+2. Additive Feature Attribution Methods 간단한 모형(ex. Linear Regression)에 대한 최고의 해석은 모형 그 자체이다. 하지만 복잡한 모형의 경우 모형을 곧바로 해석하는 것이 어려우므로, 기존 모형을 해석 가능한 모형으로 근사한 Explanation Model을 통해 해석하는 것이 일반적이다."><meta itemprop="datePublished" content="2022-04-02T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-04-02T00:00:00+00:00" />
+<meta itemprop="wordCount" content="570">
+<meta itemprop="keywords" content="SHAP,Shapley Value," />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="INTUITIVE STATISTICAL LEARNING" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">INTUITIVE STATISTICAL LEARNING</div>
+					<div class="logo__tagline">Wanna be a Skillful Data Scientist</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">A Unified Approach to Interpreting Model Predictions</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-04-02T00:00:00Z">2022-04-02</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/xai/" rel="category">XAI</a>
+	</span>
+</div></div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#2-additive-feature-attribution-methods">2. Additive Feature Attribution Methods</a></li>
+    <li><a href="#3-simple-properties-uniquely-determine-additive-feature-attributions">3. Simple Properties Uniquely Determine Additive Feature Attributions</a></li>
+    <li><a href="#4-shap-shapley-additive-explanation-values">4. SHAP (SHapley Additive exPlanation) Values</a>
+      <ul>
+        <li><a href="#41-model-agnostic-approximations">4.1. Model-Agnostic Approximations</a></li>
+      </ul>
+    </li>
+    <li><a href="#memo">Memo</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<h2 id="abstract">Abstract</h2>
+<p>최근 복잡한 머신러닝 모형의 예측 결과를 해석하기 위한 많은 방법들이 제안되었지만, 서로 어떠한 관련이 있는지, 어떠한 방법이 더 우세한지 등이 불분명한 상황이다. 이 논문에서는 이러한 문제를 해결하기 위해 SHAP(SHapley Additive exPlanations)이라는 통합 프레임워크를 제시한다. SHAP은 기존의 여러 방법들이 충족하지 못하던 몇 가지 바람직한 특성을 모두 만족한다는 장점을 갖는다.</p>
+<h2 id="2-additive-feature-attribution-methods">2. Additive Feature Attribution Methods</h2>
+<p>간단한 모형(ex. Linear Regression)에 대한 최고의 해석은 모형 그 자체이다. 하지만 복잡한 모형의 경우 모형을 곧바로 해석하는 것이 어려우므로, 기존 모형을 해석 가능한 모형으로 근사한 Explanation Model을 통해 해석하는 것이 일반적이다. 이 논문에서는 임의의 $\mathbf{x}$에 대한 예측 결과인 $f(\mathbf{x})$를 해석하는 경우에 초점을 맞추고 있다.</p>
+<p>Explanation Model은 종종 Original Input $\mathbf{x}$ 대신 임의의 Mapping Function $h_\mathbf{x}$를 통해 $\mathbf{x}$로 매핑되는 Simplified Input $\mathbf{x}&rsquo;$을 사용한다. 2장에서는 이러한 Explanation Model의 한 형태로 다음과 같은 식의 Additive Feature Attribution Method(이하 AFAM)를 소개하고 있다.</p>
+<p>$\displaystyle g(\mathbf{z}&rsquo;)=\phi_0+\sum_{i=1}^M\phi_iz_i&rsquo;$, where $\mathbf{z}&rsquo;\in\{0, 1\}^M$, $M$ is the number of simplified input features, and $\phi_i\in\mathbb{R}$</p>
+<p>AFAM은 $0$ 또는 $1$의 값만을 갖는 Simplified Input $z_1&rsquo;, \ldots, z_M&rsquo;$의 선형 결합으로 $f(\mathbf{z})$를 근사한다. ($\mathbf{z}&rsquo;\approx\mathbf{x}&rsquo;$)</p>
+<p>여기서 주목할 점은 <a href="/xai/why_should_i_trust_you_explaining_the_predictions_of_any_classifier">LIME</a>, DeepLIFT, Layer-Wise Relevance Propagation, <a href="/xai/analysis_of_regression_in_game_theory_approach">Shapley Regression Values</a>, <a href="/xai/explaining_prediction_models_and_individual_predictions_with_feature_contributions">Shapley Sampling Values</a>, Quantitative Input Influence 등의 기존 방법론들이 모두 이와 같은 형태를 갖는다는 것이다.</p>
+<h2 id="3-simple-properties-uniquely-determine-additive-feature-attributions">3. Simple Properties Uniquely Determine Additive Feature Attributions</h2>
+<p>3장에서는 AFAM이 갖추면 좋을 세 가지 특성에 대해 소개하고 있다.</p>
+<p><strong>Local Accuracy</strong> - &ldquo;Explanation Model이 Original Model을 정확하게 근사한다.&rdquo;</p>
+<p>$\displaystyle f(\mathbf{x})=g(\mathbf{x}&rsquo;)=\phi_0+\sum_{i=1}^M\phi_ix_i&rsquo;$, where $\mathbf{x}=h_\mathbf{x}(\mathbf{x}&rsquo;)$</p>
+<p><strong>Missingness</strong></p>
+<p>$x_i&rsquo;=0 \quad\Rightarrow\quad \phi_i=0$</p>
+<p><strong>Consistency</strong></p>
+<p>Let $f_\mathbf{x}(\mathbf{z}&rsquo;)=f(h_\mathbf{x}(\mathbf{z}&rsquo;))$ and $\mathbf{z}&rsquo;\backslash i$ denote setting $z_i&rsquo;=0$.</p>
+<p>For any two models $f$ and $f&rsquo;$, if $f_\mathbf{x}&rsquo;(\mathbf{z}&rsquo;)-f_\mathbf{x}&rsquo;(\mathbf{z}&rsquo;\backslash i)≥f_\mathbf{x}(\mathbf{z}&rsquo;)-f_\mathbf{x}(\mathbf{z}&rsquo;\backslash i)$ for all inputs $\mathbf{z}&rsquo;\in\{0, 1\}^M$, then $\phi_i(f&rsquo;, \mathbf{x})≥\phi_i(f, \mathbf{x})$.</p>
+<p>하지만 모든 AFAM이 항상 이 세 가지 특성을 만족하는 것은 아니다.</p>
+<p><strong>Theorem</strong></p>
+<p>Only one possible explanation model $g$ follows the form of AFAM and satisfies Local Accuracy, Missingness, and Consistency:</p>
+<p>$\displaystyle \phi_i(f, \mathbf{x})=\sum_{\mathbf{z}&rsquo;\subseteq\mathbf{x}&rsquo;}\dfrac{\vert\mathbf{z}&rsquo;\vert!(M-\vert\mathbf{z}&rsquo;\vert-1)!}{M!}[f_\mathbf{x}(\mathbf{z}&rsquo;)-f_\mathbf{x}(\mathbf{z}&rsquo;\backslash i)]$,</p>
+<p>where $\vert\mathbf{z}&rsquo;\vert$ is the number of non-zero entries in $\mathbf{z}&rsquo;$, and $\mathbf{z}&rsquo;\subseteq\mathbf{x}&rsquo;$ represents all $\mathbf{z}&rsquo;$ vectors where the non-zero entries are a subset of the non-zero entries in $\mathbf{x}&rsquo;$.</p>
+<p>AFAM이 Local Accuracy, Missingness, 그리고 Consistency를 만족시키기 위해서는 반드시 위와 같은 형태의 $\phi_i$를 사용해야 한다. 이때 $\phi_i(f, \mathbf{x})$는 Value Function이 $f_\mathbf{x}(\mathbf{z}&rsquo;)$일 때 $f_\mathbf{x}(\mathbf{x}&rsquo;)$에 대한 $i$번째 변수의 Shapley Value를 의미한다. LIME이나 DeepLIFT와 같은 기존 방법들은 AFAM에 속하지만 Shapley Value에 기반하지 않으므로 Local Accuracy 또는 Consistency를 만족하지 못한다.</p>
+<h2 id="4-shap-shapley-additive-explanation-values">4. SHAP (SHapley Additive exPlanation) Values</h2>
+<figure><img src="/xai/shap1.png" width="700"/>
+</figure>
+
+<p>이 논문에서는 Value Function으로 $f_\mathbf{x}(\mathbf{z}&rsquo;)=\text{E}[f(\mathbf{z})\vert\mathbf{z}_S]$를 사용함으로써 $\phi_i(f, \mathbf{x})$를 $f_\mathbf{x}(\mathbf{x}&rsquo;)=f(\mathbf{x})$에 대한 $i$번째 변수의 Shapley Value로 사용하는 방식을 SHAP이라는 이름의 통합 프레임워크로 제시하고 있다. ($S$ is the set of non-zero indices in $\mathbf{z}&rsquo;$)</p>
+<p>SHAP Value를 정확하게 계산하는 것은 많은 비용을 필요로 한다. 따라서 4장에서는 비교적 적은 비용으로 SHAP Value를 추정하기 위한 다양한 방법들에 대해 소개하고 있다.</p>
+<h3 id="41-model-agnostic-approximations">4.1. Model-Agnostic Approximations</h3>
+<p>변수들 간의 독립을 가정함으로써 계산 비용을 줄일 수 있다.</p>
+<p>$\begin{aligned}
+f_\mathbf{x}(\mathbf{z}&rsquo;)&amp;=\text{E}[f(\mathbf{z})\vert\mathbf{z}_S] \\
+&amp;=\text{E}_{\mathbf{z}_\bar{S}\vert\mathbf{z}_S}[f(\mathbf{z})] \qquad (\bar{S} \; \text{is the set of features not in} \; S)\\
+&amp;\approx\text{E}_{\mathbf{z}_\bar{S}}[f(\mathbf{z})] \qquad (\text{Feature Independence})
+\end{aligned}$</p>
+<p><a href="/xai/explaining_prediction_models_and_individual_predictions_with_feature_contributions">Shapley Sampling Values</a>나 Quantitative Input Influence와 같은 방식으로 SHAP Value를 추정할 수 있다.</p>
+<p><strong>Kernel SHAP</strong></p>
+<p>$\Omega(g)=0$</p>
+<p>$\pi_{\mathbf{x}&rsquo;}(\mathbf{z}&rsquo;)=\dfrac{(M-1)}{_MC_{\vert\mathbf{z}&rsquo;\vert}\vert\mathbf{z}&rsquo;\vert(M-\vert\mathbf{z}&rsquo;\vert)}$, where $\vert\mathbf{z}&rsquo;\vert$ is the number of non-zero elements in $\mathbf{z}'$</p>
+<p>$\displaystyle L(f, g, \pi_{\mathbf{x}&rsquo;})=\sum_{\mathbf{z}&rsquo;\in Z}[f(h_\mathbf{x}(\mathbf{z}&rsquo;))-g(\mathbf{z}&rsquo;)]^2\pi_{\mathbf{x}&rsquo;}(\mathbf{z}&rsquo;)$</p>
+<h2 id="memo">Memo</h2>
+<ul>
+<li>Shapley Regression Values의 경우 Global Interpretation을 위한 방식이므로 Additive Feature Attribution Method에 포함시키는 것이 다소 부적절하다고 생각한다.</li>
+<li>Shapley Value를 사용하여 변수들의 기여도를 책정하겠다는 시도는 SHAP이 발표되기 이전부터 존재하였다.</li>
+<li>이 논문에서 소개하고 있는 모든 SHAP Value 추정 방식은 Feature Independence를 가정한다.</li>
+</ul>
+<hr>
+<p><strong>Reference</strong></p>
+<ol>
+<li>Lundberg, S. M., &amp; Lee, S. I. (2017). A unified approach to interpreting model predictions. Advances in neural information processing systems, 30.</li>
+<li>Lundberg, S., &amp; Lee, S. I. (2016). An unexpected unity among methods for interpreting model predictions. arXiv preprint arXiv:1611.07478.</li>
+</ol>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/shap/" rel="tag">SHAP</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/shapley-value/" rel="tag">Shapley Value</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="STATKWON avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About STATKWON</span>
+	</div>
+	<div class="authorbox__description">
+		Wanna be a Skillful Data Scientist
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/xai/explaining_prediction_models_and_individual_predictions_with_feature_contributions/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Explaining Prediction Models and Individual Predictions with Feature Contributions</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statkwon" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 STATKWON.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async>
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\[','\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: { equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "AMSsymbols.js"] }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+</body>
+</html>

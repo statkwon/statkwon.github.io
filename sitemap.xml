@@ -2,16 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://statkwon.github.io/categories/</loc>
+    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/tags/cola/</loc>
+    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/speech_enhancement/cola/</loc>
+    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/</loc>
+    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/categories/speech-enhancement/</loc>
+    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/speech_enhancement/</loc>
+    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/tags/stft/</loc>
+    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/tags/</loc>
+    <lastmod>2023-11-28T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://statkwon.github.io/python/abstract_class/</loc>
     <lastmod>2023-10-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://statkwon.github.io/tags/abstraction/</loc>
-    <lastmod>2023-10-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://statkwon.github.io/categories/</loc>
-    <lastmod>2023-10-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://statkwon.github.io/</loc>
     <lastmod>2023-10-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://statkwon.github.io/tags/oop/</loc>
@@ -21,9 +39,6 @@
     <lastmod>2023-10-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://statkwon.github.io/python/</loc>
-    <lastmod>2023-10-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://statkwon.github.io/tags/</loc>
     <lastmod>2023-10-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://statkwon.github.io/about/</loc>
@@ -62,19 +77,7 @@
     <loc>http://statkwon.github.io/tags/whitening/</loc>
     <lastmod>2023-07-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://statkwon.github.io/paper_review/attention_is_all_you_need/</loc>
-    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://statkwon.github.io/categories/paper-review/</loc>
-    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://statkwon.github.io/paper_review/</loc>
-    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://statkwon.github.io/tags/transformer/</loc>
-    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://statkwon.github.io/paper_review/a_unified_approach_to_interpreting_model_predictions/</loc>
+    <loc>http://statkwon.github.io/xai/a_unified_approach_to_interpreting_model_predictions/</loc>
     <lastmod>2022-04-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://statkwon.github.io/tags/shap/</loc>
@@ -83,19 +86,22 @@
     <loc>http://statkwon.github.io/tags/shapley-value/</loc>
     <lastmod>2022-04-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://statkwon.github.io/tags/xai/</loc>
+    <loc>http://statkwon.github.io/categories/xai/</loc>
     <lastmod>2022-04-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://statkwon.github.io/paper_review/explaining_prediction_models_and_individual_predictions_with_feature_contributions/</loc>
+    <loc>http://statkwon.github.io/xai/</loc>
+    <lastmod>2022-04-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://statkwon.github.io/xai/explaining_prediction_models_and_individual_predictions_with_feature_contributions/</loc>
     <lastmod>2022-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://statkwon.github.io/paper_review/analysis_of_regression_in_game_theory_approach/</loc>
+    <loc>http://statkwon.github.io/xai/analysis_of_regression_in_game_theory_approach/</loc>
     <lastmod>2022-03-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://statkwon.github.io/tags/net-effect/</loc>
     <lastmod>2022-03-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://statkwon.github.io/paper_review/why_should_i_trust_you_explaining_the_predictions_of_any_classifier/</loc>
+    <loc>http://statkwon.github.io/xai/why_should_i_trust_you_explaining_the_predictions_of_any_classifier/</loc>
     <lastmod>2022-02-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://statkwon.github.io/tags/lime/</loc>

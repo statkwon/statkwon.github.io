@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Speech_enhancements on ML LAB</title>
+    <link>http://statkwon.github.io/speech_enhancement/</link>
+    <description>Recent content in Speech_enhancements on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 28 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/speech_enhancement/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>COLA</title>
+      <link>http://statkwon.github.io/speech_enhancement/cola/</link>
+      <pubDate>Tue, 28 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/speech_enhancement/cola/</guid>
+      <description>Constant Overlap-Add Constraint To ensure successful reconstruction of nonmodified spectra, the analysis window must satisfy the COLA constraint. In general, if the analysis window satisfies the condition $\displaystyle \sum_{m=-\infty}^\infty g^{a+1}(n-mR)=c,\;^\forall n\in\mathbb{Z}$, the window is considered to be COLA-compliant.
+Perfect Reconstruction In general, computing the STFT of an input signal and inverting it does not result in perfect reconstruction. If you want the output of ISTFT to match the original input signal as closely as possible, the signal and the window must satisfy the following conditions:</description>
+    </item>
+    
+  </channel>
+</rss>

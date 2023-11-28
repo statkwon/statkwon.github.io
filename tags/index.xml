@@ -6,7 +6,25 @@
     <description>Recent content in Tags on ML LAB</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 28 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>COLA</title>
+      <link>http://statkwon.github.io/tags/cola/</link>
+      <pubDate>Tue, 28 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/tags/cola/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>STFT</title>
+      <link>http://statkwon.github.io/tags/stft/</link>
+      <pubDate>Tue, 28 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/tags/stft/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Abstraction</title>
       <link>http://statkwon.github.io/tags/abstraction/</link>
@@ -80,15 +98,6 @@
     </item>
     
     <item>
-      <title>Transformer</title>
-      <link>http://statkwon.github.io/tags/transformer/</link>
-      <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>http://statkwon.github.io/tags/transformer/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>SHAP</title>
       <link>http://statkwon.github.io/tags/shap/</link>
       <pubDate>Sat, 02 Apr 2022 00:00:00 +0000</pubDate>
@@ -103,15 +112,6 @@
       <pubDate>Sat, 02 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>http://statkwon.github.io/tags/shapley-value/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>XAI</title>
-      <link>http://statkwon.github.io/tags/xai/</link>
-      <pubDate>Sat, 02 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>http://statkwon.github.io/tags/xai/</guid>
       <description></description>
     </item>
     

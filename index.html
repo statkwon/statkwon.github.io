@@ -129,42 +129,44 @@ $W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하�
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
-			<a href="/paper_review/attention_is_all_you_need/" rel="bookmark">
-			Attention Is All You Need
+			<a href="/ml/lda-dimension_reduction/" rel="bookmark">
+			LDA-Dimension Reduction
 			</a>
 		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-04-29T00:00:00Z">2022-04-29</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/paper-review/" rel="category">Paper Review</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-02-02T00:00:00Z">2022-02-02</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		1. Introduction RNN 계열의 모형들은 Sequence Modeling에 큰 기여를 하였지만, Sequential한 구조로 인해 병렬 연산이 불가하여 Sequence의 길이가 길어질 수록 계산 효율성이 떨어진다는 단점을 가지고 있다. Attention Mechanism 역시 대부분의 경우 RNN 구조에 기반하기 때문에 이러한 문제로부터 자유로울 수 없다. 따라서 이 논문에서는 RNN 구조를 사용하지 않고, 오로지 Attention Mechanism으로만 구성된 Transformer라는 새로운 모형을 제안한다. Transformer는 RNN 구조를 사용하지 않기 때문에 병렬 연산이 가능하며, 번역 작업에 있어 기존의 방법론보다 짧은 시간 안에 SOTA를 달성할 수 있다.
+		LDA는 MLE를 사용하여 $\boldsymbol{\mu}_k$와 $\Sigma$를 추정하는데, 이러한 추정 방식은 High-Dimension에서 불안정하다는 문제를 갖는다. ($p/n\rightarrow\infty$인 경우 MLE의 Aymptotic Property가 보장되지 않는다.) 이러한 문제는 $p$차원의 데이터 $\mathbf{x}$를 보다 낮은 차원의 데이터 $\mathbf{z}$로 변환한 후 LDA를 적용함으로써 해결할 수 있다. 이러한 변환을 수행하는 가장 간단한 방법은 $l$($&lt;\!\!&lt;p$)차원의 Subspace에 데이터를 Projection 시키는 것이다. 이때 단순히 차원을 낮추는 것뿐만 아니라, Projection 이후 데이터를 가장 잘 분류할 수 있는 Subspace를 찾는 것이 합리적이다. 따라서 우리는 Projection 이후 범주 간 분산은 최대화하고, 범주 내 분산은 최소화하는 $\mathbb{R}^p$의 Subspace를 찾는 것을 목표로 한다.
 	</div>
 </article><article class="list__item post">
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
-			<a href="/paper_review/a_unified_approach_to_interpreting_model_predictions/" rel="bookmark">
-			A Unified Approach to Interpreting Model Predictions
+			<a href="/ml/support_vector_classifier/" rel="bookmark">
+			Support Vector Classifier
 			</a>
 		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-04-02T00:00:00Z">2022-04-02</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/paper-review/" rel="category">Paper Review</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-23T00:00:00Z">2022-01-23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Abstract 최근 복잡한 머신러닝 모형의 예측 결과를 해석하기 위한 많은 방법들이 제안되었지만, 서로 어떠한 관련이 있는지, 어떠한 방법이 더 우세한지 등이 불분명한 상황이다. 이 논문에서는 이러한 문제를 해결하기 위해 SHAP(SHapley Additive exPlanations)이라는 통합 프레임워크를 제시한다. SHAP은 기존의 여러 방법들이 충족하지 못하던 몇 가지 바람직한 특성을 모두 만족한다는 장점을 갖는다.
-2. Additive Feature Attribution Methods 간단한 모형(ex. Linear Regression)에 대한 최고의 해석은 모형 그 자체이다. 하지만 복잡한 모형의 경우 모형을 곧바로 해석하는 것이 어려우므로, 기존 모형을 해석 가능한 모형으로 근사한 Explanation Model을 통해 해석하는 것이 일반적이다.
+		Support Vector Classifier는 Optimal Seperating Hyperplane을 Nonseperable Case에 대해 일반화한 모형이다. Support Vector Classifier 역시 Margin을 최대화하는 방향으로 작동하지만, 일정 수준의 오분류를 허용함으로써 Nonseperable Case에서도 수렴할 수 있다는 것이 차이점이다.
+일정 수준의 오분류를 허용한다는 것을 &lsquo;Slack Variable&rsquo;라고 불리는 $\xi_i$를 사용하여 다음과 같이 표현할 수 있다. (위 그림에서 $\xi_i^*=M\xi_i$이다.)
+$\displaystyle \max_{\boldsymbol{\beta}, \beta_0, \Vert\boldsymbol{\beta}\Vert=1}M \quad\text{subject to}\quad y_i(\mathbf{x}_i^T\boldsymbol{\beta}+\beta_0)\geq M-\xi_i,\; \xi_i\geq 0,\; \sum_{i=1}^N\xi_i\leq c,\; ^\forall i$
+하지만 이러한 형태의 제약 조건을 사용할 경우, 더 이상 주어진 문제가 Convex Optimization에 속하지 않는다.
 	</div>
 </article>
 </main>
 
 <div class="pagination">
-	<span class="pagination__item pagination__item--current">1/7</span>
+	<span class="pagination__item pagination__item--current">1/6</span>
 	<a class="pagination__item pagination__item--next btn" href="/page/2/">»</a>
 </div>
 
@@ -177,8 +179,8 @@ $W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하�
 			<li class="widget__item"><a class="widget__link" href="/ml/maximum_likelihood_estimation/">Maximum Likelihood Estimation</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/monte-carlo_and_bootstrap/">Monte-Carlo &amp; Bootstrap</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/standardizing_and_whitening/">Standardizing &amp; Whitening</a></li>
-			<li class="widget__item"><a class="widget__link" href="/paper_review/attention_is_all_you_need/">Attention Is All You Need</a></li>
-			<li class="widget__item"><a class="widget__link" href="/paper_review/a_unified_approach_to_interpreting_model_predictions/">A Unified Approach to Interpreting Model Predictions</a></li>
+			<li class="widget__item"><a class="widget__link" href="/ml/lda-dimension_reduction/">LDA-Dimension Reduction</a></li>
+			<li class="widget__item"><a class="widget__link" href="/ml/support_vector_classifier/">Support Vector Classifier</a></li>
 		</ul>
 	</div>
 </div>
@@ -189,9 +191,11 @@ $W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하�
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/ml/">ML</a></li>
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/paper-review/">Paper Review</a></li>
-			<li class="widget__item">
 				<a class="widget__link" href="/categories/python/">Python</a></li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/speech-enhancement/">Speech Enhancement</a></li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/xai/">XAI</a></li>
 		</ul>
 	</div>
 </div>
@@ -204,6 +208,7 @@ $W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하�
 		<a class="widget-taglist__link widget__link btn" href="/tags/bayesian/" title="Bayesian">Bayesian</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/boosting/" title="Boosting">Boosting</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bootstrap/" title="Bootstrap">Bootstrap</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cola/" title="COLA">COLA</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/dimension/" title="Dimension">Dimension</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gram-schmidt/" title="Gram-Schmidt">Gram-Schmidt</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/kernel/" title="Kernel">Kernel</a>
@@ -224,11 +229,10 @@ $W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하�
 		<a class="widget-taglist__link widget__link btn" href="/tags/shapley-value/" title="Shapley Value">Shapley Value</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/spline/" title="Spline">Spline</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/standardizing/" title="Standardizing">Standardizing</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/stft/" title="STFT">STFT</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/svm/" title="SVM">SVM</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/transformer/" title="Transformer">Transformer</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/tree/" title="Tree">Tree</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/whitening/" title="Whitening">Whitening</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/xai/" title="XAI">XAI</a>
 	</div>
 </div>
 <div class="widget-social widget">
