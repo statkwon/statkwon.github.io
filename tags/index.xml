@@ -6,7 +6,34 @@
     <description>Recent content in Tags on ML LAB</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Regression</title>
+      <link>http://statkwon.github.io/tags/regression/</link>
+      <pubDate>Mon, 18 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/tags/regression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Regularization</title>
+      <link>http://statkwon.github.io/tags/regularization/</link>
+      <pubDate>Mon, 18 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/tags/regularization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ridge</title>
+      <link>http://statkwon.github.io/tags/ridge/</link>
+      <pubDate>Mon, 18 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/tags/ridge/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>COLA</title>
       <link>http://statkwon.github.io/tags/cola/</link>
@@ -238,15 +265,6 @@
       <pubDate>Wed, 17 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>http://statkwon.github.io/tags/kernel/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Regularization</title>
-      <link>http://statkwon.github.io/tags/regularization/</link>
-      <pubDate>Thu, 25 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://statkwon.github.io/tags/regularization/</guid>
       <description></description>
     </item>
     

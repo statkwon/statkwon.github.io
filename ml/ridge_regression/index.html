@@ -7,19 +7,25 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		<meta property="og:title" content="Ridge Regression" />
-<meta property="og:description" content="Ridge Regression Subset selection methods can sometimes cause high variance due to its discrete characteristic. As an alternative, shrinkage methods such as ridge regression can be used.
-Ridge regression shrinks the regression coefficients by imposing a penalty on their size. The ridge solutions are not equivariant under scaling of the inputs, and so one normally standardizes the inputs. So until now we will assume that $X$ is a standardized matrix. Coefficients of ridge regression is related to the restricted minimization problem as below." />
+<meta property="og:description" content="Ridge Regression Ridge regression은 선형 회귀에 $L_2$ penalty를 추가한 모형이다. input scale에 따라 해가 달라지기 때문에 일반적으로 standardized된 input을 사용한다.
+$$\begin{align} \hat{\boldsymbol{\beta}}&amp;=\underset{\boldsymbol{\beta}}{\text{argmin}}\left\{(\mathbf{y}-X\boldsymbol{\beta})^T(\mathbf{y}-X\boldsymbol{\beta})&#43;\lambda\Vert\boldsymbol{\beta}\Vert_2^2\right\} \\ &amp;=\underset{\beta}{\text{argmin}}\left\{\sum_{i=1}^N\left(y_i-\sum_{j=1}^Px_{ij}\beta_j\right)^2&#43;\lambda\sum_{j=1}^P\beta_j^2\right\} \\ &amp;=\underset{\beta}{\text{argmin}}\sum_{i=1}^N\left(y_i-\sum_{j=1}^Px_{ij}\beta_j\right)^2 \; \text{subject to} \; \sum_{j=1}^P\beta_j^2\leq t \end{align}$$
+위 식의 해를 구하면 $\hat{\boldsymbol{\beta}}=(X^TX&#43;\lambda I)^{-1}X^T\mathbf{y}$이 된다. 이때 $X^TX$가 positive semi-definite이므로, $(X^TX&#43;\lambda I)$는 positive definite이 되어 항상 invertible하게 된다.
+Geometric Interpretation $X$의 SVD를 활용하여 $\hat{\mathbf{y}}$을 다음과 같이 나타낼 수 있다. ($X=UDV^T$)
+$$\begin{align} \hat{\mathbf{y}}&amp;=X(X^TX&#43;\lambda I)^{-1}X^T\mathbf{y} \\ &amp;=UD(D^2&#43;\lambda I)^{-1}DU^T\mathbf{y} \\ &amp;=\sum_{j=1}^P\dfrac{d_j^2}{d_j^2&#43;\lambda}\mathbf{u}_j\mathbf{u}_j^T\mathbf{y} \end{align}$$" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://statkwon.github.io/ml/ridge_regression/" /><meta property="article:section" content="ml" />
-<meta property="article:published_time" content="2021-02-25T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-02-25T00:00:00+00:00" />
+<meta property="article:published_time" content="2023-12-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-12-20T00:00:00+00:00" />
 
 		<meta itemprop="name" content="Ridge Regression">
-<meta itemprop="description" content="Ridge Regression Subset selection methods can sometimes cause high variance due to its discrete characteristic. As an alternative, shrinkage methods such as ridge regression can be used.
-Ridge regression shrinks the regression coefficients by imposing a penalty on their size. The ridge solutions are not equivariant under scaling of the inputs, and so one normally standardizes the inputs. So until now we will assume that $X$ is a standardized matrix. Coefficients of ridge regression is related to the restricted minimization problem as below."><meta itemprop="datePublished" content="2021-02-25T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-02-25T00:00:00+00:00" />
-<meta itemprop="wordCount" content="389">
-<meta itemprop="keywords" content="Regularization," />
+<meta itemprop="description" content="Ridge Regression Ridge regression은 선형 회귀에 $L_2$ penalty를 추가한 모형이다. input scale에 따라 해가 달라지기 때문에 일반적으로 standardized된 input을 사용한다.
+$$\begin{align} \hat{\boldsymbol{\beta}}&amp;=\underset{\boldsymbol{\beta}}{\text{argmin}}\left\{(\mathbf{y}-X\boldsymbol{\beta})^T(\mathbf{y}-X\boldsymbol{\beta})&#43;\lambda\Vert\boldsymbol{\beta}\Vert_2^2\right\} \\ &amp;=\underset{\beta}{\text{argmin}}\left\{\sum_{i=1}^N\left(y_i-\sum_{j=1}^Px_{ij}\beta_j\right)^2&#43;\lambda\sum_{j=1}^P\beta_j^2\right\} \\ &amp;=\underset{\beta}{\text{argmin}}\sum_{i=1}^N\left(y_i-\sum_{j=1}^Px_{ij}\beta_j\right)^2 \; \text{subject to} \; \sum_{j=1}^P\beta_j^2\leq t \end{align}$$
+위 식의 해를 구하면 $\hat{\boldsymbol{\beta}}=(X^TX&#43;\lambda I)^{-1}X^T\mathbf{y}$이 된다. 이때 $X^TX$가 positive semi-definite이므로, $(X^TX&#43;\lambda I)$는 positive definite이 되어 항상 invertible하게 된다.
+Geometric Interpretation $X$의 SVD를 활용하여 $\hat{\mathbf{y}}$을 다음과 같이 나타낼 수 있다. ($X=UDV^T$)
+$$\begin{align} \hat{\mathbf{y}}&amp;=X(X^TX&#43;\lambda I)^{-1}X^T\mathbf{y} \\ &amp;=UD(D^2&#43;\lambda I)^{-1}DU^T\mathbf{y} \\ &amp;=\sum_{j=1}^P\dfrac{d_j^2}{d_j^2&#43;\lambda}\mathbf{u}_j\mathbf{u}_j^T\mathbf{y} \end{align}$$"><meta itemprop="datePublished" content="2023-12-18T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-12-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="244">
+<meta itemprop="keywords" content="Ridge,Regression,Regularization," />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -82,7 +88,8 @@ if (!doNotTrack) {
 			<h1 class="post__title">Ridge Regression</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-02-25T00:00:00Z">2021-02-25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-12-18T00:00:00Z">2023-12-18</time>
+	<time class="meta__text" datetime="2023-12-20T00:00:00Z">(Last Modified: 2023-12-20)</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
 	</span>
 </div></div>
 		</header>
@@ -93,74 +100,37 @@ if (!doNotTrack) {
 		<nav id="TableOfContents">
   <ul>
     <li><a href="#ridge-regression">Ridge Regression</a></li>
-    <li><a href="#geometric-interpretation-of-ridge-regression">Geometric Interpretation of Ridge Regression</a></li>
-    <li><a href="#python-code-for-ridge-regression">Python Code for Ridge Regression</a></li>
+    <li><a href="#geometric-interpretation">Geometric Interpretation</a></li>
   </ul>
 </nav>
 	</div>
 </div><div class="content post__content clearfix">
 			<h2 id="ridge-regression">Ridge Regression</h2>
-<p>Subset selection methods can sometimes cause high variance due to its discrete characteristic. As an alternative, shrinkage methods such as ridge regression can be used.</p>
-<p>Ridge regression shrinks the regression coefficients by imposing a penalty on their size. The ridge solutions are not equivariant under scaling of the inputs, and so one normally standardizes the inputs. So until now we will assume that $X$ is a standardized matrix. Coefficients of ridge regression is related to the restricted minimization problem as below.</p>
-<p>$\begin{aligned}
-\hat{\beta}^{\text{ridge}}&amp;=\underset{\beta}{\text{argmin}}\left\{\sum_{i=1}^N(y_i-\beta_0-\sum_{j=1}^px_{ij}\beta_j)^2+\lambda\sum_{j=1}^p\beta_j^2\right\} \\
-&amp;=\underset{\beta}{\text{argmin}}\sum_{i=1}^N\left(y_i-\beta_0-\sum_{j=1}^px_{ij}\beta_j\right)^2 \; \text{subject to} \; \sum_{j=1}^p\beta_j^2≤t
-\end{aligned}$</p>
-<p>We can solve this problem with a matrix notation and get the ridge coefficient as $\hat{\beta}^{\text{ridge}}=(X^TX+\lambda I)^{-1}X^Ty$.</p>
-<p>$\begin{aligned}
-\dfrac{\partial}{\partial\beta}(y-X\beta)^T(y-X\beta)+\lambda\beta^T\beta&amp;=\dfrac{\partial}{\partial\beta}y^Ty-2\beta^TX^Ty+\beta^TX^TX\beta+\lambda\beta^T\beta \\
-&amp;=-2X^Ty+2X^TX\beta+2\lambda\beta
-\end{aligned}$</p>
-<p>Here, $X^TX+\lambda I$ is always invertible for any $\lambda&gt;0$ because the positive semi-definite matrix $X^TX$ becomes positive definite when a positive constant is added to the diagonal of $X^T$. Therefore, we can express our fitted value $\hat{y}$ as $X\hat{\beta}^{\text{ridge}}=X(X^TX+\lambda I)^{-1}X^Ty$.</p>
-<h2 id="geometric-interpretation-of-ridge-regression">Geometric Interpretation of Ridge Regression</h2>
-<p>We can make some geometric interpretation using $X=UDV^T$, the singular value decomposition of $X$. Let&rsquo;s think about the case of linear regerssion first.</p>
-<p>$\begin{aligned}
-\hat{y}&amp;=X(X^TX)^{-1}X^Ty \\
-&amp;=UDV^T(VDU^TUDV^T)^{-1}VDU^Ty \\
-&amp;=UDV^T(V^T)^{-1}(D^2)^{-1}V^{-1}VDU^Ty \\
-&amp;=UU^Ty \\
-&amp;=\sum_{i=1}^pu_iu_i^Ty \\
-&amp;=\dfrac{y\cdot u_1}{u_1\cdot u_1}u_1+\cdots+\dfrac{y\cdot u_p}{u_p\cdot u_p}u_p
-\end{aligned}$</p>
-<p>This is same as to project $y$ onto each vector in the orthogonal basis of column space of $X$ and make sum of them.</p>
-<figure><img src="/ml/ridge1.png" width="300"/>
+<p>Ridge regression은 선형 회귀에 $L_2$ penalty를 추가한 모형이다. input scale에 따라 해가 달라지기 때문에 일반적으로 standardized된 input을 사용한다.</p>
+<p>$$\begin{align}
+\hat{\boldsymbol{\beta}}&amp;=\underset{\boldsymbol{\beta}}{\text{argmin}}\left\{(\mathbf{y}-X\boldsymbol{\beta})^T(\mathbf{y}-X\boldsymbol{\beta})+\lambda\Vert\boldsymbol{\beta}\Vert_2^2\right\} \\
+&amp;=\underset{\beta}{\text{argmin}}\left\{\sum_{i=1}^N\left(y_i-\sum_{j=1}^Px_{ij}\beta_j\right)^2+\lambda\sum_{j=1}^P\beta_j^2\right\} \\
+&amp;=\underset{\beta}{\text{argmin}}\sum_{i=1}^N\left(y_i-\sum_{j=1}^Px_{ij}\beta_j\right)^2 \; \text{subject to} \; \sum_{j=1}^P\beta_j^2\leq t
+\end{align}$$</p>
+<p>위 식의 해를 구하면 $\hat{\boldsymbol{\beta}}=(X^TX+\lambda I)^{-1}X^T\mathbf{y}$이 된다. 이때 $X^TX$가 positive semi-definite이므로, $(X^TX+\lambda I)$는 positive definite이 되어 항상 invertible하게 된다.</p>
+<h2 id="geometric-interpretation">Geometric Interpretation</h2>
+<figure><img src="/ml/ridge1.gif" width="400"/>
 </figure>
 
-<p>Now we will apply this concept to ridge regression.</p>
-<p>$\begin{aligned}
-\hat{y}&amp;=X(X^TX+\lambda I)^{-1}X^Ty \\
-&amp;=UDV^T(VDU^TUDV^T+\lambda I)^{-1}VDU^Ty \\
-&amp;=UDV^T(VD^2V^T+\lambda I)^{-1}VDU^Ty \\
-&amp;=UD\{V^{-1}(VD^2V^T+\lambda I)(V^T)^{-1}\}DU^Ty \\
-&amp;=U(D^2+\lambda I)^{-1}U^Ty \\
-&amp;=\sum_{i=1}^pu_i\dfrac{d_i^2}{d_i^2+\lambda}u_i^Ty \\
-&amp;=\dfrac{d_1^2}{d_1^2+\lambda}\dfrac{y\cdot u_1}{u_1\cdot u_1}y+\cdots+\dfrac{d_p^2}{d_p^2+\lambda}\dfrac{y\cdot u_p}{u_p\cdot u_p}y
-\end{aligned}$</p>
-<p>Ridge regression is similar to the linear regression, but differs in that it makes a shrinkage to the direction of each $u_i$ by the amount of $\dfrac{d_i^2}{d_i^2+\lambda}$. Thus, it means that a greater amount of shrinkage is applied to the coordinates of basis vectors with smaller $d_j^2$.</p>
-<h2 id="python-code-for-ridge-regression">Python Code for Ridge Regression</h2>
-<p>Github Link: <a href="https://github.com/statkwon/ML_Study/blob/master/MyRidgeRegression.ipynb">MyRidgeRegression.ipynb</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyRidgeRegerssion</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">1.0</span>):
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>alpha <span style="color:#f92672">=</span> alpha
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fit</span>(self, X_train, y_train):
-</span></span><span style="display:flex;"><span>        ones <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones(len(X_train))
-</span></span><span style="display:flex;"><span>        X_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(X_train)
-</span></span><span style="display:flex;"><span>        X_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>column_stack((np<span style="color:#f92672">.</span>ones(len(X_train)), X_train))
-</span></span><span style="display:flex;"><span>        y_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(y_train)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>beta <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>inv(np<span style="color:#f92672">.</span>transpose(X_train)<span style="color:#f92672">.</span>dot(X_train)<span style="color:#f92672">+</span>self<span style="color:#f92672">.</span>alpha<span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>identity(X_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]))<span style="color:#f92672">.</span>dot(np<span style="color:#f92672">.</span>transpose(X_train))<span style="color:#f92672">.</span>dot(y_train)
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict</span>(self, X_test):
-</span></span><span style="display:flex;"><span>        ones <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones(len(X_test))
-</span></span><span style="display:flex;"><span>        X_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(X_test)
-</span></span><span style="display:flex;"><span>        X_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>column_stack((np<span style="color:#f92672">.</span>ones(len(X_test)), X_test))
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> X_test<span style="color:#f92672">.</span>dot(self<span style="color:#f92672">.</span>beta)
-</span></span></code></pre></div><hr>
+<p>$X$의 SVD를 활용하여 $\hat{\mathbf{y}}$을 다음과 같이 나타낼 수 있다. ($X=UDV^T$)</p>
+<p>$$\begin{align}
+\hat{\mathbf{y}}&amp;=X(X^TX+\lambda I)^{-1}X^T\mathbf{y} \\
+&amp;=UD(D^2+\lambda I)^{-1}DU^T\mathbf{y} \\
+&amp;=\sum_{j=1}^P\dfrac{d_j^2}{d_j^2+\lambda}\mathbf{u}_j\mathbf{u}_j^T\mathbf{y}
+\end{align}$$</p>
+<p>$\mathbf{u}_j\mathbf{u}_j^T\mathbf{y}=\text{proj}_{\mathbf{u}_j}\mathbf{y}$이므로, $\hat{\mathbf{y}}$은 $\text{col}(X)$의 orthonormal basis인 $\mathbf{u}_j$에 $\mathbf{y}$를 projection한 것을 $\frac{d_j^2}{d_j^2+\lambda}$만큼 축소한 벡터들의 합과 같다. 이때 $\mathbf{u}_j$가 $X$의 $j$ 번째 normalized principal component($\frac{X\mathbf{v}_j}{d_j}$)라는 점에서, 분산이 작은 방향일수록 높은 shrinkage를 받음을 알 수 있다.</p>
+<p>변수 간 <a href="">multicollinearity</a>가 존재할 경우 regression coefficient가 불안정해지는 문제가 발생하는데, Ridge regression이 이를 완화하는데 도움이 된다.</p>
+<p>&ldquo;If we consider fitting a linear surface over this domain, the configuration of the data allow us to determine its gradient more accurately in the long direction than the short. Ridge regression protects against the potentially high variance of gradients estimated in the short directions. The implicit assumption is that the response will tend to vary most in the directions of high variance of the inputs. This is often a reasonable assumption, since predictors are often chosen for study because they vary with the response variable, but need not hold in general.&rdquo;</p>
+<hr>
 <p><strong>Reference</strong></p>
 <ol>
 <li>Hastie, T., Tibshirani, R., Friedman, J. H., &amp; Friedman, J. H. (2009). The elements of statistical learning: data mining, inference, and prediction (Vol. 2, pp. 1-758). New York: springer.</li>
+<li><a href="https://online.stat.psu.edu/stat508/lesson/5/5.1">https://online.stat.psu.edu/stat508/lesson/5/5.1</a></li>
 </ol>
 
 		</div>
@@ -169,6 +139,12 @@ if (!doNotTrack) {
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/ridge/" rel="tag">Ridge</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/regression/" rel="tag">Regression</a>
+		</li>
 		<li class="tags__item">
 			<a class="tags__link btn" href="/tags/regularization/" rel="tag">Regularization</a>
 		</li>
@@ -192,15 +168,9 @@ if (!doNotTrack) {
 
 <nav class="pager flex">
 	<div class="pager__item pager__item--prev">
-		<a class="pager__link" href="/ml/gram-schmidt_process/" rel="prev">
+		<a class="pager__link" href="/ml/maximum_likelihood_estimation/" rel="prev">
 			<span class="pager__subtitle">«&thinsp;Previous</span>
-			<p class="pager__title">Gram-Schmidt Process</p>
-		</a>
-	</div>
-	<div class="pager__item pager__item--next">
-		<a class="pager__link" href="/ml/logistic_regression/" rel="next">
-			<span class="pager__subtitle">Next&thinsp;»</span>
-			<p class="pager__title">Logistic Regression</p>
+			<p class="pager__title">Maximum Likelihood Estimation</p>
 		</a>
 	</div>
 </nav>

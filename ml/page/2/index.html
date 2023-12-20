@@ -77,6 +77,26 @@ if (!doNotTrack) {
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/support_vector_classifier/" rel="bookmark">
+			Support Vector Classifier
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-23T00:00:00Z">2022-01-23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Support Vector Classifier는 Optimal Seperating Hyperplane을 Nonseperable Case에 대해 일반화한 모형이다. Support Vector Classifier 역시 Margin을 최대화하는 방향으로 작동하지만, 일정 수준의 오분류를 허용함으로써 Nonseperable Case에서도 수렴할 수 있다는 것이 차이점이다.
+일정 수준의 오분류를 허용한다는 것을 &lsquo;Slack Variable&rsquo;라고 불리는 $\xi_i$를 사용하여 다음과 같이 표현할 수 있다. (위 그림에서 $\xi_i^*=M\xi_i$이다.)
+$\displaystyle \max_{\boldsymbol{\beta}, \beta_0, \Vert\boldsymbol{\beta}\Vert=1}M \quad\text{subject to}\quad y_i(\mathbf{x}_i^T\boldsymbol{\beta}+\beta_0)\geq M-\xi_i,\; \xi_i\geq 0,\; \sum_{i=1}^N\xi_i\leq c,\; ^\forall i$
+하지만 이러한 형태의 제약 조건을 사용할 경우, 더 이상 주어진 문제가 Convex Optimization에 속하지 않는다.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/ml/optimal_seperating_hyperplanes/" rel="bookmark">
 			Optimal Seperating Hyperplanes
 			</a>
@@ -154,27 +174,6 @@ $R_j$를 안다는 전제 하에 $\gamma_j$를 찾는다. $R_j$를 찾는다. 1�
 Algorithm
 Initialize the observation weights $w_i=1/N$, $i=1, 2, \ldots, N$. ➡ 첫 iteration에서는 각 데이터에 동등한 가중치를 적용한다. For $m=1$ to $M$: Fit a classifier $G_m(x)$ to the training data using weights $w_i$.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/ml/mars/" rel="bookmark">
-			MARS
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-04T00:00:00Z">2022-01-04</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Multivariate Adaptive Regression Splines $\displaystyle f(\mathbf{x})=\beta_0+\sum_{m=1}^M\beta_mh_m(\mathbf{x})$, where $h_m(\mathbf{x})=(X_j-t)_+\;\text{or}\; (t-X_j)_+$
-MARS는 다음과 같은 특수한 형태의 Basis Function들의 선형 결합으로 반응변수를 추정하는 알고리즘이다.
-$(x-t)_+=\begin{cases} x-t &amp; \text{if}\; x&gt;t \\ 0 &amp; \text{otherwise} \end{cases} \quad\text{and}\quad (t-x)_+=\begin{cases} t-x &amp; \text{if}\; x&lt;t \\ 0 &amp; \text{otherwise} \end{cases}$
-MARS는 Forward Modeling과 Backward Deletion의 두 가지 단계로 구성되어 있다.
-Forward Modeling $(x-t)_+$와 $(t-x)_+$가 서로 대칭적인 구조를 가지므로 두 함수를 묶어 Reflected Pair라고 하자. Forward Modeling 단계에서는 이러한 Reflected Pair들의 집합
-	</div>
 </article>
 </main>
 
@@ -191,11 +190,11 @@ Forward Modeling $(x-t)_+$와 $(t-x)_+$가 서로 대칭적인 구조를 가지�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/ml/ridge_regression/">Ridge Regression</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/maximum_likelihood_estimation/">Maximum Likelihood Estimation</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/monte-carlo_and_bootstrap/">Monte-Carlo &amp; Bootstrap</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/standardizing_and_whitening/">Standardizing &amp; Whitening</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/lda-dimension_reduction/">LDA-Dimension Reduction</a></li>
-			<li class="widget__item"><a class="widget__link" href="/ml/support_vector_classifier/">Support Vector Classifier</a></li>
 		</ul>
 	</div>
 </div>
@@ -239,7 +238,9 @@ Forward Modeling $(x-t)_+$와 $(t-x)_+$가 서로 대칭적인 구조를 가지�
 		<a class="widget-taglist__link widget__link btn" href="/tags/prim/" title="PRIM">PRIM</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/qr-decomposition/" title="QR-Decomposition">QR-Decomposition</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/random-forests/" title="Random Forests">Random Forests</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/regression/" title="Regression">Regression</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/regularization/" title="Regularization">Regularization</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ridge/" title="Ridge">Ridge</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/shap/" title="SHAP">SHAP</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/shapley-value/" title="Shapley Value">Shapley Value</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/spline/" title="Spline">Spline</a>

@@ -83,6 +83,28 @@ if (!doNotTrack) {
 		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-12-18T00:00:00Z">2023-12-18</time>
+	<time class="meta__text" datetime="2023-12-20T00:00:00Z">(Last Modified: 2023-12-20)</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Ridge Regression Ridge regression은 선형 회귀에 $L_2$ penalty를 추가한 모형이다. input scale에 따라 해가 달라지기 때문에 일반적으로 standardized된 input을 사용한다.
+$$\begin{align} \hat{\boldsymbol{\beta}}&amp;=\underset{\boldsymbol{\beta}}{\text{argmin}}\left\{(\mathbf{y}-X\boldsymbol{\beta})^T(\mathbf{y}-X\boldsymbol{\beta})+\lambda\Vert\boldsymbol{\beta}\Vert_2^2\right\} \\ &amp;=\underset{\beta}{\text{argmin}}\left\{\sum_{i=1}^N\left(y_i-\sum_{j=1}^Px_{ij}\beta_j\right)^2+\lambda\sum_{j=1}^P\beta_j^2\right\} \\ &amp;=\underset{\beta}{\text{argmin}}\sum_{i=1}^N\left(y_i-\sum_{j=1}^Px_{ij}\beta_j\right)^2 \; \text{subject to} \; \sum_{j=1}^P\beta_j^2\leq t \end{align}$$
+위 식의 해를 구하면 $\hat{\boldsymbol{\beta}}=(X^TX+\lambda I)^{-1}X^T\mathbf{y}$이 된다. 이때 $X^TX$가 positive semi-definite이므로, $(X^TX+\lambda I)$는 positive definite이 되어 항상 invertible하게 된다.
+Geometric Interpretation $X$의 SVD를 활용하여 $\hat{\mathbf{y}}$을 다음과 같이 나타낼 수 있다. ($X=UDV^T$)
+$$\begin{align} \hat{\mathbf{y}}&amp;=X(X^TX+\lambda I)^{-1}X^T\mathbf{y} \\ &amp;=UD(D^2+\lambda I)^{-1}DU^T\mathbf{y} \\ &amp;=\sum_{j=1}^P\dfrac{d_j^2}{d_j^2+\lambda}\mathbf{u}_j\mathbf{u}_j^T\mathbf{y} \end{align}$$
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/ml/_ridge_regression/" rel="bookmark">
+			Ridge Regression
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-02-25T00:00:00Z">2021-02-25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
 	</span>
 </div></div>
@@ -102,11 +124,11 @@ Ridge regression shrinks the regression coefficients by imposing a penalty on th
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/ml/ridge_regression/">Ridge Regression</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/maximum_likelihood_estimation/">Maximum Likelihood Estimation</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/monte-carlo_and_bootstrap/">Monte-Carlo &amp; Bootstrap</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/standardizing_and_whitening/">Standardizing &amp; Whitening</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/lda-dimension_reduction/">LDA-Dimension Reduction</a></li>
-			<li class="widget__item"><a class="widget__link" href="/ml/support_vector_classifier/">Support Vector Classifier</a></li>
 		</ul>
 	</div>
 </div>
@@ -150,7 +172,9 @@ Ridge regression shrinks the regression coefficients by imposing a penalty on th
 		<a class="widget-taglist__link widget__link btn" href="/tags/prim/" title="PRIM">PRIM</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/qr-decomposition/" title="QR-Decomposition">QR-Decomposition</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/random-forests/" title="Random Forests">Random Forests</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/regression/" title="Regression">Regression</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/regularization/" title="Regularization">Regularization</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ridge/" title="Ridge">Ridge</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/shap/" title="SHAP">SHAP</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/shapley-value/" title="Shapley Value">Shapley Value</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/spline/" title="Spline">Spline</a>

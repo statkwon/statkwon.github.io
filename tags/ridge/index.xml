@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ridge on ML LAB</title>
+    <link>http://statkwon.github.io/tags/ridge/</link>
+    <description>Recent content in Ridge on ML LAB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://statkwon.github.io/tags/ridge/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ridge Regression</title>
+      <link>http://statkwon.github.io/ml/ridge_regression/</link>
+      <pubDate>Mon, 18 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://statkwon.github.io/ml/ridge_regression/</guid>
+      <description>Ridge Regression Ridge regression은 선형 회귀에 $L_2$ penalty를 추가한 모형이다. input scale에 따라 해가 달라지기 때문에 일반적으로 standardized된 input을 사용한다.
+$$\begin{align} \hat{\boldsymbol{\beta}}&amp;amp;=\underset{\boldsymbol{\beta}}{\text{argmin}}\left\{(\mathbf{y}-X\boldsymbol{\beta})^T(\mathbf{y}-X\boldsymbol{\beta})+\lambda\Vert\boldsymbol{\beta}\Vert_2^2\right\} \\ &amp;amp;=\underset{\beta}{\text{argmin}}\left\{\sum_{i=1}^N\left(y_i-\sum_{j=1}^Px_{ij}\beta_j\right)^2+\lambda\sum_{j=1}^P\beta_j^2\right\} \\ &amp;amp;=\underset{\beta}{\text{argmin}}\sum_{i=1}^N\left(y_i-\sum_{j=1}^Px_{ij}\beta_j\right)^2 \; \text{subject to} \; \sum_{j=1}^P\beta_j^2\leq t \end{align}$$
+위 식의 해를 구하면 $\hat{\boldsymbol{\beta}}=(X^TX+\lambda I)^{-1}X^T\mathbf{y}$이 된다. 이때 $X^TX$가 positive semi-definite이므로, $(X^TX+\lambda I)$는 positive definite이 되어 항상 invertible하게 된다.
+Geometric Interpretation $X$의 SVD를 활용하여 $\hat{\mathbf{y}}$을 다음과 같이 나타낼 수 있다. ($X=UDV^T$)
+$$\begin{align} \hat{\mathbf{y}}&amp;amp;=X(X^TX+\lambda I)^{-1}X^T\mathbf{y} \\ &amp;amp;=UD(D^2+\lambda I)^{-1}DU^T\mathbf{y} \\ &amp;amp;=\sum_{j=1}^P\dfrac{d_j^2}{d_j^2+\lambda}\mathbf{u}_j\mathbf{u}_j^T\mathbf{y} \end{align}$$</description>
+    </item>
+    
+  </channel>
+</rss>
