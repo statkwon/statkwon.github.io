@@ -77,6 +77,25 @@ if (!doNotTrack) {
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/adaboost/" rel="bookmark">
+			AdaBoost
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-12T00:00:00Z">2022-01-12</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		AdaBoost.M1 AdaBoost의 초기 버전인 AdaBoost.M1은 $y\in\{-1, 1\}$의 binary classification 문제를 해결하기 위한 모델로 제안되었다. AdaBoost의 핵심 컨셉은 &ldquo;weak classifier를 모아 powerful committee를 만들자&quot;이다. 여기서 weak은 random guessing 보다 조금 나은 정도를 의미한다. (ex. stump, a tree with only 2 nodes)
+Algorithm
+Initialize the observation weights $w_i=1/N$, $i=1, 2, \ldots, N$. ➡ 첫 iteration에서는 각 데이터에 동등한 가중치를 적용한다. For $m=1$ to $M$: Fit a classifier $G_m(x)$ to the training data using weights $w_i$.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/ml/mars/" rel="bookmark">
 			MARS
 			</a>
@@ -153,25 +172,6 @@ $L=\{\mathbf{x}\in\mathbb{R}^p:f(\mathbf{x})=0\}$, where $f(\mathbf{x})=\beta_0+
 따라서 오분류된 데이터와 Hyperplane 사이의 거리를 $d_i$라고 할 때, 우리가 찾는 Hyperplane은
 $\displaystyle \underset{f}{\text{argmin}}\sum_{i\in\mathcal{M}}d_i$, where $\mathcal{M}$ indexes the set of misclassified points
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/ml/local_regression/" rel="bookmark">
-			Local Regression
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-03-20T00:00:00Z">2021-03-20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Boundary issues of Nadaraya-Watson kernel regression can be solved by fitting a straight line rather than constants locally. This is the concept of local regression which fits a seperate weighted least squares at each target point $\mathbf{X}_0$. For convenience, let&rsquo;s consider the one-dimensional input space from now on.
-Local Linear Regression $\displaystyle\underset{\boldsymbol{\beta}(x_0)}{\text{argmin}}(\mathbf{y}-X\boldsymbol{\beta}(x_0))^TW(x_0)(\mathbf{y}-X\boldsymbol{\beta}(x_0))$
-The coefficients of local linear regression can be obtained by finding a optimal solution of the problem above, where $W$ is a diagonal matrix whose $i$th diagonal elements are $K_\lambda(x_0, x_i)$.
-	</div>
 </article>
 </main>
 
@@ -188,11 +188,11 @@ The coefficients of local linear regression can be obtained by finding a optimal
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/ml/subgradient/">Subgradient</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/ridge_regression/">Ridge Regression</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/maximum_likelihood_estimation/">Maximum Likelihood Estimation</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/monte-carlo_and_bootstrap/">Monte-Carlo &amp; Bootstrap</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/standardizing_and_whitening/">Standardizing &amp; Whitening</a></li>
-			<li class="widget__item"><a class="widget__link" href="/ml/lda-dimension_reduction/">LDA-Dimension Reduction</a></li>
 		</ul>
 	</div>
 </div>
@@ -231,6 +231,7 @@ The coefficients of local linear regression can be obtained by finding a optimal
 		<a class="widget-taglist__link widget__link btn" href="/tags/monte-carlo/" title="Monte-Carlo">Monte-Carlo</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/net-effect/" title="Net Effect">Net Effect</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/oop/" title="OOP">OOP</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/optimization/" title="Optimization">Optimization</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/orthogonalization/" title="Orthogonalization">Orthogonalization</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/perceptron/" title="Perceptron">Perceptron</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/prim/" title="PRIM">PRIM</a>
@@ -244,6 +245,7 @@ The coefficients of local linear regression can be obtained by finding a optimal
 		<a class="widget-taglist__link widget__link btn" href="/tags/spline/" title="Spline">Spline</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/standardizing/" title="Standardizing">Standardizing</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/stft/" title="STFT">STFT</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/subgradient/" title="Subgradient">Subgradient</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/svm/" title="SVM">SVM</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/tree/" title="Tree">Tree</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/whitening/" title="Whitening">Whitening</a>

@@ -77,6 +77,25 @@ if (!doNotTrack) {
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/local_regression/" rel="bookmark">
+			Local Regression
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-03-20T00:00:00Z">2021-03-20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Boundary issues of Nadaraya-Watson kernel regression can be solved by fitting a straight line rather than constants locally. This is the concept of local regression which fits a seperate weighted least squares at each target point $\mathbf{X}_0$. For convenience, let&rsquo;s consider the one-dimensional input space from now on.
+Local Linear Regression $\displaystyle\underset{\boldsymbol{\beta}(x_0)}{\text{argmin}}(\mathbf{y}-X\boldsymbol{\beta}(x_0))^TW(x_0)(\mathbf{y}-X\boldsymbol{\beta}(x_0))$
+The coefficients of local linear regression can be obtained by finding a optimal solution of the problem above, where $W$ is a diagonal matrix whose $i$th diagonal elements are $K_\lambda(x_0, x_i)$.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/ml/kernel_regression/" rel="bookmark">
 			Kernel Regression
 			</a>
@@ -156,26 +175,6 @@ $h_{M+1+l}(X)=(X-\xi_l)_+^M \quad (l=1, 2, \ldots, K)$
 $f(X)=\beta_1+\beta_2X\cdots+\beta_{M+1}X^M+\beta_{M+2}(X-\xi_1)_+^M+\cdots+\beta_{M+K+1}(X-\xi_K)_+^M$
 We will make a proof for the case when $M=3$ and $K=2$.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/ml/lda-classification/" rel="bookmark">
-			LDA-Classification
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-03-05T00:00:00Z">2021-03-05</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Linear Discriminant Analysis(이하 LDA)는 Multiclass 분류 문제를 해결하기 위해 고안된 모형이다. 이 글에서는 LDA의 메커니즘을 크게 두 가지 관점으로 나누어서 정리하고 있다.
-Perspecitve of Bayes Classifier LDA는 각 범주별 Posterior Probability를 추정하고, 해당 확률값이 가장 큰 범주로 데이터를 분류한다는 점에서 Bayes Classifier를 추정한 모형으로 볼 수 있다. 이때 LDA는 Posterior Probability를 직접적으로 추정하지 않고, Bayes&rsquo; Rule을 사용하여 $f(Y_k\vert\mathbf{x})$와 $\text{P}(Y_k)$를 추정하는 방식을 사용한다.
-$\text{P}(Y_k\vert\mathbf{x})\approx f(\mathbf{x}\vert Y_k)\text{P}(Y_k)$
-지금부터 편의를 위해 $\text{P}(Y_k)$를 $\pi_k$로 표기하도록 하겠다.
-	</div>
 </article>
 </main>
 
@@ -192,11 +191,11 @@ $\text{P}(Y_k\vert\mathbf{x})\approx f(\mathbf{x}\vert Y_k)\text{P}(Y_k)$
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/ml/subgradient/">Subgradient</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/ridge_regression/">Ridge Regression</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/maximum_likelihood_estimation/">Maximum Likelihood Estimation</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/monte-carlo_and_bootstrap/">Monte-Carlo &amp; Bootstrap</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/standardizing_and_whitening/">Standardizing &amp; Whitening</a></li>
-			<li class="widget__item"><a class="widget__link" href="/ml/lda-dimension_reduction/">LDA-Dimension Reduction</a></li>
 		</ul>
 	</div>
 </div>
@@ -235,6 +234,7 @@ $\text{P}(Y_k\vert\mathbf{x})\approx f(\mathbf{x}\vert Y_k)\text{P}(Y_k)$
 		<a class="widget-taglist__link widget__link btn" href="/tags/monte-carlo/" title="Monte-Carlo">Monte-Carlo</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/net-effect/" title="Net Effect">Net Effect</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/oop/" title="OOP">OOP</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/optimization/" title="Optimization">Optimization</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/orthogonalization/" title="Orthogonalization">Orthogonalization</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/perceptron/" title="Perceptron">Perceptron</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/prim/" title="PRIM">PRIM</a>
@@ -248,6 +248,7 @@ $\text{P}(Y_k\vert\mathbf{x})\approx f(\mathbf{x}\vert Y_k)\text{P}(Y_k)$
 		<a class="widget-taglist__link widget__link btn" href="/tags/spline/" title="Spline">Spline</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/standardizing/" title="Standardizing">Standardizing</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/stft/" title="STFT">STFT</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/subgradient/" title="Subgradient">Subgradient</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/svm/" title="SVM">SVM</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/tree/" title="Tree">Tree</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/whitening/" title="Whitening">Whitening</a>

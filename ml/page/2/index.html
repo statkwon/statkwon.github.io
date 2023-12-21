@@ -77,6 +77,23 @@ if (!doNotTrack) {
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/lda-dimension_reduction/" rel="bookmark">
+			LDA-Dimension Reduction
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-02-02T00:00:00Z">2022-02-02</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		LDA는 MLE를 사용하여 $\boldsymbol{\mu}_k$와 $\Sigma$를 추정하는데, 이러한 추정 방식은 High-Dimension에서 불안정하다는 문제를 갖는다. ($p/n\rightarrow\infty$인 경우 MLE의 Aymptotic Property가 보장되지 않는다.) 이러한 문제는 $p$차원의 데이터 $\mathbf{x}$를 보다 낮은 차원의 데이터 $\mathbf{z}$로 변환한 후 LDA를 적용함으로써 해결할 수 있다. 이러한 변환을 수행하는 가장 간단한 방법은 $l$($&lt;\!\!&lt;p$)차원의 Subspace에 데이터를 Projection 시키는 것이다. 이때 단순히 차원을 낮추는 것뿐만 아니라, Projection 이후 데이터를 가장 잘 분류할 수 있는 Subspace를 찾는 것이 합리적이다. 따라서 우리는 Projection 이후 범주 간 분산은 최대화하고, 범주 내 분산은 최소화하는 $\mathbb{R}^p$의 Subspace를 찾는 것을 목표로 한다.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/ml/support_vector_classifier/" rel="bookmark">
 			Support Vector Classifier
 			</a>
@@ -155,25 +172,6 @@ $\displaystyle \hat{\Theta}=\underset{\Theta}{\text{argmin}}\sum_{j=1}^J\sum_{x_
 따라서 최적화 문제를 다음과 같은 두 파트로 나누어 풀게 된다.
 $R_j$를 안다는 전제 하에 $\gamma_j$를 찾는다. $R_j$를 찾는다. 1번은 쉽다. regression 문제의 경우 $\hat{\gamma}_j=\bar{y}_j$, classification 문제의 경우 $\hat{\gamma_j}=\underset{k}{\text{argmax}}\sum_iI(y_i=k)$가 된다.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/ml/adaboost/" rel="bookmark">
-			AdaBoost
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-12T00:00:00Z">2022-01-12</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		AdaBoost.M1 AdaBoost의 초기 버전인 AdaBoost.M1은 $y\in\{-1, 1\}$의 binary classification 문제를 해결하기 위한 모델로 제안되었다. AdaBoost의 핵심 컨셉은 &ldquo;weak classifier를 모아 powerful committee를 만들자&quot;이다. 여기서 weak은 random guessing 보다 조금 나은 정도를 의미한다. (ex. stump, a tree with only 2 nodes)
-Algorithm
-Initialize the observation weights $w_i=1/N$, $i=1, 2, \ldots, N$. ➡ 첫 iteration에서는 각 데이터에 동등한 가중치를 적용한다. For $m=1$ to $M$: Fit a classifier $G_m(x)$ to the training data using weights $w_i$.
-	</div>
 </article>
 </main>
 
@@ -190,11 +188,11 @@ Initialize the observation weights $w_i=1/N$, $i=1, 2, \ldots, N$. ➡ 첫 itera
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/ml/subgradient/">Subgradient</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/ridge_regression/">Ridge Regression</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/maximum_likelihood_estimation/">Maximum Likelihood Estimation</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/monte-carlo_and_bootstrap/">Monte-Carlo &amp; Bootstrap</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/standardizing_and_whitening/">Standardizing &amp; Whitening</a></li>
-			<li class="widget__item"><a class="widget__link" href="/ml/lda-dimension_reduction/">LDA-Dimension Reduction</a></li>
 		</ul>
 	</div>
 </div>
@@ -233,6 +231,7 @@ Initialize the observation weights $w_i=1/N$, $i=1, 2, \ldots, N$. ➡ 첫 itera
 		<a class="widget-taglist__link widget__link btn" href="/tags/monte-carlo/" title="Monte-Carlo">Monte-Carlo</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/net-effect/" title="Net Effect">Net Effect</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/oop/" title="OOP">OOP</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/optimization/" title="Optimization">Optimization</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/orthogonalization/" title="Orthogonalization">Orthogonalization</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/perceptron/" title="Perceptron">Perceptron</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/prim/" title="PRIM">PRIM</a>
@@ -246,6 +245,7 @@ Initialize the observation weights $w_i=1/N$, $i=1, 2, \ldots, N$. ➡ 첫 itera
 		<a class="widget-taglist__link widget__link btn" href="/tags/spline/" title="Spline">Spline</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/standardizing/" title="Standardizing">Standardizing</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/stft/" title="STFT">STFT</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/subgradient/" title="Subgradient">Subgradient</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/svm/" title="SVM">SVM</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/tree/" title="Tree">Tree</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/whitening/" title="Whitening">Whitening</a>
