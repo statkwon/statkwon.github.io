@@ -77,6 +77,28 @@ if (!doNotTrack) {
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/gradient_boosting/" rel="bookmark">
+			Gradient Boosting
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-01-13T00:00:00Z">2022-01-13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Optimization Problem for Trees $\displaystyle T(x;\Theta)=\sum_{j=1}^J\gamma_jI(x\in R_j)$, where $\Theta=\{R_j, \gamma_j\}_1^J$
+tree는 feature space를 $J$개의 disjoint한 영역 $R_j$로 분할한 뒤, 각 영역마다 부여된 값인 $\gamma_j$를 사용하여 예측을 하는 방식으로 동작한다.
+하지만 다음과 같은 loss function을 최소화하는 parameter $\Theta$를 찾는 것은 쉽지 않다.
+$\displaystyle \hat{\Theta}=\underset{\Theta}{\text{argmin}}\sum_{j=1}^J\sum_{x_i\in R_j}L(y_i, \gamma_j)$
+따라서 최적화 문제를 다음과 같은 두 파트로 나누어 풀게 된다.
+$R_j$를 안다는 전제 하에 $\gamma_j$를 찾는다. $R_j$를 찾는다. 1번은 쉽다. regression 문제의 경우 $\hat{\gamma}_j=\bar{y}_j$, classification 문제의 경우 $\hat{\gamma_j}=\underset{k}{\text{argmax}}\sum_iI(y_i=k)$가 된다.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/ml/adaboost/" rel="bookmark">
 			AdaBoost
 			</a>
@@ -151,27 +173,6 @@ Regression Trees Squared Error Loss를 기준으로 하는 경우, Regression Tr
 $\displaystyle f(\mathbf{x})=\sum_{m=1}^Mc_mI(\mathbf{x}\in R_m)$, where $\hat{c}_m=\text{ave}(y_i\vert\mathbf{x}_i\in R_m)$
 즉, Feature Space를 $M$개의 영역으로 나누고, 각 영역의 반응변수를 해당 영역에 속한 $y$값들의 평균으로 예측한다.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/ml/perceptron_learning_algorithm/" rel="bookmark">
-			Perceptron Learning Algorithm
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-04-18T00:00:00Z">2021-04-18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Perceptron Learning Algorithm은 서로 다른 Class에 속한 데이터를 가장 잘 구분하는 Hyperplane을 찾기 위한 알고리즘이다. 이 글에서는 $y\in\{-1, 1\}$의 Binary Outcome에 대한 Classification 문제를 가정한다.
-Perceptron Learning Algorithm은 오분류된 데이터와 Decision Boundary 사이의 거리를 최소화하는 Hyperplane을 찾는 방식으로 작동한다. 일반적으로 $p$차원 공간 속의 Hyperplane은 다음과 같의 정의된다.
-$L=\{\mathbf{x}\in\mathbb{R}^p:f(\mathbf{x})=0\}$, where $f(\mathbf{x})=\beta_0+\boldsymbol{\beta}^T\mathbf{x}$
-따라서 오분류된 데이터와 Hyperplane 사이의 거리를 $d_i$라고 할 때, 우리가 찾는 Hyperplane은
-$\displaystyle \underset{f}{\text{argmin}}\sum_{i\in\mathcal{M}}d_i$, where $\mathcal{M}$ indexes the set of misclassified points
-	</div>
 </article>
 </main>
 
@@ -188,11 +189,11 @@ $\displaystyle \underset{f}{\text{argmin}}\sum_{i\in\mathcal{M}}d_i$, where $\ma
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/ml/coordinate_descent/">Coordinate Descent</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/subgradient/">Subgradient</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/ridge_regression/">Ridge Regression</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/maximum_likelihood_estimation/">Maximum Likelihood Estimation</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/monte-carlo_and_bootstrap/">Monte-Carlo &amp; Bootstrap</a></li>
-			<li class="widget__item"><a class="widget__link" href="/ml/standardizing_and_whitening/">Standardizing &amp; Whitening</a></li>
 		</ul>
 	</div>
 </div>

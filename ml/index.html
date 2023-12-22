@@ -77,6 +77,26 @@ if (!doNotTrack) {
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/ml/coordinate_descent/" rel="bookmark">
+			Coordinate Descent
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-12-21T00:00:00Z">2023-12-21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Coordinate Descent convex &amp; differentiable한 함수 $g$와 convex한 함수 $h$에 대하여 $f(\mathbf{x})=g(\mathbf{x})+\sum_{i=1}^nh_i(x_i)$ 일 때, 각 좌표축에 대하여 $f$를 최소화시킨 점 $\mathbf{x}$는 항상 global minimizer이다. (증명은 첫 번째 reference 참고) 따라서 다음과 같은 과정을 반복하여 $f$의 global minimizer를 근사할 수 있다.
+For $k=1, 2, 3, \ldots$
+$x_1^{(k)}=\underset{x_1}{\text{argmin}}f(x_1, x_2^{(k-1)}, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ $x_2^{(k)}=\underset{x_2}{\text{argmin}}f(x_1^{(k)}, x_2, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ $x_3^{(k)}=\underset{x_3}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3, \ldots, x_n^{(k-1)})$ $\cdots$ $x_n^{(k)}=\underset{x_n}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3^{(k)}, \ldots, x_n)$
+초깃값 $\mathbf{x}^{(0)}$로는 적당한 값을 사용한다.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/ml/subgradient/" rel="bookmark">
 			Subgradient
 			</a>
@@ -162,26 +182,6 @@ $\displaystyle \mathbb{E}[X]=\int_2^4x\cdot\dfrac{1}{2}dx=3$
 np.random.seed(0) X = np.random.uniform(2, 4, size=1000) np.mean(X) # 2.9918430687435653 Bootstrap Method Bootstrap은 데이터를 사용하여 sampling distribution을 근사하는 방식이다.
 Parametric Bootstrap은 데이터의 분포는 알지만 모수는 알지 못하는 경우 모수의 추정치를 사용하여 sampling distribution을 근사한다.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/ml/standardizing_and_whitening/" rel="bookmark">
-			Standardizing &amp; Whitening
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-07-16T00:00:00Z">2023-07-16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Random Vector 관점 Standardizing(Normalization)은 mean이 $\boldsymbol{\mu}$이고 covariance가 $\Sigma$인 분포를 따르는 random vector $\mathbf{X}$의 분포가 mean이 $\mathbf{0}$이고 각 feature의 variance가 $1$인 분포가 되도록 처리하는 것 → 각 feature 별 연산이므로 feature 간 covariance에는 영향이 없다.
-Whitening은 mean이 $\mathbf{0}$이고 covariance가 $\Sigma$인 분포를 따르는 random vector $\mathbf{X}$의 covariance가 identity matrix가 되도록 처리하는 것 → feature 간 covariance를 $0$으로 만들어 줄 수 있다.
-$\mathbf{Y}=W\mathbf{X}$일 때, $\text{Cov}(\mathbf{Y})=W\text{Cov}(\mathbf{X})W^T=W\Sigma W^T$
-$W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하도록 하면 된다.
-	</div>
 </article>
 </main>
 
@@ -197,11 +197,11 @@ $W\Sigma W^T$가 $I$가 되게 하려면 $W$가 $W^TW=\Sigma^{-1}$를 만족하�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/ml/coordinate_descent/">Coordinate Descent</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/subgradient/">Subgradient</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/ridge_regression/">Ridge Regression</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/maximum_likelihood_estimation/">Maximum Likelihood Estimation</a></li>
 			<li class="widget__item"><a class="widget__link" href="/ml/monte-carlo_and_bootstrap/">Monte-Carlo &amp; Bootstrap</a></li>
-			<li class="widget__item"><a class="widget__link" href="/ml/standardizing_and_whitening/">Standardizing &amp; Whitening</a></li>
 		</ul>
 	</div>
 </div>
