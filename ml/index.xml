@@ -15,7 +15,7 @@
       <guid>http://statkwon.github.io/ml/coordinate_descent/</guid>
       <description>Coordinate Descent convex &amp;amp; differentiable한 함수 $g$와 convex한 함수 $h$에 대하여 $f(\mathbf{x})=g(\mathbf{x})+\sum_{i=1}^nh_i(x_i)$ 일 때, 각 좌표축에 대하여 $f$를 최소화시킨 점 $\mathbf{x}$는 항상 global minimizer이다. (증명은 첫 번째 reference 참고) 따라서 다음과 같은 과정을 반복하여 $f$의 global minimizer를 근사할 수 있다.
 For $k=1, 2, 3, \ldots$
-$x_1^{(k)}=\underset{x_1}{\text{argmin}}f(x_1, x_2^{(k-1)}, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ $x_2^{(k)}=\underset{x_2}{\text{argmin}}f(x_1^{(k)}, x_2, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ $x_3^{(k)}=\underset{x_3}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3, \ldots, x_n^{(k-1)})$ $\cdots$ $x_n^{(k)}=\underset{x_n}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3^{(k)}, \ldots, x_n)$
+$x_1^{(k)}\in\underset{x_1}{\text{argmin}}f(x_1, x_2^{(k-1)}, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ $x_2^{(k)}\in\underset{x_2}{\text{argmin}}f(x_1^{(k)}, x_2, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ $x_3^{(k)}\in\underset{x_3}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3, \ldots, x_n^{(k-1)})$ $\cdots$ $x_n^{(k)}\in\underset{x_n}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3^{(k)}, \ldots, x_n)$
 초깃값 $\mathbf{x}^{(0)}$로는 적당한 값을 사용한다.</description>
     </item>
     

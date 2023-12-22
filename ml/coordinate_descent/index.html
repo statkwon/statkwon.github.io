@@ -9,7 +9,7 @@
 		<meta property="og:title" content="Coordinate Descent" />
 <meta property="og:description" content="Coordinate Descent convex &amp; differentiable한 함수 $g$와 convex한 함수 $h$에 대하여 $f(\mathbf{x})=g(\mathbf{x})&#43;\sum_{i=1}^nh_i(x_i)$ 일 때, 각 좌표축에 대하여 $f$를 최소화시킨 점 $\mathbf{x}$는 항상 global minimizer이다. (증명은 첫 번째 reference 참고) 따라서 다음과 같은 과정을 반복하여 $f$의 global minimizer를 근사할 수 있다.
 For $k=1, 2, 3, \ldots$
-$x_1^{(k)}=\underset{x_1}{\text{argmin}}f(x_1, x_2^{(k-1)}, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ $x_2^{(k)}=\underset{x_2}{\text{argmin}}f(x_1^{(k)}, x_2, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ $x_3^{(k)}=\underset{x_3}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3, \ldots, x_n^{(k-1)})$ $\cdots$ $x_n^{(k)}=\underset{x_n}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3^{(k)}, \ldots, x_n)$
+$x_1^{(k)}\in\underset{x_1}{\text{argmin}}f(x_1, x_2^{(k-1)}, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ $x_2^{(k)}\in\underset{x_2}{\text{argmin}}f(x_1^{(k)}, x_2, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ $x_3^{(k)}\in\underset{x_3}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3, \ldots, x_n^{(k-1)})$ $\cdots$ $x_n^{(k)}\in\underset{x_n}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3^{(k)}, \ldots, x_n)$
 초깃값 $\mathbf{x}^{(0)}$로는 적당한 값을 사용한다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://statkwon.github.io/ml/coordinate_descent/" /><meta property="article:section" content="ml" />
@@ -19,10 +19,10 @@ $x_1^{(k)}=\underset{x_1}{\text{argmin}}f(x_1, x_2^{(k-1)}, x_3^{(k-1)}, \ldots,
 		<meta itemprop="name" content="Coordinate Descent">
 <meta itemprop="description" content="Coordinate Descent convex &amp; differentiable한 함수 $g$와 convex한 함수 $h$에 대하여 $f(\mathbf{x})=g(\mathbf{x})&#43;\sum_{i=1}^nh_i(x_i)$ 일 때, 각 좌표축에 대하여 $f$를 최소화시킨 점 $\mathbf{x}$는 항상 global minimizer이다. (증명은 첫 번째 reference 참고) 따라서 다음과 같은 과정을 반복하여 $f$의 global minimizer를 근사할 수 있다.
 For $k=1, 2, 3, \ldots$
-$x_1^{(k)}=\underset{x_1}{\text{argmin}}f(x_1, x_2^{(k-1)}, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ $x_2^{(k)}=\underset{x_2}{\text{argmin}}f(x_1^{(k)}, x_2, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ $x_3^{(k)}=\underset{x_3}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3, \ldots, x_n^{(k-1)})$ $\cdots$ $x_n^{(k)}=\underset{x_n}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3^{(k)}, \ldots, x_n)$
+$x_1^{(k)}\in\underset{x_1}{\text{argmin}}f(x_1, x_2^{(k-1)}, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ $x_2^{(k)}\in\underset{x_2}{\text{argmin}}f(x_1^{(k)}, x_2, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ $x_3^{(k)}\in\underset{x_3}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3, \ldots, x_n^{(k-1)})$ $\cdots$ $x_n^{(k)}\in\underset{x_n}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3^{(k)}, \ldots, x_n)$
 초깃값 $\mathbf{x}^{(0)}$로는 적당한 값을 사용한다."><meta itemprop="datePublished" content="2023-12-21T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-12-22T00:00:00+00:00" />
-<meta itemprop="wordCount" content="196">
+<meta itemprop="wordCount" content="199">
 <meta itemprop="keywords" content="Optimization," />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -107,11 +107,11 @@ if (!doNotTrack) {
 <p>convex &amp; differentiable한 함수 $g$와 convex한 함수 $h$에 대하여 $f(\mathbf{x})=g(\mathbf{x})+\sum_{i=1}^nh_i(x_i)$ 일 때, 각 좌표축에 대하여 $f$를 최소화시킨 점 $\mathbf{x}$는 항상 global minimizer이다. (증명은 첫 번째 reference 참고) 따라서 다음과 같은 과정을 반복하여 $f$의 global minimizer를 근사할 수 있다.</p>
 <blockquote>
 <p>For $k=1, 2, 3, \ldots$</p>
-<p>$x_1^{(k)}=\underset{x_1}{\text{argmin}}f(x_1, x_2^{(k-1)}, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ <br>
-$x_2^{(k)}=\underset{x_2}{\text{argmin}}f(x_1^{(k)}, x_2, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ <br>
-$x_3^{(k)}=\underset{x_3}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3, \ldots, x_n^{(k-1)})$ <br>
+<p>$x_1^{(k)}\in\underset{x_1}{\text{argmin}}f(x_1, x_2^{(k-1)}, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ <br>
+$x_2^{(k)}\in\underset{x_2}{\text{argmin}}f(x_1^{(k)}, x_2, x_3^{(k-1)}, \ldots, x_n^{(k-1)})$ <br>
+$x_3^{(k)}\in\underset{x_3}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3, \ldots, x_n^{(k-1)})$ <br>
 $\cdots$ <br>
-$x_n^{(k)}=\underset{x_n}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3^{(k)}, \ldots, x_n)$</p>
+$x_n^{(k)}\in\underset{x_n}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3^{(k)}, \ldots, x_n)$</p>
 </blockquote>
 <p>초깃값 $\mathbf{x}^{(0)}$로는 적당한 값을 사용한다.</p>
 <h2 id="python-code-for-example">Python Code for Example</h2>
@@ -121,7 +121,7 @@ $x_n^{(k)}=\underset{x_n}{\text{argmin}}f(x_1^{(k)}, x_2^{(k)}, x_3^{(k)}, \ldot
 &amp;=\mathbf{x}_i^T(\mathbf{y}-\mathbf{x}_i\beta_i-X_{-i}\boldsymbol{\beta}_{-i}) \\
 &amp;=0
 \end{align}$$</p>
-<p>을 만족하는 $\beta_i=\dfrac{\mathbf{x}_i^T(\mathbf{y}-X_{-i}\boldsymbol{\beta}_{-i})}{X_i^TX_i}$로 업데이트를 진행하면 된다.</p>
+<p>을 만족하는 $\beta_i=\dfrac{\mathbf{x}_i^T(\mathbf{y}-X_{-i}\boldsymbol{\beta}_{-i})}{X_i^TX_i}$로 업데이트를 진행하면 된다. 초깃값으로는 $\boldsymbol{\beta}^{(0)}=\mathbf{0}$을 사용하였다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.datasets <span style="color:#f92672">import</span> make_regression
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">coordinate_descent</span>(X: np<span style="color:#f92672">.</span>ndarray, y: np<span style="color:#f92672">.</span>ndarray, n_iter: int):
